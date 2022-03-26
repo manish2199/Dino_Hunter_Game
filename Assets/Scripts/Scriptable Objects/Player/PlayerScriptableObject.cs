@@ -7,17 +7,18 @@ public class PlayerScriptableObject : Character
 {
     
     [Header("Player Movement")]
-    [SerializeField] float gravity;
-    [SerializeField] float jumpForce;
+    public float gravity;
+    public float jumpForce;
 
 
     [Header("Mouse Rotation")]
-    [SerializeField] bool isMouseRotationInverted;
-    [SerializeField] float mouseSensitivity;
+    public bool isMouseRotationInverted;
+    public float mouseSensitivity;
+    public Vector2 defaultLookLimits;
 
 
     [Header("Player Controls")]
-    [SerializeField] PlayerControls playerControls;
+    public PlayerControls playerControls;
      
 
 

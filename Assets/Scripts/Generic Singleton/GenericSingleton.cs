@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericSignleton<T> : MonoBehaviour where T : GenericSignleton<T> 
+public class GenericSingleton<T> : MonoBehaviour where T : GenericSingleton<T> 
 {
     private static T instance ;
 

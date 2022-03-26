@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2caba4868c59c5442b277b49aa76438b, type: 3}
   m_Name: PlayerScriptableObject
   m_EditorClassIdentifier: 
+  speed: 6
   gravity: 20
-  jumpForce: 250
+  jumpForce: 10
   isMouseRotationInverted: 0
-  mouseSensitivity: 80
+  mouseSensitivity: 5
+  defaultLookLimits: {x: -70, y: 80}
   playerControls:
     KeyForJump: 32
     KeyForCrouch: 99
