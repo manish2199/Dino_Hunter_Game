@@ -11,11 +11,18 @@ public class PlayerView : MonoBehaviour
    public  Transform playerTransform;
 
    public  Transform rootTransform;
+
+   public Transform weaponsHolder;
+
+   [SerializeField] AudioSource playerFootStepAudio;
+   public AudioSource PlayerFootStepAudio { get { return playerFootStepAudio; } }
  
   
   void Start()
   {
-     playerController.LockMouseCurserToCenter();
+     playerController.InitialSetUp();
+
+     playerController.SelectInitialWeapon(weaponsHolder); 
   }   
 
   void Update()
@@ -23,6 +30,10 @@ public class PlayerView : MonoBehaviour
      playerController.PlayerMovement();
      
      playerController.MouseLookAround(); 
+
+     playerController.PlayFootStepAudio();
+
+     playerController.SelectWeapon();
   }
    
 }

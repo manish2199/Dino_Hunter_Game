@@ -1,119 +1,329 @@
 fileFormatVersion: 2
 guid: ded3362b8b3b82243b3043bb355c770c
-timeCreated: 1478528410
-licenseType: Store
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: Arm_L
-    100002: Arm_R
-    100004: Armature
-    100006: Arms
-    100008: Axe
-    100010: Forearm_L
-    100012: Forearm_R
-    100014: //RootNode
-    100016: Hand_L
-    100018: Hand_R
-    100020: IK_L
-    100022: IK_R
-    100024: Index_1_L
-    100026: Index_1_R
-    100028: Index_2_L
-    100030: Index_2_R
-    100032: Index_3_L
-    100034: Index_3_R
-    100036: Middle_1_L
-    100038: Middle_1_R
-    100040: Middle_2_L
-    100042: Middle_2_R
-    100044: Middle_3_L
-    100046: Middle_3_R
-    100048: Pinky_1_L
-    100050: Pinky_1_R
-    100052: Pinky_2_L
-    100054: Pinky_2_R
-    100056: Pinky_3_L
-    100058: Pinky_3_R
-    100060: Pole_L
-    100062: Pole_R
-    100064: Ring_1_L
-    100066: Ring_1_R
-    100068: Ring_2_L
-    100070: Ring_2_R
-    100072: Ring_3_L
-    100074: Ring_3_R
-    100076: Root
-    100078: Thumb_1_L
-    100080: Thumb_1_R
-    100082: Thumb_2_L
-    100084: Thumb_2_R
-    100086: Thumb_3_L
-    100088: Thumb_3_R
-    100090: Weapon
-    100092: Wristwatch_Pin
-    400000: Arm_L
-    400002: Arm_R
-    400004: Armature
-    400006: Arms
-    400008: Axe
-    400010: Forearm_L
-    400012: Forearm_R
-    400014: //RootNode
-    400016: Hand_L
-    400018: Hand_R
-    400020: IK_L
-    400022: IK_R
-    400024: Index_1_L
-    400026: Index_1_R
-    400028: Index_2_L
-    400030: Index_2_R
-    400032: Index_3_L
-    400034: Index_3_R
-    400036: Middle_1_L
-    400038: Middle_1_R
-    400040: Middle_2_L
-    400042: Middle_2_R
-    400044: Middle_3_L
-    400046: Middle_3_R
-    400048: Pinky_1_L
-    400050: Pinky_1_R
-    400052: Pinky_2_L
-    400054: Pinky_2_R
-    400056: Pinky_3_L
-    400058: Pinky_3_R
-    400060: Pole_L
-    400062: Pole_R
-    400064: Ring_1_L
-    400066: Ring_1_R
-    400068: Ring_2_L
-    400070: Ring_2_R
-    400072: Ring_3_L
-    400074: Ring_3_R
-    400076: Root
-    400078: Thumb_1_L
-    400080: Thumb_1_R
-    400082: Thumb_2_L
-    400084: Thumb_2_R
-    400086: Thumb_3_L
-    400088: Thumb_3_R
-    400090: Weapon
-    400092: Wristwatch_Pin
-    4300000: Axe
-    4300002: Arms
-    7400000: Draw
-    7400002: Hit
-    7400004: Hold_Pose
-    7400006: Holster
-    7400008: Idle
-    7400010: Miss
-    9500000: //RootNode
-    13700000: Arms
-    13700002: Axe
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Arm_L
+  - first:
+      1: 100002
+    second: Arm_R
+  - first:
+      1: 100004
+    second: Armature
+  - first:
+      1: 100006
+    second: Arms
+  - first:
+      1: 100008
+    second: Axe
+  - first:
+      1: 100010
+    second: Forearm_L
+  - first:
+      1: 100012
+    second: Forearm_R
+  - first:
+      1: 100014
+    second: //RootNode
+  - first:
+      1: 100016
+    second: Hand_L
+  - first:
+      1: 100018
+    second: Hand_R
+  - first:
+      1: 100020
+    second: IK_L
+  - first:
+      1: 100022
+    second: IK_R
+  - first:
+      1: 100024
+    second: Index_1_L
+  - first:
+      1: 100026
+    second: Index_1_R
+  - first:
+      1: 100028
+    second: Index_2_L
+  - first:
+      1: 100030
+    second: Index_2_R
+  - first:
+      1: 100032
+    second: Index_3_L
+  - first:
+      1: 100034
+    second: Index_3_R
+  - first:
+      1: 100036
+    second: Middle_1_L
+  - first:
+      1: 100038
+    second: Middle_1_R
+  - first:
+      1: 100040
+    second: Middle_2_L
+  - first:
+      1: 100042
+    second: Middle_2_R
+  - first:
+      1: 100044
+    second: Middle_3_L
+  - first:
+      1: 100046
+    second: Middle_3_R
+  - first:
+      1: 100048
+    second: Pinky_1_L
+  - first:
+      1: 100050
+    second: Pinky_1_R
+  - first:
+      1: 100052
+    second: Pinky_2_L
+  - first:
+      1: 100054
+    second: Pinky_2_R
+  - first:
+      1: 100056
+    second: Pinky_3_L
+  - first:
+      1: 100058
+    second: Pinky_3_R
+  - first:
+      1: 100060
+    second: Pole_L
+  - first:
+      1: 100062
+    second: Pole_R
+  - first:
+      1: 100064
+    second: Ring_1_L
+  - first:
+      1: 100066
+    second: Ring_1_R
+  - first:
+      1: 100068
+    second: Ring_2_L
+  - first:
+      1: 100070
+    second: Ring_2_R
+  - first:
+      1: 100072
+    second: Ring_3_L
+  - first:
+      1: 100074
+    second: Ring_3_R
+  - first:
+      1: 100076
+    second: Root
+  - first:
+      1: 100078
+    second: Thumb_1_L
+  - first:
+      1: 100080
+    second: Thumb_1_R
+  - first:
+      1: 100082
+    second: Thumb_2_L
+  - first:
+      1: 100084
+    second: Thumb_2_R
+  - first:
+      1: 100086
+    second: Thumb_3_L
+  - first:
+      1: 100088
+    second: Thumb_3_R
+  - first:
+      1: 100090
+    second: Weapon
+  - first:
+      1: 100092
+    second: Wristwatch_Pin
+  - first:
+      4: 400000
+    second: Arm_L
+  - first:
+      4: 400002
+    second: Arm_R
+  - first:
+      4: 400004
+    second: Armature
+  - first:
+      4: 400006
+    second: Arms
+  - first:
+      4: 400008
+    second: Axe
+  - first:
+      4: 400010
+    second: Forearm_L
+  - first:
+      4: 400012
+    second: Forearm_R
+  - first:
+      4: 400014
+    second: //RootNode
+  - first:
+      4: 400016
+    second: Hand_L
+  - first:
+      4: 400018
+    second: Hand_R
+  - first:
+      4: 400020
+    second: IK_L
+  - first:
+      4: 400022
+    second: IK_R
+  - first:
+      4: 400024
+    second: Index_1_L
+  - first:
+      4: 400026
+    second: Index_1_R
+  - first:
+      4: 400028
+    second: Index_2_L
+  - first:
+      4: 400030
+    second: Index_2_R
+  - first:
+      4: 400032
+    second: Index_3_L
+  - first:
+      4: 400034
+    second: Index_3_R
+  - first:
+      4: 400036
+    second: Middle_1_L
+  - first:
+      4: 400038
+    second: Middle_1_R
+  - first:
+      4: 400040
+    second: Middle_2_L
+  - first:
+      4: 400042
+    second: Middle_2_R
+  - first:
+      4: 400044
+    second: Middle_3_L
+  - first:
+      4: 400046
+    second: Middle_3_R
+  - first:
+      4: 400048
+    second: Pinky_1_L
+  - first:
+      4: 400050
+    second: Pinky_1_R
+  - first:
+      4: 400052
+    second: Pinky_2_L
+  - first:
+      4: 400054
+    second: Pinky_2_R
+  - first:
+      4: 400056
+    second: Pinky_3_L
+  - first:
+      4: 400058
+    second: Pinky_3_R
+  - first:
+      4: 400060
+    second: Pole_L
+  - first:
+      4: 400062
+    second: Pole_R
+  - first:
+      4: 400064
+    second: Ring_1_L
+  - first:
+      4: 400066
+    second: Ring_1_R
+  - first:
+      4: 400068
+    second: Ring_2_L
+  - first:
+      4: 400070
+    second: Ring_2_R
+  - first:
+      4: 400072
+    second: Ring_3_L
+  - first:
+      4: 400074
+    second: Ring_3_R
+  - first:
+      4: 400076
+    second: Root
+  - first:
+      4: 400078
+    second: Thumb_1_L
+  - first:
+      4: 400080
+    second: Thumb_1_R
+  - first:
+      4: 400082
+    second: Thumb_2_L
+  - first:
+      4: 400084
+    second: Thumb_2_R
+  - first:
+      4: 400086
+    second: Thumb_3_L
+  - first:
+      4: 400088
+    second: Thumb_3_R
+  - first:
+      4: 400090
+    second: Weapon
+  - first:
+      4: 400092
+    second: Wristwatch_Pin
+  - first:
+      43: 4300000
+    second: Axe
+  - first:
+      43: 4300002
+    second: Arms
+  - first:
+      74: 7400000
+    second: Draw
+  - first:
+      74: 7400002
+    second: Hit
+  - first:
+      74: 7400004
+    second: Hold_Pose
+  - first:
+      74: 7400006
+    second: Holster
+  - first:
+      74: 7400008
+    second: Idle
+  - first:
+      74: 7400010
+    second: Miss
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Arms
+  - first:
+      137: 13700002
+    second: Axe
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -126,16 +336,20 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Draw
       takeName: Draw
+      internalID: 0
       firstFrame: 0
       lastFrame: 19
       wrapMode: 0
@@ -258,6 +472,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Hit
       takeName: Hit
+      internalID: 0
       firstFrame: 0
       lastFrame: 41
       wrapMode: 0
@@ -394,6 +609,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Hold_Pose
       takeName: Hold_Pose
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -516,6 +732,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Holster
       takeName: Holster
+      internalID: 0
       firstFrame: 0
       lastFrame: 14
       wrapMode: 0
@@ -638,6 +855,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle
       takeName: Idle
+      internalID: 0
       firstFrame: 0
       lastFrame: 249
       wrapMode: 0
@@ -760,6 +978,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Miss
       takeName: Miss
+      internalID: 0
       firstFrame: 0
       lastFrame: 16
       wrapMode: 0
@@ -899,13 +1118,24 @@ ModelImporter:
     globalScale: 100
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -915,10 +1145,14 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -928,14 +1162,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 100
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

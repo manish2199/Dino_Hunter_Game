@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericSingleton<T> : MonoBehaviour where T : GenericSingleton<T> 
+public class GenericSingleton<T> : MonoBehaviour where T : GenericSingleton<T>
 {
-    private static T instance ;
+    public static T instance;
 
-    public static T Instance { get; }
+    public static T Instance { get{ return instance; }} 
 
-    void Awake()
+    protected virtual void Awake()
     {
-        if(instance != null)
+        if( instance == null)
         {
-           Destroy(gameObject);
+            instance = this as T;
+            DontDestroyOnLoad(this as T);
         }
         else
         {
-            instance = this as T;
-            DontDestroyOnLoad(gameObject);
+            Destroy(this as T);
         }
     }
 

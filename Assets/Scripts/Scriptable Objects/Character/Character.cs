@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Character : ScriptableObject
 {
-   public int speed;
+   public int moveSpeed;
 
 }

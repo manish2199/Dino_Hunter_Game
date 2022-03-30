@@ -21,4 +21,20 @@ public class PlayerControls
     public KeyCode KeyForJump;
     public KeyCode KeyForCrouch;
     public KeyCode KeyForLockCursor;
+    public KeyCode KeyForSprint;
+    public KeyCode KeyToSelectWeapon1;
+    public KeyCode KeyToSelectWeapon2;
+    public KeyCode KeyToSelectWeapon3;
+    public KeyCode KeyToSelectWeapon4;
+    public KeyCode KeyToSelectWeapon5;
+    public KeyCode KeyToSelectWeapon6;
+    public KeyCode WeaponAttackKey;
+    public KeyCode KeyToAimWeapon;
+}
+
+
+public class WeaponAnimatorParameters
+{
+    public const string AimBooleanText = "Aim";
+    public const string ShootTriggerText = "Shoot";
 }

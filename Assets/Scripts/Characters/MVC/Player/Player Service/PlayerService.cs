@@ -1,9 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerService : GenericSingleton<PlayerService>
+public class PlayerService :  GenericSingleton<PlayerService>
 {
+
+    protected override void Awake()
+    { 
+        base.Awake();
+        InstantiatePlayer();
+    }
+
+
     [SerializeField] PlayerScriptableObject playerScriptableObject;
 
     private PlayerController playerController;
@@ -12,10 +21,6 @@ public class PlayerService : GenericSingleton<PlayerService>
 
     [SerializeField] Transform positionToInstantiate; 
 
-    void Start()
-    {
-        InstantiatePlayer();
-    }
 
 
     void InstantiatePlayer()
@@ -23,5 +28,21 @@ public class PlayerService : GenericSingleton<PlayerService>
         PlayerModel playerModel = new PlayerModel(playerScriptableObject);
 
         playerController = new PlayerController(playerModel,playerView,positionToInstantiate);
+    }  
+
+    public void SelectInitialWeapon(Transform fps)
+    {
+        WeaponService.instance.SelectInitialWeapon(fps); 
     }
+
+    public void SelectWeapons(Transform fpsTransform , int weaponIndex)
+    {
+        WeaponService.Instance.SelectWeapon(fpsTransform,weaponIndex);
+    }
+
+    // public int GetBullet()
+    // {
+         
+    // }
+
 }

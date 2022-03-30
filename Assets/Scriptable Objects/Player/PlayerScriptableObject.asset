@@ -12,13 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2caba4868c59c5442b277b49aa76438b, type: 3}
   m_Name: PlayerScriptableObject
   m_EditorClassIdentifier: 
-  speed: 6
+  moveSpeed: 5
   gravity: 20
   jumpForce: 10
+  crouchSpeed: 3
+  sprintSpeed: 7
+  crouchedHeight: -0.4
+  standingHeight: 0
   isMouseRotationInverted: 0
   mouseSensitivity: 5
   defaultLookLimits: {x: -70, y: 80}
+  FootStepClips:
+  - {fileID: 8300000, guid: 2429399f1ca311945a12f37a32c14aed, type: 3}
+  - {fileID: 8300000, guid: f0761d807b3ae1d4598a50357cb58a5e, type: 3}
+  - {fileID: 8300000, guid: f27be18648dcceb46a46397f5c4c2e62, type: 3}
+  - {fileID: 8300000, guid: 3005916a05630f2439d211eaa6faba3d, type: 3}
+  minWalkVolume: 0.2
+  maxWalkVolume: 0.6
+  sprintVolume: 1
+  crouhVolume: 0.1
+  walkStepDistance: 0.4
+  sprintStepDistance: 0.25
+  crouchStepDistance: 0.5
   playerControls:
     KeyForJump: 32
     KeyForCrouch: 99
     KeyForLockCursor: 27
+    KeyForSprint: 304
+    KeyToSelectWeapon1: 49
+    KeyToSelectWeapon2: 50
+    KeyToSelectWeapon3: 51
+    KeyToSelectWeapon4: 52
+    KeyToSelectWeapon5: 53
+    KeyToSelectWeapon6: 54
+    WeaponAttackKey: 323
+    KeyToAimWeapon: 324
