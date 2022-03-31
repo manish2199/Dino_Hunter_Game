@@ -9,20 +9,19 @@ public class WeaponService : GenericSingleton<WeaponService>
     
    [SerializeField] private WaponScriptableObjectList weapons;
 
-
-//  private WeaponController[] weaponsController;
     [SerializeReference] List<WeaponController> weaponControllerList;
     private int currentSelectedWeapon;
 
   
    protected override void Awake()
    {
-        // MakeSingleton();
         base.Awake();
         weaponControllerList = new List<WeaponController>();
         UnlockTheWeapon(WeaponsID.Axe); 
         UnlockTheWeapon(WeaponsID.Bow); 
-
+        UnlockTheWeapon(WeaponsID.Revolver);
+        UnlockTheWeapon(WeaponsID.ShotGun);
+        // UnlockTheWeapon(WeaponsID.AssaultRifle);
    }
 
    
@@ -51,11 +50,8 @@ public class WeaponService : GenericSingleton<WeaponService>
         // initialie new weapon controller using model and view
         // return weapon controller
 
-        // check whether scriptable object is shootable type or non shootable type
-        // if shootable craete shootableweapon controller if non then create non shootable
-         
         WeaponController weaponController = null;
-         
+    
         if(weaponScriptableObject.WeaponType == WeaponType.Shootable)
         {
              ShootableWeaponModel shootableWeaponModel = new ShootableWeaponModel(weaponScriptableObject);
@@ -68,10 +64,6 @@ public class WeaponService : GenericSingleton<WeaponService>
 
             weaponController = new NonShootableWeaponController( nonShootableWeaponModel ,weaponScriptableObject.Weapon.weaponView);  
         }
-    
-        // WeaponModel weaponModel = new WeaponModel(weaponScriptableObject);
-
-        // WeaponController weaponController = new WeaponController (weaponModel,weaponScriptableObject.Weapon.weaponView);
 
         return weaponController;   
     }

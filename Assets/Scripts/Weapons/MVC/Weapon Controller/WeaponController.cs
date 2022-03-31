@@ -125,12 +125,12 @@ public class ShootableWeaponController : WeaponController
        if(Input.GetMouseButtonDown(1))
        { 
         //  WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText, true);
-         WeaponView.WeaponAnimator.SetBool("AIM", true);
+         WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText ,true);
        }
        if(Input.GetMouseButtonUp(1))
        {
         //  WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText, false);
-         WeaponView.WeaponAnimator.SetBool("AIM", false);
+         WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText ,false);
        }
    }
 
@@ -148,20 +148,38 @@ public class ShootableWeaponController : WeaponController
 
    protected override void WeaponAttack()
    {
+      // WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);
+      // check whether it has single shot round or multiple shot round
+
+      if(ShootableWeaponModel.FireType == FireType.Multiple)
+      {
+            // means assualt rifle
+            ShootBulletMultileTime();
+      }
+      else
+      {
+            // means other weapons which shot only once
+            ShootBulletSingleTime();
+      }
+   } 
+
+   private void ShootBulletSingleTime()
+   {
       if(Input.GetMouseButtonDown(0))
       {
-         // WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);
-       
-         // check whether it has single shot round or multiple shot round
-         if(ShootableWeaponModel.FireType == FireType.Multiple)
-         {
-            // means assualt rifle
-         }
-         else
-         {
-            // means other weapons which shot only once
-         }
          WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);
+      }
+   }
+
+
+   private void ShootBulletMultileTime()
+   {
+      if(Input.GetMouseButtonDown(0) && Time.time > ShootableWeaponModel.NextTimeToShoot )
+      {
+         ShootableWeaponModel.NextTimeToShoot = Time.time + (1 / ShootableWeaponModel.FireRate );  
+         WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);   
+      
+        // Fire Bullet
       }
    }
 

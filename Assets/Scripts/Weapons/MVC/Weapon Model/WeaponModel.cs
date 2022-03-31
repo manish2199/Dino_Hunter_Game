@@ -39,6 +39,8 @@ public class ShootableWeaponModel : WeaponModel
   public float FireRate;
 
   public float ShootingRange; 
+
+  public float NextTimeToShoot { get; set; }
 }
 
 

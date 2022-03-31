@@ -35,6 +35,6 @@ public class PlayerControls
 
 public class WeaponAnimatorParameters
 {
-    public const string AimBooleanText = "Aim";
+    public const string AimBooleanText = "AIM";
     public const string ShootTriggerText = "Shoot";
 }

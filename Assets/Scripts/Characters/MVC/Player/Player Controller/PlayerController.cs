@@ -32,17 +32,17 @@ public class PlayerController
       {
          PlayerService.Instance.SelectWeapons(PlayerView.rootTransform,2);
       }
-      // if(Input.GetKeyDown(PlayerModel.playerControls.KeyToSelectWeapon4))
+      if(Input.GetKeyDown(PlayerModel.PlayerControls.KeyToSelectWeapon4))
+      {
+        PlayerService.Instance.SelectWeapons(PlayerView.rootTransform,3);
+      }
+      if(Input.GetKeyDown(PlayerModel.PlayerControls.KeyToSelectWeapon5))
+      {
+         PlayerService.Instance.SelectWeapons(PlayerView.rootTransform,4);
+      }
+      // if(Input.GetKeyDown(PlayerModel.PlayerControls.KeyToSelectWeapon6))
       // {
-      //    WeaponService.ActivateWeapon(PlayerView.rootTransform);
-      // }
-      // if(Input.GetKeyDown(PlayerModel.playerControls.KeyToSelectWeapon5))
-      // {
-      //    WeaponService.ActivateWeapon(PlayerView.rootTransform);
-      // }
-      // if(Input.GetKeyDown(PlayerModel.playerControls.KeyToSelectWeapon6))
-      // {
-      //    WeaponService.ActivateWeapon(PlayerView.rootTransform);
+      //    PlayerService.Instance.SelectWeapons(PlayerView.rootTransform,5);
       // }
    }
 
