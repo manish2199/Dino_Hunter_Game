@@ -22,7 +22,7 @@ MonoBehaviour:
       data:
         weaponID: 4
         weaponView: {fileID: 0}
-        projectileType: 3
+        projectileType: 2
         fireType: 1
         fireRate: 0
         ShootingRange: 2

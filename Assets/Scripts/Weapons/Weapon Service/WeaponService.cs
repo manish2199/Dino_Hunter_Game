@@ -10,8 +10,8 @@ public class WeaponService : GenericSingleton<WeaponService>
    [SerializeField] private WaponScriptableObjectList weapons;
 
 
-    private WeaponController[] weaponsController;
-    List<WeaponController> weaponControllerList;
+//  private WeaponController[] weaponsController;
+    [SerializeReference] List<WeaponController> weaponControllerList;
     private int currentSelectedWeapon;
 
   
@@ -22,14 +22,10 @@ public class WeaponService : GenericSingleton<WeaponService>
         weaponControllerList = new List<WeaponController>();
         UnlockTheWeapon(WeaponsID.Axe); 
         UnlockTheWeapon(WeaponsID.Bow); 
+
    }
 
-
-    void Start()
-    {
-    }  
-
-
+   
     public void UnlockTheWeapon(WeaponsID weaponsID)
     {
         //  get weapon scriptableobject from lists
@@ -54,10 +50,28 @@ public class WeaponService : GenericSingleton<WeaponService>
         // Create new model using scriptable object 
         // initialie new weapon controller using model and view
         // return weapon controller
-    
-        WeaponModel weaponModel = new WeaponModel(weaponScriptableObject);
 
-        WeaponController weaponController = new WeaponController (weaponModel,weaponScriptableObject.Weapon.weaponView);
+        // check whether scriptable object is shootable type or non shootable type
+        // if shootable craete shootableweapon controller if non then create non shootable
+         
+        WeaponController weaponController = null;
+         
+        if(weaponScriptableObject.WeaponType == WeaponType.Shootable)
+        {
+             ShootableWeaponModel shootableWeaponModel = new ShootableWeaponModel(weaponScriptableObject);
+
+             weaponController = new ShootableWeaponController (shootableWeaponModel,weaponScriptableObject.Weapon.weaponView);
+        }
+        else
+        {
+            NonShootableWeaponModel nonShootableWeaponModel = new NonShootableWeaponModel(weaponScriptableObject);
+
+            weaponController = new NonShootableWeaponController( nonShootableWeaponModel ,weaponScriptableObject.Weapon.weaponView);  
+        }
+    
+        // WeaponModel weaponModel = new WeaponModel(weaponScriptableObject);
+
+        // WeaponController weaponController = new WeaponController (weaponModel,weaponScriptableObject.Weapon.weaponView);
 
         return weaponController;   
     }

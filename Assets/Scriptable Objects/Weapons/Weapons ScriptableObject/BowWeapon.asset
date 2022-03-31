@@ -15,6 +15,8 @@ MonoBehaviour:
   weaponType: 1
   weapon:
     id: 0
+  ShootableWeapons:
+    id: 1
   references:
     version: 1
     00000000:
@@ -27,3 +29,6 @@ MonoBehaviour:
         fireType: 1
         fireRate: 0
         ShootingRange: 1
+        CanHaveAimAnimation: 1
+    00000001:
+      type: {class: , ns: , asm: }

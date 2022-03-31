@@ -29,6 +29,9 @@ public class ShootableWeapons : Weapon
     public float fireRate ;
 
     public float ShootingRange; 
+
+    public bool CanHaveAimAnimation;
+
     // private float nextTimeToFire;  ( Inside Weapon Controller )
 
     // Projectile ScriptableObject
@@ -57,7 +60,6 @@ public enum WeaponsID
     None,
     Axe,
     Bow,
-    SpearThrower,
     Revolver,
     ShotGun,
     AssaultRifle
@@ -68,7 +70,6 @@ public enum ProjectileType
 {
    None,
    Arrow,
-   Spear,
    Bullet
 }
 

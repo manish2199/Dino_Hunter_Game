@@ -4,84 +4,172 @@ using UnityEngine;
 
 public class WeaponController 
 { 
-    public WeaponView WeaponView { get; }
+   public WeaponView WeaponView { get; protected set; }
 
-    public WeaponModel WeaponModel { get; }
+   public WeaponModel WeaponModel { get; protected set; }
 	
+   public WeaponController(){}
+
    public WeaponController(WeaponModel weaponModel ,WeaponView weaponView)
    {
        WeaponModel = weaponModel;
-
           
        WeaponView = GameObject.Instantiate<WeaponView>(weaponView);
-	//    WeaponView.WeaponGameObject.transform.SetParent(fpsTransform,false);
+
        WeaponView.WeaponGameObject.SetActive(false);
 
        WeaponView.WeaponController = this; 
-	   Debug.Log("Weapon Unlocked");
    }
 
-   public void ActivateWeapon(Transform fpsTransform)
+   public virtual void ActivateWeapon(Transform fpsTransform)
    {
-        // activate weapon gameobject
-		// set position and rotation
 	   WeaponView.WeaponGameObject.SetActive(true);
 	   WeaponModel.IsWeaponActivated = true;
 	   WeaponModel.PlayerFPS = fpsTransform;
 	
-	  WeaponView.WeaponGameObject.transform.SetParent(fpsTransform,false);
+	   WeaponView.WeaponGameObject.transform.SetParent(fpsTransform,false);
    }
 
-   public void UseWeapon()
+   public virtual void UseWeapon(){}
+ 
+   protected virtual void WeaponAttack()
    {
-        if(WeaponModel.IsWeaponActivated)
-        {
-          // 1 check if weapon is shootable or non shootable
-           if(WeaponModel.WeaponType == WeaponType.Shootable)
-           {
-                WeaponAim();
-           }
-           WeaponAttack(); 
-		}  
+      if(Input.GetMouseButtonDown(0))
+      {
+         WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);
+      }
    }
 
-   private void WeaponAim()
+
+   public virtual void DeactivateWeapon()
+   {
+      WeaponModel.IsWeaponActivated = false;
+	   WeaponView.WeaponGameObject.SetActive(false);  
+	   WeaponModel.PlayerFPS = null;
+   }
+
+
+}
+
+
+
+public class NonShootableWeaponController : WeaponController
+{ 	
+   public NonShootableWeaponController(WeaponModel weaponModel ,WeaponView weaponView) : base ( weaponModel , weaponView)
+   {}
+
+   public override void ActivateWeapon(Transform fpsTransform)
+   {
+	   base.ActivateWeapon(fpsTransform);
+   }
+
+   public override void UseWeapon()
+   {
+      WeaponAttack();   
+   }
+
+   protected override void WeaponAttack()
+   {
+     base.WeaponAttack();
+   }
+
+   public void DeactivateWeapon()
+   {
+      base.DeactivateWeapon();
+   }
+
+}
+
+
+public class ShootableWeaponController : WeaponController
+{ 	
+   public ShootableWeaponModel ShootableWeaponModel { get; }
+
+   public ShootableWeaponController(ShootableWeaponModel weaponModel ,WeaponView weaponView) 
+   {
+      this.ShootableWeaponModel = weaponModel;
+          
+      WeaponView = GameObject.Instantiate<WeaponView>(weaponView);
+
+      WeaponView.WeaponGameObject.SetActive(false);
+
+      WeaponView.WeaponController = this; 
+   }
+
+   public override void ActivateWeapon(Transform fpsTransform)
+   {
+	   // base.ActivateWeapon(fpsTransform); 
+      WeaponView.WeaponGameObject.SetActive(true);
+	   ShootableWeaponModel.IsWeaponActivated = true;
+	   ShootableWeaponModel.PlayerFPS = fpsTransform;
+	
+	   WeaponView.WeaponGameObject.transform.SetParent(fpsTransform,false);
+
+   }
+
+   public override void UseWeapon()
+   {
+      if(ShootableWeaponModel.CanHaveAimAnimation)
+      {
+         WeaponAimAnimation();
+      }
+      else
+      {
+         ZoomInOut();
+      }
+      WeaponAttack();   
+   }
+
+   private void WeaponAimAnimation()
    {
        if(Input.GetMouseButtonDown(1))
        { 
         //  WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText, true);
          WeaponView.WeaponAnimator.SetBool("AIM", true);
-         Debug.Log(WeaponModel.WeaponType);
-
        }
        if(Input.GetMouseButtonUp(1))
        {
         //  WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText, false);
          WeaponView.WeaponAnimator.SetBool("AIM", false);
        }
-         
    }
 
-   private void WeaponAttack()
+   private void ZoomInOut()
+   {
+       if(Input.GetMouseButtonDown(1))
+       { 
+          // Zoom In
+       }
+       if(Input.GetMouseButtonUp(1))
+       {
+          // Zoom Out
+       }
+   }
+
+   protected override void WeaponAttack()
    {
       if(Input.GetMouseButtonDown(0))
       {
+         // WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);
+       
+         // check whether it has single shot round or multiple shot round
+         if(ShootableWeaponModel.FireType == FireType.Multiple)
+         {
+            // means assualt rifle
+         }
+         else
+         {
+            // means other weapons which shot only once
+         }
          WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);
-         Debug.Log("Left Mouse Clicked");
-         // check can shoot single bullet or multiple bullets
       }
    }
 
-
-   public void DeactivateWeapon()
+   public override void DeactivateWeapon()
    {
-      // deactivate gameobject
-	  // remove the parent
-       WeaponModel.IsWeaponActivated =  false;
-	   WeaponView.WeaponGameObject.SetActive(false);
-	//    WeaponView.WeaponTransform.SetParent(null);  
-	   WeaponModel.PlayerFPS = null;
+      ShootableWeaponModel.IsWeaponActivated = false;
+      WeaponView.WeaponGameObject.SetActive(false);  
+	   ShootableWeaponModel.PlayerFPS = null;
    }
-
 
 }

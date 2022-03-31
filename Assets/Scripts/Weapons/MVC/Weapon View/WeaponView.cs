@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// [System.Serializable]
 public class WeaponView : MonoBehaviour
 {
-   public WeaponController WeaponController;
+  [SerializeReference] public WeaponController WeaponController;
 
    public Transform WeaponTransform;
 
