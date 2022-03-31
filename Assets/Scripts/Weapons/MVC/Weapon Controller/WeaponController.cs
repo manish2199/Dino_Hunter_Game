@@ -124,12 +124,10 @@ public class ShootableWeaponController : WeaponController
    {
        if(Input.GetMouseButtonDown(1))
        { 
-        //  WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText, true);
          WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText ,true);
        }
        if(Input.GetMouseButtonUp(1))
        {
-        //  WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText, false);
          WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText ,false);
        }
    }
@@ -174,8 +172,9 @@ public class ShootableWeaponController : WeaponController
 
    private void ShootBulletMultileTime()
    {
-      if(Input.GetMouseButtonDown(0) && Time.time > ShootableWeaponModel.NextTimeToShoot )
+      if(Input.GetMouseButton(0) && Time.time > ShootableWeaponModel.NextTimeToShoot )
       {
+            Debug.Log(ShootableWeaponModel.FireRate);
          ShootableWeaponModel.NextTimeToShoot = Time.time + (1 / ShootableWeaponModel.FireRate );  
          WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);   
       

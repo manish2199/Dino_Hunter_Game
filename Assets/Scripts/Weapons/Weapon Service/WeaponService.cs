@@ -21,7 +21,7 @@ public class WeaponService : GenericSingleton<WeaponService>
         UnlockTheWeapon(WeaponsID.Bow); 
         UnlockTheWeapon(WeaponsID.Revolver);
         UnlockTheWeapon(WeaponsID.ShotGun);
-        // UnlockTheWeapon(WeaponsID.AssaultRifle);
+        UnlockTheWeapon(WeaponsID.AssaultRifle);
    }
 
    

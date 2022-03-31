@@ -15,14 +15,20 @@ MonoBehaviour:
   weaponType: 1
   weapon:
     id: 0
+  ShootableWeapons:
+    id: 1
   references:
     version: 1
     00000000:
       type: {class: ShootableWeapons, ns: , asm: Assembly-CSharp}
       data:
-        weaponID: 3
-        weaponView: {fileID: 0}
+        weaponID: 5
+        weaponView: {fileID: 6683219967120990261, guid: f60c639eb13cf3f44920333343b1296c,
+          type: 3}
         projectileType: 2
         fireType: 2
         fireRate: 15
         ShootingRange: 2
+        CanHaveAimAnimation: 0
+    00000001:
+      type: {class: , ns: , asm: }
