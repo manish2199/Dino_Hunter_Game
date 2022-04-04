@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,10 +14,11 @@ public class PlayerController
       PlayerModel.MouseUnlock = true;    
       PlayerView = GameObject.Instantiate<PlayerView>(playerView,positionToInstantiate.position,Quaternion.identity);
       PlayerView.playerController = this;
+      WeaponService.OnZoomInEvent += CamZoom;
   }
 
 
-   #region Attack
+  #region Attack
    public void SelectWeapon()
    {
       if(Input.GetKeyDown(PlayerModel.PlayerControls.KeyToSelectWeapon1))
@@ -40,24 +41,20 @@ public class PlayerController
       {
          PlayerService.Instance.SelectWeapons(PlayerView.rootTransform,4);
       }
-      // if(Input.GetKeyDown(PlayerModel.PlayerControls.KeyToSelectWeapon6))
-      // {
-      //    PlayerService.Instance.SelectWeapons(PlayerView.rootTransform,5);
-      // }
+       if(Input.GetKeyDown(PlayerModel.PlayerControls.KeyToSelectWeapon6))
+      {
+         PlayerService.Instance.SelectWeapons(PlayerView.rootTransform,5);
+      }
    }
 
     public void SelectInitialWeapon(Transform fps)
     {
-      if(fps != null)
-      {
-        PlayerService.Instance.SelectInitialWeapon(fps);
-      }
+      PlayerService.Instance.SelectInitialWeapon(fps);
     }    
    #endregion
      
-    
    
-   # region MovementController
+  # region MovementController
    public void MovePlayer()
    { 
      HandleSprint();
@@ -70,7 +67,6 @@ public class PlayerController
     
       ApplyGravity();
      
-    //  Debug.Log(PlayerModel.MoveDirection);
      PlayerView.characterController.Move(PlayerModel.MoveDirection);
      
    }
@@ -155,7 +151,7 @@ public class PlayerController
    #endregion
 
 
-   # region MouseLookController
+  # region MouseLookController
    public void LockMouseCurserToCenter() 
    {
       Cursor.lockState = CursorLockMode.Locked;
@@ -212,6 +208,7 @@ public class PlayerController
   }
    #endregion
 
+
   #region  FootStepAudioController
   public void PlayFootStepAudio()
   {
@@ -247,6 +244,33 @@ public class PlayerController
    }
    #endregion
 
+  #region  CameraZoom
+  public void CamZoom(bool canZoom)
+  {
+    if(canZoom)
+    {
+      // play zoom in animation
+      PlayerView.playerAnimator.SetBool("Zoom",true);
+  
+        Debug.Log("Zoom In");
+    }
+    else
+    {
+       // play zoom out animation
+      PlayerView.playerAnimator.SetBool("Zoom",false);
+     Debug.Log("Zoom Out");
+    }
+  }
+  
+  void OnEnable()
+  {
+  }
+
+  void OnDisable()
+  {
+     WeaponService.OnZoomInEvent -= CamZoom;
+  }
+  #endregion
 
   public void InitialSetUp()
   {

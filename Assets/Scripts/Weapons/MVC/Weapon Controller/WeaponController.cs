@@ -81,9 +81,17 @@ public class NonShootableWeaponController : WeaponController
 }
 
 
+
+
+
+
+
+
 public class ShootableWeaponController : WeaponController
 { 	
    public ShootableWeaponModel ShootableWeaponModel { get; }
+
+   
 
    public ShootableWeaponController(ShootableWeaponModel weaponModel ,WeaponView weaponView) 
    {
@@ -98,7 +106,6 @@ public class ShootableWeaponController : WeaponController
 
    public override void ActivateWeapon(Transform fpsTransform)
    {
-	   // base.ActivateWeapon(fpsTransform); 
       WeaponView.WeaponGameObject.SetActive(true);
 	   ShootableWeaponModel.IsWeaponActivated = true;
 	   ShootableWeaponModel.PlayerFPS = fpsTransform;
@@ -136,17 +143,20 @@ public class ShootableWeaponController : WeaponController
    {
        if(Input.GetMouseButtonDown(1))
        { 
-          // Zoom In
+          // Zoom In 
+         
+          WeaponService.Instance.InvokeOnZoomIn(true);
        }
        if(Input.GetMouseButtonUp(1))
        {
           // Zoom Out
+         
+          WeaponService.Instance.InvokeOnZoomIn(false);
        }
    }
 
    protected override void WeaponAttack()
    {
-      // WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);
       // check whether it has single shot round or multiple shot round
 
       if(ShootableWeaponModel.FireType == FireType.Multiple)
@@ -165,7 +175,7 @@ public class ShootableWeaponController : WeaponController
    {
       if(Input.GetMouseButtonDown(0))
       {
-         WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);
+         PlayShootingAnimation();
       }
    }
 
@@ -174,12 +184,15 @@ public class ShootableWeaponController : WeaponController
    {
       if(Input.GetMouseButton(0) && Time.time > ShootableWeaponModel.NextTimeToShoot )
       {
-            Debug.Log(ShootableWeaponModel.FireRate);
          ShootableWeaponModel.NextTimeToShoot = Time.time + (1 / ShootableWeaponModel.FireRate );  
-         WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);   
-      
+         PlayShootingAnimation();
         // Fire Bullet
       }
+   }
+
+   private void PlayShootingAnimation()
+   {
+         WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);   
    }
 
    public override void DeactivateWeapon()
@@ -187,6 +200,8 @@ public class ShootableWeaponController : WeaponController
       ShootableWeaponModel.IsWeaponActivated = false;
       WeaponView.WeaponGameObject.SetActive(false);  
 	   ShootableWeaponModel.PlayerFPS = null;
+	   WeaponView.WeaponGameObject.transform.SetParent(null,false);
+
    }
 
 }

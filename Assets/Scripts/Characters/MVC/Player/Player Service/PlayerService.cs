@@ -5,14 +5,6 @@ using UnityEngine;
 
 public class PlayerService :  GenericSingleton<PlayerService>
 {
-
-    protected override void Awake()
-    { 
-        base.Awake();
-        InstantiatePlayer();
-    }
-
-
     [SerializeField] PlayerScriptableObject playerScriptableObject;
 
     private PlayerController playerController;
@@ -22,7 +14,14 @@ public class PlayerService :  GenericSingleton<PlayerService>
     [SerializeField] Transform positionToInstantiate; 
 
 
-
+    protected override void Awake()
+    { 
+        base.Awake();
+        InstantiatePlayer();
+    }
+ 
+ 
+ 
     void InstantiatePlayer()
     {
         PlayerModel playerModel = new PlayerModel(playerScriptableObject);
@@ -40,9 +39,7 @@ public class PlayerService :  GenericSingleton<PlayerService>
         WeaponService.Instance.SelectWeapon(fpsTransform,weaponIndex);
     }
 
-    // public int GetBullet()
-    // {
-         
-    // }
+    
+
 
 }

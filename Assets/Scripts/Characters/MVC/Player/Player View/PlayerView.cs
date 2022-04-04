@@ -13,7 +13,9 @@ public class PlayerView : MonoBehaviour
    public  Transform rootTransform;
 
    public Transform weaponsHolder;
-
+ 
+   public Animator playerAnimator;
+  
    [SerializeField] AudioSource playerFootStepAudio;
    public AudioSource PlayerFootStepAudio { get { return playerFootStepAudio; } }
  
@@ -35,5 +37,9 @@ public class PlayerView : MonoBehaviour
 
      playerController.SelectWeapon();
   }
+
+ 
+
+
    
 }

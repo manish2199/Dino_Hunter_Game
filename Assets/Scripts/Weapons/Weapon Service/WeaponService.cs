@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,9 @@ public class WeaponService : GenericSingleton<WeaponService>
     [SerializeReference] List<WeaponController> weaponControllerList;
     private int currentSelectedWeapon;
 
+
+    public static event Action<bool> OnZoomInEvent;
+
   
    protected override void Awake()
    {
@@ -22,6 +26,12 @@ public class WeaponService : GenericSingleton<WeaponService>
         UnlockTheWeapon(WeaponsID.Revolver);
         UnlockTheWeapon(WeaponsID.ShotGun);
         UnlockTheWeapon(WeaponsID.AssaultRifle);
+   }
+
+
+   public void InvokeOnZoomIn(bool isZoomed)
+   {
+      OnZoomInEvent?.Invoke(isZoomed);
    }
 
    
