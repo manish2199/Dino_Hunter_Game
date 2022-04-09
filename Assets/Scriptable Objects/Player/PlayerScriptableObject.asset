@@ -16,9 +16,9 @@ MonoBehaviour:
   gravity: 20
   jumpForce: 10
   crouchSpeed: 3
-  sprintSpeed: 7
-  crouchedHeight: -0.4
-  standingHeight: 0
+  sprintSpeed: 9
+  crouchedHeight: 0.7
+  standingHeight: 1.6
   isMouseRotationInverted: 0
   mouseSensitivity: 5
   defaultLookLimits: {x: -70, y: 80}
@@ -30,10 +30,10 @@ MonoBehaviour:
   minWalkVolume: 0.2
   maxWalkVolume: 0.6
   sprintVolume: 1
-  crouhVolume: 0.1
+  crouhVolume: 0.3
   walkStepDistance: 0.4
-  sprintStepDistance: 0.25
-  crouchStepDistance: 0.5
+  sprintStepDistance: 0.3
+  crouchStepDistance: 0.7
   playerControls:
     KeyForJump: 32
     KeyForCrouch: 99

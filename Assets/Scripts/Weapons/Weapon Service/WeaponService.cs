@@ -13,27 +13,23 @@ public class WeaponService : GenericSingleton<WeaponService>
     [SerializeReference] List<WeaponController> weaponControllerList;
     private int currentSelectedWeapon;
 
-
-    public static event Action<bool> OnZoomInEvent;
-
+    public static event Action<bool> OnWeaponZoomIn;
   
    protected override void Awake()
    {
         base.Awake();
         weaponControllerList = new List<WeaponController>();
         UnlockTheWeapon(WeaponsID.Axe); 
-        UnlockTheWeapon(WeaponsID.Bow); 
-        UnlockTheWeapon(WeaponsID.Revolver);
-        UnlockTheWeapon(WeaponsID.ShotGun);
-        UnlockTheWeapon(WeaponsID.AssaultRifle);
+        UnlockTheWeapon(WeaponsID.Revolver); 
+        UnlockTheWeapon(WeaponsID.ShotGun); 
+        UnlockTheWeapon(WeaponsID.AssaultRifle); 
    }
-
-
-   public void InvokeOnZoomIn(bool isZoomed)
-   {
-      OnZoomInEvent?.Invoke(isZoomed);
-   }
-
+   
+    
+    public void InvokeOnZoomIn(bool isZoomed)
+    {
+        OnWeaponZoomIn?.Invoke(isZoomed);
+    }
    
     public void UnlockTheWeapon(WeaponsID weaponsID)
     {
@@ -83,24 +79,18 @@ public class WeaponService : GenericSingleton<WeaponService>
     {
         // check if weapon is present or not in list , if not then return and show weapon slot is empty 
         // if present then deactivate current activated weapon and activate selected weapon
-        
-        if(index > weaponControllerList.Count)
-        {
-            // weapon is not unlocked
-            return;
-        }
-
-        if(index == currentSelectedWeapon)
+           
+           
+        if(index == currentSelectedWeapon || index >= weaponControllerList.Count)
         {
             return;
         }
-
+       
         weaponControllerList[currentSelectedWeapon].DeactivateWeapon();
 
         weaponControllerList[index].ActivateWeapon(fpsTransform);
 
         currentSelectedWeapon = index;
-
     }
 
     public void SelectInitialWeapon(Transform fpsTransform)

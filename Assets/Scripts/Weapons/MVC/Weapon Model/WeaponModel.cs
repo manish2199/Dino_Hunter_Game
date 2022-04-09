@@ -7,7 +7,10 @@ public class WeaponModel
    public WeaponModel(WeaponScriptableObject waponScriptableObject)
    {
       WeaponType = waponScriptableObject.WeaponType;  
+      AttackClip = waponScriptableObject.Weapon.AttackClip;
    }
+
+   public AudioClip AttackClip { get;}
   
    public bool IsWeaponActivated { get; set; }
 
@@ -23,15 +26,18 @@ public class ShootableWeaponModel : WeaponModel
    {
       ShootableWeapons temp =(ShootableWeapons)waponScriptableObject.Weapon;
      
-      this.CanHaveAimAnimation = temp.CanHaveAimAnimation;
       this.FireType = temp.fireType;
       this.ProjectileType = temp.projectileType;
       this.FireRate = temp.fireRate;
       ShootingRange = temp.ShootingRange; 
+      ReloadClip = temp.ReloadClip;
+      ProjectileFireClip = temp.AttackClip;
    }
- 
-  public bool CanHaveAimAnimation { get; }
 
+  public AudioClip ProjectileFireClip { get;}
+
+  public AudioClip[] ReloadClip { get;}
+  
   public FireType FireType { get; }
 
   public ProjectileType ProjectileType;
@@ -42,6 +48,7 @@ public class ShootableWeaponModel : WeaponModel
 
   public float NextTimeToShoot { get; set; }
 }
+
 
 
 

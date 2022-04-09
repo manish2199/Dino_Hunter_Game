@@ -15,6 +15,10 @@ MonoBehaviour:
   weaponType: 2
   weapon:
     id: 0
+  ShootableWeapons:
+    id: 1
+  NonShootableWeapons:
+    id: 1
   references:
     version: 1
     00000000:
@@ -24,3 +28,6 @@ MonoBehaviour:
         weaponView: {fileID: 6076788870811874063, guid: afb45318512bb9d4684c888de4e953f2,
           type: 3}
         Damage: 15
+        AttackClip: {fileID: 8300000, guid: fe8ca30304bfacf4288084606f5bc682, type: 3}
+    00000001:
+      type: {class: , ns: , asm: }

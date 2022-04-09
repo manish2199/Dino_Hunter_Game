@@ -49,6 +49,12 @@ public class WeaponController
    }
 
 
+   public virtual void PlayAttackClip()
+   {
+      WeaponView.WeaponAudioSource.clip = WeaponModel.AttackClip;
+      WeaponView.WeaponAudioSource.Play();
+   }
+
 }
 
 
@@ -73,9 +79,14 @@ public class NonShootableWeaponController : WeaponController
      base.WeaponAttack();
    }
 
-   public void DeactivateWeapon()
+   public override void DeactivateWeapon()
    {
       base.DeactivateWeapon();
+   }
+
+   public override void PlayAttackClip()
+   {
+      base.PlayAttackClip();
    }
 
 }
@@ -90,8 +101,6 @@ public class NonShootableWeaponController : WeaponController
 public class ShootableWeaponController : WeaponController
 { 	
    public ShootableWeaponModel ShootableWeaponModel { get; }
-
-   
 
    public ShootableWeaponController(ShootableWeaponModel weaponModel ,WeaponView weaponView) 
    {
@@ -111,47 +120,32 @@ public class ShootableWeaponController : WeaponController
 	   ShootableWeaponModel.PlayerFPS = fpsTransform;
 	
 	   WeaponView.WeaponGameObject.transform.SetParent(fpsTransform,false);
-
    }
 
    public override void UseWeapon()
    {
-      if(ShootableWeaponModel.CanHaveAimAnimation)
-      {
-         WeaponAimAnimation();
-      }
-      else
-      {
-         ZoomInOut();
-      }
+      ZoomInOut();
+
       WeaponAttack();   
    }
 
-   private void WeaponAimAnimation()
-   {
-       if(Input.GetMouseButtonDown(1))
-       { 
-         WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText ,true);
-       }
-       if(Input.GetMouseButtonUp(1))
-       {
-         WeaponView.WeaponAnimator.SetBool(WeaponAnimatorParameters.AimBooleanText ,false);
-       }
-   }
+   
 
    private void ZoomInOut()
    {
        if(Input.GetMouseButtonDown(1))
        { 
           // Zoom In 
-         
+         //  WeaponService.Instance.WeaponZoomIn(true);
           WeaponService.Instance.InvokeOnZoomIn(true);
+          WeaponView.muzzle.transform.position = WeaponView.ZoomInMuzzlePosition.position;
        }
        if(Input.GetMouseButtonUp(1))
        {
           // Zoom Out
-         
           WeaponService.Instance.InvokeOnZoomIn(false);
+          WeaponView.muzzle.transform.position = WeaponView.ZoomOutMuzzlePosition.position;
+         //  WeaponService.Instance.WeaponZoomIn(false);
        }
    }
 
@@ -167,7 +161,7 @@ public class ShootableWeaponController : WeaponController
       else
       {
             // means other weapons which shot only once
-            ShootBulletSingleTime();
+            ShootBulletSingleTime();    
       }
    } 
 
@@ -176,6 +170,8 @@ public class ShootableWeaponController : WeaponController
       if(Input.GetMouseButtonDown(0))
       {
          PlayShootingAnimation();
+        // Fire Bullet 
+         // FireBullet();
       }
    }
 
@@ -185,14 +181,58 @@ public class ShootableWeaponController : WeaponController
       if(Input.GetMouseButton(0) && Time.time > ShootableWeaponModel.NextTimeToShoot )
       {
          ShootableWeaponModel.NextTimeToShoot = Time.time + (1 / ShootableWeaponModel.FireRate );  
-         PlayShootingAnimation();
-        // Fire Bullet
+         PlayShootingAnimation();         
+         WeaponView.WeaponAudioSource.Stop();
+         PlayAttackClip();
+      }
+      if(Input.GetMouseButtonUp(0))
+      {
+         WeaponView.WeaponAudioSource.Stop();
       }
    }
 
    private void PlayShootingAnimation()
    {
-         WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);   
+      WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);   
+   }
+
+   public void PlayReloadClip1()
+   {
+      WeaponView.WeaponAudioSource.clip = ShootableWeaponModel.ReloadClip[0];
+      WeaponView.WeaponAudioSource.Play();
+   }
+
+   public void PlayReloadClip2()
+   {
+      WeaponView.WeaponAudioSource.clip = ShootableWeaponModel.ReloadClip[0];
+      WeaponView.WeaponAudioSource.Play();
+   }
+
+   public override void PlayAttackClip()
+   {
+      WeaponView.WeaponAudioSource.clip = ShootableWeaponModel.ProjectileFireClip;
+      WeaponView.WeaponAudioSource.Play();
+   }
+
+
+   public void FireBullet()
+   {
+      // first check whether inventory has the sufficient bullet no or not if yes then fire
+      
+
+      RaycastHit hit;
+       
+      if(Physics.Raycast(ShootableWeaponModel.PlayerFPS.position,ShootableWeaponModel.PlayerFPS.forward,out hit))
+      {
+         // Debug.Log( " Hits " + hit.transform.gameObject.name);
+         
+         // Debug.DrawLine(ShootableWeaponModel.PlayerFPS.position,hit.point, Color.red , 1.0f ); 
+         
+         WeaponView.HitEffect.transform.position = hit.point;
+         WeaponView.HitEffect.transform.forward = hit.normal;
+         WeaponView.HitEffect.Emit(1);
+      }
+      
    }
 
    public override void DeactivateWeapon()
@@ -205,3 +245,4 @@ public class ShootableWeaponController : WeaponController
    }
 
 }
+

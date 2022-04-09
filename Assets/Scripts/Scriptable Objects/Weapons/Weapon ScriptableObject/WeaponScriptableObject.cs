@@ -17,7 +17,7 @@ public class WeaponScriptableObject : ScriptableObject
     private bool IsUnityLoaded = false; 
 
     [HideInInspector,SerializeReference] public ShootableWeapons ShootableWeapons;
-    // [HideInInspector,SerializeReference] public NonShootableWeapons NonShootableWeapons;
+    [HideInInspector,SerializeReference] public NonShootableWeapons NonShootableWeapons;
 
 
     public void Awake()
@@ -56,6 +56,7 @@ public class WeaponScriptableObject : ScriptableObject
 
              case WeaponType.NonShootable : 
                 newWeapon = new NonShootableWeapons();
+                NonShootableWeapons = (NonShootableWeapons)newWeapon;
                 break;
         }
         return newWeapon;

@@ -10,18 +10,20 @@ public abstract class Weapon
     public WeaponsID weaponID;     
 
     public WeaponView weaponView; 
+
+    public int Damage;
+
+    public AudioClip AttackClip;
 }
 
 [System.Serializable]
 public class NonShootableWeapons : Weapon
-{
-   public int Damage;
-}
+{}
 
 
 [System.Serializable]
 public class ShootableWeapons : Weapon
-{    
+{   
     public ProjectileType projectileType;
 
     public FireType fireType;
@@ -30,7 +32,9 @@ public class ShootableWeapons : Weapon
 
     public float ShootingRange; 
 
-    public bool CanHaveAimAnimation;
+    public AudioClip[] ReloadClip;
+
+    
 
     // private float nextTimeToFire;  ( Inside Weapon Controller )
 
@@ -59,7 +63,6 @@ public enum WeaponsID
 {
     None,
     Axe,
-    Bow,
     Revolver,
     ShotGun,
     AssaultRifle
@@ -69,8 +72,9 @@ public enum WeaponsID
 public enum ProjectileType
 {
    None,
-   Arrow,
-   Bullet
+   RevolverBullet,
+   ShotGunBullet,
+   AssaultRifleBullet
 }
 
 public enum FireType
@@ -79,3 +83,4 @@ public enum FireType
     Single,
     Multiple
 }
+

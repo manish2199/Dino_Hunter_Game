@@ -3,7 +3,12 @@ guid: 327e09790ac2205449a4a45d46e6db25
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wooden Bow
+    second: {fileID: 2100000, guid: 268fb23e097dcdf41864edde6d409239, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -17,18 +17,22 @@ MonoBehaviour:
     id: 0
   ShootableWeapons:
     id: 1
+  NonShootableWeapons:
+    id: 1
   references:
     version: 1
     00000000:
       type: {class: ShootableWeapons, ns: , asm: Assembly-CSharp}
       data:
-        weaponID: 3
-        weaponView: {fileID: 1706081375949851949, guid: ce6f93e72ab9ad94388371f73ee3d868,
+        weaponID: 2
+        weaponView: {fileID: 5825057323200084833, guid: 9dfba0b03b407ec4b98283284acb8888,
           type: 3}
-        projectileType: 2
+        Damage: 15
+        AttackClip: {fileID: 8300000, guid: d8671e3ac1c052f4882a5b880273286e, type: 3}
+        projectileType: 1
         fireType: 1
         fireRate: 0
         ShootingRange: 2
-        CanHaveAimAnimation: 0
+        ReloadClip: []
     00000001:
       type: {class: , ns: , asm: }
