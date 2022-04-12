@@ -8,25 +8,25 @@ using UnityEngine;
 //  TO patroll need waypoints , aigent , target transform
 public class PatrollingState : WalkableDinosaurStates
 {  
-   private bool CanPatrol; 
+  protected bool CanPatrol; 
 
-   int currentWayPointIndex = 0; 
+  protected int currentWayPointIndex = 0; 
 
-   Transform[] WayPoints;
+  protected Transform[] WayPoints;
    
-   private Vector3 CurrentWayPointTarget; 
+  protected Vector3 CurrentWayPointTarget; 
 
-  [SerializeReference,HideInInspector]private WalkableDinosaurModel WalkableDinosaurModel;
+  [SerializeReference,HideInInspector]protected WalkableDinosaurModel WalkableDinosaurModel;
 
-   float FieldOfViewAnle;
+   protected float FieldOfViewAnle;
 
-   float ChasingRange;
+   protected float ChasingRange;
 
-   float AttackingRange; 
+   protected float AttackingRange; 
 
-   public IEnumerator PatrolCoroutine;
+   protected IEnumerator PatrolCoroutine;
 
-   public IEnumerator EnemyDetectionCoroutine;
+   protected IEnumerator EnemyDetectionCoroutine;
 
 
 
@@ -44,7 +44,7 @@ public class PatrollingState : WalkableDinosaurStates
    }
    
 
-   public void CheckEnemyDetection()
+   protected virtual void CheckEnemyDetection()
    {
        // if enemy detected return true
         Vector3 targetDirection = GetDirection(transform.position , PlayerTarget.position );
@@ -63,7 +63,7 @@ public class PatrollingState : WalkableDinosaurStates
         }
    }
 
-   public IEnumerator EnemeDetected()
+   protected virtual IEnumerator EnemeDetected()
   {
       animator.transform.LookAt(PlayerTarget);
       aiAgent.isStopped = true;
@@ -82,7 +82,7 @@ public class PatrollingState : WalkableDinosaurStates
 
 
 
-   public IEnumerator Coroutine() 
+   protected virtual IEnumerator Coroutine() 
     {
         aiAgent.isStopped = true;
         aiAgent.velocity = Vector3.zero; 
@@ -120,7 +120,7 @@ public class PatrollingState : WalkableDinosaurStates
       }
    }
 
-   public void IterateToNextWayPoint()
+   protected virtual void IterateToNextWayPoint()
    {
       currentWayPointIndex ++;
       if( currentWayPointIndex == WayPoints.Length)

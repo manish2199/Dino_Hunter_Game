@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChasingState : WalkableDinosaurStates
 {
-    [SerializeReference] private WalkableDinosaurModel WalkableDinosaurModel;
+    [SerializeReference] protected WalkableDinosaurModel WalkableDinosaurModel;
 
 	public override void OnStateUpdate()
 	{

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class WalkableDinosaurStates : MonoBehaviour
 {
-  [SerializeReference] public WalkableDinosaurView walkableDinosaurView;
+   [SerializeReference] public WalkableDinosaurView walkableDinosaurView;
 
    [SerializeField]protected NavMeshAgent aiAgent;
 
@@ -21,7 +21,7 @@ public class WalkableDinosaurStates : MonoBehaviour
        aiAgent = GetComponent<NavMeshAgent>();
 
       // animator = walkableDinosaurView.animator; 
-
+       
       PlayerTarget = Player.Instance.playerTransform;
    }
 

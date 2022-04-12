@@ -20,10 +20,33 @@ MonoBehaviour:
     00000000:
       type: {class: TRex, ns: , asm: Assembly-CSharp}
       data:
-        health: 0
-        Damage: 0
-        Speed: 0
-        AngularSpeed: 0
-        Acceleration: 0
-        TargetStopppingDistance: 0
+        Health: 200
+        Damage: 50
+        DinosaurAudios:
+        - AudioClipType: 4
+          AudioClip:
+          - {fileID: 8300000, guid: 755ef81735bd41c439b47726d6aa6d62, type: 3}
+          - {fileID: 8300000, guid: f2b9bbcf9d5b7814f962d0b00d3ec9d9, type: 3}
+        - AudioClipType: 5
+          AudioClip:
+          - {fileID: 8300000, guid: 06dacded2a59a204287ef6e854a60b20, type: 3}
+        - AudioClipType: 6
+          AudioClip:
+          - {fileID: 8300000, guid: a7419fa96d850244c8eb21e89c04d57c, type: 3}
+        - AudioClipType: 2
+          AudioClip:
+          - {fileID: 8300000, guid: 320039ca685290e4db2b40d98671e6f3, type: 3}
+        - AudioClipType: 9
+          AudioClip:
+          - {fileID: 8300000, guid: ed6c8a4e66f90754fb25f61758d185e5, type: 3}
+        Speed: 6
+        AngularSpeed: 500
+        Acceleration: 10
+        FieldOfViewAnle: 80
+        TargetStopppingDistance: 18
+        StoppingDistanceFromWayPoint: 6
+        ChasingRange: 40
+        AttackingRange: 25
+        WalkableDinosaurView: {fileID: 1663085267487119194, guid: 94d991bb67cbc604b8f6bcbb9aaa1677,
+          type: 3}
         TRexType: 1

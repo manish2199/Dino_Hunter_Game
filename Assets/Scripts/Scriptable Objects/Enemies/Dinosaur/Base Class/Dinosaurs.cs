@@ -89,7 +89,8 @@ public enum AudioClipType
     RoaringAudio,
     AttackingAudio,
     SearchSound, 
-    FlameThrower
+    FlameThrower,
+    WalkingRoar
 }
  
 [Serializable]

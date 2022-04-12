@@ -15,13 +15,13 @@ public class EnemiesService : GenericSingleton<EnemiesService>
 
    void Start()
    {
-      RaptorDinosaurModel blueRaptorModel = new RaptorDinosaurModel(walkableDinosaurScriptableObject);
+      TRexDinosaurModel redTRexModel = new TRexDinosaurModel(walkableDinosaurScriptableObject);
 
-      Raptor raptor =(Raptor)walkableDinosaurScriptableObject.WalkingDinosaurs;
+      TRex trex =(TRex)walkableDinosaurScriptableObject.WalkingDinosaurs;
 
-      RaptorDinosaurView view =(RaptorDinosaurView)raptor.WalkableDinosaurView;
+      TRexView view =(TRexView)trex.WalkableDinosaurView;
 
-      RaptorDinosaurController controller = new RaptorDinosaurController(blueRaptorModel,view,positionToInstatiate,waypoints);
+      TRexDinosaurController controller = new TRexDinosaurController(redTRexModel,view,positionToInstatiate,waypoints);
    }
    
 }

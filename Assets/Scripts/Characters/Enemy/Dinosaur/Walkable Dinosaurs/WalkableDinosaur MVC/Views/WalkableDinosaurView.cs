@@ -13,25 +13,24 @@ public class WalkableDinosaurView : MonoBehaviour
 
 	[SerializeReference]public WalkableDinosaurController walkableDinosaurController; 
 
-    public PatrollingState PatrollingState;
+  [SerializeReference]public PatrollingState PatrollingState;
 
-    public AttackState AttackingState;
+  [SerializeReference]public AttackState AttackingState;
 
-    public ChasingState ChasingState;
+  [SerializeReference]public ChasingState ChasingState;
 
 
-   public virtual void Start()
-   {
+  public virtual void Start()
+  {
      walkableDinosaurController.SetInitialState();
-   }
-
+  }
 
   public virtual void Update()
-   {
+  {
      walkableDinosaurController.CurrentState.OnStateEnter();
-      
-   }
+  }
 
+  public virtual void  PlaySound(AudioClipType audioClipType){}
   
 }
 

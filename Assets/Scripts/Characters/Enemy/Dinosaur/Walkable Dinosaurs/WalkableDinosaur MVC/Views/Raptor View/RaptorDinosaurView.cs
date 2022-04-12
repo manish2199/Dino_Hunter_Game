@@ -33,24 +33,16 @@ public class RaptorDinosaurView : WalkableDinosaurView
   }
 
 
-   public virtual void PlaySound(AudioClipType audioClipType)
+   public override void PlaySound(AudioClipType audioClipType)
    {
-      // RaptorDinosaurController temp = (RaptorDinosaurController)
-
       AudioClip[]  audioClips =  walkableDinosaurController.SearchAudio(audioClipType);
 	  
-  	  int randomNum = Random.Range(0,audioClips.Length);
+  	   int randomNum = Random.Range(0,audioClips.Length);
      
-	    AudioSource.clip = audioClips[randomNum];
+	   AudioSource.clip = audioClips[randomNum];
 
-	    AudioSource.Play();
+	   AudioSource.Play();
    } 
-
-
-   
-
-
-
 }
 
 

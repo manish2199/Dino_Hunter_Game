@@ -44,7 +44,7 @@ public abstract class WalkableDinosaurModel
 
    public Transform[] WayPoints { get; set; } 
 
-   public Transform PlayerTarget { get; set; }
+   // public Transform PlayerTarget { get; set; } 
 
 }    
 

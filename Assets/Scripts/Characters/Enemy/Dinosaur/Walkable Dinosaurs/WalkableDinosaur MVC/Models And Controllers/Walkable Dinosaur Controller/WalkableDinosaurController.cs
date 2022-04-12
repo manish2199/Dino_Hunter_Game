@@ -12,7 +12,7 @@ public class WalkableDinosaurController
 
         WalkableDinosaurView = GameObject.Instantiate<WalkableDinosaurView>(view,positionToInstantiate);
 
-        WalkableDinosaurModel.PlayerTarget = (Player.Instance.PlayerTarget != null) ? Player.Instance.PlayerTarget : null ;  // (Caution)
+        // WalkableDinosaurModel.PlayerTarget = (Player.Instance.PlayerTarget != null) ? Player.Instance.PlayerTarget : null ;  // (Caution)
 
     }
 
@@ -86,7 +86,7 @@ public class TRexDinosaurController : WalkableDinosaurController
 
     public TRexDinosaurController(TRexDinosaurModel model,TRexView view,Transform positionToInstantiate, Transform[] wayPoints ) : base (model,view,positionToInstantiate,wayPoints) 
     {
-      
+       WalkableDinosaurView.walkableDinosaurController = this;
     }
 
     // TRexDinosaurModel  TRexDinosaurModel { get; }
