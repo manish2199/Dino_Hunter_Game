@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13eed91209eafa546a0b601fffd228f0, type: 3}
+  m_Name: RedRaptor
+  m_EditorClassIdentifier: 
+  walkingDinosaurType: 1
+  DinosaurConstraints:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: Raptor, ns: , asm: Assembly-CSharp}
+      data:
+        Health: 150
+        Damage: 40
+        DinosaurAudios:
+        - AudioClipType: 1
+          AudioClip:
+          - {fileID: 8300000, guid: 107118aa5cf46b8499f08327fc7f1675, type: 3}
+        - AudioClipType: 6
+          AudioClip:
+          - {fileID: 8300000, guid: 067e3145c4179a4489f66f2ed8ae7d6b, type: 3}
+        - AudioClipType: 2
+          AudioClip:
+          - {fileID: 8300000, guid: 50282f33a7fae8643b148f34aeb950df, type: 3}
+          - {fileID: 8300000, guid: a4cdd2bc22a4a44468d2f007d35e2819, type: 3}
+        - AudioClipType: 7
+          AudioClip:
+          - {fileID: 8300000, guid: 7a3b4de075c314f469107d57d43931e4, type: 3}
+          - {fileID: 8300000, guid: 4da4c52d96c25ef4b91d22f522332540, type: 3}
+        - AudioClipType: 3
+          AudioClip:
+          - {fileID: 8300000, guid: aec8cee1920f8864b97b641df045a030, type: 3}
+        - AudioClipType: 5
+          AudioClip:
+          - {fileID: 8300000, guid: 067e3145c4179a4489f66f2ed8ae7d6b, type: 3}
+        - AudioClipType: 8
+          AudioClip:
+          - {fileID: 8300000, guid: cbe2fc6eafcaa2846a8e68c2b45e2769, type: 3}
+        Speed: 4
+        AngularSpeed: 700
+        Acceleration: 8
+        FieldOfViewAnle: 170
+        TargetStopppingDistance: 6
+        StoppingDistanceFromWayPoint: 0.3
+        ChasingRange: 15
+        AttackingRange: 5
+        WalkableDinosaurView: {fileID: 4406083887922425676, guid: a36745fe4e0e0444cbee1644a9c070a1,
+          type: 3}
+        raptorsType: 2
+        specialAbilities:
+          specialAbilityType: 1
+          Effect: {fileID: 9012792685288150543, guid: 5ec68e4535df24d4281a3a16c49cb8c4,
+            type: 3}

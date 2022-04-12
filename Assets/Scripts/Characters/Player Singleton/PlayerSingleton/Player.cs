@@ -12,6 +12,8 @@ public class Player :  GenericSingleton<Player>
 
     public Transform playerTransform;
 
+    public Transform PlayerTarget;
+
     public Transform weaponsHolder;
 
     public CharacterController  characterController;

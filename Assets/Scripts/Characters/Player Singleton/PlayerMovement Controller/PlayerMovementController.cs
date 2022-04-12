@@ -43,13 +43,10 @@ public class PlayerMovementController : MonoBehaviour
       {
         Speed = playerScriptableObject.sprintSpeed; 
         Player.Instance.SetSprintFootStepClips();
-        print(Speed);
-       
       }
       else if( Input.GetKeyUp(playerScriptableObject.playerControls.KeyForSprint) && !Player.Instance.IsCrouched )
       {
         Speed = playerScriptableObject.moveSpeed; 
-        print(Speed);
         Player.Instance.SetWalkingFootStepClips();
       }  
    }
