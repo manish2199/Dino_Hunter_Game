@@ -4,57 +4,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Serializable]
 public class InventoryService : GenericSingleton<InventoryService>
 {
-    // 1. it nothing more than bagpack for player 
-    // consist one section ( list ) for weapon ammo
-    // and one section ( single item (slot) ) for health kits
-    // 2. communicate with gameplay ui manager for item updation
-    // 3 have event for new InventoryItem Added -> this will add image and quatity to ui slot
-    // 4 have event for updatation of quanitty of healthkit and projectile list
-    // 3. provide bullet to weapon which are unlocked
-    
-    public static event Action<ItemSlots> OnNewInventoryItemAdded;
-    public static event Action<int> OnProjecileQuantityChanged;
-    public static event Action<int> OnHealthKitQuanityChanged; 
+    public static event Action<ProjectileType,int> OnProjectileQuantityChanged;
+    public static event Action<HealthKitType,int> OnHealthKitQuanityChanged; 
 
-    private List<ItemSlots> weaponaryProjectiles;
     
-    private ItemSlots HealthKit;
+    // WarningMSG 
+    public static event Action OnInsufficientAmmo;
+    public static event Action OnInsufficientHealthKit;
+    public static event Action OnAmmoInventoryFull;
+    public static event Action OnHealthInventoryFull;
 
+   [SerializeField] private List<ItemSlot> weaponaryProjectiles;
+    
+    private ItemSlot HealthKit;
+
+
+   public InventoryItem bullet;
+   public int quantity;
+   public int maxLimit;
 
    void Awake()
    {
-       base.Awake();
-   }
-    
-   
+       base.Awake(); 
 
-    // this is called by achievement system only
+       weaponaryProjectiles = new List<ItemSlot>();
+   }  
+
+
+
+   void Start()
+   {
+       AddItemSlotToProjectiles(bullet,quantity,maxLimit);
+   }
+
+
+    // this is called by achievement system only 
     public void AddItemSlotToProjectiles(InventoryItem projectile , int Quantity ,int MaxLimit)
     {
-       ItemSlots newProjectileItem = new ItemSlots();
+       ItemSlot newProjectileItem = new ItemSlot();
+
        newProjectileItem.SetItem(projectile);
        newProjectileItem.SetQuantity(Quantity);
        newProjectileItem.UpdateMaxLimit(MaxLimit);
 
-
        weaponaryProjectiles.Add(newProjectileItem);
-       // update the Player Inventory Panel
-       OnNewInventoryItemAdded?.Invoke(newProjectileItem);
-
+       GameplayUIManager.Instance.AddNewItemToUISlots(newProjectileItem); 
     }
 
     // Call only once in lifetime
     public void AddItemToHealthKits(InventoryItem healthKit, int Quantity)
     {
-        ItemSlots newHealthKit = new ItemSlots();
+        ItemSlot newHealthKit = new ItemSlot();
         newHealthKit.SetItem(healthKit);
         newHealthKit.SetQuantity(Quantity);
 
         HealthKit = newHealthKit;
 
-       OnNewInventoryItemAdded?.Invoke(newHealthKit);
+       GameplayUIManager.Instance.AddNewItemToUISlots(HealthKit);
 
     }
      
@@ -62,16 +71,18 @@ public class InventoryService : GenericSingleton<InventoryService>
     // supply bullet to player
     public bool IsBulletAvialable(ProjectileType projectileType)
     {
+
         for ( int i =0 ; i<weaponaryProjectiles.Count; i++)
         {
             WeaponProjectiles item = (WeaponProjectiles)weaponaryProjectiles[i].InventoryItem;
             if(item.BulletType == projectileType)
             {
-                // check quantity if bullet is available or not if yes return true if not return false and generate warning
                 if(weaponaryProjectiles[i].GetQuantity() > 0 )
                 {
                     // means present 
-                    weaponaryProjectiles[i].ReduceQuantity();
+                    weaponaryProjectiles[i].ReduceQuantity(); 
+                    // invoke for text
+                    OnProjectileQuantityChanged?.Invoke(projectileType,weaponaryProjectiles[i].GetQuantity());
                     return true;
                 }
                 else
@@ -82,6 +93,7 @@ public class InventoryService : GenericSingleton<InventoryService>
         }
         // Show empty ammo warning msg
         return false;
+        OnInsufficientAmmo?.Invoke();
     }
 
 
@@ -92,16 +104,18 @@ public class InventoryService : GenericSingleton<InventoryService>
         {
             // meanse health kit present
             HealthKit.ReduceQuantity();
+            OnHealthKitQuanityChanged?.Invoke(healthKitType,HealthKit.GetQuantity());
             MedicalItem item = (MedicalItem)HealthKit.InventoryItem;
             return item.HealthAmount;
         }
        //means health kit is not preset and generate warning msg
        return 0;
+       OnInsufficientHealthKit?.Invoke();
     }    
 
 
 
-    // add quantity to projectile slots
+    // add quantity to projectile slots from supplies
     public void AddProjectiles(ProjectileType projectileType,int quanitty)
     {
         for ( int i =0 ; i<weaponaryProjectiles.Count; i++)
@@ -109,16 +123,18 @@ public class InventoryService : GenericSingleton<InventoryService>
             WeaponProjectiles item = (WeaponProjectiles)weaponaryProjectiles[i].InventoryItem;
             if(item.BulletType == projectileType)
             {
-                // check quantity hits the ma or not if yes return true if not return false and generate warning
+                // check quantity hits the max or not if yes return true if not return false and generate warning
                 if(weaponaryProjectiles[i].GetQuantity() < weaponaryProjectiles[i].GetMaxQuanity() )
                 {
                     // means present 
                     weaponaryProjectiles[i].SetQuantity(quanitty);
+                    OnProjectileQuantityChanged?.Invoke(projectileType,weaponaryProjectiles[i].GetQuantity());
                     
                 }
                 else // means bag is full 
                 {
                     //******** ammo full event
+                    OnAmmoInventoryFull?.Invoke();
                     break;
                 }
             }
@@ -135,9 +151,11 @@ public class InventoryService : GenericSingleton<InventoryService>
         {
             // means health comp can store more
             HealthKit.SetQuantity(Quantity);
+            OnHealthKitQuanityChanged?.Invoke(healthKitType,HealthKit.GetQuantity());
         }
         else
         {
+            OnHealthInventoryFull?.Invoke();
             //******* healtkit full event
         }
     }

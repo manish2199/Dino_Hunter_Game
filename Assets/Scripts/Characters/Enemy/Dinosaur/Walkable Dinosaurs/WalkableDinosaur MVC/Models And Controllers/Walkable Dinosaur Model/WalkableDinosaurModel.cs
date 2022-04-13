@@ -17,8 +17,10 @@ public abstract class WalkableDinosaurModel
       ChasingRange = walkableDinosaurScriptableObject.WalkingDinosaurs.ChasingRange;
       AttackingRange = walkableDinosaurScriptableObject.WalkingDinosaurs.AttackingRange;
       FieldOfViewAnle = walkableDinosaurScriptableObject.WalkingDinosaurs.FieldOfViewAnle;
-       
+      WalkingDinosaurType = walkableDinosaurScriptableObject.WalkingDinosaurType;
    }
+
+   public WalkingDinosaurType WalkingDinosaurType {get;}
 
    public float FieldOfViewAnle { get; }
 

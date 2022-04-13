@@ -50,6 +50,8 @@ public class WalkableDinosaurController
         }
         return temp;
     }
+
+ 
   
 
     
@@ -75,7 +77,33 @@ public class RaptorDinosaurController : WalkableDinosaurController
         if(model.SpecialAbility.specialAbilityType != SpecialAbilityType.None)
         {  
             view.ParticleEffect.Play();
+
+
         }
+    }
+
+    public void RayCastForSpecialAbility()
+    {
+        RaptorDinosaurModel model = (RaptorDinosaurModel)WalkableDinosaurModel;
+
+        RaptorDinosaurView view = (RaptorDinosaurView)WalkableDinosaurView; 
+
+
+        if(model.SpecialAbility.specialAbilityType != SpecialAbilityType.None)
+       {  
+          RaycastHit hit;
+          if(Physics.Raycast(view.ProjectilePos.position,view.ProjectilePos.forward,out hit,model.TargetStopppingDistance,view.PlayerLayerMask))
+          {     
+            IDamagable damagable = hit.transform.gameObject.GetComponent<IDamagable>();
+
+            if(damagable!= null)
+            {
+                damagable.TakeDamage(model.Damage);
+            }
+
+          }   
+      }
+      
     }
 
 }

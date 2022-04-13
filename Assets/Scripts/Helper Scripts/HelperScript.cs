@@ -29,7 +29,8 @@ public class PlayerControls
     public KeyCode KeyToSelectWeapon5;
     public KeyCode KeyToSelectWeapon6;
     public KeyCode WeaponAttackKey;
-    public KeyCode KeyToAimWeapon;
+    public KeyCode KeyToAimWeapon; 
+    public KeyCode KeyToOpenInventory;
 }
 
 

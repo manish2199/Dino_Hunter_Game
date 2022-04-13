@@ -150,9 +150,10 @@ public class ShootableWeaponController : WeaponController
    }
 
    protected override void WeaponAttack()
-   {
-      // check whether it has single shot round or multiple shot round
+   {  
+      
 
+      // check whether it has single shot round or multiple shot round
       if(ShootableWeaponModel.FireType == FireType.Multiple)
       {
             // means assualt rifle
@@ -167,18 +168,17 @@ public class ShootableWeaponController : WeaponController
 
    private void ShootBulletSingleTime()
    {
-      if(Input.GetMouseButtonDown(0))
+      if(Input.GetMouseButtonDown(0) && InventoryService.Instance.IsBulletAvialable(ShootableWeaponModel.ProjectileType) )
       {
          PlayShootingAnimation();
-        // Fire Bullet 
-         // FireBullet();
       }
+
    }
 
 
    private void ShootBulletMultileTime()
    {
-      if(Input.GetMouseButton(0) && Time.time > ShootableWeaponModel.NextTimeToShoot )
+      if(Input.GetMouseButton(0) && Time.time > ShootableWeaponModel.NextTimeToShoot && InventoryService.Instance.IsBulletAvialable(ShootableWeaponModel.ProjectileType) )
       {
          ShootableWeaponModel.NextTimeToShoot = Time.time + (1 / ShootableWeaponModel.FireRate );  
          PlayShootingAnimation();         
@@ -193,7 +193,7 @@ public class ShootableWeaponController : WeaponController
 
    private void PlayShootingAnimation()
    {
-      WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);   
+      WeaponView.WeaponAnimator.SetTrigger(WeaponAnimatorParameters.ShootTriggerText);   // actually this is playing audio and raycasting at frame
    }
 
    public void PlayReloadClip1()
@@ -217,18 +217,11 @@ public class ShootableWeaponController : WeaponController
 
    public void FireBullet()
    {
-      // first check whether inventory has the sufficient bullet no or not if yes then fire
-      
-
       RaycastHit hit;
        
       if(Physics.Raycast(ShootableWeaponModel.PlayerFPS.position,ShootableWeaponModel.PlayerFPS.forward,out hit))
       {
-         // Debug.Log( " Hits " + hit.transform.gameObject.name);
-         
-         // Debug.DrawLine(ShootableWeaponModel.PlayerFPS.position,hit.point, Color.red , 1.0f ); 
-         
-         WeaponView.HitEffect.transform.position = hit.point;
+        WeaponView.HitEffect.transform.position = hit.point;
          WeaponView.HitEffect.transform.forward = hit.normal;
          WeaponView.HitEffect.Emit(1);
       }

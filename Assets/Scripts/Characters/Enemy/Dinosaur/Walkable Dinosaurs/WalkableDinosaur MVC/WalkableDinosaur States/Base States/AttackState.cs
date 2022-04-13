@@ -5,13 +5,11 @@ using UnityEngine;
 public class AttackState : WalkableDinosaurStates
 {
 
-   private WalkableDinosaurModel WalkableDinosaurModel;
+   protected WalkableDinosaurModel WalkableDinosaurModel;
     
-   public IEnumerator MyAttackCoroutine;
-    
-   private bool isAlreadyAttack;  
+   protected bool isAlreadyAttack;  
 
-   float TimeBetweenAttack = 1.5f;
+   protected float TimeBetweenAttack = 0.7f ;
 
 
   public override void OnStateUpdate()
@@ -29,7 +27,7 @@ public class AttackState : WalkableDinosaurStates
    }
 
    protected virtual void PerformAttack() 
-  {
+  { 
        animator.SetTrigger("Attack");
        animator.transform.LookAt(PlayerTarget);
        isAlreadyAttack = true;
@@ -40,7 +38,7 @@ public class AttackState : WalkableDinosaurStates
    protected virtual void ResetAttack()
    {
       isAlreadyAttack = false;	
-      animator.ResetTrigger("Attack");	
+      // animator.ResetTrigger("Attack");	
    }
 
 

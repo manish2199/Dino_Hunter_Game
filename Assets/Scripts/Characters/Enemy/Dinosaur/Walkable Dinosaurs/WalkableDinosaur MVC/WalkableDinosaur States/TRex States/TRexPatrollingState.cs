@@ -11,9 +11,7 @@ public class TRexPatrollingState : PatrollingState
     }
  
    public override void OnStateUpdate()
-   {   
-       print(GetDistance(transform.position,PlayerTarget.position));
-     
+   {        
         if(GetDistance(transform.position,CurrentWayPointTarget) < aiAgent.stoppingDistance && CanPatrol )  
         { 
             CanPatrol = false; 
@@ -55,8 +53,9 @@ public class TRexPatrollingState : PatrollingState
 
       animator.SetTrigger("Roar");
 
-      yield return new WaitForSeconds(1f); 
+      yield return new WaitForSeconds(1.3f); 
 
+      animator.ResetTrigger("Roar");
       walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.ChasingState);
   }
 

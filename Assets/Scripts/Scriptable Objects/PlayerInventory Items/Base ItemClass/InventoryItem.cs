@@ -18,8 +18,8 @@ public class InventoryItem : ScriptableObject
 }
 
 
-[System.Serializable]
-public class ItemSlots
+[Serializable]
+public class ItemSlot
 {
     private int Quantity;
     private int MaxLimit;
@@ -47,10 +47,7 @@ public class ItemSlots
 
     public void ReduceQuantity()
     {
-        // if(Quantity > 0)
-        // {
-            Quantity--;
-        // }
+        Quantity = Quantity -1;
     }
 
 

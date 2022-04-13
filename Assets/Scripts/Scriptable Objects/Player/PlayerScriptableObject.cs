@@ -37,5 +37,8 @@ public class PlayerScriptableObject : Character
 
    [Header("Player Controls")]
    public PlayerControls playerControls;
-     
+
+
+   [Header("Player Health")]
+   public int PlayerHealth;
 } 

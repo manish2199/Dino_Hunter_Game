@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803787499}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803754547}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803758269}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right toe2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 7588524948803809689}
   - component: {fileID: 7588524948800788999}
   - component: {fileID: 547840376836430682}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dinosaurBodyPart: 2
+  walkingDinosaurView: {fileID: 0}
 --- !u!1 &7588524948803823697
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803755329}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803717261}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tail7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803727145}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: gums1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803735739}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left foot0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803764815}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tail0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803791143}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tongue0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803760163}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right toe4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803780417}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: neck0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803800067}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Rex
   m_TagString: Carnivorous
   m_Icon: {fileID: 0}
@@ -443,7 +444,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803774011}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right foot0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803768859}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left toe5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803729135}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tongue1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +538,7 @@ GameObject:
   - component: {fileID: 7588524948803732709}
   - component: {fileID: 7588524948800760665}
   - component: {fileID: 5205404045375448316}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: jaw0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +569,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7588524948803846073}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 8
   m_Height: 30.701056
@@ -587,6 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dinosaurBodyPart: 1
+  walkingDinosaurView: {fileID: 1663085267487119194}
 --- !u!1 &7588524948804013437
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803736993}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7588524948803731695}
   - component: {fileID: 7613058498411812197}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left foot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +676,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803717763}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left toe3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,7 +706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803771511}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803739407}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803745905}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tail3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -795,7 +797,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803727487}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803697675}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: gums0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -857,7 +859,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803782007}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -888,7 +890,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803787235}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right toe5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,7 +920,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803781295}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -949,7 +951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7588524948803803375}
   - component: {fileID: 7613098235201056671}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right foot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -995,7 +997,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803725671}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: neck2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1026,7 +1028,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803725617}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: neck1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1059,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803744301}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right arm0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1088,7 +1090,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803776159}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left arm0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803733123}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tail1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1153,7 +1155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7588524948803798887}
   - component: {fileID: 7588524948800727233}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: rex_LOD_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1292,7 +1294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803797953}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1323,7 +1325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803768245}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: spine0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1354,7 +1356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803754363}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right toe1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1384,7 +1386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803750437}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: spine3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1417,7 +1419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803730153}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tongue3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1448,7 +1450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7588524948803695915}
   - component: {fileID: 7588524948800910645}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: rex_LOD_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1587,7 +1589,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803802719}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1618,7 +1620,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803738863}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tail4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1649,7 +1651,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803805509}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tongue2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1680,7 +1682,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803779107}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left toe1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1710,7 +1712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803729879}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left toe0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1741,7 +1743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803717053}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tail8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1771,7 +1773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803757183}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tail5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1802,7 +1804,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803761733}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left toe2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1833,7 +1835,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803760359}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1864,7 +1866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803805213}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1896,7 +1898,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7588524948803801913}
   - component: {fileID: 7588524948800684715}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: rex_LOD_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2035,7 +2037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803768899}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: jaw1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2065,7 +2067,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803782909}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left toe4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2105,8 +2107,8 @@ GameObject:
   - component: {fileID: 5328115031736834158}
   - component: {fileID: 5477593450625864055}
   - component: {fileID: 6592382460634026320}
-  - component: {fileID: 7102664779563556098}
-  m_Layer: 0
+  - component: {fileID: 7430737276416568843}
+  m_Layer: 13
   m_Name: Tyrannosaurus Rex
   m_TagString: Creature
   m_Icon: {fileID: 0}
@@ -2205,8 +2207,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f98a7531da077a34297dc840e88ecec1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.386
-  m_Pitch: 1
+  m_Volume: 0.208
+  m_Pitch: 0.29
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -2215,7 +2217,7 @@ AudioSource:
   DopplerLevel: 0
   MinDistance: 50
   MaxDistance: 300
-  Pan2D: 0
+  Pan2D: -0.292
   rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -2249,7 +2251,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.877
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2279,7 +2281,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.905
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2402,7 +2404,7 @@ MonoBehaviour:
   walkableDinosaurController:
     id: 0
   PatrollingState: {fileID: 5477593450625864055}
-  AttackingState: {fileID: 7102664779563556098}
+  AttackingState: {fileID: 7430737276416568843}
   ChasingState: {fileID: 6592382460634026320}
   references:
     version: 1
@@ -2417,7 +2419,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7588524948804064293}
   m_Enabled: 1
   m_AgentTypeID: 1479372276
-  m_Radius: 15.46
+  m_Radius: 8.28
   m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
@@ -2472,7 +2474,7 @@ MonoBehaviour:
     version: 1
     00000000:
       type: {class: , ns: , asm: }
---- !u!114 &7102664779563556098
+--- !u!114 &7430737276416568843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2481,7 +2483,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7588524948804064293}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19804adb697c60445bd3355bc8015ace, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ed8b898310abdb4996488b48f228ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkableDinosaurView: {fileID: 1663085267487119194}
@@ -2496,7 +2498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803808439}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tail6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2527,7 +2529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803767555}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right toe3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2557,7 +2559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803691789}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: tail2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2588,7 +2590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803745583}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2619,7 +2621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803756355}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: left eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2649,7 +2651,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803801481}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: right toe0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2680,7 +2682,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7588524948803780297}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}

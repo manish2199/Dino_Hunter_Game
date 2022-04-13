@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player :  GenericSingleton<Player>
+public class Player : GenericSingleton<Player>
 {
     [SerializeField] private PlayerScriptableObject playerScriptableObject;
     public PlayerScriptableObject PlayerScriptableObject { get { return playerScriptableObject; }}
@@ -11,8 +11,6 @@ public class Player :  GenericSingleton<Player>
     public Transform rootTransform;
 
     public Transform playerTransform;
-
-   //  public Transform PlayerTarget;
 
     public Transform weaponsHolder;
 
@@ -26,7 +24,7 @@ public class Player :  GenericSingleton<Player>
 
     [SerializeField] PlayerAttackController playerAttacksController;
 
-    // [SerializeField] PlayerStatsController PlayerStatsController;
+    [SerializeField] PlayerStatsController playerStatsController;
 
     [SerializeField] PlayerAnimationController playerAnimationController;
     
@@ -53,10 +51,7 @@ public class Player :  GenericSingleton<Player>
     void OnDisable()
     {
        WeaponService.OnWeaponZoomIn -= PlayerCameraZoomInAinmation;       
-    }
-
-    
-    
+    } 
 
     public void PlayerCameraZoomInAinmation(bool canZoomIn)
     { 
@@ -76,6 +71,11 @@ public class Player :  GenericSingleton<Player>
     public void SetSprintFootStepClips()
     {
        playerSoundController.SetSrintAudio();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        playerStatsController.TakeDamage(damage);
     }
 
 

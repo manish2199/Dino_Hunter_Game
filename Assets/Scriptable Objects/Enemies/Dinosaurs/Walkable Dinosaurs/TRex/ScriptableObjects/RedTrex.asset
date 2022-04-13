@@ -26,7 +26,7 @@ MonoBehaviour:
         - AudioClipType: 4
           AudioClip:
           - {fileID: 8300000, guid: 755ef81735bd41c439b47726d6aa6d62, type: 3}
-          - {fileID: 8300000, guid: f2b9bbcf9d5b7814f962d0b00d3ec9d9, type: 3}
+          - {fileID: 8300000, guid: 755ef81735bd41c439b47726d6aa6d62, type: 3}
         - AudioClipType: 5
           AudioClip:
           - {fileID: 8300000, guid: 06dacded2a59a204287ef6e854a60b20, type: 3}
@@ -43,10 +43,10 @@ MonoBehaviour:
         AngularSpeed: 500
         Acceleration: 10
         FieldOfViewAnle: 80
-        TargetStopppingDistance: 18
+        TargetStopppingDistance: 13.97
         StoppingDistanceFromWayPoint: 6
         ChasingRange: 40
-        AttackingRange: 25
+        AttackingRange: 18
         WalkableDinosaurView: {fileID: 1663085267487119194, guid: 94d991bb67cbc604b8f6bcbb9aaa1677,
           type: 3}
         TRexType: 1

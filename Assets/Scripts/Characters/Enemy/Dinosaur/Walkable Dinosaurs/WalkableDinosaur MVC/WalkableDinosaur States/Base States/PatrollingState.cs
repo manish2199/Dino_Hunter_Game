@@ -74,7 +74,7 @@ public class PatrollingState : WalkableDinosaurStates
 
       animator.SetTrigger("Roar");
 
-      yield return new WaitForSeconds(0.5f); 
+      yield return new WaitForSeconds(1f); 
 
       walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.ChasingState);
   }
@@ -95,7 +95,7 @@ public class PatrollingState : WalkableDinosaurStates
         
         animator.SetTrigger("Search");
 
-       yield return new WaitForSeconds(4f);
+       yield return new WaitForSeconds(3f);
 
         IterateToNextWayPoint();
         aiAgent.isStopped = false;     

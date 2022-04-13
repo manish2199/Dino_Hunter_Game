@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
+  - Creature
+  - FPSCamera
+  - Carnivorous
   layers:
   - Default
   - TransparentFX
@@ -17,9 +20,9 @@ TagManager:
   - Lighting
   - Ground
   - Postprocessing
-  - 
-  - 
-  - 
+  - FPSCamera
+  - Player
+  - Enemies
   - 
   - 
   - 

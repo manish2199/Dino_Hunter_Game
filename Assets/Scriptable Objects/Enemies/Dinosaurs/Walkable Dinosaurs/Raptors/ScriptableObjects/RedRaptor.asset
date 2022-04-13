@@ -20,7 +20,7 @@ MonoBehaviour:
     00000000:
       type: {class: Raptor, ns: , asm: Assembly-CSharp}
       data:
-        Health: 150
+        Health: 130
         Damage: 40
         DinosaurAudios:
         - AudioClipType: 1

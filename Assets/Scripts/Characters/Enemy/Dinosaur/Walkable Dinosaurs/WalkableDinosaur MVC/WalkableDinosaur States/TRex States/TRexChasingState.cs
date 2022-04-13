@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class TRexChasingState : ChasingState
 {
-    float timeToGrowl = 1.5f;
 
-    bool isAlreadyGrowl;
 
-      protected void Awake()
+    protected void Awake()
     {
         base.Awake();
     }
@@ -19,31 +17,11 @@ public class TRexChasingState : ChasingState
 
 		animator.transform.LookAt(PlayerTarget);
         
-
-        if(!isAlreadyGrowl)
-        {
-           animator.SetTrigger("WalkGrowl");
-           Invoke(nameof(Reset),timeToGrowl);     
-        }
-
-       
-       
-        
 		if(GetDistance(transform.position,PlayerTarget.position) < WalkableDinosaurModel.AttackingRange )
        {
 			walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.AttackingState);
 		}
 	} 
-
-
-
-    void Reset()
-    {
-      isAlreadyGrowl = false;
-    }
-
-
-
 
 	public override void OnStateEnter()
 	{
