@@ -8,7 +8,11 @@ public class WeaponModel
    {
       WeaponType = waponScriptableObject.WeaponType;  
       AttackClip = waponScriptableObject.Weapon.AttackClip;
+      Damage = waponScriptableObject.Weapon.Damage;
    }
+
+
+   public int Damage { get; }
 
    public AudioClip AttackClip { get;}
   

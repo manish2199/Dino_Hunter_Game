@@ -13,6 +13,14 @@ public class EnemiesService : GenericSingleton<EnemiesService>
 
    public Transform[] waypoints; 
 
+   protected override void Awake()
+   {
+      if(Instance == null)
+      {
+         Instance = this;
+      }
+   }
+
    void Start()
    {
       RaptorDinosaurModel redTRexModel = new RaptorDinosaurModel(walkableDinosaurScriptableObject);

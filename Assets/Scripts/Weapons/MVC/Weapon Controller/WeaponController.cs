@@ -221,11 +221,23 @@ public class ShootableWeaponController : WeaponController
        
       if(Physics.Raycast(ShootableWeaponModel.PlayerFPS.position,ShootableWeaponModel.PlayerFPS.forward,out hit))
       {
-        WeaponView.HitEffect.transform.position = hit.point;
-         WeaponView.HitEffect.transform.forward = hit.normal;
-         WeaponView.HitEffect.Emit(1);
+         IDamagable damagable = hit.collider.gameObject.GetComponent<IDamagable>();
+
+         if(damagable != null && hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemies"))
+         { 
+            WeaponView.BloodHitEffect.transform.position = hit.point;
+            WeaponView.BloodHitEffect.transform.forward = hit.normal; 
+            WeaponView.BloodHitEffect.Emit(1);
+            damagable.TakeDamage(ShootableWeaponModel.Damage); 
+         }
+         if( damagable == null && hit.transform.gameObject.layer != LayerMask.NameToLayer("Enemies") )
+         {
+           WeaponView.MetalHitEffect.transform.position = hit.point;
+           WeaponView.MetalHitEffect.transform.forward = hit.normal;
+           WeaponView.MetalHitEffect.Emit(1);
+         }
       }
-      
+
    }
 
    public override void DeactivateWeapon()
@@ -238,4 +250,3 @@ public class ShootableWeaponController : WeaponController
    }
 
 }
-

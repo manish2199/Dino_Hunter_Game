@@ -9,22 +9,24 @@ public class InventoryService : GenericSingleton<InventoryService>
 {
     public static event Action<ProjectileType,int> OnProjectileQuantityChanged;
     public static event Action<HealthKitType,int> OnHealthKitQuanityChanged; 
-
     
-    // WarningMSG 
-    public static event Action OnInsufficientAmmo;
-    public static event Action OnInsufficientHealthKit;
-    public static event Action OnAmmoInventoryFull;
-    public static event Action OnHealthInventoryFull;
-
-   [SerializeField] private List<ItemSlot> weaponaryProjectiles;
+    private List<ItemSlot> weaponaryProjectiles;
     
     private ItemSlot HealthKit;
 
+   // Testing
+   public InventoryItem Revbullet;
+   public int revquantity;
+   public int revmaxLimit; 
 
-   public InventoryItem bullet;
-   public int quantity;
-   public int maxLimit;
+   public InventoryItem shotgbullet;
+   public int shotquantity;
+   public int shotgmaxLimit; 
+  
+   public InventoryItem assbullet;
+   public int assquantity;
+   public int assmaxLimit;
+   
 
    void Awake()
    {
@@ -34,10 +36,11 @@ public class InventoryService : GenericSingleton<InventoryService>
    }  
 
 
-
    void Start()
    {
-       AddItemSlotToProjectiles(bullet,quantity,maxLimit);
+       AddItemSlotToProjectiles(Revbullet,revquantity,revmaxLimit);
+       AddItemSlotToProjectiles(shotgbullet,shotquantity,shotgmaxLimit);
+       AddItemSlotToProjectiles(assbullet,assquantity,assmaxLimit);
    }
 
 
@@ -80,20 +83,25 @@ public class InventoryService : GenericSingleton<InventoryService>
                 if(weaponaryProjectiles[i].GetQuantity() > 0 )
                 {
                     // means present 
-                    weaponaryProjectiles[i].ReduceQuantity(); 
+                    weaponaryProjectiles[i].ReduceQuantity();  
+                    // Debug.Log(weaponaryProjectiles[i].GetQuantity());
+                    if(weaponaryProjectiles[i].GetQuantity() <= 5 )
+                    {
+                        NotificationManager.Instance.ShowNotificationMsg(NotificationType.LowAmmo);
+                    }
                     // invoke for text
                     OnProjectileQuantityChanged?.Invoke(projectileType,weaponaryProjectiles[i].GetQuantity());
                     return true;
                 }
                 else
                 {
+                     NotificationManager.Instance.ShowNotificationMsg(NotificationType.OutOfAmmo);
                     break;
                 }
             }
         }
         // Show empty ammo warning msg
         return false;
-        OnInsufficientAmmo?.Invoke();
     }
 
 
@@ -110,7 +118,7 @@ public class InventoryService : GenericSingleton<InventoryService>
         }
        //means health kit is not preset and generate warning msg
        return 0;
-       OnInsufficientHealthKit?.Invoke();
+        NotificationManager.Instance.ShowNotificationMsg(NotificationType.OutOfHealthKit);
     }    
 
 
@@ -127,16 +135,20 @@ public class InventoryService : GenericSingleton<InventoryService>
                 if(weaponaryProjectiles[i].GetQuantity() < weaponaryProjectiles[i].GetMaxQuanity() )
                 {
                     // means present 
+
                     weaponaryProjectiles[i].SetQuantity(quanitty);
-                    OnProjectileQuantityChanged?.Invoke(projectileType,weaponaryProjectiles[i].GetQuantity());
-                    
+                    OnProjectileQuantityChanged?.Invoke(projectileType,weaponaryProjectiles[i].GetQuantity()); 
                 }
                 else // means bag is full 
                 {
                     //******** ammo full event
-                    OnAmmoInventoryFull?.Invoke();
+                    NotificationManager.Instance.ShowNotificationMsg(NotificationType.FullAmmo);
                     break;
                 }
+            } 
+            else
+            {
+                // means not found 
             }
         }
 
@@ -155,23 +167,10 @@ public class InventoryService : GenericSingleton<InventoryService>
         }
         else
         {
-            OnHealthInventoryFull?.Invoke();
+             NotificationManager.Instance.ShowNotificationMsg(NotificationType.FullHealthKit);
             //******* healtkit full event
         }
     }
 
 
 }
-
-
-
-
-
-
-
-// UISlot 1 - Arrow InventoryItem
-// UISlot 2 - RevBullet InventoryItem 
-// UISlot 3 - ShotGunBullet InventoryItem 
-// UISlot 4 - AssaultBullet InventoryItem 
-
-// UISlot 5 - FirstAid InventoryItem 

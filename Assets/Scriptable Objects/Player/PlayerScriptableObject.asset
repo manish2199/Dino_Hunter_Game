@@ -47,4 +47,6 @@ MonoBehaviour:
     KeyToSelectWeapon6: 54
     WeaponAttackKey: 323
     KeyToAimWeapon: 324
+    KeyToOpenInventory: 105
+    KeyToInteractWithObjects: 102
   PlayerHealth: 100

@@ -27,7 +27,7 @@ public class ItemSlot
 
     public void SetQuantity(int Quantity)
     {
-        this.Quantity = Quantity;
+        this.Quantity += Quantity;
     }
 
     public int GetMaxQuanity()

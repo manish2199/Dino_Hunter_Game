@@ -8,7 +8,7 @@ public class WeaponService : GenericSingleton<WeaponService>
     // Initially Unlock Only Two Weapons
     // As Player achieve something then achievement system unlocks Weapon ( add weapons in list ) (hint - use events)
     
-   [SerializeField] private WaponScriptableObjectList weapons;
+    [SerializeField] private WaponScriptableObjectList weapons;
 
     [SerializeReference] List<WeaponController> weaponControllerList;
     private int currentSelectedWeapon;
@@ -21,8 +21,8 @@ public class WeaponService : GenericSingleton<WeaponService>
         weaponControllerList = new List<WeaponController>();
         UnlockTheWeapon(WeaponsID.Axe); 
         UnlockTheWeapon(WeaponsID.Revolver); 
-        UnlockTheWeapon(WeaponsID.ShotGun); 
-        UnlockTheWeapon(WeaponsID.AssaultRifle); 
+        // UnlockTheWeapon(WeaponsID.ShotGun); 
+        // UnlockTheWeapon(WeaponsID.AssaultRifle);  
    }
    
     

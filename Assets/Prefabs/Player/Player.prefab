@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7050646428563291864}
   - component: {fileID: 5421747695927180786}
   - component: {fileID: 4731817427690301317}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TakeDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3744049, y: 6.8441677, z: 2.091301}
-  m_Center: {x: 0.18720245, y: 3.5981312, z: 0.5456505}
+  m_Size: {x: 1.1618845, y: 6.8441677, z: 1.5984967}
+  m_Center: {x: 0.08094227, y: 3.5981312, z: 0.29924834}
 --- !u!114 &4731817427690301317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,6 +57,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48c30a5d0480a0498fceebad2a728e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &895597887538549365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 579922013265315015}
+  m_Layer: 0
+  m_Name: Player Collectable Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &579922013265315015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895597887538549365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.585, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5772465332631559539}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5772465331498770932
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +181,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 14135
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -354,7 +384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5772465332397890353}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5772465333036581278}
@@ -396,11 +426,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5772465332631559536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5772465332397890352}
   - {fileID: 7050646428563291864}
+  - {fileID: 579922013265315015}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -438,6 +469,8 @@ MonoBehaviour:
     type: 2}
   rootTransform: {fileID: 5772465332397890352}
   playerTransform: {fileID: 5772465332631559539}
+  playerShoot: {fileID: 5772465332631559539}
+  PlayerCollectableTransform: {fileID: 579922013265315015}
   weaponsHolder: {fileID: 5772465331498770935}
   characterController: {fileID: 5772465332631559529}
   playerMovementController: {fileID: 5772465332631559543}
@@ -585,7 +618,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2048
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

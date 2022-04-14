@@ -6,7 +6,8 @@ public class PlayerHitBox : MonoBehaviour ,  IDamagable
 {
    public void TakeDamage(int damage)
    {
-      Player.Instance.TakeDamage(damage);    
-   }
+      print("Taken Damage");
+      Player.Instance.TakeDamage(damage);     
+   } 
     
 }

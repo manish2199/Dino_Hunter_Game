@@ -22,7 +22,7 @@ public class WalkableDinosaurStates : MonoBehaviour
 
       // animator = walkableDinosaurView.animator; 
        
-      PlayerTarget = Player.Instance.playerTransform;
+       PlayerTarget = Player.Instance.playerTransform;
    }
 
    protected Vector3 GetDirection(Vector3 firstPosition , Vector3 secondPosition)

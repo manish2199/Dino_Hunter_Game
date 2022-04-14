@@ -8,6 +8,7 @@ TagManager:
   - Creature
   - FPSCamera
   - Carnivorous
+  - Enemies
   layers:
   - Default
   - TransparentFX

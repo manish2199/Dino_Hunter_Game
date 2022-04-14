@@ -52,7 +52,8 @@ public class WalkableDinosaurController
     }
 
  
-  
+   // Receive the damage from Dinosaur body part and decide whether dinosaur is alive or not 
+   // if health is less than zero then add this controller to object bool by resetting all variables in view mostly reset aipath
 
     
 }

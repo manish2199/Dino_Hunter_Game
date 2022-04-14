@@ -31,6 +31,7 @@ public class PlayerControls
     public KeyCode WeaponAttackKey;
     public KeyCode KeyToAimWeapon; 
     public KeyCode KeyToOpenInventory;
+    public KeyCode KeyToInteractWithObjects;
 }
 
 

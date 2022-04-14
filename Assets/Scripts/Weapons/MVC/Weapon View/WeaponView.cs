@@ -15,7 +15,10 @@ public class WeaponView : MonoBehaviour
 
    public ParticleSystem MuzzleFire;
   
-   public ParticleSystem HitEffect; 
+   public ParticleSystem MetalHitEffect; 
+   public ParticleSystem BloodHitEffect;
+
+   public LayerMask EnemyLayerMask;
 
    public GameObject muzzle;
 

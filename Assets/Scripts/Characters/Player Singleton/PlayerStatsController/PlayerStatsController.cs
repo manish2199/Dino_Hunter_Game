@@ -12,19 +12,40 @@ public class PlayerStatsController : MonoBehaviour
    {
        PlayerHealth = Player.Instance.PlayerScriptableObject.PlayerHealth;
    }
-
+  
 
    void Update()
    {
-      if(Input.GetKeyDown(Player.Instance.PlayerScriptableObject.playerControls.KeyToOpenInventory))
-      {
-          OpenInventorySystem();
-      }
+      OpenInventorySystem();
+
+      CollectFromSupplies();
    }
 
-   public void OpenInventorySystem()
+
+   public void CollectFromSupplies()
    {
-       GameplayUIManager.Instance.ActivateInventory();
+       RaycastHit hit;
+
+       if(Physics.Raycast(Player.Instance.PlayerCollectableTransform.position,Player.Instance.PlayerCollectableTransform.forward, out hit,3f))
+       {
+           ICollectable collectable = hit.transform.gameObject.GetComponent<ICollectable>();
+
+           if(collectable != null && Input.GetKeyDown(Player.Instance.PlayerScriptableObject.playerControls.KeyToInteractWithObjects))
+           { 
+              collectable.Collect();
+           }
+       }
+   
+   }
+
+
+
+   public void OpenInventorySystem()
+   {  
+       if(Input.GetKeyDown(Player.Instance.PlayerScriptableObject.playerControls.KeyToOpenInventory))
+      {
+          GameplayUIManager.Instance.ActivateInventory();
+      }
    }
 
 

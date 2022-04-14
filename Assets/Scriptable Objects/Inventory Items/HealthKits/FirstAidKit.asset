@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218fd45460603bf4cba1597b77ae4ade, type: 3}
   m_Name: FirstAidKit
   m_EditorClassIdentifier: 
-  ItemIcon: {fileID: 21300000, guid: c5be30dc45b96a343a38ab2fa452f3b2, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 034066f350b07d84f846f728060d651f, type: 3}
   itemType: 2
   healthKitType: 1
   HealthContains: 20

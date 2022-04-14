@@ -64,23 +64,11 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
            { 
                 for ( int i = 0; i< projectileInventoryUISlots.Length; i++)
                 { 
-                    print(projectileInventoryUISlots[i].isEmpty);
+                    // print(projectileInventoryUISlots[i].isEmpty);
                     if( projectileInventoryUISlots[i].isEmpty)
-                    { 
-                    //    WeaponProjectiles temp =(WeaponProjectiles)itemSlot.InventoryItem;
-                        // initial setup
-                        
-                        projectileInventoryUISlots[i].EmptyItemText.gameObject.SetActive(false);
-                        projectileInventoryUISlots[i].IconGameObject.SetActive(true);
-                        projectileInventoryUISlots[i].ItemQuantityText.gameObject.SetActive(true);
-
-                        projectileInventoryUISlots[i].IconGameObject.GetComponent<Image>().sprite  = itemSlot.InventoryItem.UIIcon;
-                        projectileInventoryUISlots[i].ItemQuantityText.text = itemSlot.GetQuantity().ToString(); 
-                        projectileInventoryUISlots[i].isEmpty = false;
-                        WeaponProjectiles temp  = (WeaponProjectiles)tempItem;
-                        projectileInventoryUISlots[i].ProjectileType  = temp.BulletType;
-                        Debug.Log(temp.BulletType); 
-                        print( projectileInventoryUISlots[i].ProjectileType);
+                    {  
+                        // Initial sETup
+                        InitialProjectileSetup(projectileInventoryUISlots[i],itemSlot,tempItem);
                         break; 
                     }
                 }
@@ -93,11 +81,26 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     }
 
 
+    private void InitialProjectileSetup(ProjectileInventoryUISlot projectile,ItemSlot itemSlot, InventoryItem tempItem)
+    {
+        projectile.EmptyItemText.gameObject.SetActive(false);
+        projectile.IconGameObject.SetActive(true);
+        projectile.ItemQuantityText.gameObject.SetActive(true);
+
+        projectile.IconGameObject.GetComponent<Image>().sprite  = itemSlot.InventoryItem.UIIcon;
+        projectile.ItemQuantityText.text = itemSlot.GetQuantity().ToString(); 
+        projectile.isEmpty = false;
+        WeaponProjectiles temp  = (WeaponProjectiles)tempItem;
+        projectile.ProjectileType  = temp.BulletType;
+    }
+
+
+
+
     public void UpdateTheProjectilesQuantity(ProjectileType projectileType , int quanitty) 
     {
         for ( int i =0 ; i<projectileInventoryUISlots.Length; i++)
         {
-            print("Updating UI");
             if(projectileType == projectileInventoryUISlots[i].ProjectileType)
             {
                 projectileInventoryUISlots[i].ItemQuantityText.text = quanitty.ToString();
@@ -118,9 +121,6 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 
         }
     }
-
-
-
 
 
     public void ActivateInventory()
