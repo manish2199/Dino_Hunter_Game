@@ -3,27 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TRexView : WalkableDinosaurView
-{
-    // patrolling state is different than raptors 
-    // attacking state is same 
-    // chasing state is slightly different
+{ 
+   [HideInInspector]  public bool IsDead;
 
-    // public TRexPatrollingState TRexPatrollingState; 
+   private IEnumerator DeathCoroutine;
     
-    // public AttackState AttackingState; 
 
-    // public TRexChasingState TRexChasingState; 
+   void Start()
+   {
+     TRexDinosaurController temp = (TRexDinosaurController)walkableDinosaurController;
+      temp.SetInitialState();
+   }
 
-  void Start()
+
+  
+   public void EnableDinosaur()
   {
-     walkableDinosaurController.SetInitialState();
+      gameObject.SetActive(true);
+      if(walkableDinosaurController != null && walkableDinosaurController.CurrentState != null)
+      {
+         walkableDinosaurController.ChangeState(PatrollingState);  
+      }
   }
-
+  
 
   void Update()
   {
-     walkableDinosaurController.CurrentState.OnStateUpdate();
+     if(!IsDead)
+     {
+       walkableDinosaurController.CurrentState.OnStateUpdate();
+     }
   }
+
+
+  public void DisableTheDinosaur()
+  {
+      TRexDinosaurController temp = (TRexDinosaurController)walkableDinosaurController;
+
+      TRexDinosaurPool.Instance.ReturnItem(temp);
+      EnemiesService.Instance.StartTimerForTRex(temp);
+
+      DeathCoroutine = Death(); 
+      StartCoroutine(Death());
+  }
+
+  IEnumerator Death()
+  {
+     // play death anim
+       IsDead = true;
+
+      animator.SetTrigger("Death"); 
+  
+      yield return new WaitForSeconds(1f);
+      
+      gameObject.SetActive(false);
+  }
+
+   public void stopCoroutine()
+  {
+      StopCoroutine(DeathCoroutine);
+  }
+
 
 
    public virtual void PlaySound(AudioClipType audioClipType)
@@ -37,7 +77,9 @@ public class TRexView : WalkableDinosaurView
 	   AudioSource.Play();
    } 
  
-
-
 }
 
+
+
+
+ 

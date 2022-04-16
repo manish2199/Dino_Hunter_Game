@@ -18,7 +18,10 @@ public abstract class WalkableDinosaurModel
       AttackingRange = walkableDinosaurScriptableObject.WalkingDinosaurs.AttackingRange;
       FieldOfViewAnle = walkableDinosaurScriptableObject.WalkingDinosaurs.FieldOfViewAnle;
       WalkingDinosaurType = walkableDinosaurScriptableObject.WalkingDinosaurType;
+      TimeToRespawnAfterDeath = walkableDinosaurScriptableObject.WalkingDinosaurs.TimeToRespawnAfterDeath;
    }
+
+   public int TimeToRespawnAfterDeath { get; }
 
    public WalkingDinosaurType WalkingDinosaurType {get;}
 
@@ -32,7 +35,9 @@ public abstract class WalkableDinosaurModel
 
    public DinosaurAudioClips[] DinosaurAudios;
 
-   public int Health { get; set; }  
+   public int Health { get; }  
+
+   public int HealhToReduce { get; set;}
 
    public int Damage { get; }
 

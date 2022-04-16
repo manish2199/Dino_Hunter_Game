@@ -13,12 +13,13 @@ public class WalkableDinosaurView : MonoBehaviour
 
 	[SerializeReference]public WalkableDinosaurController walkableDinosaurController; 
 
-  [SerializeReference]public PatrollingState PatrollingState;
+   [SerializeReference]public PatrollingState PatrollingState;
 
-  [SerializeReference]public AttackState AttackingState;
+   [SerializeReference]public AttackState AttackingState;
 
-  [SerializeReference]public ChasingState ChasingState;
+   [SerializeReference]public ChasingState ChasingState;
 
+   public Transform DinosaurTransform; 
 
   public virtual void Start()
   {

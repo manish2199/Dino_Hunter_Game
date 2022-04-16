@@ -49,4 +49,4 @@ MonoBehaviour:
     KeyToAimWeapon: 324
     KeyToOpenInventory: 105
     KeyToInteractWithObjects: 102
-  PlayerHealth: 100
+  PlayerHealth: 150

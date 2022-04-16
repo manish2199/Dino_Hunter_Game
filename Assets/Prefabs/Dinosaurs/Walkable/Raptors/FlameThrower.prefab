@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9213725701346460975}
   - component: {fileID: 9012556462034534511}
   - component: {fileID: 9013936179047796933}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4764,7 +4764,7 @@ GameObject:
   - component: {fileID: 9206131902099170009}
   - component: {fileID: 9012364723044367891}
   - component: {fileID: 9012203317203294275}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FireEmbers (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9427,7 +9427,7 @@ GameObject:
   - component: {fileID: 9205958658591374399}
   - component: {fileID: 9012792685288150543}
   - component: {fileID: 9012846433427785637}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FlameThrower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

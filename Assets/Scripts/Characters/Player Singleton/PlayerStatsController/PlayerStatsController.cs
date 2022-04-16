@@ -53,9 +53,12 @@ public class PlayerStatsController : MonoBehaviour
     public void TakeDamage(int damage)
     {
        PlayerHealth -= damage;
+      
+       print(PlayerHealth);
+       float damageDealed = (Player.Instance.PlayerScriptableObject.PlayerHealth - PlayerHealth );
 
-       print(PlayerHealth);      
-     
+       GameplayUIManager.Instance.UpdateDamageIndicator(damageDealed);
+
        if(PlayerHealth <= 0)
        {
            Debug.Log("Player Is Dead ");

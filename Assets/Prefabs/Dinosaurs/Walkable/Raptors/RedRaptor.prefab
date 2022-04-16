@@ -2646,7 +2646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dinosaurBodyPart: 2
-  walkingDinosaurView: {fileID: 0}
+  walkingDinosaurView: {fileID: 4406083887922425676}
 --- !u!1 &5995525953997756033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3245,9 +3245,9 @@ GameObject:
   - component: {fileID: 1385250966260929361}
   - component: {fileID: 7248502523138521080}
   - component: {fileID: 4406083887922425676}
-  - component: {fileID: 7595870635716454071}
   - component: {fileID: 8619553920672993147}
   - component: {fileID: 4661066843572152394}
+  - component: {fileID: 7877887508426191384}
   - component: {fileID: 3697320910020450964}
   m_Layer: 13
   m_Name: RedRaptor
@@ -3443,35 +3443,16 @@ MonoBehaviour:
   AudioSource: {fileID: 8834901145530041448}
   walkableDinosaurController:
     id: 0
-  PatrollingState: {fileID: 7595870635716454071}
+  PatrollingState: {fileID: 7877887508426191384}
   AttackingState: {fileID: 4661066843572152394}
   ChasingState: {fileID: 8619553920672993147}
+  DinosaurTransform: {fileID: 4175941567890483729}
   ParticleEffect: {fileID: 7425805149836211976}
   PlayerLayerMask:
     serializedVersion: 2
     m_Bits: 4096
   ProjectilePos: {fileID: 5435214984284723406}
-  references:
-    version: 1
-    00000000:
-      type: {class: , ns: , asm: }
---- !u!114 &7595870635716454071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7635659108856843442}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecca6938b167a604ab47bf9fb1244631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkableDinosaurView: {fileID: 4406083887922425676}
-  aiAgent: {fileID: 7248502523138521080}
-  animator: {fileID: 5710183120639850178}
-  WalkableDinosaurModel:
-    id: 0
+  IsDead: 0
   references:
     version: 1
     00000000:
@@ -3489,8 +3470,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkableDinosaurView: {fileID: 4406083887922425676}
-  aiAgent: {fileID: 7248502523138521080}
-  animator: {fileID: 5710183120639850178}
   WalkableDinosaurModel:
     id: 0
   references:
@@ -3510,8 +3489,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkableDinosaurView: {fileID: 4406083887922425676}
-  aiAgent: {fileID: 7248502523138521080}
-  animator: {fileID: 5710183120639850178}
+--- !u!114 &7877887508426191384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7635659108856843442}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e6a9d66bc1a4543a0e08a8960582ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkableDinosaurView: {fileID: 4406083887922425676}
+  WalkableDinosaurModel:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
 --- !u!82 &3697320910020450964
 AudioSource:
   m_ObjectHideFlags: 0

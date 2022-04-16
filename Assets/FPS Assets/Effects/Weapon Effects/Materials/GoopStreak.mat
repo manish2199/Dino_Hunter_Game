@@ -23,7 +23,7 @@ Material:
   m_Name: GoopStreak
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _EMISSION _NORMALMAP
-  m_LightmapFlags: 0
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2450
@@ -121,12 +121,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.68736637, g: 0.764151, b: 0.061276242, a: 1}
+    - _BaseColor: {r: 0.8962264, g: 0.1080614, b: 0.059184745, a: 1}
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0.68736637, g: 0.764151, b: 0.06127627, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 0.25539836, g: 0.28301883, b: 0.076094635, a: 1}
+    - _EmissionColor: {r: 0.31132078, g: 0.06583749, b: 0.061676756, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19117647, g: 0.19117647, b: 0.19117647, a: 1}
     - _TintColor: {r: 0.4289127, g: 0.5660378, b: 0.14150944, a: 1}

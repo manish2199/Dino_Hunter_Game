@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class RaptorDinosaurView : WalkableDinosaurView
@@ -11,17 +12,65 @@ public class RaptorDinosaurView : WalkableDinosaurView
 
   public Transform ProjectilePos;
 
+  private IEnumerator DeathCoroutine;
+
+  public bool IsDead;
+ 
+
   void Start()
   {
-     walkableDinosaurController.SetInitialState();
+      RaptorDinosaurController temp = (RaptorDinosaurController)walkableDinosaurController;
+      temp.SetInitialState();
   }
-
 
   void Update()
-  {
-     walkableDinosaurController.CurrentState.OnStateUpdate();
+  {  
+     if(!IsDead) 
+     { 
+         walkableDinosaurController.CurrentState.OnStateUpdate();
+     }
   }
- 
+
+  public void EnableDinosaur()
+  {
+      gameObject.SetActive(true);
+      if(walkableDinosaurController != null && walkableDinosaurController.CurrentState != null)
+      {
+         walkableDinosaurController.ChangeState(PatrollingState);  
+      }
+      if(ParticleEffect!= null && ParticleEffect.isPlaying)
+      {
+          ParticleEffect.Stop();
+      }
+  }
+      
+  public void DisableTheDinosaur()
+  {
+      RaptorDinosaurController temp = (RaptorDinosaurController)walkableDinosaurController;
+
+      RaptorDinosaurPool.Instance.ReturnItem(temp);
+      EnemiesService.Instance.StartTimerForRaptors(temp);
+
+      DeathCoroutine = Death(); 
+      StartCoroutine(Death());
+  }
+
+  IEnumerator Death()
+  {
+      IsDead = true;
+
+      animator.SetTrigger("Death"); 
+  
+      yield return new WaitForSeconds(1f);
+      
+      gameObject.SetActive(false);
+  }
+
+  public void stopCoroutine()
+  {
+      StopCoroutine(DeathCoroutine);
+  }
+
 
   public void PerformSpecialAbility()
   {
@@ -41,7 +90,6 @@ public class RaptorDinosaurView : WalkableDinosaurView
   {
      ParticleEffect.Stop();
   }
-
 
    public override void PlaySound(AudioClipType audioClipType)
    {

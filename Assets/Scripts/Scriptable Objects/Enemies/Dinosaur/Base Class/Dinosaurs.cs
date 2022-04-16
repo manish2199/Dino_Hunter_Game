@@ -42,6 +42,8 @@ public class WalkingDinosaurs : Dinosaurs
 
     public float AttackingRange;
 
+    public int TimeToRespawnAfterDeath;
+
    [SerializeReference] public WalkableDinosaurView WalkableDinosaurView; 
 }
 

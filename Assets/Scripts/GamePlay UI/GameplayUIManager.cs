@@ -15,7 +15,9 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 
     [SerializeField] HealthKitInventoryUISlot[] healthKitInventoryUISlot;
 
-    [SerializeField] GameObject CrossHair;
+    [SerializeField] GameObject CrossHair; 
+
+    [SerializeField] Image PlayerDamageIndicator;
      
     void Awake()
     { 
@@ -83,7 +85,7 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 
     private void InitialProjectileSetup(ProjectileInventoryUISlot projectile,ItemSlot itemSlot, InventoryItem tempItem)
     {
-        projectile.EmptyItemText.gameObject.SetActive(false);
+        projectile.EmptyItemText.SetActive(false);
         projectile.IconGameObject.SetActive(true);
         projectile.ItemQuantityText.gameObject.SetActive(true);
 
@@ -134,6 +136,18 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
            InventoryUIPanel.SetActive(true);
         }
     }
+
+
+    public void UpdateDamageIndicator(float damageDealed) 
+    {
+        float DamageIndicatorAlphaValue = damageDealed / 100 ;
+         
+        // image = GetComponent<Image>();
+          var tempColor = PlayerDamageIndicator.color;
+          tempColor.a = DamageIndicatorAlphaValue;
+          PlayerDamageIndicator.color = tempColor;
+    }
+
    
 }
 
@@ -142,7 +156,7 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 [Serializable]
 public class ProjectileInventoryUISlot
 {
-    public Text EmptyItemText;
+    public GameObject EmptyItemText;
     public Text ItemQuantityText;
     public GameObject IconGameObject; 
     [HideInInspector]public bool isEmpty;       
@@ -153,14 +167,9 @@ public class ProjectileInventoryUISlot
 [System.Serializable]
 public class HealthKitInventoryUISlot
 {
-    public Text EmptyItemText;
+    public GameObject EmptyItemText;
     public Text ItemQuantityText;
     public GameObject IconGameObject; 
     [HideInInspector]public bool isEmpty;       
     [HideInInspector] public HealthKitType healthKitType;
-    
-    // HealthKitInventoryUISlot()
-    // {
-        // isEmpty = true;
-    // }
 }

@@ -1,26 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WalkableDinosaurController 
-{
-    public WalkableDinosaurController(WalkableDinosaurModel walkableDinosaurModel,WalkableDinosaurView view,Transform positionToInstantiate, Transform[] wayPoints ) 
+{  
+    [SerializeReference] public WalkableDinosaurModel WalkableDinosaurModel;
+
+    [SerializeReference] public WalkableDinosaurView  WalkableDinosaurView ;
+
+    public WalkableDinosaurStates CurrentState { get; set; } 
+
+
+    public WalkableDinosaurController(WalkableDinosaurModel walkableDinosaurModel,WalkableDinosaurView view) 
     {
         WalkableDinosaurModel = walkableDinosaurModel;
         
-        WalkableDinosaurModel.WayPoints = wayPoints;
+        WalkableDinosaurView = GameObject.Instantiate<WalkableDinosaurView>(view);
 
-        WalkableDinosaurView = GameObject.Instantiate<WalkableDinosaurView>(view,positionToInstantiate);
-
-        // WalkableDinosaurModel.PlayerTarget = (Player.Instance.PlayerTarget != null) ? Player.Instance.PlayerTarget : null ;  // (Caution)
-
+        WalkableDinosaurModel.HealhToReduce = WalkableDinosaurModel.Health;
     }
-
-   [SerializeReference] public WalkableDinosaurModel WalkableDinosaurModel;
-
-   [SerializeReference] public WalkableDinosaurView  WalkableDinosaurView ;
-
-    public WalkableDinosaurStates CurrentState { get; set; } 
+     
+    public void SetPosition(Transform positionToInstantiate)
+    {
+        WalkableDinosaurView.DinosaurTransform.position = positionToInstantiate.position;
+    }
+  
+    public void SetWayPoint(Transform[] Waypoints)
+    {
+        WalkableDinosaurModel.WayPoints = Waypoints;
+    }
 
     public virtual void SetInitialState()
     {
@@ -28,12 +37,13 @@ public class WalkableDinosaurController
     }
 
     public virtual void ChangeState(WalkableDinosaurStates state)
-    {
-        if(CurrentState != null)
-        {
+    {  
+         
+        if(CurrentState != null )
+        { 
             CurrentState.OnStateExit();
         }
-
+       
         CurrentState = state;
         CurrentState.OnStateEnter();
     }
@@ -51,6 +61,8 @@ public class WalkableDinosaurController
         return temp;
     }
 
+    public virtual void TakeDamage(int damage){}
+
  
    // Receive the damage from Dinosaur body part and decide whether dinosaur is alive or not 
    // if health is less than zero then add this controller to object bool by resetting all variables in view mostly reset aipath
@@ -61,9 +73,10 @@ public class WalkableDinosaurController
 
 public class RaptorDinosaurController : WalkableDinosaurController
 {
-    public RaptorDinosaurController(RaptorDinosaurModel raptorDinosaurModel,RaptorDinosaurView view,Transform positionToInstantiate, Transform[] wayPoints ) : base (raptorDinosaurModel,view,positionToInstantiate,wayPoints)
+    public RaptorDinosaurController(RaptorDinosaurModel raptorDinosaurModel,RaptorDinosaurView view) : base (raptorDinosaurModel,view)
     {
         WalkableDinosaurView.walkableDinosaurController = this;
+      
     }
 
 
@@ -105,6 +118,42 @@ public class RaptorDinosaurController : WalkableDinosaurController
           }   
       }
       
+    } 
+
+    public override void TakeDamage(int damage)
+    {
+        if(WalkableDinosaurModel.HealhToReduce > 0)
+        { 
+          WalkableDinosaurModel.HealhToReduce -= damage;
+        }
+        if(WalkableDinosaurModel.HealhToReduce <= 0)
+        { 
+        //    SetInitialState();
+           RaptorDinosaurView view = (RaptorDinosaurView)WalkableDinosaurView; 
+           
+           view.DisableTheDinosaur(); 
+        }
+    }
+
+    
+
+    public void EnableDinosaur()
+    {
+        RaptorDinosaurView view = (RaptorDinosaurView)WalkableDinosaurView; 
+         
+        ResetHealth(); 
+
+        view.EnableDinosaur();
+
+        // view.stopCoroutine();  
+        view.IsDead = false;
+    }
+
+    public void ResetHealth()
+    {
+        RaptorDinosaurModel model = (RaptorDinosaurModel)WalkableDinosaurModel;
+
+        model.HealhToReduce = model.Health;
     }
 
 }
@@ -113,14 +162,44 @@ public class RaptorDinosaurController : WalkableDinosaurController
 public class TRexDinosaurController : WalkableDinosaurController
 {
 
-    public TRexDinosaurController(TRexDinosaurModel model,TRexView view,Transform positionToInstantiate, Transform[] wayPoints ) : base (model,view,positionToInstantiate,wayPoints) 
+    public TRexDinosaurController(TRexDinosaurModel model,TRexView view) : base (model,view) 
     {
        WalkableDinosaurView.walkableDinosaurController = this;
     }
 
-    // TRexDinosaurModel  TRexDinosaurModel { get; }
+    public override void TakeDamage(int damage)
+    {
+        if(WalkableDinosaurModel.HealhToReduce > 0)
+        { 
+          WalkableDinosaurModel.HealhToReduce -= damage;
+        }
+        if(WalkableDinosaurModel.HealhToReduce <= 0)
+        { 
+        //    SetInitialState();
+           TRexView view = (TRexView)WalkableDinosaurView; 
+           
+           view.DisableTheDinosaur(); 
+        }
+    }
 
-    // TRexDinosaurView  TRexDinosaurView { get; }
-   
+    
+
+    public void EnableDinosaur()
+    {
+        TRexView view = (TRexView)WalkableDinosaurView; 
+         
+        ResetHealth(); 
+
+        view.EnableDinosaur();
+ 
+        view.IsDead = false;
+    }
+
+    public void ResetHealth()
+    {
+        TRexDinosaurModel model = (TRexDinosaurModel)WalkableDinosaurModel;
+
+        model.HealhToReduce = model.Health;
+    }
 
 }

@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dinosaurBodyPart: 2
-  walkingDinosaurView: {fileID: 0}
+  walkingDinosaurView: {fileID: 1663085267487119194}
 --- !u!1 &7588524948803823697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,8 +2106,8 @@ GameObject:
   - component: {fileID: 1663085267487119194}
   - component: {fileID: 5328115031736834158}
   - component: {fileID: 5477593450625864055}
-  - component: {fileID: 6592382460634026320}
   - component: {fileID: 7430737276416568843}
+  - component: {fileID: 2965277325265714538}
   m_Layer: 13
   m_Name: Tyrannosaurus Rex
   m_TagString: Creature
@@ -2124,7 +2124,7 @@ Transform:
   m_GameObject: {fileID: 7588524948804064293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.9, y: 1.2, z: 10.497119}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 7588524948803800067}
   - {fileID: 7588524948803798887}
@@ -2405,7 +2405,9 @@ MonoBehaviour:
     id: 0
   PatrollingState: {fileID: 5477593450625864055}
   AttackingState: {fileID: 7430737276416568843}
-  ChasingState: {fileID: 6592382460634026320}
+  ChasingState: {fileID: 2965277325265714538}
+  DinosaurTransform: {fileID: 7588524948803787779}
+  IsDead: 0
   references:
     version: 1
     00000000:
@@ -2445,29 +2447,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkableDinosaurView: {fileID: 1663085267487119194}
-  aiAgent: {fileID: 5328115031736834158}
-  animator: {fileID: 7588524948796731091}
-  WalkableDinosaurModel:
-    id: 0
-  references:
-    version: 1
-    00000000:
-      type: {class: , ns: , asm: }
---- !u!114 &6592382460634026320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7588524948804064293}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8719854f04e74c46a3754c9f9b5a5bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkableDinosaurView: {fileID: 1663085267487119194}
-  aiAgent: {fileID: 5328115031736834158}
-  animator: {fileID: 7588524948796731091}
   WalkableDinosaurModel:
     id: 0
   references:
@@ -2487,8 +2466,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkableDinosaurView: {fileID: 1663085267487119194}
-  aiAgent: {fileID: 5328115031736834158}
-  animator: {fileID: 7588524948796731091}
+--- !u!114 &2965277325265714538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7588524948804064293}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f4eb8934bbd8c4e91fc0c09e3725a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkableDinosaurView: {fileID: 1663085267487119194}
+  WalkableDinosaurModel:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }
 --- !u!1 &7588524948804064397
 GameObject:
   m_ObjectHideFlags: 0

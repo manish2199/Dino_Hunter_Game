@@ -11,26 +11,17 @@ public class DinosaurBody : MonoBehaviour , IDamagable
   
    void Update(){}
 
-
-
    public void TakeDamage(int damage)
    {
-      print("Damage Recieved");
-
-      // Jobs
-
-      // 1 Tell controller through view that recieved damage 
-
-
-
-
       if(dinosaurBodyPart == DinosaurBodyPartType.Head)
       {
-          // recieve double damage 
+         // recieve double damage 
+        walkingDinosaurView.walkableDinosaurController.TakeDamage(damage*2);
       }
       else if( dinosaurBodyPart == DinosaurBodyPartType.MainBody)
       {
          // recieve less damage than head
+         walkingDinosaurView.walkableDinosaurController.TakeDamage(damage);
       }
    }
 

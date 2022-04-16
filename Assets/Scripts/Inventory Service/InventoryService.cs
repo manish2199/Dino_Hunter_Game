@@ -19,13 +19,7 @@ public class InventoryService : GenericSingleton<InventoryService>
    public int revquantity;
    public int revmaxLimit; 
 
-   public InventoryItem shotgbullet;
-   public int shotquantity;
-   public int shotgmaxLimit; 
-  
-   public InventoryItem assbullet;
-   public int assquantity;
-   public int assmaxLimit;
+ 
    
 
    void Awake()
@@ -39,9 +33,10 @@ public class InventoryService : GenericSingleton<InventoryService>
    void Start()
    {
        AddItemSlotToProjectiles(Revbullet,revquantity,revmaxLimit);
-       AddItemSlotToProjectiles(shotgbullet,shotquantity,shotgmaxLimit);
-       AddItemSlotToProjectiles(assbullet,assquantity,assmaxLimit);
    }
+
+
+  
 
 
     // this is called by achievement system only 
@@ -104,7 +99,6 @@ public class InventoryService : GenericSingleton<InventoryService>
         return false;
     }
 
-
     // supply health kit to player
     public int GetHealthKit( HealthKitType healthKitType )
     {
@@ -119,7 +113,25 @@ public class InventoryService : GenericSingleton<InventoryService>
        //means health kit is not preset and generate warning msg
        return 0;
         NotificationManager.Instance.ShowNotificationMsg(NotificationType.OutOfHealthKit);
-    }    
+    }
+
+
+    public void AddItemFromSupplies(CollectibleItemType collectibleItemType , CollectibleItem collectibleItem)
+   {
+       if(collectibleItemType == CollectibleItemType.Ammunation)
+       {
+           // add to projectile inventory list
+           Bullets temp = (Bullets)collectibleItem;
+           AddProjectiles(temp.ProjectileType,temp.CollectibleAmountContain); 
+           Debug.Log("Adding to projetiles");
+       }
+       if(collectibleItemType == CollectibleItemType.Medical)
+       {
+           // add to medical inventory list
+            HealthKit temp = (HealthKit)collectibleItem;
+           AddHealthKits(temp.HealthKitType,temp.CollectibleAmountContain);
+       }
+   }    
 
 
 
@@ -135,9 +147,10 @@ public class InventoryService : GenericSingleton<InventoryService>
                 if(weaponaryProjectiles[i].GetQuantity() < weaponaryProjectiles[i].GetMaxQuanity() )
                 {
                     // means present 
-
+                    
                     weaponaryProjectiles[i].SetQuantity(quanitty);
                     OnProjectileQuantityChanged?.Invoke(projectileType,weaponaryProjectiles[i].GetQuantity()); 
+                    print(weaponaryProjectiles[i].GetQuantity());
                 }
                 else // means bag is full 
                 {

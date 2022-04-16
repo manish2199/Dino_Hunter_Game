@@ -20,7 +20,7 @@ MonoBehaviour:
     00000000:
       type: {class: Raptor, ns: , asm: Assembly-CSharp}
       data:
-        Health: 100
+        Health: 350
         Damage: 20
         DinosaurAudios:
         - AudioClipType: 1
@@ -53,13 +53,14 @@ MonoBehaviour:
           - {fileID: 8300000, guid: 4da4c52d96c25ef4b91d22f522332540, type: 3}
           - {fileID: 8300000, guid: 20ea381264bafce49834eba50b640419, type: 3}
         Speed: 4
-        AngularSpeed: 700
+        AngularSpeed: 900
         Acceleration: 8
         FieldOfViewAnle: 170
         TargetStopppingDistance: 3.7
         StoppingDistanceFromWayPoint: 0.3
         ChasingRange: 15
         AttackingRange: 4
+        TimeToRespawnAfterDeath: 4000
         WalkableDinosaurView: {fileID: 1955166269947719500, guid: 603f9419ba3514a41b55529b065efa13,
           type: 3}
         raptorsType: 1
