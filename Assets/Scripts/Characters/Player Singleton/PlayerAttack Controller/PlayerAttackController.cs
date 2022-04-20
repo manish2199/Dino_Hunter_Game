@@ -37,7 +37,7 @@ public class PlayerAttackController : MonoBehaviour
 
     private void SelectInitialWeapon(Transform fps)
     {
-        WeaponService.Instance.SelectInitialWeapon(fps); 
+      // WeaponService.Instance.SelectInitialWeapon(fps); 
     }
 
     private void SelectWeapons(Transform fpsTransform , int weaponIndex)

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36616f70a59ea484595077dac95f07de, type: 3}
+  m_Name: TutorialTexts
+  m_EditorClassIdentifier: 
+  IntroductionText: 'Welcome To Dino World My Friend!! Before introduction Please
+    Follow these steps '
+  MoveInstruction: 'Press ''WASD'' Keys To Move '
+  JumpUnstructionText: Please Press Space To Jump
+  SprintUnstructionText: Press Left Shit To Sprint
+  CrouchUnstructionText: Press C To Crouch
+  WeaponShootText: Press Left MouseButton To Shoot
+  WeaponAim: Press Right MouseButton To Aim
+  WeaponSwitchText: Press Alpha1 , 2  , 3 Keys For Weapon Switch
+  WeaponDescText: Revolver Has Lowest Damage As Compare to Assualt Rifle And ShotGun
+  InventoryDescpText: Press I To Open Inventory Panel Where You Can Check How Much
+    Ammo and MediKit Left
+  InstructionSuccessText: Great Hunter You Have Passes The Test
+  DinosaursIntroductionText: In this world there are many fierce dinosaurs you will
+    face
+  BlueRaptorEnemyDescp: First One Is Blue Raptros These Are First Stage Dinosaur
+    And Will Bite You If You Go Withing Thier Range
+  RedRaptorEnemyDescp: Second One Are Red Raptors These Are Bigger Than Blue And
+    Burn You With Flames If They See You
+  TrexEnemyDescp: Third One Is Trex They Are Real Monsters The Can Kill You With
+    One Bite So You Have To Be Very Careful With Them
+  SuppliesDescpText: Supplies Provide You Ammo And HealthKits Be Sure After Using
+    Once They Get Spawned Randomly In The Houses
+  AchievementsDescpText: 'As You Unlocked Achievement New Weapons Get Unlocked '
+  TutorialFinishedText: Great Now You Are Ready To Face Dino World

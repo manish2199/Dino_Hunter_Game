@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -101,6 +102,8 @@ public class NonShootableWeaponController : WeaponController
 public class ShootableWeaponController : WeaponController
 { 	
    public ShootableWeaponModel ShootableWeaponModel { get; }
+
+   public static event Action OnMissTarget;
 
    public ShootableWeaponController(ShootableWeaponModel weaponModel ,WeaponView weaponView) 
    {
@@ -232,6 +235,7 @@ public class ShootableWeaponController : WeaponController
          }
          if( damagable == null && hit.transform.gameObject.layer != LayerMask.NameToLayer("Enemies") )
          {
+           OnMissTarget?.Invoke();
            WeaponView.MetalHitEffect.transform.position = hit.point;
            WeaponView.MetalHitEffect.transform.forward = hit.normal;
            WeaponView.MetalHitEffect.Emit(1);

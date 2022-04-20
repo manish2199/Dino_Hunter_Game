@@ -41,7 +41,10 @@ public class Player : GenericSingleton<Player>
 
    protected override void Awake()
    { 
-      base.Awake();
+      if(Instance == null)
+      {
+         Instance = this;
+      }
    }
     
     
@@ -79,8 +82,6 @@ public class Player : GenericSingleton<Player>
     {
         playerStatsController.TakeDamage(damage);
     }
-
-
 
     void Update()
     {

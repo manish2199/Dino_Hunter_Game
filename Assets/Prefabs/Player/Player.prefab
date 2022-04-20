@@ -469,7 +469,6 @@ MonoBehaviour:
     type: 2}
   rootTransform: {fileID: 5772465332397890352}
   playerTransform: {fileID: 5772465332631559539}
-  playerShoot: {fileID: 5772465332631559539}
   PlayerCollectableTransform: {fileID: 579922013265315015}
   weaponsHolder: {fileID: 5772465331498770935}
   characterController: {fileID: 5772465332631559529}
