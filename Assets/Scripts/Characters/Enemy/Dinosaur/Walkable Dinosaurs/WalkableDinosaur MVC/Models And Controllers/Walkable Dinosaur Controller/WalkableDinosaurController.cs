@@ -9,7 +9,7 @@ public class WalkableDinosaurController
 
     [SerializeReference] public WalkableDinosaurView  WalkableDinosaurView ;
 
-    public WalkableDinosaurStates CurrentState { get; set; }  
+    public WalkableDinosaurStates CurrentState { get; set; } 
 
 
     public WalkableDinosaurController(WalkableDinosaurModel walkableDinosaurModel,WalkableDinosaurView view) 
@@ -160,9 +160,7 @@ public class RaptorDinosaurController : WalkableDinosaurController
 
 
 public class TRexDinosaurController : WalkableDinosaurController
-{ 
-
-    public static event Action OnTrexDeath;
+{
 
     public TRexDinosaurController(TRexDinosaurModel model,TRexView view) : base (model,view) 
     {
@@ -178,7 +176,6 @@ public class TRexDinosaurController : WalkableDinosaurController
         if(WalkableDinosaurModel.HealhToReduce <= 0)
         { 
         //    SetInitialState();
-           OnTrexDeath?.Invoke();
            TRexView view = (TRexView)WalkableDinosaurView; 
            
            view.DisableTheDinosaur(); 

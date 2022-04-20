@@ -11,31 +11,17 @@ public class DinosaurBody : MonoBehaviour , IDamagable
   
    void Update(){}
 
-   public static event Action<RaptorsType,WalkableDinosaurView> OnHeadshot;
-   public static event Action OnBodyShot;
-
-
    public void TakeDamage(int damage)
    {
       if(dinosaurBodyPart == DinosaurBodyPartType.Head)
       {
          // recieve double damage 
-        
-         walkingDinosaurView.walkableDinosaurController.TakeDamage(damage*2);
-        if(walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel.WalkingDinosaurType == WalkingDinosaurType.Raptors)
-        {
-        
-          RaptorDinosaurModel temp = (RaptorDinosaurModel)walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel;
-        
-          OnHeadshot?.Invoke(temp.RaptorsType,walkingDinosaurView);
-        
-        }
+        walkingDinosaurView.walkableDinosaurController.TakeDamage(damage*2);
       }
       else if( dinosaurBodyPart == DinosaurBodyPartType.MainBody)
       {
          // recieve less damage than head
          walkingDinosaurView.walkableDinosaurController.TakeDamage(damage);
-         OnBodyShot?.Invoke();
       }
    }
 

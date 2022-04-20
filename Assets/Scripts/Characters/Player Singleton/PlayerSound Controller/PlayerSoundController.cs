@@ -15,7 +15,7 @@ public class PlayerSoundController : MonoBehaviour
 
   [SerializeField] AudioSource playerFootStepAudio;
 
- 
+
   void Start()
   {
       // playerScriptableObject  = Player.Instance.PlayerScriptableObject;
@@ -68,7 +68,7 @@ public class PlayerSoundController : MonoBehaviour
      {
         AccumulatedStepDistance = 0f;
      }
-  }
+   }
 
   public void SetInitialFootStepAudio()
   {

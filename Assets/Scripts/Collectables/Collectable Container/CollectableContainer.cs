@@ -9,11 +9,7 @@ using Random=UnityEngine.Random;
 public class CollectableContainer : MonoBehaviour , ICollectable 
 { 
     // Just for Temporary use 
-     
-   public CollectableContainerType collectableContainerType;
-//    medical box provide medikit only 
-// ammo box provide ammo only 
- 
+    // public Collectible Projectiles;
 
     private List<Collectible> CollectibleList;  
 
@@ -28,21 +24,20 @@ public class CollectableContainer : MonoBehaviour , ICollectable
         CollectibleList = new List<Collectible>();
     }
 
-    void OnEnable()
-    {
-       // If Achievement Complete the add item to list (sUBS)
-    }
-
-    void OnDisable()
-    {
-       //(uNSUBS)
-    }
-
     void Start()
     {
-       
-        // handle by gameplay manager
-        // AddCollectibleToTheList(revolverBulletsCollecetible);
+        Collectible revolverBulletsCollecetible =  new Collectible();
+        revolverBulletsCollecetible.CollectibleItemType = CollectibleItemType.Ammunation;
+        Bullets revBullet = new Bullets();
+        revBullet.ProjectileType = ProjectileType.RevolverBullet;
+        revBullet.CollectibleAmountContain = 20;
+        revolverBulletsCollecetible.CollectibleItem = revBullet;
+
+        Debug.Log(revBullet.ProjectileType);
+        Debug.Log(revBullet.CollectibleAmountContain);
+        Debug.Log(revolverBulletsCollecetible.CollectibleItemType);
+
+        AddCollectibleToTheList(revolverBulletsCollecetible);
     }
 
     public async void Collect()
@@ -52,10 +47,7 @@ public class CollectableContainer : MonoBehaviour , ICollectable
         for(int i = 0; i<CollectibleList.Count; i++)
         {  
             InventoryService.Instance.AddItemFromSupplies(CollectibleList[i].CollectibleItemType,CollectibleList[i].CollectibleItem); 
-            if(NotificationManager.Instance != null)
-            {
-               NotificationManager.Instance.ShowNotificationMsg(NotificationType.ItemCollectedNotification);
-            }
+            NotificationManager.Instance.ShowNotificationMsg(NotificationType.ItemCollectedNotification);
         }
         await StartRespawnTimer();
     }
@@ -103,13 +95,6 @@ public class CollectableContainer : MonoBehaviour , ICollectable
 }
 
 
-public enum CollectableContainerType
-{
-    None,
-    AmmoBox,
-    MedicBox
-}
- 
 
 public enum CollectibleItemType
 {
@@ -118,3 +103,31 @@ public enum CollectibleItemType
     Medical
 }
  
+[Serializable]
+public class Collectible
+{
+    public CollectibleItemType CollectibleItemType;
+
+    public CollectibleItem CollectibleItem;
+
+}
+
+[Serializable]
+public class CollectibleItem
+{
+    public int CollectibleAmountContain;
+}
+
+[System.Serializable]
+public class Bullets : CollectibleItem
+{
+   public ProjectileType ProjectileType;
+}
+
+[System.Serializable]
+public class HealthKit : CollectibleItem
+{
+   public HealthKitType HealthKitType;
+}
+
+
