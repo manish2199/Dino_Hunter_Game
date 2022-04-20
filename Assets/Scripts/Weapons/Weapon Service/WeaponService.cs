@@ -17,12 +17,14 @@ public class WeaponService : GenericSingleton<WeaponService>
   
    protected override void Awake()
    {
-        base.Awake();
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+
         weaponControllerList = new List<WeaponController>();
-        UnlockTheWeapon(WeaponsID.Axe); 
-        UnlockTheWeapon(WeaponsID.Revolver); 
-        // UnlockTheWeapon(WeaponsID.ShotGun); 
-        // UnlockTheWeapon(WeaponsID.AssaultRifle);  
+       
+        
    }
    
     

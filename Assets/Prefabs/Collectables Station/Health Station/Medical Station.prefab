@@ -44,6 +44,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1523570685273982607}
+  - component: {fileID: 8598738309775516833}
+  - component: {fileID: 6040610674156547452}
+  - component: {fileID: 205624344443644374}
   m_Layer: 0
   m_Name: Medical Station
   m_TagString: Untagged
@@ -67,6 +70,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &8598738309775516833
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7338683405504738214}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6040610674156547452
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7338683405504738214}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0677439, y: 0.08437133, z: 1.2165532}
+  m_Center: {x: 0.03387201, y: 0.51197374, z: -0.010673165}
+--- !u!114 &205624344443644374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7338683405504738214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc95776c6eda1f04f908226d45b0b3d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectableContainerType: 2
+  SpawningPositions: []
+  TimeToRespawn: 500
 --- !u!1 &7630548852574936473
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,6 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8471953996901092677}
+  - component: {fileID: 64316970271621596}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Untagged
@@ -91,13 +139,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7630548852574936473}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8524147, y: -0.091902584, z: -0.45902547}
+  m_LocalPosition: {x: 0.846, y: -0.079, z: -0.469}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5004647183172366950}
   m_Father: {fileID: 1523570685273982607}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &64316970271621596
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7630548852574936473}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7580893, y: 0.44693238, z: 1.0532434}
+  m_Center: {x: -0.8472806, y: 0.31115964, z: 0.46136606}
 --- !u!1001 &1248098649460874511
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a215e402e5d93764491743d16a5fbf9e, type: 3}
+  m_Name: LevelInitializer
+  m_EditorClassIdentifier: 
+  InventoryBulletsLists:
+  - InventoryItem: {fileID: 11400000, guid: 607a79652635b01448bac6c5b0eb3892, type: 2}
+    InitialQuantity: 20
+    InitialMaxLimit: 40
+  - InventoryItem: {fileID: 11400000, guid: 9096f777f24adcd46a7a6d22eecc6aec, type: 2}
+    InitialQuantity: 25
+    InitialMaxLimit: 50
+  - InventoryItem: {fileID: 11400000, guid: e84e1035243854b46803837da5239d6d, type: 2}
+    InitialQuantity: 150
+    InitialMaxLimit: 250
+  InventoryMedicalKitLists:
+  - InventoryItem: {fileID: 11400000, guid: 7d8973a7f17b9ba478f9f4a03848e0dd, type: 2}
+    InitialQuantity: 3
+    InitialMaxLimit: 5
+  CollectibleProjectiles:
+  - {fileID: 11400000, guid: 1bc778f1e2ea3c14da3d2d6fcb58e1ba, type: 2}
+  - {fileID: 11400000, guid: e535271aaa6bfac4da696d017a5793f5, type: 2}
+  - {fileID: 11400000, guid: 68c04c51d4ba19f46aa1ec35b1229455, type: 2}
+  CollectibleHealthKits:
+  - {fileID: 11400000, guid: d35a05d1e8750f94e8aa26dd4580da3e, type: 2}

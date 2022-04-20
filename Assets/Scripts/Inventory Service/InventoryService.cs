@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[Serializable]
+
 public class InventoryService : GenericSingleton<InventoryService>
 {
     public static event Action<ProjectileType,int> OnProjectileQuantityChanged;
@@ -12,31 +12,16 @@ public class InventoryService : GenericSingleton<InventoryService>
     
     private List<ItemSlot> weaponaryProjectiles;
     
-    private ItemSlot HealthKit;
-
-   // Testing
-   public InventoryItem Revbullet;
-   public int revquantity;
-   public int revmaxLimit; 
-
- 
-   
+    private List<ItemSlot> HealthKits;
+    
 
    void Awake()
    {
        base.Awake(); 
-
+        
+       HealthKits = new List<ItemSlot>();
        weaponaryProjectiles = new List<ItemSlot>();
    }  
-
-
-   void Start()
-   {
-       AddItemSlotToProjectiles(Revbullet,revquantity,revmaxLimit);
-   }
-
-
-  
 
 
     // this is called by achievement system only 
@@ -53,15 +38,16 @@ public class InventoryService : GenericSingleton<InventoryService>
     }
 
     // Call only once in lifetime
-    public void AddItemToHealthKits(InventoryItem healthKit, int Quantity)
+    public void AddItemToHealthKits(InventoryItem healthKit, int Quantity , int MaxLimit )
     {
         ItemSlot newHealthKit = new ItemSlot();
+
         newHealthKit.SetItem(healthKit);
         newHealthKit.SetQuantity(Quantity);
+        newHealthKit.UpdateMaxLimit(MaxLimit);
 
-        HealthKit = newHealthKit;
-
-       GameplayUIManager.Instance.AddNewItemToUISlots(HealthKit);
+        HealthKits.Add(newHealthKit);
+       GameplayUIManager.Instance.AddNewItemToUISlots(newHealthKit);
 
     }
      
@@ -102,16 +88,28 @@ public class InventoryService : GenericSingleton<InventoryService>
     // supply health kit to player
     public int GetHealthKit( HealthKitType healthKitType )
     {
-        if(HealthKit.GetQuantity() > 0)
+        for ( int i =0 ; i<HealthKits.Count; i++)
         {
-            // meanse health kit present
-            HealthKit.ReduceQuantity();
-            OnHealthKitQuanityChanged?.Invoke(healthKitType,HealthKit.GetQuantity());
-            MedicalItem item = (MedicalItem)HealthKit.InventoryItem;
-            return item.HealthAmount;
+            MedicalItem item = (MedicalItem)HealthKits[i].InventoryItem;
+            if(item.HealthKitType == healthKitType)
+            {
+                if(HealthKits[i].GetQuantity() > 0 )
+                {
+                    // means present 
+                    HealthKits[i].ReduceQuantity(); 
+                  
+                    // invoke for text
+                    OnHealthKitQuanityChanged?.Invoke(healthKitType,HealthKits[i].GetQuantity());
+                    return item.HealthAmount;
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
        //means health kit is not preset and generate warning msg
-       return 0;
+        return 0;
         NotificationManager.Instance.ShowNotificationMsg(NotificationType.OutOfHealthKit);
     }
 
@@ -123,7 +121,6 @@ public class InventoryService : GenericSingleton<InventoryService>
            // add to projectile inventory list
            Bullets temp = (Bullets)collectibleItem;
            AddProjectiles(temp.ProjectileType,temp.CollectibleAmountContain); 
-           Debug.Log("Adding to projetiles");
        }
        if(collectibleItemType == CollectibleItemType.Medical)
        {
@@ -150,7 +147,7 @@ public class InventoryService : GenericSingleton<InventoryService>
                     
                     weaponaryProjectiles[i].SetQuantity(quanitty);
                     OnProjectileQuantityChanged?.Invoke(projectileType,weaponaryProjectiles[i].GetQuantity()); 
-                    print(weaponaryProjectiles[i].GetQuantity());
+                    
                 }
                 else // means bag is full 
                 {
@@ -172,16 +169,29 @@ public class InventoryService : GenericSingleton<InventoryService>
     // add quantity to healthkit slot  
     public void AddHealthKits( HealthKitType healthKitType ,int Quantity)
     {
-       if( HealthKit.GetQuantity() < HealthKit.GetMaxQuanity() )
+        for ( int i =0 ; i<HealthKits.Count; i++)
         {
-            // means health comp can store more
-            HealthKit.SetQuantity(Quantity);
-            OnHealthKitQuanityChanged?.Invoke(healthKitType,HealthKit.GetQuantity());
-        }
-        else
-        {
-             NotificationManager.Instance.ShowNotificationMsg(NotificationType.FullHealthKit);
-            //******* healtkit full event
+            MedicalItem item = (MedicalItem)HealthKits[i].InventoryItem;
+            if(item.HealthKitType == healthKitType)
+            {
+                // check quantity hits the max or not if yes return true if not return false and generate warning
+                if(HealthKits[i].GetQuantity() < HealthKits[i].GetMaxQuanity() )
+                {
+                    // means present 
+                    
+                    HealthKits[i].SetQuantity(Quantity);
+                    OnHealthKitQuanityChanged?.Invoke(healthKitType,HealthKits[i].GetQuantity());
+                }
+                else // means bag is full 
+                {
+                   NotificationManager.Instance.ShowNotificationMsg(NotificationType.FullHealthKit);
+                    break;
+                }
+            } 
+            else
+            {
+                // means not found 
+            }
         }
     }
 

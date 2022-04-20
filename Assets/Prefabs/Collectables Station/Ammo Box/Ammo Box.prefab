@@ -76,12 +76,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc95776c6eda1f04f908226d45b0b3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectiles:
-    CollectibleItemType: 0
-    CollectibleItem:
-      CollectibleAmountContain: 0
-  SpawningPositions: []
-  TimeToRespawn: 0
+  collectableContainerType: 1
+  SpawningPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  TimeToRespawn: 500
 --- !u!1 &1588568584101589545
 GameObject:
   m_ObjectHideFlags: 0

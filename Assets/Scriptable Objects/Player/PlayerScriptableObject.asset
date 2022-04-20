@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2caba4868c59c5442b277b49aa76438b, type: 3}
   m_Name: PlayerScriptableObject
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 6
   gravity: 20
   jumpForce: 10
   crouchSpeed: 3
-  sprintSpeed: 9
+  sprintSpeed: 10
   crouchedHeight: 0.7
   standingHeight: 1.6
   isMouseRotationInverted: 0
