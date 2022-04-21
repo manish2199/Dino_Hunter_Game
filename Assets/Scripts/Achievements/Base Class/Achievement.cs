@@ -15,7 +15,7 @@ public abstract class Achievement
 
     public string AchievementText { get { return Achievementtext; } }
 
-    protected AchievementType achievementType;
+    [HideInInspector] public AchievementType achievementType;
 
     public static event Action<Achievement> OnAchievementAcomplished;
     
@@ -57,3 +57,4 @@ public enum AchievementType
 //     SilverMedal,
 //     GoldMedal
 // }
+

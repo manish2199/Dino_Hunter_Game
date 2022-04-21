@@ -15,15 +15,10 @@ public static class GameData
    private static string RevolverUnlocked = "RevolverUnlocked";
    private static string ShotGunUnlocked = "ShotGunUnlocked";
    private static string AssualtRifleUnlocked = "AssualtRifleUnlocked";  
-   
-   // Achievements
-//    private static string RevolverUnlocked = "RevolverUnlocked";
-//    private static string ShotGunUnlocked = "ShotGunUnlocked";
-//    private static string AssualtRifleUnlocked = "AssualtRifleUnlocked";  
+
 
    // Tutorial 
    private static string TutorialState = "TutorialPlayed";  
-
 
    // int values
    // Player HighScores

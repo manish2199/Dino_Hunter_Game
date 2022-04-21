@@ -21,10 +21,7 @@ public class WeaponService : GenericSingleton<WeaponService>
         {
             Instance = this;
         }
-
-        weaponControllerList = new List<WeaponController>();
-       
-        
+        weaponControllerList = new List<WeaponController>(); 
    }
    
     

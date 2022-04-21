@@ -64,7 +64,7 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     public void AddNewItemToUISlots(ItemSlot itemSlot)
     {
        InventoryItem tempItem = itemSlot.InventoryItem;
-       if( tempItem.InventoryItemType == InventoryItemType.WeaponProjecile)
+       if( tempItem.InventoryItemType == InventoryItemType.WeaponProjectile)
        {
         //    add inside projectiles slot which are empty;
            if(projectileInventoryUISlots.Length > 0)
@@ -105,9 +105,12 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
         projectile.EmptyItemText.SetActive(false);
         projectile.IconGameObject.SetActive(true);
         projectile.ItemQuantityText.gameObject.SetActive(true);
+        projectile.MaxLimit.gameObject.SetActive(true);
+        projectile.ItemQuantityText.gameObject.SetActive(true);
 
         projectile.IconGameObject.GetComponent<Image>().sprite  = itemSlot.InventoryItem.UIIcon;
         projectile.ItemQuantityText.text = itemSlot.GetQuantity().ToString(); 
+        projectile.ItemMaxLimitText.text = itemSlot.GetMaxQuanity().ToString();
         projectile.isEmpty = false;
         WeaponProjectiles temp  = (WeaponProjectiles)tempItem;
         projectile.ProjectileType  = temp.BulletType;
@@ -119,14 +122,19 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
         healthKit.EmptyItemText.SetActive(false);
         healthKit.IconGameObject.SetActive(true);
         healthKit.ItemQuantityText.gameObject.SetActive(true);
+        healthKit.MaxLimit.gameObject.SetActive(true);
+        healthKit.ItemQuantityText.gameObject.SetActive(true);
 
         healthKit.IconGameObject.GetComponent<Image>().sprite  = itemSlot.InventoryItem.UIIcon;
+        healthKit.ItemMaxLimitText.text = itemSlot.GetMaxQuanity().ToString();
         healthKit.ItemQuantityText.text = itemSlot.GetQuantity().ToString(); 
         healthKit.isEmpty = false;
         MedicalItem temp  = (MedicalItem)tempItem;
         healthKit.HealthKitType  = temp.HealthKitType;
     }
 
+   
+  
 
 
 
@@ -137,6 +145,20 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
             if(projectileType == projectileInventoryUISlots[i].ProjectileType)
             {
                 projectileInventoryUISlots[i].ItemQuantityText.text = quanitty.ToString();
+                break;
+            }
+
+        }
+
+    }
+
+    public void UpdateTheProjectilesMaxLimit(ProjectileType projectileType , int maxLimit) 
+    {
+        for ( int i =0 ; i<projectileInventoryUISlots.Length; i++)
+        {
+            if(projectileType == projectileInventoryUISlots[i].ProjectileType)
+            {
+                projectileInventoryUISlots[i].ItemMaxLimitText.text = maxLimit.ToString();
             }
 
         }
@@ -149,11 +171,21 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
         {
             if(healthKitType == healthKitInventoryUISlot[i].HealthKitType)
             {
-                healthKitInventoryUISlot[i].ItemQuantityText.text = quanitty.ToString();
+                healthKitInventoryUISlot[i].ItemQuantityText.text = quanitty.ToString(); 
+                break;
             }
 
         }
     }
+
+    public void UpdateHealthKitMaxLimit(int maxLimit)
+    {
+        for ( int i =0 ; i<healthKitInventoryUISlot.Length; i++)
+        {
+            healthKitInventoryUISlot[i].ItemMaxLimitText.text = maxLimit.ToString();
+        }
+    }
+
 
 
     public void ActivateInventory()
@@ -177,30 +209,32 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
           var tempColor = PlayerDamageIndicator.color;
           tempColor.a = DamageIndicatorAlphaValue;
           PlayerDamageIndicator.color = tempColor;
-    }
-
+    } 
    
 }
 
 
-
 [Serializable]
-public class ProjectileInventoryUISlot
+public class InventoryUISlot
 {
     public GameObject EmptyItemText;
     public Text ItemQuantityText;
+    public Text MaxLimit; 
+    public Text ItemMaxLimitText;
     public GameObject IconGameObject; 
     [HideInInspector]public bool isEmpty;       
+}
+
+
+[Serializable]
+public class ProjectileInventoryUISlot : InventoryUISlot
+{  
     [HideInInspector] public ProjectileType  ProjectileType;
 }
 
 
 [System.Serializable]
-public class HealthKitInventoryUISlot
+public class HealthKitInventoryUISlot : InventoryUISlot
 {
-    public GameObject EmptyItemText;
-    public Text ItemQuantityText;
-    public GameObject IconGameObject; 
-    [HideInInspector]public bool isEmpty;       
     [HideInInspector] public HealthKitType HealthKitType;
 }

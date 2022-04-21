@@ -3,63 +3,175 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GamePlayManager : GenericSingleton<GamePlayManager>
-{
-  
-//    public bool IsTutorialIsPlaying;
-
-   
+{   
+   [SerializeField] LevelInitializerScriptableObject InitialLevelConstraints;
 
 
-//   void Awake()
-//   { 
-//      if(Instance == null)
-//      {
-//         Instance = this;
-//      }
-//      IsTutorialIsPlaying = false;
-//   }
-
-
-
-
-//   void Start()
-//   {
-//       // check if tutorial is already Player Or Not if not then play tutorial for player
-//   }
-
-
-
-
-//   void PlayTutorial()
-//   {
-//      if(GameData.GetTutorialState() == 0 )
-//      {
-//         // play Tutorial 
-//         IsTutorialIsPlaying = true;
-
-//         //  Show Welcome Message 
-
-
-//      }
-//   }
-
-
-
-
-
-
-
-
-
-
-
-   public void OnEnable()
-   {
-
+  private void OnEnable()
+  {
+      Achievement.OnAchievementAcomplished += UnlockItems; 
    }
 
-   public void OnDisable()
+  private void OnDisable()
+  {
+      Achievement.OnAchievementAcomplished -= UnlockItems;
+  }
+
+
+  private void UnlockItems(Achievement achievement)
+  {
+     if(achievement.achievementType == AchievementType.HatrickOfHeadShots)
+     {
+        // Check unlock weapon type then unlcok it
+         HeadshotHatrickAchievement headshotHatrickAchievement = (HeadshotHatrickAchievement)achievement;
+      
+         if(headshotHatrickAchievement.UnlockWeaponType == UnlockWeaponType.ShotGun)
+         {
+            // Unlock the weapon and Save Data
+            GameData.SetShotgunUnlocked(1); 
+            WeaponService.Instance.UnlockTheWeapon(WeaponsID.ShotGun); 
+            AddProjectilesToInventory(ProjectileType.ShotGunBullet);
+
+            // Show the ui text
+         }
+         if(headshotHatrickAchievement.UnlockWeaponType == UnlockWeaponType.AssualtRifle)
+         {
+            // Unlock the weapon and Save Data
+            GameData.SetAssualtRifleUnlocked(1); 
+            WeaponService.Instance.UnlockTheWeapon(WeaponsID.AssaultRifle); 
+            AddProjectilesToInventory(ProjectileType.AssaultRifleBullet);
+            
+            // sHOW UI TEXT 
+         }
+         headshotHatrickAchievement.UnSubscribe();
+         NotificationManager.Instance.ShowAchievementComplete(headshotHatrickAchievement.AchievementText,headshotHatrickAchievement.UnlockWeaponIcon);
+     }
+     if(achievement.achievementType == AchievementType.TRexKill)
+     {
+        TRexKillAchievement trexKillAchievement = (TRexKillAchievement)achievement;
+
+        InventoryService.Instance.IncreaseHealthKitsMaxLimit(trexKillAchievement.HealthKitsMaxLimit);  
+     } 
+  } 
+   
+ 
+
+
+
+   protected override void Awake()
    {
-       
+      MakeInstance();
+   }
+
+   private void MakeInstance()
+   {
+      if(Instance == null)
+      {
+         Instance = this;
+      }
+   }
+     
+   void Start()
+   {
+      // CHeck Whether particular Achievement are Completed Or Not 
+      InitialSetup();
+   }
+
+
+
+   public void UnlockRevolver()
+   {
+      WeaponService.Instance.UnlockTheWeapon(WeaponsID.Revolver);
+      AddProjectilesToInventory(ProjectileType.RevolverBullet);
+      // UnlockedCollectibleBullets.Add(GetCollectibleProjectiles(ProjectileType.RevolverBullet));
+      Player.Instance.playerAttackController.SelectInitialWeapon();
+   }
+
+
+   private void InitialSetup()
+   { 
+      // Revolver Is Always Unlocked 
+      UnlockRevolver();
+
+      //Add Initial Medikit to Inventory
+      AddInitialMediKitsToInventory();
+
+      // Check If Which Weapons Are Locked 
+      if(GameData.GetShotgunUnlocked() == 1)
+      {
+         WeaponService.Instance.UnlockTheWeapon(WeaponsID.ShotGun); 
+         // Add Initial Unlocked Inventory Projectiles to Inventory 
+         AddProjectilesToInventory(ProjectileType.ShotGunBullet);
+      }
+      if(GameData.GetAssualtRifleUnlocked() == 1)
+      {
+         WeaponService.Instance.UnlockTheWeapon(WeaponsID.AssaultRifle);  
+
+         // Add Initial Unlocked Inventory Projectiles to Inventory 
+         AddProjectilesToInventory(ProjectileType.AssaultRifleBullet);
+      }  
+   }
+
+
+
+
+
+   #region InitialInventoryProjectileItems
+   private void AddProjectilesToInventory(ProjectileType projectileType)
+   {
+      InventoryItemConstraints inventoryItemConstraints = GetProjectileInventoryItem(projectileType);
+      
+      InventoryItem item = inventoryItemConstraints.InventoryItem;
+      int quantity =  inventoryItemConstraints.InitialQuantity;
+      int maxLimit =  inventoryItemConstraints.InitialMaxLimit;
+      InventoryService.Instance.AddItemSlotToProjectiles(item,quantity,maxLimit);    
+   }
+
+   private InventoryItemConstraints GetProjectileInventoryItem(ProjectileType projectileType)
+   {
+      InventoryItemConstraints inventoryItemConstraints = null;
+      for(int i = 0; i<InitialLevelConstraints.InventoryBulletsLists.Length; i++)
+      { 
+         if(InitialLevelConstraints.InventoryBulletsLists[i].InventoryItem.InventoryItemType == InventoryItemType.WeaponProjectile)
+         {
+            WeaponProjectiles temp = (WeaponProjectiles)InitialLevelConstraints.InventoryBulletsLists[i].InventoryItem;
+
+            if(temp.BulletType == projectileType)
+            {
+               inventoryItemConstraints = InitialLevelConstraints.InventoryBulletsLists[i];
+            }
+         }
+      }
+      return inventoryItemConstraints;
+   }
+   #endregion
+
+
+
+
+   #region InitialMedicalInventoryItems
+   private void AddInitialMediKitsToInventory()
+   {
+       for(int i = 0; i<InitialLevelConstraints.InventoryMedicalKitLists.Length; i++)
+       { 
+           InventoryItem item = InitialLevelConstraints.InventoryMedicalKitLists[i].InventoryItem;
+           int quantity =  InitialLevelConstraints.InventoryMedicalKitLists[i].InitialQuantity;
+           int maxLimit =  InitialLevelConstraints.InventoryMedicalKitLists[i].InitialMaxLimit;
+
+           InventoryService.Instance.AddItemToHealthKits(item,quantity,maxLimit);
+       }
+   }
+   #endregion
+
+
+   public List<CollectiblesScriptableObject> GetProjectileCollectibleList()
+   { 
+        return InitialLevelConstraints.CollectibleProjectiles;
+   }
+
+
+   public List<CollectiblesScriptableObject> GetMediKitCollectibleList()
+   {
+        return InitialLevelConstraints.CollectibleHealthKits;
    }
 }

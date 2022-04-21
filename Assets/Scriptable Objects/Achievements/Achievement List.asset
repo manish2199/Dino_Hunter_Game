@@ -27,14 +27,24 @@ MonoBehaviour:
     00000000:
       type: {class: HeadshotHatrickAchievement, ns: , asm: Assembly-CSharp}
       data:
+        achievementType: 0
         RaptorsType: 1
         HeadshotNumber: 3
+        UnlockWeaponType: 1
+        UnlockWeaponIcon: {fileID: 21300000, guid: 274520a0b8031b249b04ab37bb22a30c,
+          type: 3}
     00000001:
       type: {class: HeadshotHatrickAchievement, ns: , asm: Assembly-CSharp}
       data:
+        achievementType: 1
         RaptorsType: 2
         HeadshotNumber: 3
+        UnlockWeaponType: 2
+        UnlockWeaponIcon: {fileID: 21300000, guid: aee48120e914d1440984ade4ce3cb5b5,
+          type: 3}
     00000002:
       type: {class: TRexKillAchievement, ns: , asm: Assembly-CSharp}
       data:
+        achievementType: 0
+        HealthKitsMaxLimit: 5
         NumberOfKill: 1

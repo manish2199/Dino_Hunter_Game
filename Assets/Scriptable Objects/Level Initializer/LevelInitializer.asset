@@ -27,8 +27,8 @@ MonoBehaviour:
     InitialQuantity: 3
     InitialMaxLimit: 5
   CollectibleProjectiles:
-  - {fileID: 11400000, guid: 1bc778f1e2ea3c14da3d2d6fcb58e1ba, type: 2}
-  - {fileID: 11400000, guid: e535271aaa6bfac4da696d017a5793f5, type: 2}
-  - {fileID: 11400000, guid: 68c04c51d4ba19f46aa1ec35b1229455, type: 2}
+  - {fileID: 11400000, guid: 762ae58d5e777a84f97901b297738a62, type: 2}
+  - {fileID: 11400000, guid: f571cdf541722b2498c86e9d56952ba5, type: 2}
+  - {fileID: 11400000, guid: 1bbdf43c4317b8641a521343eb214da5, type: 2}
   CollectibleHealthKits:
-  - {fileID: 11400000, guid: d35a05d1e8750f94e8aa26dd4580da3e, type: 2}
+  - {fileID: 11400000, guid: 383eb85e544834241bf5f98b469c12f2, type: 2}

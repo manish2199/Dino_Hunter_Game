@@ -196,4 +196,14 @@ public class InventoryService : GenericSingleton<InventoryService>
     }
 
 
+    public void IncreaseHealthKitsMaxLimit(int maxLimit)
+    {
+        for(int i = 0; i<HealthKits.Count; i++)
+        {
+            HealthKits[i].UpdateMaxLimit(maxLimit);
+            GameplayUIManager.Instance.UpdateHealthKitMaxLimit(maxLimit);
+        }
+    }
+ 
+
 }

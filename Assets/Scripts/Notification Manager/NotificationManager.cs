@@ -10,9 +10,17 @@ public class NotificationManager : GenericSingleton<NotificationManager>
 
     [SerializeField] private GameObject NotificationPanel;
 
-    [SerializeField]  private Text NotificationText;  
+    [SerializeField]  private Text NotificationText; 
+
+    [SerializeField] GameObject AchievementPanel;
+
+    [SerializeField] Text AchievementAcomplishedText;
+
+    [SerializeField] Image UnlockItemImage; 
 
     private IEnumerator NotificationMessageCoroutine;
+
+    private IEnumerator AchivementCompleteCoroutine;
 
     private bool isAlradyShowing = false; 
    
@@ -20,6 +28,27 @@ public class NotificationManager : GenericSingleton<NotificationManager>
     {
         base.Awake();
     }
+
+    public void ShowAchievementComplete(string achievementText , Sprite unlockItemSprite)
+    {
+        AchivementCompleteCoroutine =  AchievementComplete(achievementText,unlockItemSprite);
+        StartCoroutine(AchivementCompleteCoroutine);
+    }
+
+    IEnumerator AchievementComplete(string achievementText , Sprite unlockItemSprite)
+    {
+        AchievementAcomplishedText.text = achievementText;
+        UnlockItemImage.sprite = unlockItemSprite;
+      
+        AchievementPanel.SetActive(true);
+
+        yield return new WaitForSeconds(5f);
+
+        AchievementPanel.SetActive(false);
+        AchievementAcomplishedText.text = " ";
+        UnlockItemImage.sprite = null;
+    }
+
 
  
     public void ShowNotificationMsg(NotificationType NotificationType)
@@ -29,7 +58,7 @@ public class NotificationManager : GenericSingleton<NotificationManager>
         Notification notification = GetNotification(NotificationType);
         NotificationMessageCoroutine = MsgCoroutine(notification);
         StartCoroutine(NotificationMessageCoroutine);
-      }
+      } 
     }
 
     private Notification GetNotification(NotificationType NotificationType)

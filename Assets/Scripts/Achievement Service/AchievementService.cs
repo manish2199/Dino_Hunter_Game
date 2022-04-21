@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class AchievementService : GenericSingleton<AchievementService>
 {
-    [SerializeField] AchievementsScriptableObject achievementsList;
+   [SerializeField] AchievementsScriptableObject achievementsList;  
 
-    protected override void Awake()
-    {
+
+
+
+   protected override void Awake()
+   {
       if(Instance == null)
       {
         Instance = this;
       }
-    }
+   }
 
    private void EnableAchievement()
    {
       achievementsList.SubscribeAchievements();
+   
    }
-
 
    private void DisableAllAchievements()
    {

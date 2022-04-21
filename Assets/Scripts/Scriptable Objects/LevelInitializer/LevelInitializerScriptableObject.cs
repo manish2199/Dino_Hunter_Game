@@ -9,9 +9,9 @@ public class LevelInitializerScriptableObject : ScriptableObject
 
     public InventoryItemConstraints[] InventoryMedicalKitLists;
 
-    public CollectiblesScriptableObject[] CollectibleProjectiles;
+    public List<CollectiblesScriptableObject> CollectibleProjectiles;
 
-    public CollectiblesScriptableObject[] CollectibleHealthKits;
+    public List<CollectiblesScriptableObject> CollectibleHealthKits;
 }
 
 

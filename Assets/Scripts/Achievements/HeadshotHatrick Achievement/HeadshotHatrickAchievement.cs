@@ -8,6 +8,10 @@ public class HeadshotHatrickAchievement : Achievement
 
     public int HeadshotNumber; 
 
+    public UnlockWeaponType UnlockWeaponType;
+
+    public Sprite UnlockWeaponIcon; 
+
     private WalkableDinosaurView WalkableDinosaurView; 
 
     public HeadshotHatrickAchievement() : base () {}
@@ -58,6 +62,14 @@ public class HeadshotHatrickAchievement : Achievement
 
     protected virtual void SetAchievementText()
     {
-       Achievementtext = "Hit Consecutive"+HeadshotNumber+"HeadShot";
+       Achievementtext = "Hit Consecutive"+HeadshotNumber+"HeadShot On "+RaptorsType + " Unlock Weapon - ";
     }
+}
+
+
+public enum UnlockWeaponType
+{
+    None,
+    ShotGun,
+    AssualtRifle,
 }

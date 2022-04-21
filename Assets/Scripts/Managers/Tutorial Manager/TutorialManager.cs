@@ -49,7 +49,6 @@ public class TutorialManager : GenericSingleton<TutorialManager>
        WeaponService.Instance.UnlockTheWeapon(WeaponsID.AssaultRifle);  
        
         AddInitialItemToInventory();
-
     }
 
 
@@ -177,6 +176,9 @@ public class TutorialManager : GenericSingleton<TutorialManager>
        yield return new WaitForSeconds(5f);
        
        InstructionText.text = PlayerTutorials.TutorialFinishedText;
+
+
+       yield return new WaitForSeconds(3f);
 
        InstructionPanel.SetActive(false);
  

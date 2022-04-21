@@ -6,8 +6,10 @@ public class TRexKillAchievement : Achievement
 {
     public TRexKillAchievement() : base ()
     {}
+    
+    public int HealthKitsMaxLimit;
 
-   public int NumberOfKill;   
+    public int NumberOfKill;   
 
 	public override void Subscribe()
 	{
@@ -32,7 +34,7 @@ public class TRexKillAchievement : Achievement
 
     protected virtual void SetAchievementText()
     {
-       Achievementtext = "Killed "+NumberOfKill +" Number of TRex";
+       Achievementtext = "Killed "+NumberOfKill +" Number of TRex. HealthKit MaxLimit Has Been Increased ";
     }
   
 }

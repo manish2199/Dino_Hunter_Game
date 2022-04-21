@@ -24,7 +24,7 @@ public class Player : GenericSingleton<Player>
 
     [SerializeField] PlayerSoundController playerSoundController;
 
-    [SerializeField] PlayerAttackController playerAttacksController;
+    public PlayerAttackController playerAttackController;
 
     [SerializeField] PlayerStatsController playerStatsController;
 
@@ -91,6 +91,6 @@ public class Player : GenericSingleton<Player>
           
        playerSoundController.PlayFootStepAudio();
    
-       playerAttacksController.SelectWeapon();
+       playerAttackController.SelectWeapon();
     }       
 }

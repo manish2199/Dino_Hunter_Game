@@ -70,7 +70,7 @@ public enum HealthKitType
 public enum InventoryItemType
 {
     None, 
-    WeaponProjecile,
+    WeaponProjectile,
     HealthKit
 }
 

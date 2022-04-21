@@ -9,7 +9,6 @@ public class PlayerAttackController : MonoBehaviour
    void Start()
    {
        playerScriptableObject  = Player.Instance.PlayerScriptableObject;
-       SelectInitialWeapon(Player.Instance.weaponsHolder);  
    }
 
 
@@ -35,13 +34,13 @@ public class PlayerAttackController : MonoBehaviour
    }
 
 
-    private void SelectInitialWeapon(Transform fps)
-    {
-      // WeaponService.Instance.SelectInitialWeapon(fps); 
-    }
+   public void SelectInitialWeapon()
+   {
+      WeaponService.Instance.SelectInitialWeapon(Player.Instance.weaponsHolder); 
+   }
 
-    private void SelectWeapons(Transform fpsTransform , int weaponIndex)
-    {
-        WeaponService.Instance.SelectWeapon(fpsTransform,weaponIndex);
-    }
+   private void SelectWeapons(Transform fpsTransform , int weaponIndex)
+   {
+      WeaponService.Instance.SelectWeapon(fpsTransform,weaponIndex);
+   }
 }

@@ -1854,7 +1854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8509804}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1992,7 +1992,7 @@ PrefabInstance:
     - target: {fileID: 5772465332631559539, guid: 2d9a656a58ac0c742a0e897458572824,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 469.27066
+      value: 475.68
       objectReference: {fileID: 0}
     - target: {fileID: 5772465332631559539, guid: 2d9a656a58ac0c742a0e897458572824,
         type: 3}
@@ -2002,7 +2002,7 @@ PrefabInstance:
     - target: {fileID: 5772465332631559539, guid: 2d9a656a58ac0c742a0e897458572824,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 489.83
+      value: 501.07
       objectReference: {fileID: 0}
     - target: {fileID: 5772465332631559539, guid: 2d9a656a58ac0c742a0e897458572824,
         type: 3}
@@ -2223,8 +2223,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4182071118613216266, guid: 9c16533564d253b4cb9f7338dc2bbd97,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4182071118613216266, guid: 9c16533564d253b4cb9f7338dc2bbd97,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4182071118613216266, guid: 9c16533564d253b4cb9f7338dc2bbd97,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 4182071118613216266, guid: 9c16533564d253b4cb9f7338dc2bbd97,
         type: 3}
@@ -2234,7 +2244,7 @@ PrefabInstance:
     - target: {fileID: 4182071118613216266, guid: 9c16533564d253b4cb9f7338dc2bbd97,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -13.45
       objectReference: {fileID: 0}
     - target: {fileID: 4182071118613216266, guid: 9c16533564d253b4cb9f7338dc2bbd97,
         type: 3}
@@ -2275,6 +2285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 4182071118613216311, guid: 9c16533564d253b4cb9f7338dc2bbd97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c16533564d253b4cb9f7338dc2bbd97, type: 3}

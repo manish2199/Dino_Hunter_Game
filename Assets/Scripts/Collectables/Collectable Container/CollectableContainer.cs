@@ -8,41 +8,47 @@ using Random=UnityEngine.Random;
 
 public class CollectableContainer : MonoBehaviour , ICollectable 
 { 
-    // Just for Temporary use 
+
      
    public CollectableContainerType collectableContainerType;
 //    medical box provide medikit only 
 // ammo box provide ammo only 
  
 
-    private List<Collectible> CollectibleList;  
+    private List<CollectiblesScriptableObject> CollectibleList;  
 
     public Transform[] SpawningPositions;
 
     private int CurrentSpawnIndex = 0;
 
-    public int TimeToRespawn;
+    public int TimeToRespawn; 
 
     void Awake()
     {
-        CollectibleList = new List<Collectible>();
+        CollectibleList = new List<CollectiblesScriptableObject>();
     }
 
-    void OnEnable()
-    {
-       // If Achievement Complete the add item to list (sUBS)
-    }
-
-    void OnDisable()
-    {
-       //(uNSUBS)
-    }
 
     void Start()
     {
-       
-        // handle by gameplay manager
-        // AddCollectibleToTheList(revolverBulletsCollecetible);
+      FillCollectibleList();
+    } 
+
+    public void AddCollectibleToTheList(CollectiblesScriptableObject collectible)
+    {
+       CollectibleList.Add(collectible);
+    }
+
+    void FillCollectibleList()
+    {
+       if(collectableContainerType == CollectableContainerType.AmmoBox)
+       { 
+          CollectibleList = GamePlayManager.Instance.GetProjectileCollectibleList();
+       }
+       if(collectableContainerType == CollectableContainerType.MedicBox)
+       {
+          CollectibleList = GamePlayManager.Instance.GetMediKitCollectibleList();
+       }
     }
 
     public async void Collect()
@@ -84,11 +90,6 @@ public class CollectableContainer : MonoBehaviour , ICollectable
     private void SpawnOnRandomPosition()
     {
         transform.position = SpawningPositions[CurrentSpawnIndex].position;
-    }
-
-    public void AddCollectibleToTheList(Collectible collectible)
-    {
-       CollectibleList.Add(collectible);
     }
 
     void OnTriggerEnter(Collider other)
