@@ -61,7 +61,13 @@ public class EnemiesService : GenericSingleton<EnemiesService>
            RaptorDinosaurView view =(RaptorDinosaurView)raptor.WalkableDinosaurView;
  
            RaptorDinosaurController controller = RaptorDinosaurPool.GetRaptorDinosaur(raptorModel,view); 
-           controller.SetPosition(WalkableDinosaursList[i].PositionToInstantiate);
+
+           // Wrap Position 
+           if( view.navMeshAgent.isOnNavMesh == false)
+           {
+              view.navMeshAgent.Warp(WalkableDinosaursList[i].PositionToInstantiate.position);
+           }
+               
            controller.SetWayPoint(WalkableDinosaursList[i].WayPoints);
          }
          if(WalkableDinosaursList[i].WalkableDinosaurScriptableObject.WalkingDinosaurType == WalkingDinosaurType.TRex)
@@ -74,7 +80,11 @@ public class EnemiesService : GenericSingleton<EnemiesService>
             TRexView view =(TRexView)trex.WalkableDinosaurView;
  
             TRexDinosaurController controller = TRexDinosaurPool.GetTRexDinosaur(trexModel,view); 
-            controller.SetPosition(WalkableDinosaursList[i].PositionToInstantiate);
+            if( view.navMeshAgent.isOnNavMesh == false)
+           {
+              view.navMeshAgent.Warp(WalkableDinosaursList[i].PositionToInstantiate.position);
+           }
+            // controller.SetPosition(WalkableDinosaursList[i].PositionToInstantiate);
             controller.SetWayPoint(WalkableDinosaursList[i].WayPoints);
          }
          

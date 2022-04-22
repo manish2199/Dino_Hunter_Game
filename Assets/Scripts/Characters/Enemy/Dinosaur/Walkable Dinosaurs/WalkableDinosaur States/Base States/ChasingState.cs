@@ -8,15 +8,20 @@ public class ChasingState : WalkableDinosaurStates
 
 	public override void OnStateUpdate()
 	{ 
-		if(aiAgent.enabled == true)
-		{
+		if(aiAgent.enabled == true && PlayerTarget != null)
+		{ 
 		    aiAgent.SetDestination(PlayerTarget.position);
 
 	    	animator.transform.LookAt(PlayerTarget);
 		}
-		if(GetDistance(transform.position,PlayerTarget.position) < WalkableDinosaurModel.AttackingRange )
+		if(PlayerTarget != null && GetDistance(transform.position,PlayerTarget.position) < WalkableDinosaurModel.AttackingRange )
         {
 			walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.AttackingState);
+		}
+
+		if(PlayerTarget == null)
+		{
+			walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.PatrollingState);
 		}
 	
 	}

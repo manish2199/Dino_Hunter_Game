@@ -25,9 +25,15 @@ public class TRexChasingState : ChasingState
 
              
         }
-		if(GetDistance(transform.position,PlayerTarget.position) < WalkableDinosaurModel.AttackingRange )
+
+		if(PlayerTarget != null && GetDistance(transform.position,PlayerTarget.position) < WalkableDinosaurModel.AttackingRange )
         {
 			walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.AttackingState);
+		}
+
+		if(PlayerTarget == null)
+		{
+			walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.PatrollingState);
 		}
 	
 	}

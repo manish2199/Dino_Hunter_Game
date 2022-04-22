@@ -2147,8 +2147,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5732738285348620047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.74, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 430.8, y: -29.939999, z: -765.8}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 1378973571230648125}
   - {fileID: 7342636689198292086}
@@ -2282,7 +2282,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
@@ -2322,6 +2322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8028452973731020140}
   AudioSource: {fileID: 8817119824737496416}
+  navMeshAgent: {fileID: 6493849187098613310}
   walkableDinosaurController:
     id: 0
   PatrollingState: {fileID: 1433221942432350430}
@@ -2351,8 +2352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkableDinosaurView: {fileID: 1955166269947719500}
-  aiAgent: {fileID: 6493849187098613310}
-  animator: {fileID: 8028452973731020140}
   WalkableDinosaurModel:
     id: 0
   references:
@@ -2372,8 +2371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkableDinosaurView: {fileID: 1955166269947719500}
-  aiAgent: {fileID: 6493849187098613310}
-  animator: {fileID: 8028452973731020140}
 --- !u!114 &6783315299417830582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2387,8 +2384,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkableDinosaurView: {fileID: 1955166269947719500}
-  aiAgent: {fileID: 6493849187098613310}
-  animator: {fileID: 8028452973731020140}
   WalkableDinosaurModel:
     id: 0
   references:

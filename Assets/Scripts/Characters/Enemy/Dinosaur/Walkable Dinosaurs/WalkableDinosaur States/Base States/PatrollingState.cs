@@ -31,8 +31,9 @@ public class PatrollingState : WalkableDinosaurStates
    {
       if(CanPatrol)
       {
+        //    print(GetDistance(transform.position,CurrentWayPointTarget));
         if(GetDistance(transform.position,CurrentWayPointTarget) < 0.6f )  
-        { 
+        {   
             CanPatrol = false; 
             animator.SetBool("Walk",false);
             PatrolCoroutine = Coroutine();
@@ -46,6 +47,8 @@ public class PatrollingState : WalkableDinosaurStates
    protected virtual void CheckEnemyDetection()
    {
        // if enemy detected return true
+       if(PlayerTarget != null)
+       {
         Vector3 targetDirection = GetDirection(transform.position , PlayerTarget.position );
         
         float targetAngle = Vector3.Angle(transform.forward , targetDirection );
@@ -60,6 +63,7 @@ public class PatrollingState : WalkableDinosaurStates
           }
           
         }
+       }
    }
 
    protected virtual IEnumerator EnemeDetected()
@@ -112,22 +116,17 @@ public class PatrollingState : WalkableDinosaurStates
    public virtual void SetWayPointDestination()
    {
       CurrentWayPointTarget = WayPoints[currentWayPointIndex].position;
+      
 
-
-      if(aiAgent.enabled == true && animator != null && CanPatrol )
-      {
+      if( CanPatrol && aiAgent.isOnNavMesh == true )
+       {
          aiAgent.SetDestination(CurrentWayPointTarget);
          animator.SetBool("Walk",true);
-      }
+       }
    }
 
    protected virtual void IterateToNextWayPoint()
    {
-    //   currentWayPointIndex ++;
-    //   if( currentWayPointIndex == WayPoints.Length)
-    //   {
-    //       currentWayPointIndex = 0;
-    //   }
        int prevIndex = currentWayPointIndex;
        do
        {
@@ -148,6 +147,8 @@ public class PatrollingState : WalkableDinosaurStates
         WayPoints = WalkableDinosaurModel.WayPoints;
        
         SetWayPointDestination();
+       
+    //    aiAgent.enabled = true;S
 
        aiAgent.speed = WalkableDinosaurModel.Speed;
 

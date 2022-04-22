@@ -20,8 +20,10 @@ public class TRexPatrollingState : PatrollingState
                 PatrolCoroutine = this.Coroutine();
                 StartCoroutine(PatrolCoroutine);      
            }
-        CheckEnemyDetection(); 
-        }
+          CheckEnemyDetection(); 
+        } 
+
+     
    }
 
 

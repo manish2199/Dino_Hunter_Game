@@ -2123,8 +2123,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7588524948804064293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.9, y: 1.2, z: 10.497119}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: 723.8, y: -23.59, z: -718.8}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 7588524948803800067}
   - {fileID: 7588524948803798887}
@@ -2401,6 +2401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7588524948796731091}
   AudioSource: {fileID: 7588524948807278183}
+  navMeshAgent: {fileID: 5328115031736834158}
   walkableDinosaurController:
     id: 0
   PatrollingState: {fileID: 5477593450625864055}

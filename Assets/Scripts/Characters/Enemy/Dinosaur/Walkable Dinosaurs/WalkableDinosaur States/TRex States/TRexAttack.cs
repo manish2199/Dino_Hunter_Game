@@ -19,10 +19,15 @@ public class TRexAttack : AttackState
          Timer = 0f;
       }
 
-		if(GetDistance(transform.position,PlayerTarget.position) > WalkableDinosaurModel.AttackingRange )
+		if( PlayerTarget != null &&  GetDistance(transform.position,PlayerTarget.position) > WalkableDinosaurModel.AttackingRange )
      {
          walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.ChasingState);
      }
+
+     	if(PlayerTarget == null)
+		{
+			walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.PatrollingState);
+		}
 
    }
 

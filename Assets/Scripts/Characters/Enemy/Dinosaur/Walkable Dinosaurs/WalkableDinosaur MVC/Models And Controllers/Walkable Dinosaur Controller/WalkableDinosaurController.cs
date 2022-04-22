@@ -12,7 +12,7 @@ public class WalkableDinosaurController
     public WalkableDinosaurStates CurrentState { get; set; }  
 
 
-    public WalkableDinosaurController(WalkableDinosaurModel walkableDinosaurModel,WalkableDinosaurView view) 
+    public WalkableDinosaurController(WalkableDinosaurModel walkableDinosaurModel,WalkableDinosaurView view ) 
     {
         WalkableDinosaurModel = walkableDinosaurModel;
         
@@ -73,7 +73,7 @@ public class WalkableDinosaurController
 
 public class RaptorDinosaurController : WalkableDinosaurController
 {
-    public RaptorDinosaurController(RaptorDinosaurModel raptorDinosaurModel,RaptorDinosaurView view) : base (raptorDinosaurModel,view)
+    public RaptorDinosaurController(RaptorDinosaurModel raptorDinosaurModel,RaptorDinosaurView view ) : base (raptorDinosaurModel,view)
     {
         WalkableDinosaurView.walkableDinosaurController = this;
       

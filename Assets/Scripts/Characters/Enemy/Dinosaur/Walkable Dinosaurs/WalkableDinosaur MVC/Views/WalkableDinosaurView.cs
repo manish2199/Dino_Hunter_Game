@@ -11,6 +11,8 @@ public class WalkableDinosaurView : MonoBehaviour
 
 	public AudioSource AudioSource;
 
+   public NavMeshAgent navMeshAgent;
+
 	[SerializeReference]public WalkableDinosaurController walkableDinosaurController; 
 
    [SerializeReference]public PatrollingState PatrollingState;
