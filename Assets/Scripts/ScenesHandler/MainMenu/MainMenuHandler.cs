@@ -175,7 +175,7 @@ public class MainMenuHandler : MonoBehaviour
 
         if(GameData.GetEasyDifficulty() == 1)
         {
-            HighscoreText.text = GameData.GetEasyDifficultyHighscore().ToString();
+            HighscoreText.text = GameData.GetEasyDifficultyHighScore().ToString();
         }
         else if(GameData.GetMediumDifficulty() == 1)
         {

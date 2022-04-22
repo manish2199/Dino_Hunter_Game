@@ -50,11 +50,3 @@ public enum AchievementType
 }
 
 
-// public enum MedalTypes
-// {   
-//     None,
-//     BronzeMedal,
-//     SilverMedal,
-//     GoldMedal
-// }
-

@@ -131,7 +131,9 @@ public class RaptorDinosaurController : WalkableDinosaurController
         //    SetInitialState();
            RaptorDinosaurView view = (RaptorDinosaurView)WalkableDinosaurView; 
            
-           view.DisableTheDinosaur(); 
+           view.DisableTheDinosaur();
+     
+           Player.Instance.playerStatsController.IncreaseScore(WalkableDinosaurModel.WalkingDinosaurType);
         }
     }
 
@@ -182,6 +184,8 @@ public class TRexDinosaurController : WalkableDinosaurController
            TRexView view = (TRexView)WalkableDinosaurView; 
            
            view.DisableTheDinosaur(); 
+
+           Player.Instance.playerStatsController.IncreaseScore(WalkableDinosaurModel.WalkingDinosaurType);
         }
     }
 

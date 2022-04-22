@@ -97,6 +97,11 @@ public class WeaponService : GenericSingleton<WeaponService>
        currentSelectedWeapon = 0;
        weaponControllerList[0].ActivateWeapon(fpsTransform); 
     }
+
+    public void UpdateWeaponUIIcon(Sprite weaponIcon)
+    {
+        GameplayUIManager.Instance.UpdateSelectedWeaponIcon(weaponIcon);
+    }
     
 }
 

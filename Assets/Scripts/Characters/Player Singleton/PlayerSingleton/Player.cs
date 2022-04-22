@@ -26,7 +26,7 @@ public class Player : GenericSingleton<Player>
 
     public PlayerAttackController playerAttackController;
 
-    [SerializeField] PlayerStatsController playerStatsController;
+    public PlayerStatsController playerStatsController;
 
     [SerializeField] PlayerAnimationController playerAnimationController;
     

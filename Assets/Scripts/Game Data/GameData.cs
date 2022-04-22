@@ -114,7 +114,7 @@ public static class GameData
        PlayerPrefs.SetInt(GameData.EasyDifficultyHighScore,score);
    } 
 
-   public static int GetEasyDifficultyHighscore()
+   public static int GetEasyDifficultyHighScore()
    {
        return PlayerPrefs.GetInt(GameData.EasyDifficultyHighScore);
    }

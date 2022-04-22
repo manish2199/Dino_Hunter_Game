@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class WeaponModel 
 {
@@ -9,9 +11,11 @@ public class WeaponModel
       WeaponType = waponScriptableObject.WeaponType;  
       AttackClip = waponScriptableObject.Weapon.AttackClip;
       Damage = waponScriptableObject.Weapon.Damage;
+      WeaponIcon = waponScriptableObject.Weapon.WeaponIcon;
    }
-
-
+   
+   public Sprite WeaponIcon { get; }
+ 
    public int Damage { get; }
 
    public AudioClip AttackClip { get;}

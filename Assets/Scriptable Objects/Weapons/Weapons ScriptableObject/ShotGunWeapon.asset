@@ -24,6 +24,7 @@ MonoBehaviour:
     00000000:
       type: {class: ShootableWeapons, ns: , asm: Assembly-CSharp}
       data:
+        WeaponIcon: {fileID: 21300000, guid: 0ddd4423033cc2e4d968750b48bde5a0, type: 3}
         weaponID: 3
         weaponView: {fileID: 196714551952336462, guid: 4507f8c441854dd47818995b6d776a8d,
           type: 3}

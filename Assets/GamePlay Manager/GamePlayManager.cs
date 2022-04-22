@@ -5,7 +5,16 @@ using UnityEngine;
 public class GamePlayManager : GenericSingleton<GamePlayManager>
 {   
    [SerializeField] LevelInitializerScriptableObject InitialLevelConstraints;
+  
+   [SerializeField] Transform PlayerRespawnposition;
 
+   [SerializeField] GameObject GameOverCamera;
+   
+   
+   protected override void Awake()
+   {
+      MakeInstance();
+   }
 
   private void OnEnable()
   {
@@ -16,6 +25,20 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
   {
       Achievement.OnAchievementAcomplished -= UnlockItems;
   }
+
+   private void MakeInstance()
+   {
+      if(Instance == null)
+      {
+         Instance = this;
+      }
+   }
+     
+   void Start()
+   {
+      // CHeck Whether particular Achievement are Completed Or Not 
+      InitialSetup();
+   }
 
 
   private void UnlockItems(Achievement achievement)
@@ -53,29 +76,6 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
         InventoryService.Instance.IncreaseHealthKitsMaxLimit(trexKillAchievement.HealthKitsMaxLimit);  
      } 
   } 
-   
- 
-
-
-
-   protected override void Awake()
-   {
-      MakeInstance();
-   }
-
-   private void MakeInstance()
-   {
-      if(Instance == null)
-      {
-         Instance = this;
-      }
-   }
-     
-   void Start()
-   {
-      // CHeck Whether particular Achievement are Completed Or Not 
-      InitialSetup();
-   }
 
 
 
@@ -173,5 +173,57 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
    public List<CollectiblesScriptableObject> GetMediKitCollectibleList()
    {
         return InitialLevelConstraints.CollectibleHealthKits;
+   }
+
+   public void PlayerDied()
+   {
+      // disable player 
+      // enable ui camera 
+      // show GameOver Panel
+
+      Player.Instance.gameObject.SetActive(false);
+      GameOverCamera.SetActive(true);
+      GameplayUIManager.Instance.DisableSelectedWeaponIcon();
+      GameplayUIManager.Instance.SetCrossHair(false);
+ 
+      GameplayUIManager.Instance.ShowGameOverUIPanel();
+   }
+
+   public void RestartGameButton()
+   {
+      Player.Instance.gameObject.SetActive(true);
+      Player.Instance.gameObject.transform.position = PlayerRespawnposition.position;
+      Player.Instance.playerStatsController.ResetPlayerHealth();
+      Player.Instance.playerStatsController.ResetScore();
+   
+
+      GameOverCamera.SetActive(false);
+      GameplayUIManager.Instance.EnableSelectedWeaponIcon();
+      GameplayUIManager.Instance.SetCrossHair(true);
+
+      GameplayUIManager.Instance.DisableGameOverUIPanel();
+       
+   }
+
+   private void ResetPlayerInventory()
+   {
+      AddInitialMediKitsToInventory();
+      AddProjectilesToInventory(ProjectileType.RevolverBullet);
+      
+      if(GameData.GetShotgunUnlocked() == 1)
+      {
+         AddProjectilesToInventory(ProjectileType.ShotGunBullet);
+      }
+      if(GameData.GetAssualtRifleUnlocked() == 1)
+      {
+         AddProjectilesToInventory(ProjectileType.AssaultRifleBullet);
+      }
+
+   }
+
+
+   public void GameQuitButton()
+   {
+      // Load Main Menu
    }
 }

@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; 
+using TMPro;
 
 public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 {
@@ -15,9 +16,19 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 
     [SerializeField] HealthKitInventoryUISlot[] healthKitInventoryUISlot;
 
+    [SerializeField] TextMeshProUGUI PlayerScoreText; 
+
     [SerializeField] GameObject CrossHair; 
 
     [SerializeField] Image PlayerDamageIndicator;
+
+    [SerializeField] Image CurrentSelectedWeaponIcon;
+
+    [SerializeField] GameObject GameOverPanel;
+    [SerializeField] TextMeshProUGUI DifficultyLevelText;
+    [SerializeField] TextMeshProUGUI GameOverScoreText;
+    [SerializeField] TextMeshProUGUI HighScoreText; 
+
      
     void Awake()
     { 
@@ -48,7 +59,7 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
        WeaponService.OnWeaponZoomIn -= SetCrossHair;
     }
 
-    private void SetCrossHair(bool isWeaponZoomed)
+    public void SetCrossHair(bool isWeaponZoomed)
     {
         if(isWeaponZoomed)
         {
@@ -102,7 +113,7 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 
     private void InitialProjectileSetup(ProjectileInventoryUISlot projectile,ItemSlot itemSlot, InventoryItem tempItem)
     {
-        projectile.EmptyItemText.SetActive(false);
+        projectile.EmptyItemText.gameObject.SetActive(false);
         projectile.IconGameObject.SetActive(true);
         projectile.ItemQuantityText.gameObject.SetActive(true);
         projectile.MaxLimit.gameObject.SetActive(true);
@@ -119,7 +130,7 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 
     private void InitialMedicalItemSetup(HealthKitInventoryUISlot healthKit,ItemSlot itemSlot, InventoryItem tempItem)
     {
-        healthKit.EmptyItemText.SetActive(false);
+        healthKit.EmptyItemText.gameObject.SetActive(false);
         healthKit.IconGameObject.SetActive(true);
         healthKit.ItemQuantityText.gameObject.SetActive(true);
         healthKit.MaxLimit.gameObject.SetActive(true);
@@ -133,10 +144,10 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
         healthKit.HealthKitType  = temp.HealthKitType;
     }
 
-   
-  
-
-
+    public void UpdatePlayerScore(int Score)
+    {
+       PlayerScoreText.text = Score.ToString();
+    }
 
     public void UpdateTheProjectilesQuantity(ProjectileType projectileType , int quanitty) 
     {
@@ -186,8 +197,6 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
         }
     }
 
-
-
     public void ActivateInventory()
     {
         if(InventoryUIPanel.activeInHierarchy)
@@ -200,28 +209,75 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
         }
     }
 
-
     public void UpdateDamageIndicator(float damageDealed) 
     {
         float DamageIndicatorAlphaValue = damageDealed / 100 ;
          
-        // image = GetComponent<Image>();
-          var tempColor = PlayerDamageIndicator.color;
-          tempColor.a = DamageIndicatorAlphaValue;
-          PlayerDamageIndicator.color = tempColor;
+        var tempColor = PlayerDamageIndicator.color;
+        tempColor.a = DamageIndicatorAlphaValue;
+        PlayerDamageIndicator.color = tempColor;
     } 
-   
+
+    
+
+
+    public void UpdateSelectedWeaponIcon(Sprite weaponIcon)
+    { 
+       CurrentSelectedWeaponIcon.sprite = weaponIcon; 
+    }
+
+    public void EnableSelectedWeaponIcon()
+    {
+        CurrentSelectedWeaponIcon.gameObject.SetActive(true);
+    }     
+
+    public void DisableSelectedWeaponIcon()
+    {
+        CurrentSelectedWeaponIcon.gameObject.SetActive(false);
+    }   
+
+    public void ShowGameOverUIPanel()
+    {
+        if(GameData.GetEasyDifficulty() == 1)
+       {
+          DifficultyLevelText.text = "Easy";
+          HighScoreText.text = GameData.GetEasyDifficultyHighScore().ToString(); 
+       }
+       if(GameData.GetMediumDifficulty() == 1)
+       {
+          DifficultyLevelText.text = "Medium";
+          HighScoreText.text = GameData.GetMediumDifficultyHighScore().ToString(); 
+       }
+       if(GameData.GetHardDifficulty() == 1)
+       {
+          DifficultyLevelText.text = "Hard";
+          HighScoreText.text = GameData.GetHardDifficultyHighScore().ToString(); 
+       }
+       
+       GameOverScoreText.text = PlayerScoreText.text; 
+
+       GameOverPanel.SetActive(true);
+    }
+
+    public void DisableGameOverUIPanel()
+    {
+       GameOverPanel.SetActive(false);
+    }
 }
+
+
+
+
 
 
 [Serializable]
 public class InventoryUISlot
 {
-    public GameObject EmptyItemText;
+    public Text EmptyItemText;
     public Text ItemQuantityText;
     public Text MaxLimit; 
     public Text ItemMaxLimitText;
-    public GameObject IconGameObject; 
+    public GameObject IconGameObject;  
     [HideInInspector]public bool isEmpty;       
 }
 

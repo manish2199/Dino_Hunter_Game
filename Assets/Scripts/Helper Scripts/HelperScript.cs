@@ -28,6 +28,7 @@ public class PlayerControls
     public KeyCode KeyToSelectWeapon4;
     public KeyCode KeyToSelectWeapon5;
     public KeyCode KeyToSelectWeapon6;
+    public KeyCode KeyToUseHealthKit;
     public KeyCode WeaponAttackKey;
     public KeyCode KeyToAimWeapon; 
     public KeyCode KeyToOpenInventory;

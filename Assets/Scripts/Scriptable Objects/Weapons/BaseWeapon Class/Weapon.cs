@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 [System.Serializable]
 public abstract class Weapon 
 {
     // public WeaponControls weaponControls;    
+
+   public Sprite WeaponIcon;
 
     public WeaponsID weaponID;     
 

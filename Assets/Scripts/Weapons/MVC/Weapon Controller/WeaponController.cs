@@ -27,9 +27,10 @@ public class WeaponController
 	   WeaponView.WeaponGameObject.SetActive(true);
 	   WeaponModel.IsWeaponActivated = true;
 	   WeaponModel.PlayerFPS = fpsTransform;
-	
 	   WeaponView.WeaponGameObject.transform.SetParent(fpsTransform,false);
    }
+
+
 
    public virtual void UseWeapon(){}
  
@@ -121,7 +122,7 @@ public class ShootableWeaponController : WeaponController
       WeaponView.WeaponGameObject.SetActive(true);
 	   ShootableWeaponModel.IsWeaponActivated = true;
 	   ShootableWeaponModel.PlayerFPS = fpsTransform;
-	
+	   WeaponService.Instance.UpdateWeaponUIIcon(ShootableWeaponModel.WeaponIcon);
 	   WeaponView.WeaponGameObject.transform.SetParent(fpsTransform,false);
    }
 
@@ -139,7 +140,6 @@ public class ShootableWeaponController : WeaponController
        if(Input.GetMouseButtonDown(1))
        { 
           // Zoom In 
-         //  WeaponService.Instance.WeaponZoomIn(true);
           WeaponService.Instance.InvokeOnZoomIn(true);
           WeaponView.muzzle.transform.position = WeaponView.ZoomInMuzzlePosition.position;
        }
@@ -148,14 +148,11 @@ public class ShootableWeaponController : WeaponController
           // Zoom Out
           WeaponService.Instance.InvokeOnZoomIn(false);
           WeaponView.muzzle.transform.position = WeaponView.ZoomOutMuzzlePosition.position;
-         //  WeaponService.Instance.WeaponZoomIn(false);
        }
    }
 
    protected override void WeaponAttack()
    {  
-      
-
       // check whether it has single shot round or multiple shot round
       if(ShootableWeaponModel.FireType == FireType.Multiple)
       {
