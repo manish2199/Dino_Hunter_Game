@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerStatsController : MonoBehaviour
 {
    private int PlayerScore;
+ 
+   private int StartingPlayerHealth;
 
-   private int PlayerHealth;
+   private int CurrentPlayerHealth;
 
    void Start()
    {
-       PlayerHealth = Player.Instance.PlayerScriptableObject.PlayerHealth;
+       StartingPlayerHealth = Player.Instance.PlayerScriptableObject.PlayerHealth;
+       CurrentPlayerHealth = StartingPlayerHealth;
    }
   
 
@@ -19,12 +22,14 @@ public class PlayerStatsController : MonoBehaviour
       OpenInventorySystem();
 
       CollectFromSupplies();
+
+      UseMedikit();
    }
 
    public void ResetPlayerHealth()
    {
-        PlayerHealth = Player.Instance.PlayerScriptableObject.PlayerHealth;
-        GameplayUIManager.Instance.UpdateDamageIndicator(PlayerHealth);
+        CurrentPlayerHealth = StartingPlayerHealth;
+        GameplayUIManager.Instance.UpdateDamageIndicator(0); 
    }
 
    public void ResetScore()
@@ -42,17 +47,16 @@ public class PlayerStatsController : MonoBehaviour
                 return;
             }
 
-           if(PlayerHealth < 100 )
+           if(CurrentPlayerHealth < StartingPlayerHealth )
            {   
-              PlayerHealth += InventoryService.Instance.GetHealthKit(HealthKitType.FirstAidKit);
+              CurrentPlayerHealth += InventoryService.Instance.GetHealthKit(HealthKitType.FirstAidKit);
 
-
-              if(PlayerHealth > 100)
+              if(CurrentPlayerHealth > StartingPlayerHealth)
               {
-                PlayerHealth = 100;
+                CurrentPlayerHealth = StartingPlayerHealth;
               }
 
-              float damageLeft = (Player.Instance.PlayerScriptableObject.PlayerHealth - PlayerHealth );
+              float damageLeft = (StartingPlayerHealth -  CurrentPlayerHealth );
 
               GameplayUIManager.Instance.UpdateDamageIndicator(damageLeft);
            }
@@ -128,16 +132,14 @@ public class PlayerStatsController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-       PlayerHealth -= damage;
+       CurrentPlayerHealth -= damage;
       
-       float damageDealed = (Player.Instance.PlayerScriptableObject.PlayerHealth - PlayerHealth );
+       float damageDealed = (StartingPlayerHealth - CurrentPlayerHealth );
 
        GameplayUIManager.Instance.UpdateDamageIndicator(damageDealed);
 
-       if(PlayerHealth <= 0)
+       if(CurrentPlayerHealth <= 0)
        {
-        //    Debug.Log("Player Is Dead ");
-            // handle Player Death 
             GamePlayManager.Instance.PlayerDied();
        }
 

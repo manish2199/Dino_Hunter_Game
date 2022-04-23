@@ -9,8 +9,6 @@ public class PlayerMouseLookController : MonoBehaviour
     private PlayerScriptableObject playerScriptableObject;
    
     private Vector2 DefaultLookLimits;
-   
-    // public bool MouseUnlock { get; set; }
     
     private Vector2 MouseLookAngles;
     
@@ -43,7 +41,7 @@ public class PlayerMouseLookController : MonoBehaviour
      }
    }
 
-   private bool isCursorLocked()
+   public bool isCursorLocked()
    {
      if(Cursor.lockState == CursorLockMode.Locked)
      {

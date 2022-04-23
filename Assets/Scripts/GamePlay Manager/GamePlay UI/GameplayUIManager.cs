@@ -218,9 +218,6 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
         PlayerDamageIndicator.color = tempColor;
     } 
 
-    
-
-
     public void UpdateSelectedWeaponIcon(Sprite weaponIcon)
     { 
        CurrentSelectedWeaponIcon.sprite = weaponIcon; 

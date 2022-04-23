@@ -44,17 +44,14 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
 
   private void UnlockItems(Achievement achievement)
   {  
-      Debug.Log(achievement.achievementType);
      if(achievement.achievementType == AchievementType.HatrickOfHeadShots)
      {
-         Debug.Log("Unlocking Items");
         // Check unlock weapon type then unlcok it
          HeadshotHatrickAchievement headshotHatrickAchievement = (HeadshotHatrickAchievement)achievement;
       
          Debug.Log(headshotHatrickAchievement.UnlockWeaponType);
          if(headshotHatrickAchievement.UnlockWeaponType == UnlockWeaponType.ShotGun)
          {
-            Debug.Log("Unlocking ShotGun");
             // Unlock the weapon and Save Data
             GameData.SetShotgunUnlocked(1); 
             WeaponService.Instance.UnlockTheWeapon(WeaponsID.ShotGun); 
@@ -64,9 +61,6 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
          }
          if(headshotHatrickAchievement.UnlockWeaponType == UnlockWeaponType.AssualtRifle)
          {
-            Debug.Log("Unlocking rIFLE");
-         Debug.Log(headshotHatrickAchievement.UnlockWeaponType);
-
             // Unlock the weapon and Save Data
             GameData.SetAssualtRifleUnlocked(1); 
             WeaponService.Instance.UnlockTheWeapon(WeaponsID.AssaultRifle); 
@@ -190,28 +184,32 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
       // enable ui camera 
       // show GameOver Panel
 
+      if(Player.Instance.playerMouseLookController.isCursorLocked())
+      {
+         Cursor.lockState = CursorLockMode.None;
+      }
+
       Player.Instance.gameObject.SetActive(false);
       GameOverCamera.SetActive(true);
       GameplayUIManager.Instance.DisableSelectedWeaponIcon();
-      GameplayUIManager.Instance.SetCrossHair(false);
+      GameplayUIManager.Instance.SetCrossHair(true);
  
       GameplayUIManager.Instance.ShowGameOverUIPanel();
    }
 
    public void RestartGameButton()
-   {
-      Player.Instance.gameObject.SetActive(true);
+   {  
       Player.Instance.gameObject.transform.position = PlayerRespawnposition.position;
       Player.Instance.playerStatsController.ResetPlayerHealth();
       Player.Instance.playerStatsController.ResetScore();
-   
-
+      Player.Instance.gameObject.SetActive(true);
       GameOverCamera.SetActive(false);
+      ResetPlayerInventory();
+
       GameplayUIManager.Instance.EnableSelectedWeaponIcon();
-      GameplayUIManager.Instance.SetCrossHair(true);
+      GameplayUIManager.Instance.SetCrossHair(false);
 
       GameplayUIManager.Instance.DisableGameOverUIPanel();
-       
    }
 
    private void ResetPlayerInventory()

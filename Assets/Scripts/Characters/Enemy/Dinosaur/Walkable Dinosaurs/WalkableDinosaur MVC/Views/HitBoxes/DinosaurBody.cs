@@ -24,11 +24,9 @@ public class DinosaurBody : MonoBehaviour , IDamagable
          walkingDinosaurView.walkableDinosaurController.TakeDamage(damage*2);
         if(walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel.WalkingDinosaurType == WalkingDinosaurType.Raptors)
         {
+         RaptorDinosaurModel temp = (RaptorDinosaurModel)walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel;
         
-          RaptorDinosaurModel temp = (RaptorDinosaurModel)walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel;
-        
-          OnHeadshot?.Invoke(temp.RaptorsType,walkingDinosaurView);
-        
+         OnHeadshot?.Invoke(temp.RaptorsType,walkingDinosaurView);
         }
       }
       else if( dinosaurBodyPart == DinosaurBodyPartType.MainBody)
@@ -45,13 +43,20 @@ public class DinosaurBody : MonoBehaviour , IDamagable
    {
       if(dinosaurBodyPart == DinosaurBodyPartType.Head)
       {    
-          IDamagable damagable = other.GetComponent<IDamagable>();
+         IDamagable damagable = other.GetComponent<IDamagable>();
+          
+         RaptorDinosaurModel temp = (RaptorDinosaurModel)walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel;
+          
+         if(damagable != null)
+         {
 
-          if(damagable != null)
-          {   
-               print("Eating Player");
-               damagable.TakeDamage(walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel.Damage);
-          }
+            if(temp != null && temp.RaptorsType == RaptorsType.RedRaptor)
+            {
+                return;
+            }  
+            
+            damagable.TakeDamage(walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel.Damage);
+         }
       }
    }
 

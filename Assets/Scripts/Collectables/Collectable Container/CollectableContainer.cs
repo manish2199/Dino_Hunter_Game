@@ -6,15 +6,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random=UnityEngine.Random;
 
-public class CollectableContainer : MonoBehaviour , ICollectable 
-{ 
-
-     
-   public CollectableContainerType collectableContainerType;
 //    medical box provide medikit only 
 // ammo box provide ammo only 
+public class CollectableContainer : MonoBehaviour , ICollectable 
+{ 
+   public CollectableContainerType collectableContainerType;
  
-
     private List<CollectiblesScriptableObject> CollectibleList;  
 
     public Transform[] SpawningPositions;
@@ -63,7 +60,10 @@ public class CollectableContainer : MonoBehaviour , ICollectable
                NotificationManager.Instance.ShowNotificationMsg(NotificationType.ItemCollectedNotification);
             }
         }
-        await StartRespawnTimer();
+        if(SpawningPositions.Length > 0 && SpawningPositions != null)
+        {
+          await StartRespawnTimer();
+        }
     }
 
 

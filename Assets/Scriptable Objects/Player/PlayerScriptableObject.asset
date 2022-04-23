@@ -45,6 +45,7 @@ MonoBehaviour:
     KeyToSelectWeapon4: 52
     KeyToSelectWeapon5: 53
     KeyToSelectWeapon6: 54
+    KeyToUseHealthKit: 104
     WeaponAttackKey: 323
     KeyToAimWeapon: 324
     KeyToOpenInventory: 105
