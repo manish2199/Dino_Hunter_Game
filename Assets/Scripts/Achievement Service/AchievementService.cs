@@ -17,13 +17,13 @@ public class AchievementService : GenericSingleton<AchievementService>
       }
    }
 
-   private void EnableAchievement()
+   private void OnEnable()
    {
       achievementsList.SubscribeAchievements();
    
    }
 
-   private void DisableAllAchievements()
+   private void OnDisable()
    {
       achievementsList.UnSubscribeAllAchievements();
    }

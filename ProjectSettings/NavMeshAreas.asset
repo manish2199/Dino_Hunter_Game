@@ -89,8 +89,8 @@ NavMeshProjectSettings:
       m_Flags: 0
   - serializedVersion: 2
     agentTypeID: -334000983
-    agentRadius: 1.08
-    agentHeight: 1.99
+    agentRadius: 1.27
+    agentHeight: 2.13
     agentSlope: 25.9
     agentClimb: 0.36
     ledgeDropHeight: 0
@@ -122,4 +122,4 @@ NavMeshProjectSettings:
   m_SettingNames:
   - Humanoid
   - Raptors
-  - Dinosaurs
+  - TRex

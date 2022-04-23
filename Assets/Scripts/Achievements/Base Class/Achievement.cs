@@ -7,7 +7,10 @@ using UnityEngine;
 [Serializable]
 public abstract class Achievement
 {
-    public Achievement() { Counter = 0; }
+    public Achievement() 
+    {
+         Counter = 0; 
+    }
 
     [HideInInspector] protected int Counter;
     
@@ -25,7 +28,8 @@ public abstract class Achievement
 
     protected void InvokeAchievementAcomplished(Achievement achievement)
     {
-        OnAchievementAcomplished?.Invoke(achievement);
+        OnAchievementAcomplished?.Invoke(achievement); 
+        Debug.Log("Achievement Acomplished");
     }
 
     protected virtual void UpdateAchievement()

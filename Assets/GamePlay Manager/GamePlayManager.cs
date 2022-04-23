@@ -38,18 +38,23 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
    {
       // CHeck Whether particular Achievement are Completed Or Not 
       InitialSetup();
+      // PlayerPrefs.DeleteAll();
    }
 
 
   private void UnlockItems(Achievement achievement)
-  {
+  {  
+      Debug.Log(achievement.achievementType);
      if(achievement.achievementType == AchievementType.HatrickOfHeadShots)
      {
+         Debug.Log("Unlocking Items");
         // Check unlock weapon type then unlcok it
          HeadshotHatrickAchievement headshotHatrickAchievement = (HeadshotHatrickAchievement)achievement;
       
+         Debug.Log(headshotHatrickAchievement.UnlockWeaponType);
          if(headshotHatrickAchievement.UnlockWeaponType == UnlockWeaponType.ShotGun)
          {
+            Debug.Log("Unlocking ShotGun");
             // Unlock the weapon and Save Data
             GameData.SetShotgunUnlocked(1); 
             WeaponService.Instance.UnlockTheWeapon(WeaponsID.ShotGun); 
@@ -59,6 +64,9 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
          }
          if(headshotHatrickAchievement.UnlockWeaponType == UnlockWeaponType.AssualtRifle)
          {
+            Debug.Log("Unlocking rIFLE");
+         Debug.Log(headshotHatrickAchievement.UnlockWeaponType);
+
             // Unlock the weapon and Save Data
             GameData.SetAssualtRifleUnlocked(1); 
             WeaponService.Instance.UnlockTheWeapon(WeaponsID.AssaultRifle); 
@@ -66,7 +74,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
             
             // sHOW UI TEXT 
          }
-         headshotHatrickAchievement.UnSubscribe();
+         headshotHatrickAchievement.UnSubscribe(); 
          NotificationManager.Instance.ShowAchievementComplete(headshotHatrickAchievement.AchievementText,headshotHatrickAchievement.UnlockWeaponIcon);
      }
      if(achievement.achievementType == AchievementType.TRexKill)
@@ -74,6 +82,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
         TRexKillAchievement trexKillAchievement = (TRexKillAchievement)achievement;
 
         InventoryService.Instance.IncreaseHealthKitsMaxLimit(trexKillAchievement.HealthKitsMaxLimit);  
+        achievement.UnSubscribe();
      } 
   } 
 

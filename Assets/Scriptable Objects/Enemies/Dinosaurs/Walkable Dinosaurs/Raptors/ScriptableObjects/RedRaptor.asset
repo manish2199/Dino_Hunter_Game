@@ -20,7 +20,7 @@ MonoBehaviour:
     00000000:
       type: {class: Raptor, ns: , asm: Assembly-CSharp}
       data:
-        Health: 50
+        Health: 250
         Damage: 40
         DinosaurAudios:
         - AudioClipType: 1
@@ -46,11 +46,11 @@ MonoBehaviour:
         - AudioClipType: 8
           AudioClip:
           - {fileID: 8300000, guid: cbe2fc6eafcaa2846a8e68c2b45e2769, type: 3}
-        Speed: 4
+        Speed: 10
         AngularSpeed: 900
-        Acceleration: 8
+        Acceleration: 15
         FieldOfViewAnle: 170
-        TargetStopppingDistance: 6
+        TargetStopppingDistance: 4.5
         StoppingDistanceFromWayPoint: 0.3
         ChasingRange: 15
         AttackingRange: 5

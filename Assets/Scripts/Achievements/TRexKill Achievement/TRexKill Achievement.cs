@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class TRexKillAchievement : Achievement
 {
-    public TRexKillAchievement() : base ()
-    {}
+    public TRexKillAchievement() 
+    { 
+		Counter = 0;
+		achievementType = AchievementType.TRexKill; 
+	}
     
     public int HealthKitsMaxLimit;
 
@@ -13,6 +16,7 @@ public class TRexKillAchievement : Achievement
 
 	public override void Subscribe()
 	{
+		SetAchievementText();
 	   TRexDinosaurController.OnTrexDeath += UpdateAchievement; 
 	}
 

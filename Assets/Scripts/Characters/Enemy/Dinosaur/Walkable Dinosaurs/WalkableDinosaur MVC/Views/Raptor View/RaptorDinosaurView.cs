@@ -33,6 +33,8 @@ public class RaptorDinosaurView : WalkableDinosaurView
 
   public void EnableDinosaur()
   {
+    if(!gameObject.activeInHierarchy)
+    {
       gameObject.SetActive(true);
       if(walkableDinosaurController != null && walkableDinosaurController.CurrentState != null)
       {
@@ -42,6 +44,7 @@ public class RaptorDinosaurView : WalkableDinosaurView
       {
           ParticleEffect.Stop();
       }
+    }
   }
       
   public void DisableTheDinosaur()
