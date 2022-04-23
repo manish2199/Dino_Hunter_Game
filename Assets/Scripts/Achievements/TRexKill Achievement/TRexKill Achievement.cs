@@ -9,6 +9,14 @@ public class TRexKillAchievement : Achievement
 		Counter = 0;
 		achievementType = AchievementType.TRexKill; 
 	}
+
+	public TRexKillAchievement(int healthKitsMaxLimit, int numberOfKill)
+	{
+	    Counter = 0;
+		achievementType = AchievementType.TRexKill; 	
+        HealthKitsMaxLimit = healthKitsMaxLimit;
+		NumberOfKill = numberOfKill;
+	}
     
     public int HealthKitsMaxLimit;
 

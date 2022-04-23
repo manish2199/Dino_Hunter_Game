@@ -6,9 +6,11 @@ using UnityEngine;
 [Serializable]
 public class AchievementCell 
 {
-    [SerializeField] AchievementType achievementType = AchievementType.None;
+    [SerializeField] AchievementType achievementType;
     
     [SerializeReference] Achievement achievementConstraints;
+  
+    private Achievement savedAchievement;
 
     private AchievementType lastType;
 
@@ -29,24 +31,28 @@ public class AchievementCell
 
     public void Validate()
     {
-        if(achievementType != lastType)
-        {
-            lastType = achievementType;
-            achievementConstraints = UpdateAchievement(lastType);
+        if(lastType != achievementType )
+        { 
+            lastType = achievementType;       
+            savedAchievement = achievementConstraints;
+
+            achievementConstraints = UpdateAchievement(savedAchievement);
         }
     }
 
-    private Achievement UpdateAchievement(AchievementType achievementType)
+    private Achievement UpdateAchievement(Achievement other)
     {
         Achievement newAchievement = null; 
 
         if(achievementType == AchievementType.HatrickOfHeadShots)
         { 
-            newAchievement = new HeadshotHatrickAchievement();
+            HeadshotHatrickAchievement temp = (HeadshotHatrickAchievement)other;
+            newAchievement = (other!=null) ? new HeadshotHatrickAchievement(temp.RaptorsType,temp.HeadshotNumber,temp.UnlockWeaponType,temp.UnlockWeaponIcon) : new HeadshotHatrickAchievement();
         }  
         if(achievementType == AchievementType.TRexKill)
         {
-            newAchievement = new TRexKillAchievement();
+            TRexKillAchievement temp = (TRexKillAchievement)other;
+            newAchievement = (other!=null) ? new TRexKillAchievement(temp.HealthKitsMaxLimit,temp.NumberOfKill) : new TRexKillAchievement();
         }    
         
         return newAchievement;

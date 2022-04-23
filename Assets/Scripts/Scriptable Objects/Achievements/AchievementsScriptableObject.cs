@@ -8,20 +8,9 @@ public class AchievementsScriptableObject : ScriptableObject
 {
    [SerializeField] AchievementCell[] achievementCellList;
 
-    private bool IsUnityLoaded = false; 
- 
-    void Awake()
-    {
-        IsUnityLoaded = true;
-    }
-
-
     private void OnValidate()
     { 
-        if(IsUnityLoaded)
-        {
-            ValidateAllAchievementCell();        
-        }
+        ValidateAllAchievementCell();        
     } 
 
     public void SubscribeAchievements()
@@ -40,7 +29,6 @@ public class AchievementsScriptableObject : ScriptableObject
         }
     }
 
-
     void ValidateAllAchievementCell()
     {
         if(achievementCellList != null)
@@ -51,8 +39,5 @@ public class AchievementsScriptableObject : ScriptableObject
            }
         }
     }
-
-
-
 }
 

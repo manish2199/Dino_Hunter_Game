@@ -146,25 +146,23 @@ public class PatrollingState : WalkableDinosaurStates
 
         WayPoints = WalkableDinosaurModel.WayPoints;
        
-        SetWayPointDestination();
+        aiAgent.speed = WalkableDinosaurModel.Speed;
+
+        aiAgent.angularSpeed = WalkableDinosaurModel.AngularSpeed;
+
+        aiAgent.acceleration = WalkableDinosaurModel.Acceleration ;
+
+        aiAgent.angularSpeed  = WalkableDinosaurModel.AngularSpeed;
+
+        aiAgent.stoppingDistance = WalkableDinosaurModel.StoppingDistanceFromWayPoint;
+
+        FieldOfViewAnle = WalkableDinosaurModel.FieldOfViewAnle;
+
+        ChasingRange = WalkableDinosaurModel.ChasingRange;
+
+        AttackingRange = WalkableDinosaurModel.AttackingRange;
        
-    //    aiAgent.enabled = true;S
-
-       aiAgent.speed = WalkableDinosaurModel.Speed;
-
-       aiAgent.angularSpeed = WalkableDinosaurModel.AngularSpeed;
-
-       aiAgent.acceleration = WalkableDinosaurModel.Acceleration ;
-
-       aiAgent.angularSpeed  = WalkableDinosaurModel.AngularSpeed;
-
-       aiAgent.stoppingDistance = WalkableDinosaurModel.StoppingDistanceFromWayPoint;
-
-       FieldOfViewAnle = WalkableDinosaurModel.FieldOfViewAnle;
-
-       ChasingRange = WalkableDinosaurModel.ChasingRange;
-
-       AttackingRange = WalkableDinosaurModel.AttackingRange;
+        SetWayPointDestination();
 	}
 
 

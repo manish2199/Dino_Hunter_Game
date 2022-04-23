@@ -29,7 +29,6 @@ public abstract class Achievement
     protected void InvokeAchievementAcomplished(Achievement achievement)
     {
         OnAchievementAcomplished?.Invoke(achievement); 
-        Debug.Log("Achievement Acomplished");
     }
 
     protected virtual void UpdateAchievement()

@@ -38,10 +38,6 @@ public class ServicePool<T> : GenericSingleton<ServicePool<T>> where T : class
    public virtual void ReturnItem(T item)
    {
        PoolItem<T> pooledItem = pooledItems.Find(itm => itm.Item.Equals(item));
-       if(pooledItem != null)
-       {
-       Debug.Log("Item Returned");
-       }
         pooledItem.isUsed = false;
    }
 

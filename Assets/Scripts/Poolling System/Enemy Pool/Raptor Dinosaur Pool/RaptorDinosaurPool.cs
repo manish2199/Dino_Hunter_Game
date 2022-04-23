@@ -32,7 +32,7 @@ public class RaptorDinosaurPool : ServicePool<RaptorDinosaurController>
     {
           RaptorDinosaurModel = Model;
           RaptorDinosaurView = View;
-          return this.GetItem(RaptorDinosaurModel.RaptorsType);
+          return GetItem(RaptorDinosaurModel.RaptorsType);
     }
 
     protected override RaptorDinosaurController CreateItem()

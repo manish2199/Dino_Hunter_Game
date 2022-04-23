@@ -10,6 +10,16 @@ public class HeadshotHatrickAchievement : Achievement
         achievementType = AchievementType.HatrickOfHeadShots;  
     }
 
+    public HeadshotHatrickAchievement(RaptorsType raptorsType, int headshotNumber ,  UnlockWeaponType unlockWeaponType, Sprite unclockWeapon)
+	{
+	    Counter = 0;
+		achievementType = AchievementType.TRexKill; 	
+        RaptorsType = raptorsType;
+        HeadshotNumber = headshotNumber;
+        UnlockWeaponType = unlockWeaponType;
+        UnlockWeaponIcon = unclockWeapon;
+	}
+
     public RaptorsType RaptorsType;
 
     public int HeadshotNumber; 
@@ -20,11 +30,9 @@ public class HeadshotHatrickAchievement : Achievement
 
     private WalkableDinosaurView WalkableDinosaurView; 
 
-    // public HeadshotHatrickAchievement() : base () {} 
-
 	public override void Subscribe()
 	{
-         SetAchievementText();
+       SetAchievementText();
 	   DinosaurBody.OnHeadshot += CheckDinosaurType;	
        DinosaurBody.OnBodyShot += ResetCounters;
        ShootableWeaponController.OnMissTarget += ResetCounters;
@@ -42,10 +50,7 @@ public class HeadshotHatrickAchievement : Achievement
        if(RaptorsType == raptorType)
        {
            WalkableDinosaurView = walkableDinosaurView;
-        //    if(Counter == 0 )
-        //    {
-            //    WalkableDinosaurView = walkableDinosaurView;
-        //    }
+
            if(WalkableDinosaurView != walkableDinosaurView)
            {
                ResetCounters();
@@ -59,10 +64,7 @@ public class HeadshotHatrickAchievement : Achievement
 	protected override void UpdateAchievement()
 	{
 		Counter ++;
-        Debug.Log("Hit HeadShot");
-        Debug.Log(Counter);
-        Debug.Log(achievementType);
-
+      
         if(Counter >= HeadshotNumber)
         {
             InvokeAchievementAcomplished(this);

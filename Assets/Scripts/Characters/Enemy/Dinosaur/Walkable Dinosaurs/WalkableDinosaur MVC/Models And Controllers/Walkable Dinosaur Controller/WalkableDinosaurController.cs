@@ -146,8 +146,7 @@ public class RaptorDinosaurController : WalkableDinosaurController
         ResetHealth(); 
 
         view.EnableDinosaur();
-
-        // view.stopCoroutine();  
+ 
         view.IsDead = false;
     }
 
