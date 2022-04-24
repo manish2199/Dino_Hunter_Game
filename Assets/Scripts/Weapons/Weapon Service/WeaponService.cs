@@ -99,8 +99,11 @@ public class WeaponService : GenericSingleton<WeaponService>
     }
 
     public void UpdateWeaponUIIcon(Sprite weaponIcon)
-    {
-        GameplayUIManager.Instance.UpdateSelectedWeaponIcon(weaponIcon);
+    {   
+        if(GameplayUIManager.Instance != null)
+        {
+          GameplayUIManager.Instance.UpdateSelectedWeaponIcon(weaponIcon);
+        }
     }
     
 }

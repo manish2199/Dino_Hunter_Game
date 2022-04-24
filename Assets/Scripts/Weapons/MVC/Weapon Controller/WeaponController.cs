@@ -152,17 +152,22 @@ public class ShootableWeaponController : WeaponController
    }
 
    protected override void WeaponAttack()
-   {  
+   {   
+     
       // check whether it has single shot round or multiple shot round
-      if(ShootableWeaponModel.FireType == FireType.Multiple)
+      
+      if(Player.Instance.playerMouseLookController.isCursorLocked())
       {
+        if(ShootableWeaponModel.FireType == FireType.Multiple)
+        {
             // means assualt rifle
             ShootBulletMultileTime();
-      }
-      else
-      {
+        }
+        else
+        {
             // means other weapons which shot only once
             ShootBulletSingleTime();    
+        }
       }
    } 
 

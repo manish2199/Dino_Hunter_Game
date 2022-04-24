@@ -16,7 +16,6 @@ public class InventoryService : GenericSingleton<InventoryService>
 
     public static event Action<NotificationType> OnItemCollected;
     
-
     protected override void Awake()
    {
        MakeInstance();
@@ -44,7 +43,9 @@ public class InventoryService : GenericSingleton<InventoryService>
        newProjectileItem.UpdateMaxLimit(MaxLimit);
 
        weaponaryProjectiles.Add(newProjectileItem);
-       GameplayUIManager.Instance.AddNewItemToUISlots(newProjectileItem); 
+       
+    //    OnNewItemAdded?.Invoke(newProjectileItem)
+        GameplayUIManager.Instance.AddNewItemToUISlots(newProjectileItem); 
     }
 
     // Call only once in lifetime
@@ -57,8 +58,7 @@ public class InventoryService : GenericSingleton<InventoryService>
         newHealthKit.UpdateMaxLimit(MaxLimit);
 
         HealthKits.Add(newHealthKit);
-       GameplayUIManager.Instance.AddNewItemToUISlots(newHealthKit);
-
+        GameplayUIManager.Instance.AddNewItemToUISlots(newHealthKit);
     }
      
 
@@ -75,18 +75,23 @@ public class InventoryService : GenericSingleton<InventoryService>
                 {
                     // means present 
                     weaponaryProjectiles[i].ReduceQuantity();  
-                    // Debug.Log(weaponaryProjectiles[i].GetQuantity());
                     if(weaponaryProjectiles[i].GetQuantity() <= 5 )
-                    {
-                        NotificationManager.Instance.ShowNotificationMsg(NotificationType.LowAmmo);
+                    {    
+                        if(NotificationManager.Instance != null)
+                        {
+                          NotificationManager.Instance.ShowNotificationMsg(NotificationType.LowAmmo);
+                        }
                     }
                     // invoke for text
                     OnProjectileQuantityChanged?.Invoke(projectileType,weaponaryProjectiles[i].GetQuantity());
                     return true;
                 }
                 else
-                {
-                     NotificationManager.Instance.ShowNotificationMsg(NotificationType.OutOfAmmo);
+                {  
+                    if(NotificationManager.Instance != null)
+                    {  
+                    NotificationManager.Instance.ShowNotificationMsg(NotificationType.OutOfAmmo);
+                    }
                     break;
                 }
             }
@@ -120,7 +125,10 @@ public class InventoryService : GenericSingleton<InventoryService>
         }
        //means health kit is not preset and generate warning msg
         return 0;
-        NotificationManager.Instance.ShowNotificationMsg(NotificationType.OutOfHealthKit);
+        if(NotificationManager.Instance != null)
+       {
+          NotificationManager.Instance.ShowNotificationMsg(NotificationType.OutOfHealthKit);
+       }
     }
 
 
@@ -163,7 +171,10 @@ public class InventoryService : GenericSingleton<InventoryService>
                 else // means bag is full 
                 {
                     //******** ammo full event
-                    NotificationManager.Instance.ShowNotificationMsg(NotificationType.FullAmmo);
+                    if(NotificationManager.Instance != null)
+                    {
+                       NotificationManager.Instance.ShowNotificationMsg(NotificationType.FullAmmo);
+                    }
                     break;
                 }
             } 
@@ -195,7 +206,10 @@ public class InventoryService : GenericSingleton<InventoryService>
                 }
                 else // means bag is full 
                 {
-                   NotificationManager.Instance.ShowNotificationMsg(NotificationType.FullHealthKit);
+                    if(NotificationManager.Instance != null)
+                    {
+                      NotificationManager.Instance.ShowNotificationMsg(NotificationType.FullHealthKit);
+                    }
                     break;
                 }
             } 
@@ -212,7 +226,10 @@ public class InventoryService : GenericSingleton<InventoryService>
         for(int i = 0; i<HealthKits.Count; i++)
         {
             HealthKits[i].UpdateMaxLimit(maxLimit);
-            GameplayUIManager.Instance.UpdateHealthKitMaxLimit(maxLimit);
+            if(GameplayUIManager.Instance != null)
+            { 
+              GameplayUIManager.Instance.UpdateHealthKitMaxLimit(maxLimit);
+            }
         }
     }
  

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMouseLookController : MonoBehaviour
 {
-     // job is to control mouse look
+    // job is to control mouse look
      
     private PlayerScriptableObject playerScriptableObject;
    

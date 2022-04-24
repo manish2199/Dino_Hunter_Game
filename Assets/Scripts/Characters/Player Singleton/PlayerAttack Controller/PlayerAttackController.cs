@@ -13,7 +13,7 @@ public class PlayerAttackController : MonoBehaviour
 
 
     public void SelectWeapon()
-   {
+   { 
       if(Input.GetKeyDown(playerScriptableObject.playerControls.KeyToSelectWeapon1))
       {
          SelectWeapons(Player.Instance.weaponsHolder,0);

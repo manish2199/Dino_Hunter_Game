@@ -9,9 +9,7 @@ public class TutorialManager : GenericSingleton<TutorialManager>
     [SerializeField] PlayerTutorialTexts PlayerTutorials;
 
     [SerializeField] LevelInitializerScriptableObject InitialLevelConstraints;
-     
-    public bool IsTutorialPlaying;
-
+    
     [SerializeField] GameObject PlayerGameObject;
     [SerializeField] Text InstructionText;
     [SerializeField] GameObject InstructionPanel;
@@ -83,7 +81,8 @@ public class TutorialManager : GenericSingleton<TutorialManager>
 
 
     IEnumerator Tutorial()
-    {  
+    {   
+       GameplayUIManager.Instance.DisableSelectedWeaponIcon();
        InstructionPanel.SetActive(true);
        InstructionText.text = PlayerTutorials.IntroductionText;
 
@@ -103,11 +102,11 @@ public class TutorialManager : GenericSingleton<TutorialManager>
        InstructionText.text = PlayerTutorials.CrouchUnstructionText;
 
        yield return new WaitForSeconds(5f);
-
+         
        InstructionText.text = PlayerTutorials.WeaponSwitchText;
  
        yield return new WaitForSeconds(5f);
-       
+       GameplayUIManager.Instance.EnableSelectedWeaponIcon();
        InstructionText.text = PlayerTutorials.WeaponAim;
 
        yield return new WaitForSeconds(5f);
@@ -132,9 +131,12 @@ public class TutorialManager : GenericSingleton<TutorialManager>
 
        yield return new WaitForSeconds(5f);
      
+       
        PlayerGameObject.SetActive(false);
+       GameplayUIManager.Instance.SetCrossHair(true);
        MainCamera.SetActive(true);
        BlueRaptor.SetActive(true);
+
 
        InstructionText.text = PlayerTutorials.BlueRaptorEnemyDescp;
 
@@ -171,6 +173,7 @@ public class TutorialManager : GenericSingleton<TutorialManager>
        PlayerGameObject.SetActive(true);
        MainCamera.SetActive(false);
        MediBox.SetActive(false);
+       GameplayUIManager.Instance.SetCrossHair(false);
        InstructionText.text = PlayerTutorials.AchievementsDescpText;
 
        yield return new WaitForSeconds(5f);
@@ -183,7 +186,8 @@ public class TutorialManager : GenericSingleton<TutorialManager>
        InstructionPanel.SetActive(false);
  
     //    Load Main GamePlay 
-    //    GameData.SetTutorialState(1);
+       LevelManager.Instance.LoadScene(2);
+       GameData.SetTutorialState(1);
     }
 
 

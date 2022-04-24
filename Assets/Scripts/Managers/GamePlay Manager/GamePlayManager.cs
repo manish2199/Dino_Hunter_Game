@@ -36,9 +36,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
      
    void Start()
    {
-      // CHeck Whether particular Achievement are Completed Or Not 
-      // InitialSetup();
-      PlayerPrefs.DeleteAll();
+      InitialSetup();
    }
 
 
@@ -230,6 +228,8 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
 
    public void GameQuitButton()
    {
-      // Load Main Menu
+      // Load Main Menu 
+      LevelManager.Instance.LoadScene(0); 
+      Time.timeScale = 1;
    }
 }

@@ -42,11 +42,17 @@ public class CollectableContainer : MonoBehaviour , ICollectable
     {
        if(collectableContainerType == CollectableContainerType.AmmoBox)
        { 
-          CollectibleList = GamePlayManager.Instance.GetProjectileCollectibleList();
+          if(GamePlayManager.Instance != null)
+          {
+            CollectibleList = GamePlayManager.Instance.GetProjectileCollectibleList();
+          }
        }
        if(collectableContainerType == CollectableContainerType.MedicBox)
        {
-          CollectibleList = GamePlayManager.Instance.GetMediKitCollectibleList();
+          if(GamePlayManager.Instance != null)
+          {
+            CollectibleList = GamePlayManager.Instance.GetMediKitCollectibleList();
+          }
        }
     }
 
