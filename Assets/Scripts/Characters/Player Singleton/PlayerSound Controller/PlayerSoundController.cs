@@ -15,12 +15,83 @@ public class PlayerSoundController : MonoBehaviour
 
   [SerializeField] AudioSource playerFootStepAudio;
 
- 
+  [SerializeField] AudioSource PlayerAudioSource;
+
+  [SerializeField] AudioSource PlayerAudioEffects;
+
+  private int EnemyCount; 
+
   void Start()
   {
-      // playerScriptableObject  = Player.Instance.PlayerScriptableObject;
-      SetInitialFootStepAudio();
+    PlayGamePlaySound();
+    SetInitialFootStepAudio();
   }
+
+  void OnEnable()
+  {
+     EnemiesService.OnPlayerDetected += PlayBattleSound;
+     EnemiesService.OnEnemyDead += CheckForGamePlaySound;
+     InventoryService.OnItemCollected += PlayItemCollectedSound;
+  }
+
+  void OnDisable()
+  {
+     EnemiesService.OnPlayerDetected -= PlayBattleSound;
+     EnemiesService.OnEnemyDead -= CheckForGamePlaySound;
+     InventoryService.OnItemCollected -= PlayItemCollectedSound;
+  }
+
+
+  public void StopPlayerAudios()
+  {
+    PlayerAudioSource.Stop();
+  }
+
+  private void PlayItemCollectedSound(NotificationType other)
+  {
+    if(!PlayerAudioEffects.isPlaying)
+    {
+        PlayerAudioEffects.clip =  Player.Instance.PlayerScriptableObject.ItemCollectedClip;
+        PlayerAudioEffects.Play();
+    }
+  }
+
+  void CheckForGamePlaySound()
+  {
+    if(EnemyCount > 0)
+    {
+      EnemyCount --;
+    }
+
+    if(EnemyCount == 0 && PlayerAudioSource.clip == Player.Instance.PlayerScriptableObject.BattleAudioClip)
+    {
+       PlayGamePlaySound();
+    }
+
+  }
+
+  public void PlayGamePlaySound()
+  {
+       PlayerAudioSource.Stop();
+       PlayerAudioSource.clip =  Player.Instance.PlayerScriptableObject.GamePlayAudioClip;
+       PlayerAudioSource.Play();
+  }
+
+
+  void PlayBattleSound()
+  { 
+    EnemyCount ++;
+    // EnemyList.Add(EnemyCount); 
+    if(PlayerAudioSource.clip = Player.Instance.PlayerScriptableObject.GamePlayAudioClip)
+    {
+       PlayerAudioSource.Stop();
+       PlayerAudioSource.clip =  Player.Instance.PlayerScriptableObject.BattleAudioClip;
+       PlayerAudioSource.Play();
+    }
+  }
+ 
+ 
+  
 
   public void SetWalkingAudio()
   {

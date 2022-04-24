@@ -132,7 +132,9 @@ public class RaptorDinosaurController : WalkableDinosaurController
            RaptorDinosaurView view = (RaptorDinosaurView)WalkableDinosaurView; 
            
            view.DisableTheDinosaur();
-     
+           
+           EnemiesService.Instance.InvokeOnEnemyDead();
+
            Player.Instance.playerStatsController.IncreaseScore(WalkableDinosaurModel.WalkingDinosaurType);
         }
     }

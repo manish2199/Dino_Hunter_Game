@@ -32,6 +32,11 @@ public class PlayerScriptableObject : Character
     public float walkStepDistance;
     public float sprintStepDistance;
     public float crouchStepDistance;
+    public AudioClip BattleAudioClip;
+    public AudioClip GamePlayAudioClip;
+    public AudioClip ItemCollectedClip;
+    public AudioClip AchievementCompleteClip;
+
     #endregion
 
 

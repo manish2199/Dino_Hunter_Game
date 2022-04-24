@@ -47,7 +47,7 @@ public class PatrollingState : WalkableDinosaurStates
    protected virtual void CheckEnemyDetection()
    {
        // if enemy detected return true
-       if(PlayerTarget != null)
+       if(PlayerTarget != null && Player.Instance.gameObject.activeInHierarchy )
        {
         Vector3 targetDirection = GetDirection(transform.position , PlayerTarget.position );
         
@@ -59,6 +59,7 @@ public class PatrollingState : WalkableDinosaurStates
           {
               // DIRECT ATTACK
               EnemyDetectionCoroutine = EnemeDetected();
+              EnemiesService.Instance.InvokeOnPlayerDetected();
               StartCoroutine(EnemyDetectionCoroutine);
           }
           
@@ -118,7 +119,7 @@ public class PatrollingState : WalkableDinosaurStates
       CurrentWayPointTarget = WayPoints[currentWayPointIndex].position;
       
 
-      if( CanPatrol && aiAgent.isOnNavMesh == true )
+      if(CanPatrol && aiAgent.isOnNavMesh == true )
        {
          aiAgent.SetDestination(CurrentWayPointTarget);
          animator.SetBool("Walk",true);
@@ -142,9 +143,11 @@ public class PatrollingState : WalkableDinosaurStates
 
         CanPatrol = true;  
 
+
         WalkableDinosaurModel = walkableDinosaurView.walkableDinosaurController.WalkableDinosaurModel;
 
         WayPoints = WalkableDinosaurModel.WayPoints;
+       
        
         aiAgent.speed = WalkableDinosaurModel.Speed;
 
@@ -156,13 +159,15 @@ public class PatrollingState : WalkableDinosaurStates
 
         aiAgent.stoppingDistance = WalkableDinosaurModel.StoppingDistanceFromWayPoint;
 
+        SetWayPointDestination();
+       
         FieldOfViewAnle = WalkableDinosaurModel.FieldOfViewAnle;
 
         ChasingRange = WalkableDinosaurModel.ChasingRange;
 
         AttackingRange = WalkableDinosaurModel.AttackingRange;
        
-        SetWayPointDestination();
+      
 	}
 
 
@@ -172,15 +177,14 @@ public class PatrollingState : WalkableDinosaurStates
 		base.OnStateExit();
          
         CanPatrol = false;
-        
 
-        if(PatrolCoroutine != null && EnemyDetectionCoroutine != null)
-        {
-           StopCoroutine(PatrolCoroutine);
+        if(PatrolCoroutine != null && EnemyDetectionCoroutine!=null)
+      { 
+        StopCoroutine(PatrolCoroutine);
 
-           StopCoroutine(EnemyDetectionCoroutine);
-        }
- 
+        StopCoroutine(EnemyDetectionCoroutine);
+      }
+  
         currentWayPointIndex = 0; 
    
         CurrentWayPointTarget = Vector3.zero; 
@@ -189,15 +193,15 @@ public class PatrollingState : WalkableDinosaurStates
 
         FieldOfViewAnle = 0;
 
-       ChasingRange = 0;
+        ChasingRange = 0;
 
-       AttackingRange  = 0; 
+        AttackingRange  = 0; 
 
-       PatrolCoroutine = null;
+        PatrolCoroutine = null;
 
-       EnemyDetectionCoroutine = null;
+        EnemyDetectionCoroutine = null;
 
-       aiAgent.destination = Vector3.zero;
+        aiAgent.destination = Vector3.zero;
 
 	}
 }

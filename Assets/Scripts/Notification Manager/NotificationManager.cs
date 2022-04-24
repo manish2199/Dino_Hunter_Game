@@ -32,6 +32,16 @@ public class NotificationManager : GenericSingleton<NotificationManager>
       }
     }
 
+    void OnEnable()
+    {
+        InventoryService.OnItemCollected += ShowNotificationMsg;
+    }
+
+    void OnDisable()
+    {
+        InventoryService.OnItemCollected -= ShowNotificationMsg;
+    }
+
     public void ShowAchievementComplete(string achievementText , Sprite unlockItemSprite)
     {
         AchivementCompleteCoroutine =  AchievementComplete(achievementText,unlockItemSprite);

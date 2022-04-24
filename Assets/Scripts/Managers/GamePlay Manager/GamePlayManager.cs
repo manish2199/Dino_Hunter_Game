@@ -37,8 +37,8 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
    void Start()
    {
       // CHeck Whether particular Achievement are Completed Or Not 
-      InitialSetup();
-      // PlayerPrefs.DeleteAll();
+      // InitialSetup();
+      PlayerPrefs.DeleteAll();
    }
 
 
@@ -86,7 +86,6 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
    {
       WeaponService.Instance.UnlockTheWeapon(WeaponsID.Revolver);
       AddProjectilesToInventory(ProjectileType.RevolverBullet);
-      // UnlockedCollectibleBullets.Add(GetCollectibleProjectiles(ProjectileType.RevolverBullet));
       Player.Instance.playerAttackController.SelectInitialWeapon();
    }
 
@@ -183,12 +182,12 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
       // disable player 
       // enable ui camera 
       // show GameOver Panel
-
       if(Player.Instance.playerMouseLookController.isCursorLocked())
       {
          Cursor.lockState = CursorLockMode.None;
       }
 
+      Player.Instance.playerSoundController.StopPlayerAudios();
       Player.Instance.gameObject.SetActive(false);
       GameOverCamera.SetActive(true);
       GameplayUIManager.Instance.DisableSelectedWeaponIcon();
@@ -206,9 +205,9 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
       GameOverCamera.SetActive(false);
       ResetPlayerInventory();
 
+      Player.Instance.playerSoundController.PlayGamePlaySound();
       GameplayUIManager.Instance.EnableSelectedWeaponIcon();
       GameplayUIManager.Instance.SetCrossHair(false);
-
       GameplayUIManager.Instance.DisableGameOverUIPanel();
    }
 

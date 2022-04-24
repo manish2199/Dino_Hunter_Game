@@ -24,7 +24,7 @@ public class AttackState : WalkableDinosaurStates
          walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.ChasingState);
      }
 
-     	if(PlayerTarget == null)
+     	if(!Player.Instance.gameObject.activeInHierarchy || PlayerTarget == null)
 		{
 			walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.PatrollingState);
 		}
@@ -67,11 +67,8 @@ public class AttackState : WalkableDinosaurStates
 
       TimeBetweenAttack = 0f;
      
-      if(aiAgent.enabled == true)
-		{
-         aiAgent.destination = Vector3.zero;
-		   aiAgent.ResetPath();
-		}
-
+      aiAgent.destination = Vector3.zero;
+		
+      aiAgent.ResetPath();
    }
 }

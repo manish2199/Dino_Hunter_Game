@@ -35,8 +35,7 @@ public class MainMenuHandler : MonoBehaviour
 
     void Start()
     {
-    //    InitializeGamePrefs();
-       PlayerPrefs.DeleteAll();
+       InitializeGamePrefs();
     }
 
 
@@ -89,6 +88,16 @@ public class MainMenuHandler : MonoBehaviour
     {
       //Start the gameplay by showing loading screen 
       PlayButtonClickAudio();
+      
+      if(GameData.GetTutorialState() == 0)
+      {
+         // LoadScene 1 
+      }
+      if(GameData.GetTutorialState() == 1)
+      {
+         // LoadScene 2 
+      }
+
     }
  
 

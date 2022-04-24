@@ -14,7 +14,9 @@ public class CollectableContainer : MonoBehaviour , ICollectable
  
     private List<CollectiblesScriptableObject> CollectibleList;  
 
-    public Transform[] SpawningPositions;
+    public Transform[] SpawningPositions; 
+
+    public static event Action<NotificationType> OnItemCollected;
 
     private int CurrentSpawnIndex = 0;
 
@@ -55,10 +57,6 @@ public class CollectableContainer : MonoBehaviour , ICollectable
         for(int i = 0; i<CollectibleList.Count; i++)
         {  
             InventoryService.Instance.AddItemFromSupplies(CollectibleList[i].CollectibleItemType,CollectibleList[i].CollectibleItem); 
-            if(NotificationManager.Instance != null)
-            {
-               NotificationManager.Instance.ShowNotificationMsg(NotificationType.ItemCollectedNotification);
-            }
         }
         if(SpawningPositions.Length > 0 && SpawningPositions != null)
         {

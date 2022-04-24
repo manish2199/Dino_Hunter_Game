@@ -16,7 +16,8 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 
     [SerializeField] HealthKitInventoryUISlot[] healthKitInventoryUISlot;
 
-    [SerializeField] TextMeshProUGUI PlayerScoreText; 
+    [SerializeField] GameObject ScorePanel;
+     [SerializeField] TextMeshProUGUI PlayerScoreText; 
 
     [SerializeField] GameObject CrossHair; 
 
@@ -24,11 +25,23 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 
     [SerializeField] Image CurrentSelectedWeaponIcon;
 
+    // Game Over
     [SerializeField] GameObject GameOverPanel;
     [SerializeField] TextMeshProUGUI DifficultyLevelText;
     [SerializeField] TextMeshProUGUI GameOverScoreText;
     [SerializeField] TextMeshProUGUI HighScoreText; 
+    
   
+    // Pasue Menu 
+    [SerializeField] GameObject PauseMenuPanel;
+    [SerializeField] Button PauseButton;
+    [SerializeField] Button ResumeButton;
+    [SerializeField] Button ControlsButton;
+    [SerializeField] Button QuitButton;
+    [SerializeField] TextMeshProUGUI PauseText;
+    [SerializeField] GameObject ControlsPanel;
+ 
+
 
      
    protected override void Awake()
@@ -263,6 +276,45 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     public void DisableGameOverUIPanel()
     {
        GameOverPanel.SetActive(false);
+    }
+
+
+    public void PauseGame()
+    {
+        SetCrossHair(true);
+        PauseMenuPanel.SetActive(true);
+        ScorePanel.SetActive(false);
+        CurrentSelectedWeaponIcon.gameObject.SetActive(false);
+        PauseButton.gameObject.SetActive(false);
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        SetCrossHair(false);
+        PauseMenuPanel.SetActive(false);
+        ScorePanel.SetActive(true);
+        CurrentSelectedWeaponIcon.gameObject.SetActive(true);
+        PauseButton.gameObject.SetActive(true);
+    }
+
+    public void OpenControls()
+    {
+        PauseText.gameObject.SetActive(false);
+        ResumeButton.gameObject.SetActive(false);
+        ControlsButton.gameObject.SetActive(false);
+        QuitButton.gameObject.SetActive(false);
+        ControlsPanel.SetActive(true);
+    }
+
+    public void ControlsExit()
+    {
+        PauseText.gameObject.SetActive(true);
+        ResumeButton.gameObject.SetActive(true);
+        ControlsButton.gameObject.SetActive(true);
+        QuitButton.gameObject.SetActive(true);
+        ControlsPanel.SetActive(false);
     }
 }
 

@@ -50,10 +50,10 @@ MonoBehaviour:
         AngularSpeed: 900
         Acceleration: 15
         FieldOfViewAnle: 170
-        TargetStopppingDistance: 4.5
+        TargetStopppingDistance: 5
         StoppingDistanceFromWayPoint: 0.3
         ChasingRange: 15
-        AttackingRange: 5
+        AttackingRange: 6
         TimeToRespawnAfterDeath: 4000
         WalkableDinosaurView: {fileID: 4406083887922425676, guid: a36745fe4e0e0444cbee1644a9c070a1,
           type: 3}

@@ -34,6 +34,11 @@ MonoBehaviour:
   walkStepDistance: 0.4
   sprintStepDistance: 0.3
   crouchStepDistance: 0.7
+  BattleAudioClip: {fileID: 8300000, guid: 9454f5f66ee19484e8614610a4f0de68, type: 3}
+  GamePlayAudioClip: {fileID: 8300000, guid: d40297a7b9ca5ab4d8944575e0cb7235, type: 3}
+  ItemCollectedClip: {fileID: 8300000, guid: e0310548d62c2b84c977ce98c60b01e2, type: 3}
+  AchievementCompleteClip: {fileID: 8300000, guid: d05146c434c91d0488f117bb4af8d6f9,
+    type: 3}
   playerControls:
     KeyForJump: 32
     KeyForCrouch: 99

@@ -12,6 +12,24 @@ public class EnemiesService : GenericSingleton<EnemiesService>
    [SerializeField] TRexDinosaurPool TRexDinosaurPool;
  
    [SerializeField] WalkableDinosaurSpawner[] WalkableDinosaursList;
+
+   public static event Action OnPlayerDetected; 
+
+   public static event Action OnEnemyDead;
+
+
+   public void InvokeOnPlayerDetected()
+   {
+      OnPlayerDetected?.Invoke();
+   } 
+
+   public void InvokeOnEnemyDead()
+   {
+      OnEnemyDead?.Invoke();
+   } 
+
+
+
    
    // private List<WalkableDinosaurRespawner> WalkableDinosaurRespawners; 
  

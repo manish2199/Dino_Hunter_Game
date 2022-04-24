@@ -12,7 +12,9 @@ public class InventoryService : GenericSingleton<InventoryService>
     
     private List<ItemSlot> weaponaryProjectiles;
     
-    private List<ItemSlot> HealthKits;
+    private List<ItemSlot> HealthKits;  
+
+    public static event Action<NotificationType> OnItemCollected;
     
 
     protected override void Awake()
@@ -151,8 +153,9 @@ public class InventoryService : GenericSingleton<InventoryService>
                 // check quantity hits the max or not if yes return true if not return false and generate warning
                 if(weaponaryProjectiles[i].GetQuantity() < weaponaryProjectiles[i].GetMaxQuanity() )
                 {
-                    // means present 
-                    
+                    // means space is availabe
+                    // NotificationManager.Instance.ShowNotificationMsg(NotificationType.ItemCollectedNotification);
+                    OnItemCollected?.Invoke(NotificationType.ItemCollectedNotification);
                     weaponaryProjectiles[i].SetQuantity(quanitty);
                     OnProjectileQuantityChanged?.Invoke(projectileType,weaponaryProjectiles[i].GetQuantity()); 
                     
@@ -186,7 +189,7 @@ public class InventoryService : GenericSingleton<InventoryService>
                 if(HealthKits[i].GetQuantity() < HealthKits[i].GetMaxQuanity() )
                 {
                     // means present 
-                    
+                    OnItemCollected?.Invoke(NotificationType.ItemCollectedNotification);
                     HealthKits[i].SetQuantity(Quantity);
                     OnHealthKitQuanityChanged?.Invoke(healthKitType,HealthKits[i].GetQuantity());
                 }

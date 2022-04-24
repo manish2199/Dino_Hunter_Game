@@ -22,7 +22,7 @@ public class Player : GenericSingleton<Player>
 
     public PlayerMouseLookController playerMouseLookController;
 
-    [SerializeField] PlayerSoundController playerSoundController;
+    public PlayerSoundController playerSoundController;
 
     public PlayerAttackController playerAttackController;
 
