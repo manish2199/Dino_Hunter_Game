@@ -24,9 +24,12 @@ public class NotificationManager : GenericSingleton<NotificationManager>
 
     private bool isAlradyShowing = false; 
    
-    void Awake()
+   protected override void Awake()
     {
-        base.Awake();
+      if(Instance == null)
+      {
+         Instance = this;
+      }
     }
 
     public void ShowAchievementComplete(string achievementText , Sprite unlockItemSprite)

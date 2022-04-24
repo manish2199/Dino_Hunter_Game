@@ -15,13 +15,21 @@ public class InventoryService : GenericSingleton<InventoryService>
     private List<ItemSlot> HealthKits;
     
 
-   void Awake()
+    protected override void Awake()
    {
-       base.Awake(); 
+       MakeInstance();
         
        HealthKits = new List<ItemSlot>();
        weaponaryProjectiles = new List<ItemSlot>();
    }  
+
+   private void MakeInstance()
+   {
+       if(Instance == null)
+       {
+           Instance = this;
+       }
+   }
 
 
     // this is called by achievement system only 

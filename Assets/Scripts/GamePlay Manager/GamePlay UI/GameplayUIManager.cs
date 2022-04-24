@@ -28,11 +28,15 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     [SerializeField] TextMeshProUGUI DifficultyLevelText;
     [SerializeField] TextMeshProUGUI GameOverScoreText;
     [SerializeField] TextMeshProUGUI HighScoreText; 
+  
 
      
-    void Awake()
+   protected override void Awake()
     { 
-        base.Awake();
+      if(Instance == null)
+      {
+         Instance = this;
+      }
        
        for(int i=0; i<projectileInventoryUISlots.Length; i++)
        {

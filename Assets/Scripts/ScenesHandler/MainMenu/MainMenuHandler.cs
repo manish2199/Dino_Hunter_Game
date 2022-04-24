@@ -26,8 +26,41 @@ public class MainMenuHandler : MonoBehaviour
 
 
     //Controls Menu 
-    [SerializeField] GameObject ControlsMenuPanel;
-    
+    [SerializeField] GameObject ControlsMenuPanel; 
+
+    // Button AudioSource 
+    [SerializeField] AudioSource ButtonAdioSource;
+    [SerializeField] AudioClip ButtonClickClip; 
+
+
+    void Start()
+    {
+    //    InitializeGamePrefs();
+       PlayerPrefs.DeleteAll();
+    }
+
+
+    private void InitializeGamePrefs()
+    {
+        if(!PlayerPrefs.HasKey("GameInitialized"))
+        { 
+            GameData.SetTutorialState(0);
+
+            GameData.SetEasyDifficulty(1);
+            GameData.SetMediumDifficulty(0);
+            GameData.SetMediumDifficulty(0);
+
+            GameData.SetEasyDifficultyHighScore(0);
+            GameData.SetMediumDifficultyHighScore(0);
+            GameData.SetHardDifficultyHighScore(0);
+
+            GameData. SetShotgunUnlocked(0);
+            GameData.SetAssualtRifleUnlocked(0);
+
+            PlayerPrefs.SetInt("GameInitialized" ,666);
+        }
+    }
+
 
 
     private void DisableMainMenu()
@@ -54,13 +87,16 @@ public class MainMenuHandler : MonoBehaviour
 
     public void PlayButton()
     {
-      //Start the gameplay by showing loading screen
+      //Start the gameplay by showing loading screen 
+      PlayButtonClickAudio();
     }
  
 
     #region  Difficulty Menu
     public void DifficultyMenuButton()
     {
+       PlayButtonClickAudio();
+       
        DisableMainMenu();
         
        DifficultyMenuPanel.SetActive(true);
@@ -102,7 +138,7 @@ public class MainMenuHandler : MonoBehaviour
     }
 
     private void ActivateEasySign()
-    {
+    {   
         EasyDifficultyTick.SetActive(true);
         MediumDifficultyTick.SetActive(false);
         HardDifficultyTick.SetActive(false);
@@ -110,6 +146,7 @@ public class MainMenuHandler : MonoBehaviour
 
     public void SetEasyDifficulty()
     {   
+        PlayButtonClickAudio();
         ActivateEasySign();
         GameData.SetEasyDifficulty(1);
         GameData.SetMediumDifficulty(0);
@@ -125,6 +162,7 @@ public class MainMenuHandler : MonoBehaviour
 
     public void SetMediumDifficulty()
     {
+        PlayButtonClickAudio();
         ActivateMediumSign();
         GameData.SetEasyDifficulty(0);
         GameData.SetMediumDifficulty(1);
@@ -141,6 +179,7 @@ public class MainMenuHandler : MonoBehaviour
 
     public void SetHardDifficulty()
     {
+        PlayButtonClickAudio();
         ActivateHardSign();
         GameData.SetEasyDifficulty(0);
         GameData.SetMediumDifficulty(0);
@@ -149,6 +188,8 @@ public class MainMenuHandler : MonoBehaviour
 
     public void DifficultyMenuExitButton()
     {
+       PlayButtonClickAudio(); 
+
        DifficultyMenuPanel.SetActive(false);
 
        EnableMainMenu();
@@ -158,7 +199,9 @@ public class MainMenuHandler : MonoBehaviour
 
     #region  HighScore
     public void HighScoresMenuButton()
-    {
+    {   
+      PlayButtonClickAudio();
+
         SetHighScore();
 
         DisableMainMenu();
@@ -169,10 +212,6 @@ public class MainMenuHandler : MonoBehaviour
 
     private void SetHighScore()
     {   
-        // print("Easy Difficulty" + GameData.GetEasyDifficulty());
-        // print("Medium Difficulty" + GameData.GetMediumDifficulty());
-        // print("Hard Difficulty" + GameData.GetHardDifficulty());
-
         if(GameData.GetEasyDifficulty() == 1)
         {
             HighscoreText.text = GameData.GetEasyDifficultyHighScore().ToString();
@@ -188,24 +227,35 @@ public class MainMenuHandler : MonoBehaviour
     }
 
     public void HighScoreMenuExitButton()
-    {
+    { 
+       PlayButtonClickAudio();
+    
        HighScoreMenuPanel.SetActive(false);
 
        EnableMainMenu();
     }
     #endregion
 
-
+    private void PlayButtonClickAudio()
+    {
+        ButtonAdioSource.clip = ButtonClickClip;
+        ButtonAdioSource.Play();
+    }
+   
 
     public void ControlsButton()
     {
+       PlayButtonClickAudio();
+
        DisableMainMenu();
 
        ControlsMenuPanel.SetActive(true);
     }
 
     public void ControlMenuExitButton()
-    {
+    {  
+       PlayButtonClickAudio();
+
        ControlsMenuPanel.SetActive(false);
 
        EnableMainMenu();
@@ -213,7 +263,9 @@ public class MainMenuHandler : MonoBehaviour
 
 
     public void QuitButton()
-    {
+    { 
+       PlayButtonClickAudio();
+     
         Application.Quit();
     }
     

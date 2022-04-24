@@ -7,6 +7,15 @@ public class TRexDinosaurPool : ServicePool<TRexDinosaurController>
     TRexView trexView ;
     TRexDinosaurModel trexDinosaurModel;
 
+    protected override void Awake()
+   {
+      if(Instance == null)
+      {
+         Instance = this;
+      }
+      // WalkableDinosaurRespawners = new List<WalkableDinosaurRespawner>();
+   }
+
     public TRexDinosaurController GetItem(TRexType trexType)
     {
         if(pooledItems.Count > 0)

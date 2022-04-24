@@ -7,6 +7,14 @@ public class RaptorDinosaurPool : ServicePool<RaptorDinosaurController>
     RaptorDinosaurModel RaptorDinosaurModel;
     RaptorDinosaurView RaptorDinosaurView; 
 
+    protected override void Awake()
+   {
+      if(Instance == null)
+      {
+         Instance = this;
+      }
+    }
+
     public RaptorDinosaurController GetItem(RaptorsType raptorsType)
     {
         if(pooledItems.Count > 0)
