@@ -36,7 +36,7 @@ public class PatrollingState : WalkableDinosaurStates
         {   
             CanPatrol = false; 
             animator.SetBool("Walk",false);
-            PatrolCoroutine = Coroutine();
+            PatrolCoroutine = PatrollingRoutine();
             StartCoroutine(PatrolCoroutine);      
         }
         CheckEnemyDetection(); 
@@ -58,16 +58,23 @@ public class PatrollingState : WalkableDinosaurStates
           if( GetDistance(transform.position,PlayerTarget.position) < ChasingRange )
           {
               // DIRECT ATTACK
-              EnemyDetectionCoroutine = EnemeDetected();
               EnemiesService.Instance.InvokeOnPlayerDetected();
-              StartCoroutine(EnemyDetectionCoroutine);
+              EnemyDetected();
           }
           
         }
        }
-   }
+  }
 
-   protected virtual IEnumerator EnemeDetected()
+  public void EnemyDetected()
+  {
+    EnemyDetectionCoroutine = EnemyDetectedRoutine();   
+    StartCoroutine(EnemyDetectionCoroutine);
+  }
+
+
+
+  protected virtual IEnumerator EnemyDetectedRoutine()
   {
       animator.transform.LookAt(PlayerTarget);
       aiAgent.isStopped = true;
@@ -86,7 +93,7 @@ public class PatrollingState : WalkableDinosaurStates
 
 
 
-   protected virtual IEnumerator Coroutine() 
+  protected virtual IEnumerator PatrollingRoutine() 
     {
         aiAgent.isStopped = true;
         aiAgent.velocity = Vector3.zero; 

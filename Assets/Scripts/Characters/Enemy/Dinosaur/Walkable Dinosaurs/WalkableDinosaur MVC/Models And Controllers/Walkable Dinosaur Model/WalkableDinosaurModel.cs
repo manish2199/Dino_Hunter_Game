@@ -19,7 +19,10 @@ public abstract class WalkableDinosaurModel
       FieldOfViewAnle = walkableDinosaurScriptableObject.WalkingDinosaurs.FieldOfViewAnle;
       WalkingDinosaurType = walkableDinosaurScriptableObject.WalkingDinosaurType;
       TimeToRespawnAfterDeath = walkableDinosaurScriptableObject.WalkingDinosaurs.TimeToRespawnAfterDeath;
-   }
+      IsEnemyAlredyDetected = false;
+   } 
+  
+   public bool IsEnemyAlredyDetected { get; set; }
 
    public int TimeToRespawnAfterDeath { get; }
 

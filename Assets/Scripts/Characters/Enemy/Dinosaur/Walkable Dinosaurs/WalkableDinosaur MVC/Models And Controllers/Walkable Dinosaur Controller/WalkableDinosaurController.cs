@@ -122,6 +122,21 @@ public class RaptorDinosaurController : WalkableDinosaurController
 
     public override void TakeDamage(int damage)
     {
+        RaptorDinosaurView view = (RaptorDinosaurView)WalkableDinosaurView; 
+
+        RaptorDinosaurModel model = (RaptorDinosaurModel)WalkableDinosaurModel;
+
+
+        if(!model.IsEnemyAlredyDetected )
+        {
+           model.IsEnemyAlredyDetected = true;
+           
+           if(CurrentState == view.PatrollingState)
+           {
+               view.PatrollingState.EnemyDetected();
+           }
+        }
+         
         if(WalkableDinosaurModel.HealhToReduce > 0)
         { 
           WalkableDinosaurModel.HealhToReduce -= damage;
@@ -129,7 +144,7 @@ public class RaptorDinosaurController : WalkableDinosaurController
         if(WalkableDinosaurModel.HealhToReduce <= 0)
         { 
         //    SetInitialState();
-           RaptorDinosaurView view = (RaptorDinosaurView)WalkableDinosaurView; 
+          
            
            view.DisableTheDinosaur();
            
@@ -173,7 +188,22 @@ public class TRexDinosaurController : WalkableDinosaurController
     }
 
     public override void TakeDamage(int damage)
-    {
+    { 
+        TRexDinosaurModel model = (TRexDinosaurModel)WalkableDinosaurModel;
+
+        TRexView view = (TRexView)WalkableDinosaurView; 
+
+        if(!model.IsEnemyAlredyDetected )
+        {
+           model.IsEnemyAlredyDetected = true;
+           
+           if(CurrentState == view.PatrollingState)
+           {
+               view.PatrollingState.EnemyDetected();
+           }
+        }
+
+
         if(WalkableDinosaurModel.HealhToReduce > 0)
         { 
           WalkableDinosaurModel.HealhToReduce -= damage;
@@ -182,7 +212,6 @@ public class TRexDinosaurController : WalkableDinosaurController
         { 
         //    SetInitialState();
            OnTrexDeath?.Invoke();
-           TRexView view = (TRexView)WalkableDinosaurView; 
            
            view.DisableTheDinosaur(); 
 

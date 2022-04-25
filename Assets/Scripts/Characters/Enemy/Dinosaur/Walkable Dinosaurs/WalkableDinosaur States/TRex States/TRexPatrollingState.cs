@@ -17,17 +17,17 @@ public class TRexPatrollingState : PatrollingState
             { 
                 CanPatrol = false; 
                 animator.SetBool("Walk",false);
-                PatrolCoroutine = this.Coroutine();
+                PatrolCoroutine = this.PatrollingRoutine();
                 StartCoroutine(PatrolCoroutine);      
            }
-          CheckEnemyDetection(); 
+           CheckEnemyDetection(); 
         } 
 
      
    }
 
 
-   protected override IEnumerator EnemeDetected()
+   protected override IEnumerator EnemyDetectedRoutine()
   {
       animator.transform.LookAt(PlayerTarget);
       aiAgent.isStopped = true;
@@ -47,7 +47,7 @@ public class TRexPatrollingState : PatrollingState
 
 
 
-   protected override IEnumerator Coroutine() 
+   protected override IEnumerator PatrollingRoutine() 
     {
         aiAgent.isStopped = true;
         aiAgent.velocity = Vector3.zero; 

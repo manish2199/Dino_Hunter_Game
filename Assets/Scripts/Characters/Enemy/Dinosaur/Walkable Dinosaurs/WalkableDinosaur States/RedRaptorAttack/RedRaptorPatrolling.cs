@@ -11,7 +11,7 @@ public class RedRaptorPatrolling : PatrollingState
    }
    
 
-   protected override IEnumerator Coroutine() 
+   protected override IEnumerator PatrollingRoutine() 
     {
         aiAgent.isStopped = true;
         aiAgent.velocity = Vector3.zero; 

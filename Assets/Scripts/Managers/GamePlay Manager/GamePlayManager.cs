@@ -41,6 +41,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
    void Start()
    {
       InitialSetup();
+      // PlayerPrefs.DeleteAll();
    }
 
 
