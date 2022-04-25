@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +9,11 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
   
    [SerializeField] Transform PlayerRespawnposition;
 
-   [SerializeField] GameObject GameOverCamera;
-   
+   [SerializeField] GameObject GameOverCamera; 
+
+   public static event Action OnPlayerDeath;
+
+   public static event Action OnGameRestart;
    
    protected override void Awake()
    {
@@ -184,18 +188,17 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
       {
          Cursor.lockState = CursorLockMode.None;
       }
-
+        
+      OnPlayerDeath?.Invoke();
       Player.Instance.playerSoundController.StopPlayerAudios();
       Player.Instance.gameObject.SetActive(false);
       GameOverCamera.SetActive(true);
-      GameplayUIManager.Instance.DisableSelectedWeaponIcon();
-      GameplayUIManager.Instance.SetCrossHair(true);
  
-      GameplayUIManager.Instance.ShowGameOverUIPanel();
    }
 
    public void RestartGameButton()
    {  
+      GameplayUIManager.Instance.PlayButtonClip();
       Player.Instance.gameObject.transform.position = PlayerRespawnposition.position;
       Player.Instance.playerStatsController.ResetPlayerHealth();
       Player.Instance.playerStatsController.ResetScore();
@@ -204,9 +207,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
       ResetPlayerInventory();
 
       Player.Instance.playerSoundController.PlayGamePlaySound();
-      GameplayUIManager.Instance.EnableSelectedWeaponIcon();
-      GameplayUIManager.Instance.SetCrossHair(false);
-      GameplayUIManager.Instance.DisableGameOverUIPanel();
+      OnGameRestart?.Invoke();
    }
 
    private void ResetPlayerInventory()
@@ -229,6 +230,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
    public void GameQuitButton()
    {
       // Load Main Menu 
+      GameplayUIManager.Instance.PlayButtonClip();
       LevelManager.Instance.LoadScene(0); 
       Time.timeScale = 1;
    }

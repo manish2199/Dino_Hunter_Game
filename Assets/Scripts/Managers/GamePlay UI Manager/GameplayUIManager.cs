@@ -8,7 +8,9 @@ using TMPro;
 public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 {
     // Listens events for new slot added
-    // Listens events for item quantity updation
+    // Listens events for item quantity updation 
+
+    [SerializeField] AudioSource ButtonAudioSource;
 
     [SerializeField] GameObject InventoryUIPanel;
 
@@ -30,6 +32,7 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     [SerializeField] TextMeshProUGUI DifficultyLevelText;
     [SerializeField] TextMeshProUGUI GameOverScoreText;
     [SerializeField] TextMeshProUGUI HighScoreText; 
+    [SerializeField] GameObject MiniMapPanel;
     
   
     // Pasue Menu 
@@ -41,7 +44,7 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     [SerializeField] TextMeshProUGUI PauseText;
     [SerializeField] GameObject ControlsPanel;
  
-
+ 
 
      
    protected override void Awake()
@@ -66,7 +69,9 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     {
        InventoryService.OnProjectileQuantityChanged += UpdateTheProjectilesQuantity;
        InventoryService.OnHealthKitQuanityChanged += UpdateMedicalKitQuantity;
-       WeaponService.OnWeaponZoomIn += SetCrossHair;
+       WeaponService.OnWeaponZoomIn += SetCrossHair; 
+       GamePlayManager.OnPlayerDeath += DisableUIElements;
+       GamePlayManager.OnGameRestart += EnableUIElements;
     }
 
     void OnDisable()
@@ -74,6 +79,8 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
        InventoryService.OnProjectileQuantityChanged -= UpdateTheProjectilesQuantity;
        InventoryService.OnHealthKitQuanityChanged += UpdateMedicalKitQuantity;
        WeaponService.OnWeaponZoomIn -= SetCrossHair;
+       GamePlayManager.OnPlayerDeath -= DisableUIElements;
+       GamePlayManager.OnGameRestart += EnableUIElements;
     }
 
     public void SetCrossHair(bool isWeaponZoomed)
@@ -243,12 +250,14 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     public void EnableSelectedWeaponIcon()
     {
         CurrentSelectedWeaponIcon.gameObject.SetActive(true);
-    }     
+    }   
 
     public void DisableSelectedWeaponIcon()
     {
         CurrentSelectedWeaponIcon.gameObject.SetActive(false);
-    }   
+    }
+
+
 
     public void ShowGameOverUIPanel()
     {
@@ -278,10 +287,22 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
        GameOverPanel.SetActive(false);
     }
 
+    public void EnableMiniMap()
+    {
+        MiniMapPanel.SetActive(true);
+    }
+
+    public void DisableMiniMap()
+    {
+        MiniMapPanel.SetActive(false);
+    }
+
 
     public void PauseGame()
     {
+        PlayButtonClip();
         SetCrossHair(true);
+        DisableMiniMap();
         PauseMenuPanel.SetActive(true);
         ScorePanel.SetActive(false);
         CurrentSelectedWeaponIcon.gameObject.SetActive(false);
@@ -291,8 +312,10 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 
     public void ResumeGame()
     {
+        PlayButtonClip();
         Time.timeScale = 1;
         SetCrossHair(false);
+        EnableMiniMap();
         PauseMenuPanel.SetActive(false);
         ScorePanel.SetActive(true);
         CurrentSelectedWeaponIcon.gameObject.SetActive(true);
@@ -300,7 +323,8 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     }
 
     public void OpenControls()
-    {
+    {  
+        PlayButtonClip();
         PauseText.gameObject.SetActive(false);
         ResumeButton.gameObject.SetActive(false);
         ControlsButton.gameObject.SetActive(false);
@@ -309,12 +333,35 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     }
 
     public void ControlsExit()
-    {
+    { 
+        PlayButtonClip();
         PauseText.gameObject.SetActive(true);
         ResumeButton.gameObject.SetActive(true);
         ControlsButton.gameObject.SetActive(true);
         QuitButton.gameObject.SetActive(true);
         ControlsPanel.SetActive(false);
+    }
+
+    private void DisableUIElements()
+    {
+       DisableMiniMap();
+       DisableSelectedWeaponIcon();
+       SetCrossHair(true);
+       ShowGameOverUIPanel();
+    }
+
+
+    private void EnableUIElements()
+    { 
+      EnableSelectedWeaponIcon();
+      SetCrossHair(false);
+      DisableGameOverUIPanel();
+      EnableMiniMap();
+    }
+
+    public void PlayButtonClip()
+    {
+        ButtonAudioSource.Play();
     }
 }
 
