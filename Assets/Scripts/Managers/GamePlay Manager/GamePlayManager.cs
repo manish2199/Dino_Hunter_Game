@@ -17,7 +17,9 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
    
    protected override void Awake()
    {
-      MakeInstance();
+      MakeInstance(); 
+
+      InitialSetup();
    }
 
   private void OnEnable()
@@ -38,13 +40,6 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
       }
    }
      
-   void Start()
-   {
-      InitialSetup();   
-      // PlayerPrefs.DeleteAll();
-   }
-
-
   private void UnlockItems(Achievement achievement)
   {   
      if(achievement.achievementType == AchievementType.HatrickOfHeadShots)

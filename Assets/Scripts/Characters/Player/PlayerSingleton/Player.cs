@@ -3,40 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : GenericSingleton<Player>
 {
-    [SerializeField] private PlayerScriptableObject playerScriptableObject;
-    public PlayerScriptableObject PlayerScriptableObject { get { return playerScriptableObject; }}
+   [SerializeField] private PlayerScriptableObject playerScriptableObject;
+   public PlayerScriptableObject PlayerScriptableObject { get { return playerScriptableObject; }}
      
-    public Transform rootTransform;
+   public Transform rootTransform;
 
-    public Transform playerTransform;
+   public Transform playerTransform;
 
-    public Transform PlayerCollectableTransform;
+   public Transform PlayerCollectableTransform;
 
-    public Transform weaponsHolder;
+   public Transform weaponsHolder;
 
-    public CharacterController  characterController;
+   public CharacterController  characterController;
 
-    [SerializeField] PlayerMovementController playerMovementController;
+   public PlayerMovementController playerMovementController;
 
-    public PlayerMouseLookController playerMouseLookController;
+   public PlayerMouseLookController playerMouseLookController;
 
-    public PlayerSoundController playerSoundController;
+   public PlayerSoundController playerSoundController;
 
-    public PlayerAttackController playerAttackController;
+   public PlayerAttackController playerAttackController;
 
-    public PlayerStatsController playerStatsController;
+   public PlayerStatsController playerStatsController;
 
-    [SerializeField] PlayerAnimationController playerAnimationController;
+   public PlayerAnimationController playerAnimationController;
+
+   public Animator PlayerAnimator;
     
-    public bool IsCrouched { get; set; }    
+   public AudioSource FootStepAudioSource;
 
-    public bool IsSprinting { get; set; } 
+   public AudioSource GameplayMusicAudioSource;
 
-    public bool IsWalking { get; set; }   
+   public AudioSource EffectsAudioSource;
 
-    public bool IsZoomed { get; set; }
 
 
    protected override void Awake()
@@ -48,49 +50,84 @@ public class Player : GenericSingleton<Player>
    }
     
     
-    void OnEnable()
-    {
+   void OnEnable()
+   {
        WeaponService.OnWeaponZoomIn += PlayerCameraZoomInAinmation;       
-    }
+   }
 
-    void OnDisable()
-    {
-       WeaponService.OnWeaponZoomIn -= PlayerCameraZoomInAinmation;       
-    } 
+   void OnDisable()
+   {
+       WeaponService.OnWeaponZoomIn -= PlayerCameraZoomInAinmation;
+   } 
 
-    public void PlayerCameraZoomInAinmation(bool canZoomIn)
-    { 
+   public void PlayerCameraZoomInAinmation(bool canZoomIn) 
+   { 
       playerAnimationController.CamZoom(canZoomIn);
-    }
+   }
 
-    public void SetWalkingFootStepClips()
-    {
-       playerSoundController.SetWalkingAudio();
-    }
-
-    public void SetCrouchedFootStepClips()
-    {
-       playerSoundController.SetCrouchedAudio();
-    }
-
-    public void SetSprintFootStepClips()
-    {
-       playerSoundController.SetSrintAudio();
-    }
-
-    public void TakeDamage(int damage)
-    {
+   public void TakeDamage(int damage)
+   {
         playerStatsController.TakeDamage(damage);
-    }
-
-    void Update()
-    {
-       playerMovementController.PlayerMovement();
-     
-       playerMouseLookController.MouseLookAround(); 
-          
-       playerSoundController.PlayFootStepAudio();
+   }
    
-       playerAttackController.SelectWeapon();
+
+
+
+
+   //  Update Functions
+   public void PlayerMovement()
+   {
+         playerMovementController.MovePlayer(playerScriptableObject,characterController,playerTransform);
+      
+         playerMovementController.HandleCrouch(playerScriptableObject,rootTransform);
+   }
+
+
+   private void MouseLookAround()
+   {
+      playerMouseLookController.LockAndUnlockCursor(playerScriptableObject);
+ 
+      if(playerMouseLookController.isCursorLocked())
+     {
+        playerMouseLookController.LookAround(playerScriptableObject,rootTransform,playerTransform);
+      }
+   } 
+
+
+   private void PlayerStatsUpdates()
+   {
+      playerStatsController.CheckToOpenInventory(playerScriptableObject);
+
+      playerStatsController.CheckToCollectSupplies(PlayerCollectableTransform,playerScriptableObject);
+
+      playerStatsController.CheckToUseMedikit(playerScriptableObject);
+   }
+
+
+   
+   void Start()
+   {
+      playerMovementController.SetInitialMovementSetup(playerScriptableObject);
+
+      playerMouseLookController.InitializeMouseLook();
+
+      playerSoundController.IntializeSoundSetting(GameplayMusicAudioSource,playerScriptableObject);
+
+      playerAttackController.SelectInitialWeapon(); 
+
+      playerStatsController.InitializePlayerStats(playerScriptableObject);
+   }
+
+   void Update()
+    {
+       PlayerMovement();
+     
+       MouseLookAround(); 
+          
+       playerSoundController.PlayFootStepAudio(characterController,playerScriptableObject,FootStepAudioSource);
+   
+       playerAttackController.SelectWeapon(playerScriptableObject,weaponsHolder);
+
+       PlayerStatsUpdates();
     }       
 }

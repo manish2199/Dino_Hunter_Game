@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMouseLookController : MonoBehaviour
 {
     // job is to control mouse look
-     
-    private PlayerScriptableObject playerScriptableObject;
    
     private Vector2 DefaultLookLimits;
     
@@ -14,10 +13,10 @@ public class PlayerMouseLookController : MonoBehaviour
     
     private Vector2 CurrentMouseLook;
    
-   void Start()
+
+   public void InitializeMouseLook()
    {
-       playerScriptableObject  = Player.Instance.PlayerScriptableObject;
-       LockMouseCurserToCenter();
+      LockMouseCurserToCenter();
    }
 
    public void LockMouseCurserToCenter() 
@@ -25,7 +24,7 @@ public class PlayerMouseLookController : MonoBehaviour
       Cursor.lockState = CursorLockMode.Locked;
    }
 
-   private void LockAndUnlockCursor()
+   public void LockAndUnlockCursor(PlayerScriptableObject playerScriptableObject)
    {
       if( Input.GetKeyDown(playerScriptableObject.playerControls.KeyForLockCursor) )
      {
@@ -51,7 +50,7 @@ public class PlayerMouseLookController : MonoBehaviour
    }
 
 
-   private void LookAround()
+   public void LookAround(PlayerScriptableObject playerScriptableObject,Transform rootTransform,Transform playerTransform)
    {
       CurrentMouseLook = new Vector2 (Input.GetAxis(Axis.MOUSEY),Input.GetAxis(Axis.MOUSEX));
 
@@ -60,17 +59,7 @@ public class PlayerMouseLookController : MonoBehaviour
 
       MouseLookAngles.x = Mathf.Clamp(MouseLookAngles.x,playerScriptableObject.defaultLookLimits.x,playerScriptableObject.defaultLookLimits.y);
 
-      Player.Instance.rootTransform.localRotation = Quaternion.Euler(MouseLookAngles.x, 0f, 0f );
-      Player.Instance.playerTransform.localRotation = Quaternion.Euler( 0f,MouseLookAngles.y, 0f );
+      rootTransform.localRotation = Quaternion.Euler(MouseLookAngles.x, 0f, 0f );
+      playerTransform.localRotation = Quaternion.Euler( 0f,MouseLookAngles.y, 0f );
    }
-
-   public void MouseLookAround()
-   {
-    LockAndUnlockCursor();
- 
-    if(isCursorLocked())
-     {
-       LookAround();
-     }
-  }
 }

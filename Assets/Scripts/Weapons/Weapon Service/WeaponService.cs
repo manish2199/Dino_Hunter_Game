@@ -11,7 +11,8 @@ public class WeaponService : GenericSingleton<WeaponService>
     [SerializeField] private WaponScriptableObjectList weapons;
 
     [SerializeReference] List<WeaponController> weaponControllerList;
-    private int currentSelectedWeapon;
+
+    private int currentSelectedWeapon ;
 
     public static event Action<bool> OnWeaponZoomIn;
   
@@ -94,8 +95,8 @@ public class WeaponService : GenericSingleton<WeaponService>
 
     public void SelectInitialWeapon(Transform fpsTransform)
     {
-       currentSelectedWeapon = 0;
-       weaponControllerList[0].ActivateWeapon(fpsTransform); 
+         currentSelectedWeapon = 0;   
+         weaponControllerList[0].ActivateWeapon(fpsTransform); 
     }
 
     public void UpdateWeaponUIIcon(Sprite weaponIcon)

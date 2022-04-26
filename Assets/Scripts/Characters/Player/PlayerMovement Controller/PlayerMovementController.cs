@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,8 @@ public class PlayerMovementController : MonoBehaviour
 {   
    
     // only one job is to handle player movements
-   
-    private PlayerScriptableObject playerScriptableObject ;
+
+    public bool IsCrouched { get; set; }    
 
     [HideInInspector] public float Speed;
 
@@ -15,97 +16,100 @@ public class PlayerMovementController : MonoBehaviour
 
     [HideInInspector] public float VerticalVelocity { get; set; }
 
+    public static event Action<PlayerScriptableObject> OnSprinting;
+    public static event Action<PlayerScriptableObject> OnWalking;
+    public static event Action<PlayerScriptableObject> OnCrouched;
 
-    void Start()
-    {   
-        Player.Instance.IsCrouched = false;
-        playerScriptableObject  = Player.Instance.PlayerScriptableObject;
+
+    public void SetInitialMovementSetup(PlayerScriptableObject playerScriptableObject)
+    {
+        IsCrouched = false;
         Speed = playerScriptableObject.moveSpeed; 
     }
 
-    public void MovePlayer()
+    public void MovePlayer(PlayerScriptableObject playerScriptableObject,CharacterController characterController,Transform playerTransform)
    { 
-      HandleSprint();
+      HandleSprint(playerScriptableObject);
    
       MoveDirection = new Vector3( Input.GetAxis(Axis.HORIZONTAL), 0f, Input.GetAxis(Axis.VERTICAL) );
   
-     MoveDirection = transform.TransformDirection(MoveDirection);
-     MoveDirection *= Speed * Time.deltaTime;
+      MoveDirection = playerTransform.TransformDirection(MoveDirection);
+      MoveDirection *= Speed * Time.deltaTime;
     
-      ApplyGravity();
+      ApplyGravity(playerScriptableObject ,characterController);
      
       Player.Instance.characterController.Move(MoveDirection);
    }
 
-   public void HandleSprint()
+
+
+
+   public void HandleSprint(PlayerScriptableObject playerScriptableObject)
    { 
-      if( Input.GetKeyDown(playerScriptableObject.playerControls.KeyForSprint) && !Player.Instance.IsCrouched )
+      if( Input.GetKeyDown(playerScriptableObject.playerControls.KeyForSprint) &&  !IsCrouched )
       {
         Speed = playerScriptableObject.sprintSpeed; 
-        Player.Instance.SetSprintFootStepClips();
+        OnSprinting?.Invoke(playerScriptableObject);
+        // Player.Instance.SetSprintFootStepClips(); 
+
       }
-      else if( Input.GetKeyUp(playerScriptableObject.playerControls.KeyForSprint) && !Player.Instance.IsCrouched )
+      else if( Input.GetKeyUp(playerScriptableObject.playerControls.KeyForSprint) && !IsCrouched )
       {
         Speed = playerScriptableObject.moveSpeed; 
-        Player.Instance.SetWalkingFootStepClips();
+        OnWalking?.Invoke(playerScriptableObject);
+        // Player.Instance.SetWalkingFootStepClips();
       }  
    }
 
 
-   public void HandleCrouch()
+   public void HandleCrouch(PlayerScriptableObject playerScriptableObject,Transform rootTransform)
    { 
         if( Input.GetKeyDown(playerScriptableObject.playerControls.KeyForCrouch) )
        {
-           if(Player.Instance.IsCrouched)
+           if(IsCrouched)
            {
                Speed = playerScriptableObject.moveSpeed;
-               Player.Instance.SetWalkingFootStepClips();
-                
-               Player.Instance.IsCrouched = false;
+              //  Player.Instance.SetWalkingFootStepClips();
+               OnWalking?.Invoke(playerScriptableObject);
 
-               Vector3 temp = Player.Instance.rootTransform.localPosition;
+               IsCrouched = false;
+
+               Vector3 temp = rootTransform.localPosition;
                temp.y = playerScriptableObject.standingHeight;
-               Player.Instance.rootTransform.localPosition = temp;
+               rootTransform.localPosition = temp;
            }
            else
            {
                Speed = playerScriptableObject.crouchSpeed;
-               Player.Instance.SetCrouchedFootStepClips();
-             
-               Player.Instance.IsCrouched = true;
+              //  Player.Instance.SetCrouchedFootStepClips();
+               OnCrouched?.Invoke(playerScriptableObject);
               
-               Vector3 temp = Player.Instance.rootTransform.localPosition;
+               IsCrouched = true;
+              
+               Vector3 temp = rootTransform.localPosition;
                temp.y = playerScriptableObject.crouchedHeight;
-               Player.Instance.rootTransform.localPosition = temp;
-           
+               rootTransform.localPosition = temp;
            }
        }
    }
    
-   public void ApplyGravity()
+   public void ApplyGravity(PlayerScriptableObject playerScriptableObject , CharacterController characterController)
   {
     VerticalVelocity  -= playerScriptableObject.gravity * Time.deltaTime;
    
-    CheckForJump() ;
+    CheckForJump(characterController,playerScriptableObject) ;
  
     Vector3 temp = MoveDirection;
     temp.y =  VerticalVelocity  * Time.deltaTime;
     MoveDirection = temp; 
   }
   
-   public void CheckForJump()
+   public void CheckForJump(CharacterController characterController,PlayerScriptableObject playerScriptableObject)
    {
-      if( Player.Instance.characterController.isGrounded  && Input.GetKeyDown(playerScriptableObject.playerControls.KeyForJump) ) 
+      if( characterController.isGrounded  && Input.GetKeyDown(playerScriptableObject.playerControls.KeyForJump) ) 
       {
        VerticalVelocity = playerScriptableObject.jumpForce;
       }
-   }
-
-   public void PlayerMovement()
-   {
-     MovePlayer();
-
-     HandleCrouch();
    }
 
 }

@@ -2,40 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerSoundController : MonoBehaviour
 {
   // job is to control player audio
  
-//   private PlayerScriptableObject playerScriptableObject ;
   
   float MinFootStepVolume { get; set; }
   float MaxFootStepVolume { get; set; }
   float StepDistance { get; set; }
   float AccumulatedStepDistance { get; set; }
 
-  [SerializeField] AudioSource playerFootStepAudio;
-
-  [SerializeField] AudioSource PlayerAudioSource;
-
-  [SerializeField] AudioSource PlayerAudioEffects;
-
   private int EnemyCount; 
 
-  void Start()
+  public void IntializeSoundSetting(AudioSource GameplayMusicAudio,PlayerScriptableObject playerScriptableObject)
   {
     PlayGamePlaySound();
-    SetInitialFootStepAudio();
+
+    SetInitialFootStepAudio(playerScriptableObject);
   }
 
-  void OnEnable()
+  public void OnEnable()
   {
+     PlayerMovementController.OnSprinting += SetSprintAudio;
+     PlayerMovementController.OnCrouched += SetCrouchedAudio;
+     PlayerMovementController.OnWalking += SetWalkingAudio;
+
      EnemiesService.OnPlayerDetected += PlayBattleSound;
      EnemiesService.OnEnemyDead += CheckForGamePlaySound;
      InventoryService.OnItemCollected += PlayItemCollectedSound;
   }
 
-  void OnDisable()
+   public void OnDisable()
   {
+      PlayerMovementController.OnSprinting -= SetSprintAudio;
+     PlayerMovementController.OnCrouched -= SetCrouchedAudio;
+     PlayerMovementController.OnWalking -= SetWalkingAudio;
+
      EnemiesService.OnPlayerDetected -= PlayBattleSound;
      EnemiesService.OnEnemyDead -= CheckForGamePlaySound;
      InventoryService.OnItemCollected -= PlayItemCollectedSound;
@@ -44,15 +47,15 @@ public class PlayerSoundController : MonoBehaviour
 
   public void StopPlayerAudios()
   {
-    PlayerAudioSource.Stop();
+    Player.Instance.GameplayMusicAudioSource.Stop();
   }
 
   private void PlayItemCollectedSound(NotificationType other)
   {
-    if(!PlayerAudioEffects.isPlaying)
+    if(!Player.Instance.EffectsAudioSource.isPlaying)
     {
-        PlayerAudioEffects.clip =  Player.Instance.PlayerScriptableObject.ItemCollectedClip;
-        PlayerAudioEffects.Play();
+        Player.Instance.EffectsAudioSource.clip =  Player.Instance.PlayerScriptableObject.ItemCollectedClip;
+        Player.Instance.EffectsAudioSource.Play();
     }
   }
 
@@ -63,7 +66,7 @@ public class PlayerSoundController : MonoBehaviour
       EnemyCount --;
     }
 
-    if(EnemyCount == 0 && PlayerAudioSource.clip == Player.Instance.PlayerScriptableObject.BattleAudioClip)
+    if(EnemyCount == 0 &&  Player.Instance.GameplayMusicAudioSource.clip == Player.Instance.PlayerScriptableObject.BattleAudioClip)
     {
        PlayGamePlaySound();
     }
@@ -72,64 +75,62 @@ public class PlayerSoundController : MonoBehaviour
 
   public void PlayGamePlaySound()
   {
-       PlayerAudioSource.Stop();
-       PlayerAudioSource.clip =  Player.Instance.PlayerScriptableObject.GamePlayAudioClip;
-       PlayerAudioSource.Play();
+       Player.Instance.GameplayMusicAudioSource.Stop();
+       Player.Instance.GameplayMusicAudioSource.clip = Player.Instance.PlayerScriptableObject.GamePlayAudioClip;
+       Player.Instance.GameplayMusicAudioSource.Play();
   }
 
 
   void PlayBattleSound()
   { 
     EnemyCount ++;
-    // EnemyList.Add(EnemyCount); 
-    if(PlayerAudioSource.clip = Player.Instance.PlayerScriptableObject.GamePlayAudioClip)
+    
+    if( Player.Instance.GameplayMusicAudioSource.clip = Player.Instance.PlayerScriptableObject.GamePlayAudioClip)
     {
-       PlayerAudioSource.Stop();
-       PlayerAudioSource.clip =  Player.Instance.PlayerScriptableObject.BattleAudioClip;
-       PlayerAudioSource.Play();
+       Player.Instance.GameplayMusicAudioSource.Stop();
+       Player.Instance.GameplayMusicAudioSource.clip =  Player.Instance.PlayerScriptableObject.BattleAudioClip;
+       Player.Instance.GameplayMusicAudioSource.Play();
     }
   }
  
- 
-  
 
-  public void SetWalkingAudio()
+  public void SetWalkingAudio(PlayerScriptableObject playerScriptableObject)
   {
-        MinFootStepVolume = Player.Instance.PlayerScriptableObject.minWalkVolume;
-        MaxFootStepVolume = Player.Instance.PlayerScriptableObject.maxWalkVolume;
-        StepDistance =Player.Instance.PlayerScriptableObject.walkStepDistance;
+        MinFootStepVolume = playerScriptableObject.minWalkVolume;
+        MaxFootStepVolume = playerScriptableObject.maxWalkVolume;
+        StepDistance = playerScriptableObject.walkStepDistance;
   }
 
-   public void SetCrouchedAudio()
+   public void SetCrouchedAudio(PlayerScriptableObject playerScriptableObject)
   { 
-        MinFootStepVolume = Player.Instance.PlayerScriptableObject.crouhVolume;
-        MaxFootStepVolume = Player.Instance.PlayerScriptableObject.crouhVolume;
-        StepDistance =Player.Instance.PlayerScriptableObject.crouchStepDistance;
+        MinFootStepVolume =playerScriptableObject.crouhVolume;
+        MaxFootStepVolume = playerScriptableObject.crouhVolume;
+        StepDistance =playerScriptableObject.crouchStepDistance;
   }
 
-   public void SetSrintAudio()
+   public void SetSprintAudio(PlayerScriptableObject playerScriptableObject)
   {
-      MinFootStepVolume = Player.Instance.PlayerScriptableObject.sprintVolume;
-        MaxFootStepVolume = Player.Instance.PlayerScriptableObject.sprintVolume;
-        StepDistance =Player.Instance.PlayerScriptableObject.sprintStepDistance;
+        MinFootStepVolume = playerScriptableObject.sprintVolume;
+        MaxFootStepVolume = playerScriptableObject.sprintVolume;
+        StepDistance =playerScriptableObject.sprintStepDistance;
   }
 
   
-  public void PlayFootStepAudio()
+  public void PlayFootStepAudio(CharacterController characterController,PlayerScriptableObject playerScriptableObject,AudioSource playerFootStepAudio)
   {
-     if(!Player.Instance.characterController.isGrounded)
+     if(!characterController.isGrounded)
      { 
        return;
      }
 
-     if(Player.Instance.characterController.velocity.sqrMagnitude > 0 )
+     if(characterController.velocity.sqrMagnitude > 0 )
      {
         AccumulatedStepDistance += Time.deltaTime;
 
         if(AccumulatedStepDistance > StepDistance)
         {
            playerFootStepAudio.volume = Random.Range(MinFootStepVolume,MaxFootStepVolume);
-           playerFootStepAudio.clip = Player.Instance.PlayerScriptableObject.FootStepClips[Random.Range(0 ,Player.Instance.PlayerScriptableObject.FootStepClips.Length)];
+           playerFootStepAudio.clip = playerScriptableObject.FootStepClips[Random.Range(0 ,playerScriptableObject.FootStepClips.Length)];
            playerFootStepAudio.Play();
 
            AccumulatedStepDistance = 0f;
@@ -141,11 +142,11 @@ public class PlayerSoundController : MonoBehaviour
      }
   }
 
-  public void SetInitialFootStepAudio()
+  public void SetInitialFootStepAudio(PlayerScriptableObject playerScriptableObject)
   {
-    StepDistance= Player.Instance.PlayerScriptableObject.walkStepDistance;
-    MinFootStepVolume = Player.Instance.PlayerScriptableObject.minWalkVolume;
-    MaxFootStepVolume = Player.Instance.PlayerScriptableObject.maxWalkVolume;
+    StepDistance= playerScriptableObject.walkStepDistance;
+    MinFootStepVolume = playerScriptableObject.minWalkVolume;
+    MaxFootStepVolume = playerScriptableObject.maxWalkVolume;
    }
 
 }

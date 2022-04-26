@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    [SerializeField] Animator playerAnimator;
-
     public void CamZoom(bool canZoom)
     {
       if(canZoom)
       {
         // play zoom in animation
-        playerAnimator.SetBool("Zoom",true);
+        Player.Instance.PlayerAnimator.SetBool("Zoom",true);
       }
       else
        {
        // play zoom out animation
-       playerAnimator.SetBool("Zoom",false);
+       Player.Instance.PlayerAnimator.SetBool("Zoom",false);
        }
   }
   
