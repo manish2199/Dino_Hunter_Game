@@ -124,18 +124,18 @@ public class RaptorDinosaurController : WalkableDinosaurController
     {
         RaptorDinosaurView view = (RaptorDinosaurView)WalkableDinosaurView; 
 
-        RaptorDinosaurModel model = (RaptorDinosaurModel)WalkableDinosaurModel;
+        // RaptorDinosaurModel model = (RaptorDinosaurModel)WalkableDinosaurModel; 
 
 
-        if(!model.IsEnemyAlredyDetected )
-        {
-           model.IsEnemyAlredyDetected = true;
+        // if(!model.IsEnemyAlredyDetected )
+        // {
+        //    model.IsEnemyAlredyDetected = true;
            
-           if(CurrentState == view.PatrollingState)
-           {
-               view.PatrollingState.EnemyDetected();
-           }
-        }
+        //    if(CurrentState == view.PatrollingState)
+        //    {
+        //        view.PatrollingState.EnemyDetected();
+        //    }
+        // }
          
         if(WalkableDinosaurModel.HealhToReduce > 0)
         { 
@@ -193,15 +193,15 @@ public class TRexDinosaurController : WalkableDinosaurController
 
         TRexView view = (TRexView)WalkableDinosaurView; 
 
-        if(!model.IsEnemyAlredyDetected )
-        {
-           model.IsEnemyAlredyDetected = true;
+        // if(!model.IsEnemyAlredyDetected )
+        // {
+        //    model.IsEnemyAlredyDetected = true;
            
-           if(CurrentState == view.PatrollingState)
-           {
-               view.PatrollingState.EnemyDetected();
-           }
-        }
+        //    if(CurrentState == view.PatrollingState)
+        //    {
+        //        view.PatrollingState.EnemyDetected();
+        //    }
+        // }
 
 
         if(WalkableDinosaurModel.HealhToReduce > 0)

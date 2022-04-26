@@ -20,5 +20,5 @@ MonoBehaviour:
     00000000:
       type: {class: Bullets, ns: , asm: Assembly-CSharp}
       data:
-        CollectibleAmountContain: 35
+        CollectibleAmountContain: 25
         ProjectileType: 1

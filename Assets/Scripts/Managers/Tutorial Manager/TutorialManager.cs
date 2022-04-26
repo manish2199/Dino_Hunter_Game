@@ -140,14 +140,14 @@ public class TutorialManager : GenericSingleton<TutorialManager>
 
        InstructionText.text = PlayerTutorials.BlueRaptorEnemyDescp;
 
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(8f);
 
        BlueRaptor.SetActive(false);
        RedRaptor.SetActive(true);
 
        InstructionText.text = PlayerTutorials.RedRaptorEnemyDescp;
 
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(8f);
 
        RedRaptor.SetActive(false);
        TRex.SetActive(true);
@@ -163,12 +163,12 @@ public class TutorialManager : GenericSingleton<TutorialManager>
 
        AmmoBox.SetActive(true);
 
-       yield return new WaitForSeconds(3.5f);
+       yield return new WaitForSeconds(7f);
 
        AmmoBox.SetActive(false);
        MediBox.SetActive(true);
     
-       yield return new WaitForSeconds(3.5f);
+       yield return new WaitForSeconds(7f);
 
        PlayerGameObject.SetActive(true);
        MainCamera.SetActive(false);
@@ -176,7 +176,7 @@ public class TutorialManager : GenericSingleton<TutorialManager>
        GameplayUIManager.Instance.SetCrossHair(false);
        InstructionText.text = PlayerTutorials.AchievementsDescpText;
 
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(3f);
        
        InstructionText.text = PlayerTutorials.TutorialFinishedText;
 

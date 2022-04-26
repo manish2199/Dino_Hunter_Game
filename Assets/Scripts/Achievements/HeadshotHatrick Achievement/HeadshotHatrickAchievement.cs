@@ -12,8 +12,8 @@ public class HeadshotHatrickAchievement : Achievement
 
     public HeadshotHatrickAchievement(RaptorsType raptorsType, int headshotNumber ,  UnlockWeaponType unlockWeaponType, Sprite unclockWeapon)
 	{
-	    Counter = 0;
-		achievementType = AchievementType.TRexKill; 	
+        Counter = 0; 
+        achievementType = AchievementType.HatrickOfHeadShots;  
         RaptorsType = raptorsType;
         HeadshotNumber = headshotNumber;
         UnlockWeaponType = unlockWeaponType;

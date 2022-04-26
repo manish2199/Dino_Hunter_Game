@@ -16,7 +16,7 @@ public class AchievementCell
 
     public AchievementCell()
     {
-        lastType = achievementType;
+        lastType = achievementType; 
     }
 
     public void SubscribeAchievement()
@@ -37,6 +37,7 @@ public class AchievementCell
             savedAchievement = achievementConstraints;
 
             achievementConstraints = UpdateAchievement(savedAchievement);
+            savedAchievement = null;
         }
     }
 
@@ -44,14 +45,14 @@ public class AchievementCell
     {
         Achievement newAchievement = null; 
 
-        if(achievementType == AchievementType.HatrickOfHeadShots)
+        if(achievementType != AchievementType.None && achievementType == AchievementType.HatrickOfHeadShots)
         { 
-            HeadshotHatrickAchievement temp = (HeadshotHatrickAchievement)other;
+            var temp = (HeadshotHatrickAchievement)other;
             newAchievement = (other!=null) ? new HeadshotHatrickAchievement(temp.RaptorsType,temp.HeadshotNumber,temp.UnlockWeaponType,temp.UnlockWeaponIcon) : new HeadshotHatrickAchievement();
         }  
-        if(achievementType == AchievementType.TRexKill)
+        if(achievementType != AchievementType.None && achievementType == AchievementType.TRexKill)
         {
-            TRexKillAchievement temp = (TRexKillAchievement)other;
+            var temp = (TRexKillAchievement)other;
             newAchievement = (other!=null) ? new TRexKillAchievement(temp.HealthKitsMaxLimit,temp.NumberOfKill) : new TRexKillAchievement();
         }    
         

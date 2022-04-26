@@ -27,7 +27,7 @@ MonoBehaviour:
     00000000:
       type: {class: HeadshotHatrickAchievement, ns: , asm: Assembly-CSharp}
       data:
-        achievementType: 2
+        achievementType: 1
         RaptorsType: 1
         HeadshotNumber: 3
         UnlockWeaponType: 1
@@ -36,7 +36,7 @@ MonoBehaviour:
     00000001:
       type: {class: HeadshotHatrickAchievement, ns: , asm: Assembly-CSharp}
       data:
-        achievementType: 2
+        achievementType: 1
         RaptorsType: 2
         HeadshotNumber: 3
         UnlockWeaponType: 2

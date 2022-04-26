@@ -34,9 +34,9 @@ public class MainMenuHandler : MonoBehaviour
 
 
     void Start()
-    {
-        //   PlayerPrefs.DeleteAll();  
-       InitializeGamePrefs();     
+    {   
+        InitializeGamePrefs();        
+    //    PlayerPrefs.DeleteAll(); 
     }
 
 

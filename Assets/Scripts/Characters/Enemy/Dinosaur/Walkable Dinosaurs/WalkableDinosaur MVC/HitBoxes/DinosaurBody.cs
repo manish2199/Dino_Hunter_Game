@@ -9,11 +9,10 @@ public class DinosaurBody : MonoBehaviour , IDamagable
 
    [SerializeReference] WalkableDinosaurView walkingDinosaurView;
   
-   void Update(){}
-
    public static event Action<RaptorsType,WalkableDinosaurView> OnHeadshot;
    public static event Action OnBodyShot;
 
+   void Update(){}
 
    public void TakeDamage(int damage)
    {
@@ -45,16 +44,18 @@ public class DinosaurBody : MonoBehaviour , IDamagable
       {    
          IDamagable damagable = other.GetComponent<IDamagable>();
           
-         RaptorDinosaurModel temp = (RaptorDinosaurModel)walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel;
-          
          if(damagable != null)
          {
-
-            if(temp != null && temp.RaptorsType == RaptorsType.RedRaptor)
-            {
-                return;
-            }  
+            if(walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel.WalkingDinosaurType == WalkingDinosaurType.Raptors)
+           {
+              RaptorDinosaurModel temp = (RaptorDinosaurModel)walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel;
             
+              if(temp != null && temp.RaptorsType == RaptorsType.RedRaptor)
+              {
+                 return;
+               }  
+            }  
+
             damagable.TakeDamage(walkingDinosaurView.walkableDinosaurController.WalkableDinosaurModel.Damage);
          }
       }

@@ -9,7 +9,7 @@ public abstract class Achievement
 {
     public Achievement() 
     {
-         Counter = 0; 
+        Counter = 0; 
     }
 
     [HideInInspector] protected int Counter;

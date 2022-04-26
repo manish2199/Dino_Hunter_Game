@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 495364}
   - component: {fileID: 3380234}
   - component: {fileID: 2393040}
-  - component: {fileID: 3275368141099758533}
   m_Layer: 0
   m_Name: TreeCreator_Bush_A
   m_TagString: Untagged
@@ -81,20 +80,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &3275368141099758533
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 196434}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.26
-  m_Height: 1.2140813
-  m_Direction: 1
-  m_Center: {x: -0.06674504, y: 0.6176157, z: 0.020693481}
 --- !u!21 &2179674
 Material:
   serializedVersion: 6
@@ -103,16 +88,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Optimized Leaf Material
-  m_Shader: {fileID: 4800000, guid: 8d2bb70cbf9db8d4da26e15b26e74248, type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _NORMALMAP
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2450
   stringTagMap:
-    RenderType: Transparent
-  disabledShaderPasses:
-  - SHADOWCASTER
+    RenderType: TransparentCutout
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -136,6 +120,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: 68d09744ca1bfa148a24bb472ecb2456, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ShadowTex:
         m_Texture: {fileID: 2800000, guid: ce08a8e647694cc48a7dd995dd54d241, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -154,8 +146,14 @@ Material:
     - _BumpScale: 1
     - _Cull: 0
     - _Cutoff: 0.3
-    - _DstBlend: 10
+    - _DstBlend: 0
+    - _EnvironmentReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
     - _GlossinessSource: 0
+    - _GlossyReflections: 0
+    - _Metallic: 0
+    - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _ShadowOffsetScale: 1
@@ -163,13 +161,15 @@ Material:
     - _Shininess: 0
     - _Smoothness: 0.5
     - _SmoothnessSource: 0
+    - _SmoothnessTextureChannel: 0
     - _SpecSource: 0
     - _SpecularHighlights: 1
     - _SquashAmount: 1
-    - _SrcBlend: 5
-    - _Surface: 1
+    - _SrcBlend: 1
+    - _Surface: 0
     - _TranslucencyViewDependency: 0.7
-    - _ZWrite: 0
+    - _WorkflowMode: 1
+    - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -236,6 +236,7 @@ Material:
     - _GlossinessSource: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _SampleGI: 0
     - _Shininess: 0
     - _Smoothness: 0.5
     - _SmoothnessSource: 0

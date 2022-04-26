@@ -1137,7 +1137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1056086350
 Transform:
   m_ObjectHideFlags: 0
@@ -1619,6 +1619,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 848522428}
     m_Modifications:
+    - target: {fileID: 1331237423545835886, guid: 94d991bb67cbc604b8f6bcbb9aaa1677,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1663085267487119194, guid: 94d991bb67cbc604b8f6bcbb9aaa1677,
         type: 3}
       propertyPath: m_Enabled
@@ -1913,6 +1918,11 @@ PrefabInstance:
       value: RedRaptor
       objectReference: {fileID: 0}
     - target: {fileID: 7635659108856843442, guid: a36745fe4e0e0444cbee1644a9c070a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8471528033029203968, guid: a36745fe4e0e0444cbee1644a9c070a1,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2541,6 +2551,11 @@ PrefabInstance:
       value: BlueRaptor
       objectReference: {fileID: 0}
     - target: {fileID: 5732738285348620047, guid: 603f9419ba3514a41b55529b065efa13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7940014886781553729, guid: 603f9419ba3514a41b55529b065efa13,
         type: 3}
       propertyPath: m_IsActive
       value: 0
