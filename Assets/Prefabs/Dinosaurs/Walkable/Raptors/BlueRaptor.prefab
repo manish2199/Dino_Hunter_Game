@@ -2330,12 +2330,12 @@ MonoBehaviour:
   AttackingState: {fileID: 5569714438098694096}
   ChasingState: {fileID: 6783315299417830582}
   DinosaurTransform: {fileID: 3171101856493826226}
+  IsDead: 0
   ParticleEffect: {fileID: 0}
   PlayerLayerMask:
     serializedVersion: 2
     m_Bits: 4096
   ProjectilePos: {fileID: 0}
-  IsDead: 0
   references:
     version: 1
     00000000:

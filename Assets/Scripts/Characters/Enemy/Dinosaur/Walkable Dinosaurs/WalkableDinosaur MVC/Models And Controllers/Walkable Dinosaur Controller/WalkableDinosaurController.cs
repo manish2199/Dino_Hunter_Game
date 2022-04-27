@@ -61,8 +61,51 @@ public class WalkableDinosaurController
         return temp;
     }
 
-    public virtual void TakeDamage(int damage){}
+    public virtual void TakeDamage(int damage)
+    { 
+        // RaptorDinosaurModel model = (RaptorDinosaurModel)WalkableDinosaurModel; 
 
+
+        // if(!model.IsEnemyAlredyDetected )
+        // {
+        //    model.IsEnemyAlredyDetected = true;
+           
+        //    if(CurrentState == view.PatrollingState)
+        //    {
+        //        view.PatrollingState.EnemyDetected();
+        //    }
+        // }
+         
+        if(WalkableDinosaurModel.HealhToReduce > 0)
+        { 
+          WalkableDinosaurModel.HealhToReduce -= damage;
+        }
+        if(WalkableDinosaurModel.HealhToReduce <= 0)
+        { 
+                     
+           WalkableDinosaurView.DisableTheDinosaur();
+           
+           EnemiesService.Instance.InvokeOnEnemyDead();
+
+           Player.Instance.playerStatsController.IncreaseScore(WalkableDinosaurModel.WalkingDinosaurType);
+        }
+    }
+
+    
+
+    public void EnableDinosaur()
+    {    
+        ResetHealth(); 
+
+        WalkableDinosaurView.EnableDinosaur();
+ 
+        WalkableDinosaurView.IsDead = false;
+    }
+
+    public void ResetHealth()
+    {
+        WalkableDinosaurModel.HealhToReduce = WalkableDinosaurModel.Health;
+    }
  
    // Receive the damage from Dinosaur body part and decide whether dinosaur is alive or not 
    // if health is less than zero then add this controller to object bool by resetting all variables in view mostly reset aipath
@@ -120,60 +163,6 @@ public class RaptorDinosaurController : WalkableDinosaurController
       
     } 
 
-    public override void TakeDamage(int damage)
-    {
-        RaptorDinosaurView view = (RaptorDinosaurView)WalkableDinosaurView; 
-
-        // RaptorDinosaurModel model = (RaptorDinosaurModel)WalkableDinosaurModel; 
-
-
-        // if(!model.IsEnemyAlredyDetected )
-        // {
-        //    model.IsEnemyAlredyDetected = true;
-           
-        //    if(CurrentState == view.PatrollingState)
-        //    {
-        //        view.PatrollingState.EnemyDetected();
-        //    }
-        // }
-         
-        if(WalkableDinosaurModel.HealhToReduce > 0)
-        { 
-          WalkableDinosaurModel.HealhToReduce -= damage;
-        }
-        if(WalkableDinosaurModel.HealhToReduce <= 0)
-        { 
-        //    SetInitialState();
-          
-           
-           view.DisableTheDinosaur();
-           
-           EnemiesService.Instance.InvokeOnEnemyDead();
-
-           Player.Instance.playerStatsController.IncreaseScore(WalkableDinosaurModel.WalkingDinosaurType);
-        }
-    }
-
-    
-
-    public void EnableDinosaur()
-    {
-        RaptorDinosaurView view = (RaptorDinosaurView)WalkableDinosaurView; 
-         
-        ResetHealth(); 
-
-        view.EnableDinosaur();
- 
-        view.IsDead = false;
-    }
-
-    public void ResetHealth()
-    {
-        RaptorDinosaurModel model = (RaptorDinosaurModel)WalkableDinosaurModel;
-
-        model.HealhToReduce = model.Health;
-    }
-
 }
 
 
@@ -185,58 +174,6 @@ public class TRexDinosaurController : WalkableDinosaurController
     public TRexDinosaurController(TRexDinosaurModel model,TRexView view) : base (model,view) 
     {
        WalkableDinosaurView.walkableDinosaurController = this;
-    }
-
-    public override void TakeDamage(int damage)
-    { 
-        TRexDinosaurModel model = (TRexDinosaurModel)WalkableDinosaurModel;
-
-        TRexView view = (TRexView)WalkableDinosaurView; 
-
-        // if(!model.IsEnemyAlredyDetected )
-        // {
-        //    model.IsEnemyAlredyDetected = true;
-           
-        //    if(CurrentState == view.PatrollingState)
-        //    {
-        //        view.PatrollingState.EnemyDetected();
-        //    }
-        // }
-
-
-        if(WalkableDinosaurModel.HealhToReduce > 0)
-        { 
-          WalkableDinosaurModel.HealhToReduce -= damage;
-        }
-        if(WalkableDinosaurModel.HealhToReduce <= 0)
-        { 
-        //    SetInitialState();
-           OnTrexDeath?.Invoke();
-           
-           view.DisableTheDinosaur(); 
-
-           Player.Instance.playerStatsController.IncreaseScore(WalkableDinosaurModel.WalkingDinosaurType);
-        }
-    }
-
-    
-
-    public void EnableDinosaur()
-    {
-        TRexView view = (TRexView)WalkableDinosaurView; 
-         
-        ResetHealth(); 
-
-        view.EnableDinosaur();
- 
-        view.IsDead = false;
-    }
-
-    public void ResetHealth()
-    {
-        TRexDinosaurModel model = (TRexDinosaurModel)WalkableDinosaurModel;
-
-        model.HealhToReduce = model.Health;
     }
 
 }

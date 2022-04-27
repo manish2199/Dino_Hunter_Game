@@ -186,8 +186,17 @@ public class TutorialManager : GenericSingleton<TutorialManager>
        InstructionPanel.SetActive(false);
  
     //    Load Main GamePlay 
-       LevelManager.Instance.LoadScene(2);
-       GameData.SetTutorialState(1);
+       if(GameData.GetTutorialState() == 0 )
+       {
+         LevelManager.Instance.LoadScene(2);
+         GameData.SetTutorialState(1);
+
+       }
+       else if( GameData.GetTutorialState() == 1)
+       {
+         LevelManager.Instance.LoadScene(0);
+       }
+
     }
 
 

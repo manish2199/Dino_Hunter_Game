@@ -21,6 +21,9 @@ MonoBehaviour:
       type: {class: Raptor, ns: , asm: Assembly-CSharp}
       data:
         Health: 150
+        EasyDifficultyHealth: 120
+        MediumDifficultyHealth: 160
+        HardDifficultyHealth: 180
         Damage: 20
         DinosaurAudios:
         - AudioClipType: 1
@@ -60,7 +63,7 @@ MonoBehaviour:
         StoppingDistanceFromWayPoint: 0.3
         ChasingRange: 15
         AttackingRange: 4
-        TimeToRespawnAfterDeath: 4000
+        TimeToRespawnAfterDeath: 180000
         WalkableDinosaurView: {fileID: 1955166269947719500, guid: 603f9419ba3514a41b55529b065efa13,
           type: 3}
         raptorsType: 1

@@ -6,7 +6,8 @@ public abstract class WalkableDinosaurModel
 {
    public WalkableDinosaurModel(WalkableDinosaurScriptableObject walkableDinosaurScriptableObject)
    {
-      Health = walkableDinosaurScriptableObject.WalkingDinosaurs.Health;
+      // Health = walkableDinosaurScriptableObject.WalkingDinosaurs.Health;
+      SetHealth(walkableDinosaurScriptableObject);
       Damage = walkableDinosaurScriptableObject.WalkingDinosaurs.Damage;
       Speed = walkableDinosaurScriptableObject.WalkingDinosaurs.Speed;
       AngularSpeed = walkableDinosaurScriptableObject.WalkingDinosaurs.AngularSpeed;
@@ -21,6 +22,23 @@ public abstract class WalkableDinosaurModel
       TimeToRespawnAfterDeath = walkableDinosaurScriptableObject.WalkingDinosaurs.TimeToRespawnAfterDeath;
       IsEnemyAlredyDetected = false;
    } 
+
+   private void SetHealth(WalkableDinosaurScriptableObject walkableDinosaurScriptableObject)
+   {
+      if(GameData.GetEasyDifficulty() == 1)
+      {
+         Health = walkableDinosaurScriptableObject.WalkingDinosaurs.EasyDifficultyHealth;
+      }
+       if(GameData.GetMediumDifficulty() == 1)
+      {
+         Health = walkableDinosaurScriptableObject.WalkingDinosaurs.MediumDifficultyHealth;
+      }
+       if(GameData.GetHardDifficulty() == 1)
+      {
+         Health = walkableDinosaurScriptableObject.WalkingDinosaurs.HardDifficultyHealth;
+      }
+
+   }
   
    public bool IsEnemyAlredyDetected { get; set; }
 
@@ -38,7 +56,7 @@ public abstract class WalkableDinosaurModel
 
    public DinosaurAudioClips[] DinosaurAudios;
 
-   public int Health { get; }  
+   public int Health { get; protected set; }  
 
    public int HealhToReduce { get; set;}
 
@@ -53,9 +71,6 @@ public abstract class WalkableDinosaurModel
    public float TargetStopppingDistance  { get; }
 
    public Transform[] WayPoints { get; set; } 
-
-   // public Transform PlayerTarget { get; set; } 
-
 }    
 
 

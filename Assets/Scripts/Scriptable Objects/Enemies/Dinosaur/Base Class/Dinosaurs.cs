@@ -12,6 +12,12 @@ public abstract class Dinosaurs
 
    public int Health;
 
+   public int EasyDifficultyHealth;
+   
+   public int MediumDifficultyHealth;
+   
+   public int HardDifficultyHealth;
+
    public int Damage;
 
 
