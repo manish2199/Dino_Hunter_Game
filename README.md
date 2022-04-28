@@ -22,9 +22,11 @@
 
 5. Occlusion Culling To Optimized Performance.
  
-6. Reactive Enemies
+6. Reactive Enemies.
 
-7. Player MiniMap 
+7. Player MiniMap.
+
+8. Loading Screen. 
  
 
 ##
