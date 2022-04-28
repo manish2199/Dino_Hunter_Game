@@ -44,8 +44,8 @@ public class ChasingState : WalkableDinosaurStates
 	public override void OnStateExit()
 	{
 		base.OnStateExit();
-
-		animator.SetBool("Walk",false);
+		
+	   animator.SetBool("Walk",false);
         
         if(aiAgent.enabled == true)
 		{

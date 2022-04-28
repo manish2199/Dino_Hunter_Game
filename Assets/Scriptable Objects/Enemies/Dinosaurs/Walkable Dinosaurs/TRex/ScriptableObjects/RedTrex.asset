@@ -21,9 +21,9 @@ MonoBehaviour:
       type: {class: TRex, ns: , asm: Assembly-CSharp}
       data:
         Health: 800
-        EasyDifficultyHealth: 250
-        MediumDifficultyHealth: 350
-        HardDifficultyHealth: 450
+        EasyDifficultyHealth: 350
+        MediumDifficultyHealth: 450
+        HardDifficultyHealth: 550
         Damage: 50
         DinosaurAudios:
         - AudioClipType: 4

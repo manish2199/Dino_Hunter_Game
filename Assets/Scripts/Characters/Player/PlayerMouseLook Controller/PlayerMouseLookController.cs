@@ -30,7 +30,8 @@ public class PlayerMouseLookController : MonoBehaviour
      {
        if(isCursorLocked())
         {
-          Cursor.lockState = CursorLockMode.None;
+           Cursor.lockState = CursorLockMode.None;
+           Cursor.visible = true ;
          }
        else
         {

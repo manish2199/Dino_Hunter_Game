@@ -35,8 +35,18 @@ public class MainMenuHandler : MonoBehaviour
 
     void Start()
     {   
-        InitializeGamePrefs();        
-    //    PlayerPrefs.DeleteAll(); 
+        InitializeGamePrefs(); 
+
+        UnlockCursor();  
+    }
+
+    private void UnlockCursor()
+    {
+        if(Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true ;
+        }
     }
 
 
@@ -97,10 +107,16 @@ public class MainMenuHandler : MonoBehaviour
       }
       if(GameData.GetTutorialState() == 1)
       {
-         // LoadScene 2 
+        //  LoadScene 2 
          LevelManager.Instance.LoadScene(2);
       }
 
+    } 
+
+
+    public void TutorialButton()
+    {
+         LevelManager.Instance.LoadScene(1);
     }
  
 

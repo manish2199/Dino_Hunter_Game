@@ -23,8 +23,7 @@ public class PatrollingState : WalkableDinosaurStates
 
    protected IEnumerator PatrolCoroutine;
 
-   protected IEnumerator EnemyDetectionCoroutine;
-
+   protected IEnumerator EnemyDetectionCoroutine; 
 
 
    public override void OnStateUpdate()
@@ -58,7 +57,6 @@ public class PatrollingState : WalkableDinosaurStates
           if( GetDistance(transform.position,PlayerTarget.position) < ChasingRange )
           {
               // DIRECT ATTACK
-              EnemiesService.Instance.InvokeOnPlayerDetected();
               EnemyDetected();
           }
           
@@ -182,10 +180,12 @@ public class PatrollingState : WalkableDinosaurStates
 	public override void OnStateExit()
 	{
 		base.OnStateExit();
+
+        EnemiesService.Instance.InvokeOnPlayerDetected();
          
         CanPatrol = false;
 
-        if(PatrolCoroutine != null && EnemyDetectionCoroutine!=null)
+      if(PatrolCoroutine != null && EnemyDetectionCoroutine!=null)
       { 
         StopCoroutine(PatrolCoroutine);
 

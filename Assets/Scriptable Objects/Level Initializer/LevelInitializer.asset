@@ -24,7 +24,7 @@ MonoBehaviour:
     InitialMaxLimit: 250
   InventoryMedicalKitLists:
   - InventoryItem: {fileID: 11400000, guid: 7d8973a7f17b9ba478f9f4a03848e0dd, type: 2}
-    InitialQuantity: 3
+    InitialQuantity: 5
     InitialMaxLimit: 5
   CollectibleProjectiles:
   - {fileID: 11400000, guid: 762ae58d5e777a84f97901b297738a62, type: 2}

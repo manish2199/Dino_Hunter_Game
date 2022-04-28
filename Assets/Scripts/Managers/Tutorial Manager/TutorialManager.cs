@@ -10,7 +10,7 @@ public class TutorialManager : GenericSingleton<TutorialManager>
 
     [SerializeField] LevelInitializerScriptableObject InitialLevelConstraints;
     
-    [SerializeField] GameObject PlayerGameObject;
+    [SerializeField] GameObject PlayerGameObject; 
     [SerializeField] Text InstructionText;
     [SerializeField] GameObject InstructionPanel;
     [SerializeField] GameObject BlueRaptor;
@@ -34,7 +34,7 @@ public class TutorialManager : GenericSingleton<TutorialManager>
     void Start()
     {
         InitialSetup(); 
-
+      
         StartTutorial();
     } 
 
@@ -46,7 +46,8 @@ public class TutorialManager : GenericSingleton<TutorialManager>
        WeaponService.Instance.UnlockTheWeapon(WeaponsID.ShotGun); 
        WeaponService.Instance.UnlockTheWeapon(WeaponsID.AssaultRifle);  
        
-        AddInitialItemToInventory();
+       AddInitialItemToInventory();
+       
     }
 
 
@@ -87,6 +88,7 @@ public class TutorialManager : GenericSingleton<TutorialManager>
        InstructionText.text = PlayerTutorials.IntroductionText;
 
        yield return new WaitForSeconds(5f);
+
        
        PlayerGameObject.SetActive(true);
        MainCamera.SetActive(false);
@@ -101,35 +103,35 @@ public class TutorialManager : GenericSingleton<TutorialManager>
 
        InstructionText.text = PlayerTutorials.CrouchUnstructionText;
 
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(7f);
          
        InstructionText.text = PlayerTutorials.WeaponSwitchText;
  
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(7f);
        GameplayUIManager.Instance.EnableSelectedWeaponIcon();
        InstructionText.text = PlayerTutorials.WeaponAim;
 
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(7f);
 
        InstructionText.text = PlayerTutorials.WeaponShootText;
 
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(7f);
 
        InstructionText.text = PlayerTutorials.WeaponDescText;
 
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(7f);
 
        InstructionText.text = PlayerTutorials.InventoryDescpText;
 
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(7f);
 
        InstructionText.text = PlayerTutorials.InstructionSuccessText;
 
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(7f);
 
        InstructionText.text = PlayerTutorials.DinosaursIntroductionText;
 
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(7f);
      
        
        PlayerGameObject.SetActive(false);
@@ -140,21 +142,21 @@ public class TutorialManager : GenericSingleton<TutorialManager>
 
        InstructionText.text = PlayerTutorials.BlueRaptorEnemyDescp;
 
-       yield return new WaitForSeconds(8f);
+       yield return new WaitForSeconds(10f);
 
        BlueRaptor.SetActive(false);
        RedRaptor.SetActive(true);
 
        InstructionText.text = PlayerTutorials.RedRaptorEnemyDescp;
 
-       yield return new WaitForSeconds(8f);
+       yield return new WaitForSeconds(10f);
 
        RedRaptor.SetActive(false);
        TRex.SetActive(true);
 
        InstructionText.text = PlayerTutorials.TrexEnemyDescp;
 
-       yield return new WaitForSeconds(5f);
+       yield return new WaitForSeconds(10f);
        
        
        TRex.SetActive(false);
@@ -163,12 +165,12 @@ public class TutorialManager : GenericSingleton<TutorialManager>
 
        AmmoBox.SetActive(true);
 
-       yield return new WaitForSeconds(7f);
+       yield return new WaitForSeconds(10f);
 
        AmmoBox.SetActive(false);
        MediBox.SetActive(true);
     
-       yield return new WaitForSeconds(7f);
+       yield return new WaitForSeconds(10f);
 
        PlayerGameObject.SetActive(true);
        MainCamera.SetActive(false);
@@ -197,6 +199,13 @@ public class TutorialManager : GenericSingleton<TutorialManager>
          LevelManager.Instance.LoadScene(0);
        }
 
+    }
+
+
+    void OnDestroy()
+    {
+        StopCoroutine(TutorialCoroutine); 
+        TutorialCoroutine = null;
     }
 
 

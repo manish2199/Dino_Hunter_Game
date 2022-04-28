@@ -77,10 +77,10 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     void OnDisable()
     {
        InventoryService.OnProjectileQuantityChanged -= UpdateTheProjectilesQuantity;
-       InventoryService.OnHealthKitQuanityChanged += UpdateMedicalKitQuantity;
+       InventoryService.OnHealthKitQuanityChanged -= UpdateMedicalKitQuantity;
        WeaponService.OnWeaponZoomIn -= SetCrossHair;
        GamePlayManager.OnPlayerDeath -= DisableUIElements;
-       GamePlayManager.OnGameRestart += EnableUIElements;
+       GamePlayManager.OnGameRestart -= EnableUIElements;
     }
 
     public void SetCrossHair(bool isWeaponZoomed)

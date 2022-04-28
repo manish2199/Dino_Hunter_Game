@@ -43,10 +43,11 @@ public class Player : GenericSingleton<Player>
 
    protected override void Awake()
    { 
-      if(Instance == null)
-      {
-         Instance = this;
-      }
+      // base.Awake();
+       if(Instance == null)
+        {
+            Instance = this;
+        }
    }
     
     

@@ -6,14 +6,13 @@ using UnityEngine;
 public class PlayerSoundController : MonoBehaviour
 {
   // job is to control player audio
- 
-  
+
   float MinFootStepVolume { get; set; }
   float MaxFootStepVolume { get; set; }
   float StepDistance { get; set; }
   float AccumulatedStepDistance { get; set; }
 
-  private int EnemyCount; 
+  private int EnemyCount = 0;  
 
   public void IntializeSoundSetting(AudioSource GameplayMusicAudio,PlayerScriptableObject playerScriptableObject)
   {
@@ -35,7 +34,7 @@ public class PlayerSoundController : MonoBehaviour
 
    public void OnDisable()
   {
-      PlayerMovementController.OnSprinting -= SetSprintAudio;
+     PlayerMovementController.OnSprinting -= SetSprintAudio;
      PlayerMovementController.OnCrouched -= SetCrouchedAudio;
      PlayerMovementController.OnWalking -= SetWalkingAudio;
 
@@ -60,13 +59,13 @@ public class PlayerSoundController : MonoBehaviour
   }
 
   void CheckForGamePlaySound()
-  {
+  { 
     if(EnemyCount > 0)
     {
       EnemyCount --;
     }
 
-    if(EnemyCount == 0 &&  Player.Instance.GameplayMusicAudioSource.clip == Player.Instance.PlayerScriptableObject.BattleAudioClip)
+    if(EnemyCount <= 0 )
     {
        PlayGamePlaySound();
     }
@@ -83,8 +82,7 @@ public class PlayerSoundController : MonoBehaviour
 
   void PlayBattleSound()
   { 
-    EnemyCount ++;
-    
+    EnemyCount ++; 
     if( Player.Instance.GameplayMusicAudioSource.clip = Player.Instance.PlayerScriptableObject.GamePlayAudioClip)
     {
        Player.Instance.GameplayMusicAudioSource.Stop();

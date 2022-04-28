@@ -56,7 +56,8 @@ public class InventoryService : GenericSingleton<InventoryService>
         newHealthKit.SetItem(healthKit);
         newHealthKit.SetQuantity(Quantity);
         newHealthKit.UpdateMaxLimit(MaxLimit);
-
+        
+            //    Debug.Log("Adding HealthKit"); 
         HealthKits.Add(newHealthKit);
         GameplayUIManager.Instance.AddNewItemToUISlots(newHealthKit);
     }
@@ -112,7 +113,8 @@ public class InventoryService : GenericSingleton<InventoryService>
                 {
                     // means present 
                     HealthKits[i].ReduceQuantity(); 
-                  
+                //    Debug.Log("Using HealthKit");  
+                    
                     // invoke for text
                     OnHealthKitQuanityChanged?.Invoke(healthKitType,HealthKits[i].GetQuantity());
                     return item.HealthAmount;
@@ -231,6 +233,11 @@ public class InventoryService : GenericSingleton<InventoryService>
               GameplayUIManager.Instance.UpdateHealthKitMaxLimit(maxLimit);
             }
         }
+    }
+
+    void OnDestroy()
+    {
+        HealthKits= null;
     }
  
 

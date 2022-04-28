@@ -105,6 +105,12 @@ public class WeaponService : GenericSingleton<WeaponService>
         {
           GameplayUIManager.Instance.UpdateSelectedWeaponIcon(weaponIcon);
         }
+    } 
+
+
+    void OnDestroy()
+    {
+        weaponControllerList = null;
     }
     
 }

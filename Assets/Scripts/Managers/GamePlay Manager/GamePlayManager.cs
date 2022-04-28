@@ -22,6 +22,11 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
       InitialSetup();
    }
 
+   void Start()
+   {
+        Player.Instance.gameObject.transform.position = PlayerRespawnposition.position;
+   }
+
   private void OnEnable()
   {
       Achievement.OnAchievementAcomplished += UnlockItems; 
@@ -44,12 +49,10 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
   {   
      if(achievement.achievementType == AchievementType.HatrickOfHeadShots)
      {  
-        Debug.Log("Raptor Achievement");
         // Check unlock weapon type then unlcok it
          var headshotHatrickAchievement = (HeadshotHatrickAchievement)achievement;
       
-         Debug.Log(headshotHatrickAchievement.UnlockWeaponType);
-         if(headshotHatrickAchievement.UnlockWeaponType == UnlockWeaponType.ShotGun)
+        if(headshotHatrickAchievement.UnlockWeaponType == UnlockWeaponType.ShotGun)
          {
             // Unlock the weapon and Save Data
             GameData.SetShotgunUnlocked(1); 
@@ -73,9 +76,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
      }
      if(achievement.achievementType == AchievementType.TRexKill)
      {
-
-         Debug.Log("Trex Achievement");
-         var trexKillAchievement = (TRexKillAchievement)achievement;
+        var trexKillAchievement = (TRexKillAchievement)achievement;
 
         InventoryService.Instance.IncreaseHealthKitsMaxLimit(trexKillAchievement.HealthKitsMaxLimit);  
         achievement.UnSubscribe();
