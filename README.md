@@ -13,10 +13,16 @@
      iv) Object Pooling 
 
      v) Singleton
+     
+2. Scriptable Objects.
 
-2. Player Inventory System
+3. Player Inventory System.
+
+4. Dynamic Achievement System.
+
+4. Occlusion Culling To Optimized Performance.
  
-3. Reactive Enemies
+4. Reactive Enemies
  
 
 ##
