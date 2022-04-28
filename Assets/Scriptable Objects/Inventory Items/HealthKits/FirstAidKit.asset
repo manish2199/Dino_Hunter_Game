@@ -15,4 +15,4 @@ MonoBehaviour:
   ItemIcon: {fileID: 21300000, guid: 034066f350b07d84f846f728060d651f, type: 3}
   itemType: 2
   healthKitType: 1
-  HealthContains: 20
+  HealthContains: 30

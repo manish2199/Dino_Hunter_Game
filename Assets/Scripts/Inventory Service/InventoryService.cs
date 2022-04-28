@@ -39,9 +39,9 @@ public class InventoryService : GenericSingleton<InventoryService>
        ItemSlot newProjectileItem = new ItemSlot();
 
        newProjectileItem.SetItem(projectile);
-       newProjectileItem.SetQuantity(Quantity);
        newProjectileItem.UpdateMaxLimit(MaxLimit);
 
+       newProjectileItem.SetQuantity(Quantity);
        weaponaryProjectiles.Add(newProjectileItem);
        
     //    OnNewItemAdded?.Invoke(newProjectileItem)
@@ -54,10 +54,9 @@ public class InventoryService : GenericSingleton<InventoryService>
         ItemSlot newHealthKit = new ItemSlot();
 
         newHealthKit.SetItem(healthKit);
-        newHealthKit.SetQuantity(Quantity);
         newHealthKit.UpdateMaxLimit(MaxLimit);
         
-            //    Debug.Log("Adding HealthKit"); 
+        newHealthKit.SetQuantity(Quantity);
         HealthKits.Add(newHealthKit);
         GameplayUIManager.Instance.AddNewItemToUISlots(newHealthKit);
     }
@@ -112,10 +111,10 @@ public class InventoryService : GenericSingleton<InventoryService>
                 if(HealthKits[i].GetQuantity() > 0 )
                 {
                     // means present 
-                    HealthKits[i].ReduceQuantity(); 
-                //    Debug.Log("Using HealthKit");  
+                    HealthKits[i].ReduceQuantity();  
                     
                     // invoke for text
+
                     OnHealthKitQuanityChanged?.Invoke(healthKitType,HealthKits[i].GetQuantity());
                     return item.HealthAmount;
                 }
@@ -164,8 +163,7 @@ public class InventoryService : GenericSingleton<InventoryService>
                 if(weaponaryProjectiles[i].GetQuantity() < weaponaryProjectiles[i].GetMaxQuanity() )
                 {
                     // means space is availabe
-                    // NotificationManager.Instance.ShowNotificationMsg(NotificationType.ItemCollectedNotification);
-                    OnItemCollected?.Invoke(NotificationType.ItemCollectedNotification);
+                    OnItemCollected?.Invoke(NotificationType.ItemCollectedNotification); 
                     weaponaryProjectiles[i].SetQuantity(quanitty);
                     OnProjectileQuantityChanged?.Invoke(projectileType,weaponaryProjectiles[i].GetQuantity()); 
                     

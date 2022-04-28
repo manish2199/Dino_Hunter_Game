@@ -20,5 +20,5 @@ MonoBehaviour:
     00000000:
       type: {class: HealthKit, ns: , asm: Assembly-CSharp}
       data:
-        CollectibleAmountContain: 3
+        CollectibleAmountContain: 5
         HealthKitType: 1

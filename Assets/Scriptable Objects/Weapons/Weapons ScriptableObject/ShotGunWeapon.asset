@@ -28,7 +28,7 @@ MonoBehaviour:
         weaponID: 3
         weaponView: {fileID: 196714551952336462, guid: 4507f8c441854dd47818995b6d776a8d,
           type: 3}
-        Damage: 50
+        Damage: 15
         AttackClip: {fileID: 8300000, guid: 92f3926ab088d854e9635995036af132, type: 3}
         projectileType: 2
         fireType: 1

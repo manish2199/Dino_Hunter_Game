@@ -36,7 +36,7 @@ public class MainMenuHandler : MonoBehaviour
     void Start()
     {   
         InitializeGamePrefs(); 
-
+        
         UnlockCursor();  
     }
 

@@ -9,13 +9,16 @@ public class PlayerStatsController : MonoBehaviour
  
    private int StartingPlayerHealth;
 
-   private int CurrentPlayerHealth;
+   private int CurrentPlayerHealth; 
+
+   private bool IsMediKitApplying;
 
 
    public void InitializePlayerStats(PlayerScriptableObject playerScriptableObject)
    {
+       IsMediKitApplying = false;
        StartingPlayerHealth = playerScriptableObject.PlayerHealth;
-       CurrentPlayerHealth = StartingPlayerHealth;
+       CurrentPlayerHealth = playerScriptableObject.PlayerHealth;
    }
   
 
@@ -32,19 +35,17 @@ public class PlayerStatsController : MonoBehaviour
  
    public void CheckToUseMedikit(PlayerScriptableObject playerScriptableObject)
    {
-        if(Input.GetKeyDown(playerScriptableObject.playerControls.KeyToUseHealthKit))
+        if(Input.GetKeyDown(playerScriptableObject.playerControls.KeyToUseHealthKit) && !IsMediKitApplying)
         {
+            IsMediKitApplying = true;
             // demand healthkit from inventory 
             if(InventoryService.Instance.GetHealthKit(HealthKitType.FirstAidKit) == 0 )
             {
-              //  Debug.Log("No HealthKit");
                 return;
             }
 
-           if(CurrentPlayerHealth < StartingPlayerHealth )
+           if(CurrentPlayerHealth < StartingPlayerHealth  )
            {   
-              //  Debug.Log("Using HealthKit");
-
               CurrentPlayerHealth += InventoryService.Instance.GetHealthKit(HealthKitType.FirstAidKit);
 
               if(CurrentPlayerHealth > StartingPlayerHealth)
@@ -56,6 +57,7 @@ public class PlayerStatsController : MonoBehaviour
 
               GameplayUIManager.Instance.UpdateDamageIndicator(damageLeft);
            }
+            IsMediKitApplying = false;
         }
    }
 

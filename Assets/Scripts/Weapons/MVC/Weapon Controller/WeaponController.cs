@@ -235,7 +235,7 @@ public class ShootableWeaponController : WeaponController
             WeaponView.BloodHitEffect.Emit(1);
             damagable.TakeDamage(ShootableWeaponModel.Damage); 
          }
-         if( damagable == null && hit.transform.gameObject.layer != LayerMask.NameToLayer("Enemies") )
+         if( damagable == null && hit.transform.gameObject.layer != LayerMask.NameToLayer("Enemies") && hit.transform.gameObject.layer != LayerMask.NameToLayer("Player") )
          {
            OnMissTarget?.Invoke();
            WeaponView.MetalHitEffect.transform.position = hit.point;

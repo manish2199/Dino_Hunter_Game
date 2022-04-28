@@ -65,10 +65,14 @@ public class TRexPatrollingState : PatrollingState
        animator.SetTrigger("BodyShake");
        
        yield return new WaitForSeconds(4f);
+
+       animator.SetTrigger("Roar");
+
+       yield return new WaitForSeconds(3.5f); 
        
         if(aiAgent.enabled == true)
         {
-          this.IterateToNextWayPoint();
+          IterateToNextWayPoint();
           aiAgent.isStopped = false;     
           CanPatrol = true;
           SetWayPointDestination();
@@ -78,15 +82,6 @@ public class TRexPatrollingState : PatrollingState
    
   
 
-
-//    protected override void IterateToNextWayPoint()
-//    {
-//        int prevIndex = currentWayPointIndex;
-//        do
-//        {
-//           currentWayPointIndex = Random.Range(0,WayPoints.Length-1);
-//        }while(prevIndex == currentWayPointIndex);
-//    }
   
 
 	public override void OnStateEnter()

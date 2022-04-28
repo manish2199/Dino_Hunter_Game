@@ -25,9 +25,20 @@ public class ItemSlot
     private int MaxLimit;
     private InventoryItem Item;
 
-    public void SetQuantity(int Quantity)
+    public void SetQuantity(int receivedQuantity)
     {
-        this.Quantity += Quantity;
+       int temp = 1;
+       for(int i = 0; i<receivedQuantity; i++)
+       {
+         if(Quantity < MaxLimit)
+         {
+           Quantity += temp;
+         }
+         if(Quantity >= MaxLimit)
+         {
+            break;
+         }
+       }
     }
 
     public int GetMaxQuanity()
@@ -47,7 +58,7 @@ public class ItemSlot
 
     public void ReduceQuantity()
     {
-        Quantity = Quantity -1;
+        Quantity = Quantity - 1;
     }
 
 

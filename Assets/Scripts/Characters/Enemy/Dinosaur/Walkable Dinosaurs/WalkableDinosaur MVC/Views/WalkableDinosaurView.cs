@@ -44,7 +44,7 @@ public class WalkableDinosaurView : MonoBehaviour
   
    public virtual void DisableTheDinosaur(){}
 
-   protected IEnumerator Death()
+   protected virtual IEnumerator Death()
   {
      // play death anim
        IsDead = true;

@@ -41,6 +41,18 @@ public class TRexView : WalkableDinosaurView
       DeathCoroutine = Death(); 
       StartCoroutine(Death());
   }
+
+   protected IEnumerator Death()
+  {
+     // play death anim
+       IsDead = true;
+
+      animator.SetTrigger("Death"); 
+  
+      yield return new WaitForSeconds(2.5f);
+      
+      gameObject.SetActive(false);
+  }
  
 }
 

@@ -205,7 +205,7 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
        for ( int i =0 ; i<healthKitInventoryUISlot.Length; i++)
         {
             if(healthKitType == healthKitInventoryUISlot[i].HealthKitType)
-            {
+            {  
                 healthKitInventoryUISlot[i].ItemQuantityText.text = quanitty.ToString(); 
                 break;
             }

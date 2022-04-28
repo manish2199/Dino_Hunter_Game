@@ -24,7 +24,8 @@ public class TRexAttack : AttackState
          walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.ChasingState);
      }
 
-     	if(PlayerTarget == null)
+   
+      if(!Player.Instance.gameObject.activeInHierarchy || PlayerTarget == null)
 		{
 			walkableDinosaurView.walkableDinosaurController.ChangeState(walkableDinosaurView.PatrollingState);
 		}
