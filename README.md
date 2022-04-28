@@ -1,2 +1,3 @@
 # Dino_Hunter_Game
-Dinosaur hunter game made using Unity 
+  First Person Shooter Survival Game Built Using Unity 
+  
