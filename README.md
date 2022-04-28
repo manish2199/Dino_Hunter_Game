@@ -20,9 +20,9 @@
 
 4. Dynamic Achievement System.
 
-4. Occlusion Culling To Optimized Performance.
+5. Occlusion Culling To Optimized Performance.
  
-4. Reactive Enemies
+6. Reactive Enemies
  
 
 ##
