@@ -4,15 +4,15 @@
 # Features 
  1. Design Patterns Used 
   
-   i) Model View Controller
+     i) Model View Controller
  
-  ii) Observer Pattern 
+     ii) Observer Pattern 
 
- iii) State Machine
+     iii) State Machine
 
-  iv) Object Pooling 
+     iv) Object Pooling 
 
-   v) Singleton
+     v) Singleton
 
 2. Player Inventory System
  
