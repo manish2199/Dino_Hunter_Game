@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2caba4868c59c5442b277b49aa76438b, type: 3}
+  m_Name: PlayerScriptableObject
+  m_EditorClassIdentifier: 
+  moveSpeed: 6
+  gravity: 20
+  jumpForce: 10
+  crouchSpeed: 3
+  sprintSpeed: 10
+  crouchedHeight: 0.7
+  standingHeight: 1.6
+  isMouseRotationInverted: 0
+  mouseSensitivity: 5
+  defaultLookLimits: {x: -70, y: 80}
+  FootStepClips:
+  - {fileID: 8300000, guid: 2429399f1ca311945a12f37a32c14aed, type: 3}
+  - {fileID: 8300000, guid: f0761d807b3ae1d4598a50357cb58a5e, type: 3}
+  - {fileID: 8300000, guid: f27be18648dcceb46a46397f5c4c2e62, type: 3}
+  - {fileID: 8300000, guid: 3005916a05630f2439d211eaa6faba3d, type: 3}
+  minWalkVolume: 0.2
+  maxWalkVolume: 0.6
+  sprintVolume: 1
+  crouhVolume: 0.3
+  walkStepDistance: 0.4
+  sprintStepDistance: 0.3
+  crouchStepDistance: 0.7
+  BattleAudioClip: {fileID: 8300000, guid: 9454f5f66ee19484e8614610a4f0de68, type: 3}
+  GamePlayAudioClip: {fileID: 8300000, guid: d40297a7b9ca5ab4d8944575e0cb7235, type: 3}
+  ItemCollectedClip: {fileID: 8300000, guid: e0310548d62c2b84c977ce98c60b01e2, type: 3}
+  AchievementCompleteClip: {fileID: 8300000, guid: d05146c434c91d0488f117bb4af8d6f9,
+    type: 3}
+  playerControls:
+    KeyForJump: 32
+    KeyForCrouch: 99
+    KeyForLockCursor: 27
+    KeyForSprint: 304
+    KeyToSelectWeapon1: 49
+    KeyToSelectWeapon2: 50
+    KeyToSelectWeapon3: 51
+    KeyToSelectWeapon4: 52
+    KeyToSelectWeapon5: 53
+    KeyToSelectWeapon6: 54
+    KeyToUseHealthKit: 104
+    WeaponAttackKey: 323
+    KeyToAimWeapon: 324
+    KeyToOpenInventory: 105
+    KeyToInteractWithObjects: 102
+  PlayerHealth: 150

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08fb7d19e6ea7174bbf337ed78cfedfe, type: 3}
+  m_Name: RevolverWeapon
+  m_EditorClassIdentifier: 
+  weaponType: 1
+  weapon:
+    id: 0
+  ShootableWeapons:
+    id: 1
+  NonShootableWeapons:
+    id: 1
+  references:
+    version: 1
+    00000000:
+      type: {class: ShootableWeapons, ns: , asm: Assembly-CSharp}
+      data:
+        WeaponIcon: {fileID: 21300000, guid: 0f2fab7a98bd3dd4096d070d8835e0b5, type: 3}
+        weaponID: 2
+        weaponView: {fileID: 5825057323200084833, guid: 9dfba0b03b407ec4b98283284acb8888,
+          type: 3}
+        Damage: 5
+        AttackClip: {fileID: 8300000, guid: d8671e3ac1c052f4882a5b880273286e, type: 3}
+        projectileType: 1
+        fireType: 1
+        fireRate: 0
+        ShootingRange: 2
+        ReloadClip: []
+    00000001:
+      type: {class: , ns: , asm: }

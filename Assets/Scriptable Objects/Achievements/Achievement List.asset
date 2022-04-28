@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f7571f73167d641a64509d846d387f, type: 3}
+  m_Name: Achievement List
+  m_EditorClassIdentifier: 
+  achievementCellList:
+  - achievementType: 1
+    achievementConstraints:
+      id: 0
+  - achievementType: 1
+    achievementConstraints:
+      id: 1
+  - achievementType: 2
+    achievementConstraints:
+      id: 2
+  references:
+    version: 1
+    00000000:
+      type: {class: HeadshotHatrickAchievement, ns: , asm: Assembly-CSharp}
+      data:
+        achievementType: 1
+        RaptorsType: 1
+        HeadshotNumber: 3
+        UnlockWeaponType: 1
+        UnlockWeaponIcon: {fileID: 21300000, guid: 0ddd4423033cc2e4d968750b48bde5a0,
+          type: 3}
+    00000001:
+      type: {class: HeadshotHatrickAchievement, ns: , asm: Assembly-CSharp}
+      data:
+        achievementType: 1
+        RaptorsType: 2
+        HeadshotNumber: 3
+        UnlockWeaponType: 2
+        UnlockWeaponIcon: {fileID: 21300000, guid: aee48120e914d1440984ade4ce3cb5b5,
+          type: 3}
+    00000002:
+      type: {class: TRexKillAchievement, ns: , asm: Assembly-CSharp}
+      data:
+        achievementType: 2
+        HealthKitsMaxLimit: 3
+        NumberOfKill: 1
