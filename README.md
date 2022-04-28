@@ -4,7 +4,11 @@
 # Features 
  1.) Design Patterns Used 
   i) Model View Controller
+ 
  ii) Observer Pattern 
+
 iii) State Machine
+
  iv) Object Pooling 
+
   v) Singleton
