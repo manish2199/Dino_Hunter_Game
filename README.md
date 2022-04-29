@@ -2,19 +2,10 @@
   First Person Shooter Survival Game Built Using Unity 
   
 # Features 
- 1. Design Patterns Used 
-  
-     i) Model View Controller
- 
-     ii) Observer Pattern 
 
-     iii) State Machine
+1. Switchable Weapons 
 
-     iv) Object Pooling 
-
-     v) Singleton
-     
-2. Scriptable Objects.
+2. Control Panel
 
 3. Player Inventory System.
 
@@ -27,9 +18,28 @@
 7. Player MiniMap.
 
 8. Loading Screen. 
+
+9. Highscore System.
+
+
+# Programming Concepts Used
+   
+   1. Used Design Patterns 
+  
+      i) Used Model View Controller design pattern for Enemies and Weapons.
+ 
+     ii) Used Observer Pattern for Gameplay UI , notifcation handler.
+
+    iii) Handle Enemy Behaviour throuh State Machines.
+
+     iv) Created Object Pooling to spawn enemies. 
+
+      v) Created Singleton for Player and Managers.  
+     
+   2. Used Scriptable Objects to Configure Player,Enemies,Ahievement Rewards.
+ 
  
 
-##
 
 # GamePlay Videos
  YouTube Link - https://youtu.be/IPbzATNFcgs
