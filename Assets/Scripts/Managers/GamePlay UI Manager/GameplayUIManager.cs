@@ -49,10 +49,7 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
      
    protected override void Awake()
     { 
-      if(Instance == null)
-      {
-         Instance = this;
-      }
+       base.Awake();
        
        for(int i=0; i<projectileInventoryUISlots.Length; i++)
        {
@@ -67,8 +64,11 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
     
     void OnEnable()
     {
-       InventoryService.OnProjectileQuantityChanged += UpdateTheProjectilesQuantity;
-       InventoryService.OnHealthKitQuanityChanged += UpdateMedicalKitQuantity;
+       InventoryService.OnItemQuantityChanged += UpdateUISlotsQuantity ;
+       InventoryService.OnItemMaxLimitChanged += UpdateItemMaxLimit ;
+       
+       
+
        WeaponService.OnWeaponZoomIn += SetCrossHair; 
        GamePlayManager.OnPlayerDeath += DisableUIElements;
        GamePlayManager.OnGameRestart += EnableUIElements;
@@ -76,8 +76,9 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 
     void OnDisable()
     {
-       InventoryService.OnProjectileQuantityChanged -= UpdateTheProjectilesQuantity;
-       InventoryService.OnHealthKitQuanityChanged -= UpdateMedicalKitQuantity;
+       InventoryService.OnItemQuantityChanged -= UpdateUISlotsQuantity;
+       InventoryService.OnItemMaxLimitChanged -= UpdateItemMaxLimit;
+
        WeaponService.OnWeaponZoomIn -= SetCrossHair;
        GamePlayManager.OnPlayerDeath -= DisableUIElements;
        GamePlayManager.OnGameRestart -= EnableUIElements;
@@ -173,7 +174,21 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
        PlayerScoreText.text = Score.ToString();
     }
 
-    public void UpdateTheProjectilesQuantity(ProjectileType projectileType , int quanitty) 
+    public void UpdateUISlotsQuantity(InventoryItem inventoryItem , int quanitty)
+    {
+        if(inventoryItem.InventoryItemType == InventoryItemType.WeaponProjectile)
+        {
+            WeaponProjectiles temp = (WeaponProjectiles)inventoryItem;  
+            UpdateProjectilesQuantity(temp.BulletType,quanitty);
+        }
+        else if(inventoryItem.InventoryItemType == InventoryItemType.HealthKit)
+        {
+            MedicalItem temp = (MedicalItem)inventoryItem;
+            UpdateMedicalKitQuantity(temp.HealthKitType,quanitty);
+        }
+    }
+
+    private void UpdateProjectilesQuantity(ProjectileType projectileType , int quanitty) 
     {
         for ( int i =0 ; i<projectileInventoryUISlots.Length; i++)
         {
@@ -187,20 +202,8 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
 
     }
 
-    public void UpdateTheProjectilesMaxLimit(ProjectileType projectileType , int maxLimit) 
-    {
-        for ( int i =0 ; i<projectileInventoryUISlots.Length; i++)
-        {
-            if(projectileType == projectileInventoryUISlots[i].ProjectileType)
-            {
-                projectileInventoryUISlots[i].ItemMaxLimitText.text = maxLimit.ToString();
-            }
 
-        }
-
-    }
-
-    public void UpdateMedicalKitQuantity( HealthKitType healthKitType ,int quanitty) 
+    private void UpdateMedicalKitQuantity( HealthKitType healthKitType ,int quanitty) 
     {
        for ( int i =0 ; i<healthKitInventoryUISlot.Length; i++)
         {
@@ -213,12 +216,42 @@ public class GameplayUIManager : GenericSingleton<GameplayUIManager>
         }
     }
 
-    public void UpdateHealthKitMaxLimit(int maxLimit)
+
+    public void UpdateItemMaxLimit(InventoryItem item , int MaxLimit)
+    {
+        if(item.InventoryItemType == InventoryItemType.HealthKit)
+        {
+            MedicalItem temp = (MedicalItem) item;
+            UpdateHealthKitMaxLimit(MaxLimit,temp.HealthKitType);
+        }
+        if(item.InventoryItemType == InventoryItemType.WeaponProjectile)
+        {
+            WeaponProjectiles temp = (WeaponProjectiles)item;
+            UpdateTheProjectilesMaxLimit(temp.BulletType,MaxLimit);
+        }
+    }
+
+
+
+    private void UpdateHealthKitMaxLimit(int maxLimit, HealthKitType healthKitType)
     {
         for ( int i =0 ; i<healthKitInventoryUISlot.Length; i++)
         {
             healthKitInventoryUISlot[i].ItemMaxLimitText.text = maxLimit.ToString();
         }
+    }
+
+    private void UpdateTheProjectilesMaxLimit(ProjectileType projectileType , int maxLimit) 
+    {
+        for ( int i =0 ; i<projectileInventoryUISlots.Length; i++)
+        {
+            if(projectileType == projectileInventoryUISlots[i].ProjectileType)
+            {
+                projectileInventoryUISlots[i].ItemMaxLimitText.text = maxLimit.ToString();
+            }
+
+        }
+
     }
 
     public void ActivateInventory()

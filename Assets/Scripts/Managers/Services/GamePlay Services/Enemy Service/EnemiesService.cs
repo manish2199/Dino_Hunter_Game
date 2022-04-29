@@ -7,10 +7,9 @@ using UnityEngine;
 
 public class EnemiesService : GenericSingleton<EnemiesService>
 { 
-   [SerializeField] RaptorDinosaurPool RaptorDinosaurPool;
 
-   [SerializeField] TRexDinosaurPool TRexDinosaurPool;
- 
+   [SerializeField] WalkableDinosaurPool WalkableDinosaurPool;
+
    [SerializeField] WalkableDinosaurSpawner[] WalkableDinosaursList;
 
    public static event Action OnPlayerDetected; 
@@ -27,41 +26,20 @@ public class EnemiesService : GenericSingleton<EnemiesService>
    {
       OnEnemyDead?.Invoke();
    } 
-
-
-
-   
-   // private List<WalkableDinosaurRespawner> WalkableDinosaurRespawners; 
  
-   protected override void Awake()
-   {
-      if(Instance == null)
-      {
-         Instance = this;
-      }
-      // WalkableDinosaurRespawners = new List<WalkableDinosaurRespawner>();
-   }
 
    void Start()
    {
       SpawnWalkableDinosaur();      
    } 
 
-   public void StartTimerForRaptors(RaptorDinosaurController raptorDinosaurController)
+
+   public void StartRespawnTimerForDinosaurs(WalkableDinosaurController walkableDinosaurController)
    { 
       WalkableDinosaurRespawner newWalkableDinosaurRespawner = new WalkableDinosaurRespawner();
-      newWalkableDinosaurRespawner.WalkableDinosaurController = raptorDinosaurController;
+      newWalkableDinosaurRespawner.WalkableDinosaurController = walkableDinosaurController;
       newWalkableDinosaurRespawner.SetTimer();
-      // WalkableDinosaurRespawners.Add(newWalkableDinosaurRespawner);
    }
-
-   public void StartTimerForTRex(TRexDinosaurController trexDinosaurController)
-  { 
-      WalkableDinosaurRespawner newWalkableDinosaurRespawner = new WalkableDinosaurRespawner();
-      newWalkableDinosaurRespawner.WalkableDinosaurController = trexDinosaurController;
-      newWalkableDinosaurRespawner.SetTimer();
-      // WalkableDinosaurRespawners.Add(newWalkableDinosaurRespawner);
-  }
 
    public void SpawnWalkableDinosaur()
    {
@@ -78,7 +56,8 @@ public class EnemiesService : GenericSingleton<EnemiesService>
 
            RaptorDinosaurView view =(RaptorDinosaurView)raptor.WalkableDinosaurView;
  
-           RaptorDinosaurController controller = RaptorDinosaurPool.GetRaptorDinosaur(raptorModel,view); 
+            
+           RaptorDinosaurController controller =(RaptorDinosaurController)WalkableDinosaurPool.GetWalkableDinosaur(raptorModel,view);
 
            // Wrap Position 
            if( view.navMeshAgent.isOnNavMesh == false)
@@ -97,21 +76,20 @@ public class EnemiesService : GenericSingleton<EnemiesService>
 
             TRexView view =(TRexView)trex.WalkableDinosaurView;
  
-            TRexDinosaurController controller = TRexDinosaurPool.GetTRexDinosaur(trexModel,view); 
+            TRexDinosaurController controller = (TRexDinosaurController) WalkableDinosaurPool.GetWalkableDinosaur(trexModel,view); 
             if( view.navMeshAgent.isOnNavMesh == false)
            {
               view.navMeshAgent.Warp(WalkableDinosaursList[i].PositionToInstantiate.position);
            }
-            // controller.SetPosition(WalkableDinosaursList[i].PositionToInstantiate);
             controller.SetWayPoint(WalkableDinosaursList[i].WayPoints);
-         }
+         } 
          
       }
    }
 
 
 
-   public void RespawnDiosaur(WalkableDinosaurController walkableDinosaurController)
+   public void RespawnWalkingDiosaur(WalkableDinosaurController walkableDinosaurController)
    {
       // // check its type 
       if(walkableDinosaurController.WalkableDinosaurModel.WalkingDinosaurType == WalkingDinosaurType.Raptors)
@@ -135,11 +113,8 @@ public class EnemiesService : GenericSingleton<EnemiesService>
 
       TRexView view =(TRexView)TRexDinosaurController.WalkableDinosaurView;
  
-      TRexDinosaurController controller = TRexDinosaurPool.GetTRexDinosaur(trexModel,view); 
-      controller.EnableDinosaur();
-   
-      // RemoveRespawner(TRexDinosaurController);
-     
+      TRexDinosaurController controller =(TRexDinosaurController)WalkableDinosaurPool.GetWalkableDinosaur(trexModel,view); 
+      controller.EnableDinosaur();  
    }
 
    public void RespawnRaptors(RaptorDinosaurController raptorDinosaurController )
@@ -148,35 +123,10 @@ public class EnemiesService : GenericSingleton<EnemiesService>
 
       RaptorDinosaurView view =(RaptorDinosaurView)raptorDinosaurController.WalkableDinosaurView;
  
-      RaptorDinosaurController controller = RaptorDinosaurPool.GetRaptorDinosaur(raptorModel,view); 
+      RaptorDinosaurController controller = (RaptorDinosaurController) WalkableDinosaurPool.GetWalkableDinosaur(raptorModel,view); 
       controller.EnableDinosaur();
 
-      // RemoveRespawner(raptorDinosaurController);
    }
-
-   // public void RemoveRespawner(WalkableDinosaurController walkableDinosaurController)
-   // {
-   //    for(int i=0; i<WalkableDinosaurRespawners.Count; i++)
-   //    {
-   //       if(WalkableDinosaurRespawners[i].WalkableDinosaurController == walkableDinosaurController)
-   //       {
-   //          WalkableDinosaurRespawners.Remove(WalkableDinosaurRespawners[i]);
-   //       }
-   //    }
-   // }
-
-
-
-   public void ClearTheDinosaurs()
-   {
-      // remove all dinosaur controller before exit scene
-   }
-
-   
-
-
-
-   
 
 }
 

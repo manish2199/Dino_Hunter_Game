@@ -31,16 +31,16 @@ public class TRexView : WalkableDinosaurView
   }
 
 
-  public override void DisableTheDinosaur()
-  {
-      TRexDinosaurController temp = (TRexDinosaurController)walkableDinosaurController;
+//   public override void DisableTheDinosaur()
+//   {
+//       TRexDinosaurController temp = (TRexDinosaurController)walkableDinosaurController;
 
-      TRexDinosaurPool.Instance.ReturnItem(temp);
-      EnemiesService.Instance.StartTimerForTRex(temp);
+//       TRexDinosaurPool.Instance.ReturnItem(temp);
+//       EnemiesService.Instance.StartTimerForTRex(temp);
 
-      DeathCoroutine = Death(); 
-      StartCoroutine(Death());
-  }
+//       DeathCoroutine = Death(); 
+//       StartCoroutine(Death());
+//   }
 
    protected IEnumerator Death()
   {

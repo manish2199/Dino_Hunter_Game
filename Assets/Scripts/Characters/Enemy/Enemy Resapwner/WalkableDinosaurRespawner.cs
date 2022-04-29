@@ -27,7 +27,7 @@ public class WalkableDinosaurRespawner
 
    private void TimerFinished()
    {
-      EnemiesService.Instance.RespawnDiosaur(WalkableDinosaurController);
+      EnemiesService.Instance.RespawnWalkingDiosaur(WalkableDinosaurController);
    }     
 
 }

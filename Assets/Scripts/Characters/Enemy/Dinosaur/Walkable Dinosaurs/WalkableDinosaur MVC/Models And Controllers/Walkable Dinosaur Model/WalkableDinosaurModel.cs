@@ -6,7 +6,6 @@ public abstract class WalkableDinosaurModel
 {
    public WalkableDinosaurModel(WalkableDinosaurScriptableObject walkableDinosaurScriptableObject)
    {
-      // Health = walkableDinosaurScriptableObject.WalkingDinosaurs.Health;
       SetHealth(walkableDinosaurScriptableObject);
       Damage = walkableDinosaurScriptableObject.WalkingDinosaurs.Damage;
       Speed = walkableDinosaurScriptableObject.WalkingDinosaurs.Speed;

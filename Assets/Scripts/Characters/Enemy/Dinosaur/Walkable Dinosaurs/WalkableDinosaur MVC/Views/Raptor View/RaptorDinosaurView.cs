@@ -39,16 +39,16 @@ public class RaptorDinosaurView : WalkableDinosaurView
     }
   }
       
-  public override void DisableTheDinosaur()
-  {
-      RaptorDinosaurController temp = (RaptorDinosaurController)walkableDinosaurController;
+  // public override void DisableTheDinosaur()
+  // {
+  //     RaptorDinosaurController temp = (RaptorDinosaurController)walkableDinosaurController;
 
-      RaptorDinosaurPool.Instance.ReturnItem(temp);
-      EnemiesService.Instance.StartTimerForRaptors(temp);
+  //     RaptorDinosaurPool.Instance.ReturnItem(temp);
+  //     EnemiesService.Instance.StartTimerForRaptors(temp);
 
-      DeathCoroutine = Death(); 
-      StartCoroutine(Death());
-  }
+  //     DeathCoroutine = Death(); 
+  //     StartCoroutine(Death());
+  // }
 
   public void PerformSpecialAbility()
   {

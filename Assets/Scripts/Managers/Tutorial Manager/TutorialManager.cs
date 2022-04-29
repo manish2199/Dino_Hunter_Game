@@ -59,7 +59,7 @@ public class TutorialManager : GenericSingleton<TutorialManager>
            int quantity =  InitialLevelConstraints.InventoryBulletsLists[i].InitialQuantity;
            int maxLimit =  InitialLevelConstraints.InventoryBulletsLists[i].InitialMaxLimit;
     
-           InventoryService.Instance.AddItemSlotToProjectiles(item,quantity,maxLimit);
+           InventoryService.Instance.AddItemToInventoryList(item,quantity,maxLimit);
        }
 
        for(int i = 0; i<InitialLevelConstraints.InventoryMedicalKitLists.Length; i++)
@@ -68,7 +68,7 @@ public class TutorialManager : GenericSingleton<TutorialManager>
            int quantity =  InitialLevelConstraints.InventoryMedicalKitLists[i].InitialQuantity;
            int maxLimit =  InitialLevelConstraints.InventoryMedicalKitLists[i].InitialMaxLimit;
 
-           InventoryService.Instance.AddItemToHealthKits(item,quantity,maxLimit);
+           InventoryService.Instance.AddItemToInventoryList(item,quantity,maxLimit);
        }
 
     }

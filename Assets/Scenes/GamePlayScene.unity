@@ -14814,6 +14814,7 @@ GameObject:
   - component: {fileID: 1288868762}
   - component: {fileID: 1288868765}
   - component: {fileID: 1288868764}
+  - component: {fileID: 1288868766}
   m_Layer: 0
   m_Name: Enemies Service
   m_TagString: Untagged
@@ -14833,8 +14834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526fc8217fe5385499b9edcbde1b16b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RaptorDinosaurPool: {fileID: 1288868765}
-  TRexDinosaurPool: {fileID: 1288868764}
+  WalkableDinosaurPool: {fileID: 1288868766}
   WalkableDinosaursList:
   - WalkableDinosaurScriptableObject: {fileID: 11400000, guid: 2b6c503595d8ff146810e4902d07ce96,
       type: 2}
@@ -14961,6 +14961,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7583d01562e6042bbaf7338f213532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1288868766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288868761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959c7a9e3b7a9b844867df0188775c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1288979207 stripped

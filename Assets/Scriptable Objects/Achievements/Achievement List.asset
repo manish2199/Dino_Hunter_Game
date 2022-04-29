@@ -47,4 +47,5 @@ MonoBehaviour:
       data:
         achievementType: 2
         HealthKitsMaxLimit: 3
+        HealthKitType: 1
         NumberOfKill: 1
