@@ -20,10 +20,14 @@ public abstract class Dinosaurs
 
    public int Damage;
 
+   public float ChasingRange;
+
+   public float AttackingRange;
+
+   public int TimeToRespawnAfterDeath;
 
    // AudioClips 
    public DinosaurAudioClips[] DinosaurAudios;
-
 
 }   
 
@@ -44,13 +48,7 @@ public class WalkingDinosaurs : Dinosaurs
 
     public float StoppingDistanceFromWayPoint;
 
-    public float ChasingRange;
-
-    public float AttackingRange;
-
-    public int TimeToRespawnAfterDeath;
-
-   [SerializeReference] public WalkableDinosaurView WalkableDinosaurView; 
+    [SerializeReference] public WalkableDinosaurView WalkableDinosaurView; 
 }
 
 

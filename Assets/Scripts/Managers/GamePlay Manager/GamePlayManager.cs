@@ -17,7 +17,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
    
    protected override void Awake()
    {
-      MakeInstance(); 
+      base.Awake();
 
       InitialSetup();
    }
@@ -37,13 +37,6 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
       Achievement.OnAchievementAcomplished -= UnlockItems;
   }
 
-   private void MakeInstance()
-   {
-      if(Instance == null)
-      {
-         Instance = this;
-      }
-   }
      
   private void UnlockItems(Achievement achievement)
   {   
@@ -78,7 +71,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
      {
         var trexKillAchievement = (TRexKillAchievement)achievement;
 
-        InventoryService.Instance.IncreaseHealthKitsMaxLimit(trexKillAchievement.HealthKitsMaxLimit);  
+        InventoryService.Instance.IncreaseHealthKitsMaxLimit(trexKillAchievement.HealthKitsMaxLimit,trexKillAchievement.HealthKitType);  
         achievement.UnSubscribe();
      } 
   } 
@@ -129,7 +122,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
       InventoryItem item = inventoryItemConstraints.InventoryItem;
       int quantity =  inventoryItemConstraints.InitialQuantity;
       int maxLimit =  inventoryItemConstraints.InitialMaxLimit;
-      InventoryService.Instance.AddItemSlotToProjectiles(item,quantity,maxLimit);    
+      InventoryService.Instance.AddItemToInventoryList(item,quantity,maxLimit);    
    }
 
    private InventoryItemConstraints GetProjectileInventoryItem(ProjectileType projectileType)
@@ -163,7 +156,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
            int quantity =  InitialLevelConstraints.InventoryMedicalKitLists[i].InitialQuantity;
            int maxLimit =  InitialLevelConstraints.InventoryMedicalKitLists[i].InitialMaxLimit;
 
-           InventoryService.Instance.AddItemToHealthKits(item,quantity,maxLimit);
+           InventoryService.Instance.AddItemToInventoryList(item,quantity,maxLimit);
        }
    }
    #endregion

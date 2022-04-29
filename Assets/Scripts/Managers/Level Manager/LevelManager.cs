@@ -16,6 +16,20 @@ public class LevelManager : GenericSingleton<LevelManager>
 
    public AudioSource LoadingAudioSource;
 
+    protected override void Awake()
+    { 
+        if( Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this);
+        }
+
+   }
+
    public async void LoadScene(int levelIndex)
    {
        LoadingBar.fillAmount = 0f;

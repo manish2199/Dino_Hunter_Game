@@ -17,11 +17,8 @@ public class WeaponService : GenericSingleton<WeaponService>
     public static event Action<bool> OnWeaponZoomIn;
   
    protected override void Awake()
-   {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
+   { 
+        base.Awake();
         weaponControllerList = new List<WeaponController>(); 
    }
    

@@ -20,6 +20,8 @@ public class TRexKillAchievement : Achievement
     
     public int HealthKitsMaxLimit;
 
+	public HealthKitType HealthKitType;
+
     public int NumberOfKill;   
 
 	public override void Subscribe()

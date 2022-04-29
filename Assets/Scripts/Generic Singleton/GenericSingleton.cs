@@ -13,12 +13,12 @@ public class GenericSingleton<T> : MonoBehaviour where T : GenericSingleton<T>
         if( instance == null)
         {
             instance = this as T;
-            DontDestroyOnLoad(this as T);
+            // DontDestroyOnLoad(this as T);
         }
-        else
-        {
-            Destroy(this as T);
-        }
+        // else
+        // {
+            // Destroy(this as T);
+        // }
     }
 
 }

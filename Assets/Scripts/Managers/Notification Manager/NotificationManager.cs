@@ -26,10 +26,7 @@ public class NotificationManager : GenericSingleton<NotificationManager>
    
    protected override void Awake()
     {
-      if(Instance == null)
-      {
-         Instance = this;
-      }
+      base.Awake();
     }
 
     void OnEnable()

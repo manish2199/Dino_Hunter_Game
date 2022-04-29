@@ -42,7 +42,15 @@ public class WalkableDinosaurView : MonoBehaviour
 
   public virtual void EnableDinosaur(){}
   
-   public virtual void DisableTheDinosaur(){}
+   public virtual void DisableTheDinosaur()
+   {
+
+      WalkableDinosaurPool.Instance.ReturnItem(walkableDinosaurController);
+      EnemiesService.Instance.StartRespawnTimerForDinosaurs(walkableDinosaurController);
+
+      DeathCoroutine = Death(); 
+      StartCoroutine(Death());
+   }
 
    protected virtual IEnumerator Death()
   {
