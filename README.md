@@ -26,7 +26,7 @@
    
    1. Used Design Patterns 
   
-      i) Used Model View Controller design pattern for Enemies and Weapons.
+     i) Used Model View Controller design pattern for Enemies and Weapons.
  
      ii) Used Observer Pattern for Gameplay UI , notifcation handler.
 
