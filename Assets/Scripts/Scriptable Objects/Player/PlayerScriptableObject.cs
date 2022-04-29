@@ -47,3 +47,25 @@ public class PlayerScriptableObject : Character
    [Header("Player Health")]
    public int PlayerHealth;
 } 
+
+[System.Serializable]
+public class PlayerControls
+{
+    public KeyCode KeyForJump;
+    public KeyCode KeyForCrouch;
+    public KeyCode KeyForLockCursor;
+    public KeyCode KeyForSprint;
+    public KeyCode KeyToSelectWeapon1;
+    public KeyCode KeyToSelectWeapon2;
+    public KeyCode KeyToSelectWeapon3;
+    public KeyCode KeyToSelectWeapon4;
+    public KeyCode KeyToSelectWeapon5;
+    public KeyCode KeyToSelectWeapon6;
+    public KeyCode KeyToUseHealthKit;
+    public KeyCode WeaponAttackKey;
+    public KeyCode KeyToAimWeapon; 
+    public KeyCode KeyToOpenInventory;
+    public KeyCode KeyToInteractWithObjects;
+}
+
+
