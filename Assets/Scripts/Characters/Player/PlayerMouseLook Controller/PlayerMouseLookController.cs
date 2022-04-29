@@ -64,3 +64,13 @@ public class PlayerMouseLookController : MonoBehaviour
       playerTransform.localRotation = Quaternion.Euler( 0f,MouseLookAngles.y, 0f );
    }
 }
+
+public class Axis 
+{
+    public const string HORIZONTAL = "Horizontal";
+    public const string VERTICAL = "Vertical";
+    public const string MOUSEX = "Mouse X";
+    public const string MOUSEY = "Mouse Y";
+}
+
+

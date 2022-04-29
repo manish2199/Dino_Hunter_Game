@@ -256,3 +256,11 @@ public class ShootableWeaponController : WeaponController
    }
 
 }
+
+
+
+public class WeaponAnimatorParameters
+{
+    public const string AimBooleanText = "AIM";
+    public const string ShootTriggerText = "Shoot";
+}
