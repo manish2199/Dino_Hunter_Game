@@ -21,6 +21,8 @@
 
 9. Highscore System.
 
+10.Difficulty Selection Option
+
 
 # Programming Concepts Used
    
