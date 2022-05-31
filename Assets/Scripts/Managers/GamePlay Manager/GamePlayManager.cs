@@ -82,7 +82,7 @@ public class GamePlayManager : GenericSingleton<GamePlayManager>
    {
       WeaponService.Instance.UnlockTheWeapon(WeaponsID.Revolver);
       AddProjectilesToInventory(ProjectileType.RevolverBullet);
-      Player.Instance.playerAttackController.SelectInitialWeapon();
+      Player.Instance.playerAttackController.InitialWeaponSetup();
    }
 
 

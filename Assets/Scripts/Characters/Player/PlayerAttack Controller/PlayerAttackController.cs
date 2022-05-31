@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerAttackController : MonoBehaviour
 {
+   PlayerScriptableObject playerScriptableObject;
+    
+   Transform weaponsHolder;
 
-   public void SelectWeapon(PlayerScriptableObject playerScriptableObject,Transform weaponsHolder)
+   public void SelectWeapon()
    { 
       if(Input.GetKeyDown(playerScriptableObject.playerControls.KeyToSelectWeapon1))
       {
@@ -22,8 +25,10 @@ public class PlayerAttackController : MonoBehaviour
       
    }
 
-   public void SelectInitialWeapon()
+   public void InitialWeaponSetup()
    {
+      playerScriptableObject = Player.Instance.PlayerScriptableObject;
+      weaponsHolder = Player.Instance.weaponsHolder;
       WeaponService.Instance.SelectInitialWeapon(Player.Instance.weaponsHolder); 
    }
 

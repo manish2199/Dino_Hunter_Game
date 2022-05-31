@@ -5,17 +5,24 @@ using UnityEngine;
 
 public class PlayerMouseLookController : MonoBehaviour
 {
-    // job is to control mouse look
+   // job is to control mouse look
    
-    private Vector2 DefaultLookLimits;
+   private Vector2 DefaultLookLimits;
     
-    private Vector2 MouseLookAngles;
+   private Vector2 MouseLookAngles;
     
-    private Vector2 CurrentMouseLook;
+   private Vector2 CurrentMouseLook;
+    
+   PlayerScriptableObject playerScriptableObject;
    
+   Transform playerTransform;    
+   Transform rootTransform;
 
    public void InitializeMouseLook()
    {
+      playerScriptableObject = Player.Instance.PlayerScriptableObject;
+      playerTransform =  Player.Instance.playerTransform;
+      rootTransform =  Player.Instance.rootTransform;
       LockMouseCurserToCenter();
    }
 
@@ -24,7 +31,7 @@ public class PlayerMouseLookController : MonoBehaviour
       Cursor.lockState = CursorLockMode.Locked;
    }
 
-   public void LockAndUnlockCursor(PlayerScriptableObject playerScriptableObject)
+   public void LockAndUnlockCursor()
    {
       if( Input.GetKeyDown(playerScriptableObject.playerControls.KeyForLockCursor) )
      {
@@ -51,7 +58,7 @@ public class PlayerMouseLookController : MonoBehaviour
    }
 
 
-   public void LookAround(PlayerScriptableObject playerScriptableObject,Transform rootTransform,Transform playerTransform)
+   public void LookAround()
    {
       CurrentMouseLook = new Vector2 (Input.GetAxis(Axis.MOUSEY),Input.GetAxis(Axis.MOUSEX));
 

@@ -14,11 +14,26 @@ public class PlayerSoundController : MonoBehaviour
 
   private int EnemyCount = 0;  
 
-  public void IntializeSoundSetting(AudioSource GameplayMusicAudio,PlayerScriptableObject playerScriptableObject)
+  PlayerScriptableObject playerScriptableObject;
+
+  AudioSource GameplayMusicAudioSource;
+  AudioSource FootStepAudioSource;
+  CharacterController characterController;
+
+
+  public void IntializeSoundSetting()
   {
+    playerScriptableObject = Player.Instance.PlayerScriptableObject;
+    
+    GameplayMusicAudioSource = Player.Instance.GameplayMusicAudioSource;
+
+    FootStepAudioSource = Player.Instance.FootStepAudioSource;
+
+    characterController =  Player.Instance.characterController;
+
     PlayGamePlaySound();
 
-    SetInitialFootStepAudio(playerScriptableObject);
+    SetInitialFootStepAudio();
   }
 
   public void OnEnable()
@@ -92,21 +107,21 @@ public class PlayerSoundController : MonoBehaviour
   }
  
 
-  public void SetWalkingAudio(PlayerScriptableObject playerScriptableObject)
+  public void SetWalkingAudio()
   {
         MinFootStepVolume = playerScriptableObject.minWalkVolume;
         MaxFootStepVolume = playerScriptableObject.maxWalkVolume;
         StepDistance = playerScriptableObject.walkStepDistance;
   }
 
-   public void SetCrouchedAudio(PlayerScriptableObject playerScriptableObject)
+   public void SetCrouchedAudio()
   { 
         MinFootStepVolume =playerScriptableObject.crouhVolume;
         MaxFootStepVolume = playerScriptableObject.crouhVolume;
         StepDistance =playerScriptableObject.crouchStepDistance;
   }
 
-   public void SetSprintAudio(PlayerScriptableObject playerScriptableObject)
+   public void SetSprintAudio()
   {
         MinFootStepVolume = playerScriptableObject.sprintVolume;
         MaxFootStepVolume = playerScriptableObject.sprintVolume;
@@ -114,7 +129,7 @@ public class PlayerSoundController : MonoBehaviour
   }
 
   
-  public void PlayFootStepAudio(CharacterController characterController,PlayerScriptableObject playerScriptableObject,AudioSource playerFootStepAudio)
+  public void PlayFootStepAudio()
   {
      if(!characterController.isGrounded)
      { 
@@ -127,9 +142,9 @@ public class PlayerSoundController : MonoBehaviour
 
         if(AccumulatedStepDistance > StepDistance)
         {
-           playerFootStepAudio.volume = Random.Range(MinFootStepVolume,MaxFootStepVolume);
-           playerFootStepAudio.clip = playerScriptableObject.FootStepClips[Random.Range(0 ,playerScriptableObject.FootStepClips.Length)];
-           playerFootStepAudio.Play();
+           FootStepAudioSource.volume = Random.Range(MinFootStepVolume,MaxFootStepVolume);
+           FootStepAudioSource.clip = playerScriptableObject.FootStepClips[Random.Range(0 ,playerScriptableObject.FootStepClips.Length)];
+           FootStepAudioSource.Play();
 
            AccumulatedStepDistance = 0f;
          }
@@ -140,7 +155,7 @@ public class PlayerSoundController : MonoBehaviour
      }
   }
 
-  public void SetInitialFootStepAudio(PlayerScriptableObject playerScriptableObject)
+  public void SetInitialFootStepAudio()
   {
     StepDistance= playerScriptableObject.walkStepDistance;
     MinFootStepVolume = playerScriptableObject.minWalkVolume;
