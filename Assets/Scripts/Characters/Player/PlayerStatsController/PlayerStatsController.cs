@@ -13,9 +13,15 @@ public class PlayerStatsController : MonoBehaviour
 
    private bool IsMediKitApplying;
 
+   PlayerScriptableObject playerScriptableObject;
 
-   public void InitializePlayerStats(PlayerScriptableObject playerScriptableObject)
+   Transform playerCollectibleTransform;
+
+
+   public void InitializePlayerStats()
    {
+       playerScriptableObject = Player.Instance.PlayerScriptableObject;
+       playerCollectibleTransform = Player.Instance.PlayerCollectableTransform;
        IsMediKitApplying = false;
        StartingPlayerHealth = playerScriptableObject.PlayerHealth;
        CurrentPlayerHealth = playerScriptableObject.PlayerHealth;
@@ -33,7 +39,7 @@ public class PlayerStatsController : MonoBehaviour
        PlayerScore = 0;
    }
  
-   public void CheckToUseMedikit(PlayerScriptableObject playerScriptableObject)
+   public void CheckToUseMedikit()
    {
         if(Input.GetKeyDown(playerScriptableObject.playerControls.KeyToUseHealthKit) && !IsMediKitApplying)
         {
@@ -62,20 +68,19 @@ public class PlayerStatsController : MonoBehaviour
    }
 
 
-   public void CheckToCollectSupplies(Transform playerCollectibleTransform,PlayerScriptableObject playerScriptableObject)
+   public void CheckToCollectSupplies()
    {
-       RaycastHit hit;
+      RaycastHit hit;
 
-       if(Physics.Raycast(playerCollectibleTransform.position,playerCollectibleTransform.forward, out hit,3f))
-       {
-           ICollectable collectable = hit.transform.gameObject.GetComponent<ICollectable>();
+      if(Physics.Raycast(playerCollectibleTransform.position,playerCollectibleTransform.forward, out hit,3f))
+      {
+          ICollectable collectable = hit.transform.gameObject.GetComponent<ICollectable>();
 
-           if(collectable != null && Input.GetKeyDown(playerScriptableObject.playerControls.KeyToInteractWithObjects))
-           { 
-              collectable.Collect();
-           }
-       }
-   
+          if(collectable != null && Input.GetKeyDown(playerScriptableObject.playerControls.KeyToInteractWithObjects))
+          { 
+            collectable.Collect();
+          }
+      }
    }
 
    public void IncreaseScore(WalkingDinosaurType walkableDinosaurType)
@@ -114,7 +119,7 @@ public class PlayerStatsController : MonoBehaviour
        }
    }
 
-   public void CheckToOpenInventory(PlayerScriptableObject playerScriptableObject)
+   public void CheckToOpenInventory()
    {  
        if(Input.GetKeyDown(playerScriptableObject.playerControls.KeyToOpenInventory))
       {

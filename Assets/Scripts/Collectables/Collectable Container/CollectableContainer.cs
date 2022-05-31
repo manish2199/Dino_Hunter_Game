@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections;
@@ -20,17 +20,19 @@ public class CollectableContainer : MonoBehaviour , ICollectable
 
     private int CurrentSpawnIndex = 0;
 
-    public int TimeToRespawn; 
+    public int TimeToRespawn;       
+
+
+    float Speed = 10f;
 
     void Awake()
     {
         CollectibleList = new List<CollectiblesScriptableObject>();
     }
 
-
     void Start()
     {
-      FillCollectibleList();
+      FillCollectibleList();    
     } 
 
     public void AddCollectibleToTheList(CollectiblesScriptableObject collectible)
@@ -123,3 +125,5 @@ public enum CollectibleItemType
     Medical
 }
  
+
+

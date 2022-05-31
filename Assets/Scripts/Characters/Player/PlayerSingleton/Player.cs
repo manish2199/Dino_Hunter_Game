@@ -43,7 +43,6 @@ public class Player : GenericSingleton<Player>
 
    protected override void Awake()
    { 
-      // base.Awake();
        if(Instance == null)
         {
             Instance = this;
@@ -70,53 +69,53 @@ public class Player : GenericSingleton<Player>
    {
         playerStatsController.TakeDamage(damage);
    }
-   
-
-
 
 
    //  Update Functions
    public void PlayerMovement()
    {
-         playerMovementController.MovePlayer(playerScriptableObject,characterController,playerTransform);
+         playerMovementController.MovePlayer();
       
-         playerMovementController.HandleCrouch(playerScriptableObject,rootTransform);
+         playerMovementController.HandleCrouch();
    }
 
 
    private void MouseLookAround()
    {
-      playerMouseLookController.LockAndUnlockCursor(playerScriptableObject);
+      playerMouseLookController.LockAndUnlockCursor();
  
       if(playerMouseLookController.isCursorLocked())
      {
-        playerMouseLookController.LookAround(playerScriptableObject,rootTransform,playerTransform);
+        playerMouseLookController.LookAround();
       }
    } 
 
 
    private void PlayerStatsUpdates()
    {
-      playerStatsController.CheckToOpenInventory(playerScriptableObject);
+      playerStatsController.CheckToOpenInventory();
 
-      playerStatsController.CheckToCollectSupplies(PlayerCollectableTransform,playerScriptableObject);
+      playerStatsController.CheckToCollectSupplies();
 
-      playerStatsController.CheckToUseMedikit(playerScriptableObject);
+      playerStatsController.CheckToUseMedikit();
    }
+
+
+
 
 
    
    void Start()
    {
-      playerMovementController.SetInitialMovementSetup(playerScriptableObject);
+      playerMovementController.SetInitialMovementSetup();
 
       playerMouseLookController.InitializeMouseLook();
 
-      playerSoundController.IntializeSoundSetting(GameplayMusicAudioSource,playerScriptableObject);
+      playerSoundController.IntializeSoundSetting();
 
-      playerAttackController.SelectInitialWeapon(); 
+      playerAttackController.InitialWeaponSetup(); 
 
-      playerStatsController.InitializePlayerStats(playerScriptableObject);
+      playerStatsController.InitializePlayerStats();
    }
 
    void Update()
@@ -125,9 +124,9 @@ public class Player : GenericSingleton<Player>
      
        MouseLookAround(); 
           
-       playerSoundController.PlayFootStepAudio(characterController,playerScriptableObject,FootStepAudioSource);
+       playerSoundController.PlayFootStepAudio();
    
-       playerAttackController.SelectWeapon(playerScriptableObject,weaponsHolder);
+       playerAttackController.SelectWeapon();
 
        PlayerStatsUpdates();
     }       
