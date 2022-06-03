@@ -1,262 +1,724 @@
 fileFormatVersion: 2
 guid: 48d42201fa1ddd74b8df820204882ede
-timeCreated: 1483550089
-licenseType: Store
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: Arm_L
-    100002: Arm_R
-    100004: Armature
-    100006: Assault_Rifle
-    100008: Charging_Handle
-    100010: Forearm_L
-    100012: Forearm_R
-    100014: Forearm_Twist_1_L
-    100016: Forearm_Twist_1_R
-    100018: Forearm_Twist_2_L
-    100020: Forearm_Twist_2_R
-    100022: Forearm_Twist_3_L
-    100024: Forearm_Twist_3_R
-    100026: Forearm_Twist_4_L
-    100028: Forearm_Twist_4_R
-    100030: //RootNode
-    100032: FP_Arms
-    100034: IK_L
-    100036: IK_R
-    100038: Index_1_L
-    100040: Index_1_R
-    100042: Index_2_L
-    100044: Index_2_R
-    100046: Index_3_L
-    100048: Index_3_R
-    100050: Magazine
-    100052: Middle_1_L
-    100054: Middle_1_R
-    100056: Middle_2_L
-    100058: Middle_2_R
-    100060: Middle_3_L
-    100062: Middle_3_R
-    100064: Pinky_1_L
-    100066: Pinky_1_R
-    100068: Pinky_2_L
-    100070: Pinky_2_R
-    100072: Pinky_3_L
-    100074: Pinky_3_R
-    100076: Pole_L
-    100078: Pole_R
-    100080: Ring_1_L
-    100082: Ring_1_R
-    100084: Ring_2_L
-    100086: Ring_2_R
-    100088: Ring_3_L
-    100090: Ring_3_R
-    100092: Root
-    100094: Sphere
-    100096: Thumb_1_L
-    100098: Thumb_1_R
-    100100: Thumb_2_L
-    100102: Thumb_2_R
-    100104: Thumb_3_L
-    100106: Thumb_3_R
-    100108: Trigger
-    100110: Weapon
-    100112: Wrist_L
-    100114: Wrist_R
-    100116: Arm.L
-    100118: Arm.R
-    100120: Assault Rifle
-    100122: Charging Handle
-    100124: Forearm Twist.1.L
-    100126: Forearm Twist.1.R
-    100128: Forearm Twist.2.L
-    100130: Forearm Twist.2.R
-    100132: Forearm Twist.3.L
-    100134: Forearm Twist.3.R
-    100136: Forearm Twist.4.L
-    100138: Forearm Twist.4.R
-    100140: Forearm.L
-    100142: Forearm.R
-    100144: FP Arms
-    100146: Index.1.L
-    100148: Index.1.R
-    100150: Index.2.L
-    100152: Index.2.R
-    100154: Index.3.L
-    100156: Index.3.R
-    100158: Middle.1.L
-    100160: Middle.1.R
-    100162: Middle.2.L
-    100164: Middle.2.R
-    100166: Middle.3.L
-    100168: Middle.3.R
-    100170: Pinky.1.L
-    100172: Pinky.1.R
-    100174: Pinky.2.L
-    100176: Pinky.2.R
-    100178: Pinky.3.L
-    100180: Pinky.3.R
-    100182: Ring.1.L
-    100184: Ring.1.R
-    100186: Ring.2.L
-    100188: Ring.2.R
-    100190: Ring.3.L
-    100192: Ring.3.R
-    100194: Thumb.1.L
-    100196: Thumb.1.R
-    100198: Thumb.2.L
-    100200: Thumb.2.R
-    100202: Thumb.3.L
-    100204: Thumb.3.R
-    100206: Wrist.L
-    100208: Wrist.R
-    400000: Arm_L
-    400002: Arm_R
-    400004: Armature
-    400006: Assault_Rifle
-    400008: Charging_Handle
-    400010: Forearm_L
-    400012: Forearm_R
-    400014: Forearm_Twist_1_L
-    400016: Forearm_Twist_1_R
-    400018: Forearm_Twist_2_L
-    400020: Forearm_Twist_2_R
-    400022: Forearm_Twist_3_L
-    400024: Forearm_Twist_3_R
-    400026: Forearm_Twist_4_L
-    400028: Forearm_Twist_4_R
-    400030: //RootNode
-    400032: FP_Arms
-    400034: IK_L
-    400036: IK_R
-    400038: Index_1_L
-    400040: Index_1_R
-    400042: Index_2_L
-    400044: Index_2_R
-    400046: Index_3_L
-    400048: Index_3_R
-    400050: Magazine
-    400052: Middle_1_L
-    400054: Middle_1_R
-    400056: Middle_2_L
-    400058: Middle_2_R
-    400060: Middle_3_L
-    400062: Middle_3_R
-    400064: Pinky_1_L
-    400066: Pinky_1_R
-    400068: Pinky_2_L
-    400070: Pinky_2_R
-    400072: Pinky_3_L
-    400074: Pinky_3_R
-    400076: Pole_L
-    400078: Pole_R
-    400080: Ring_1_L
-    400082: Ring_1_R
-    400084: Ring_2_L
-    400086: Ring_2_R
-    400088: Ring_3_L
-    400090: Ring_3_R
-    400092: Root
-    400094: Sphere
-    400096: Thumb_1_L
-    400098: Thumb_1_R
-    400100: Thumb_2_L
-    400102: Thumb_2_R
-    400104: Thumb_3_L
-    400106: Thumb_3_R
-    400108: Trigger
-    400110: Weapon
-    400112: Wrist_L
-    400114: Wrist_R
-    400116: Arm.L
-    400118: Arm.R
-    400120: Assault Rifle
-    400122: Charging Handle
-    400124: Forearm Twist.1.L
-    400126: Forearm Twist.1.R
-    400128: Forearm Twist.2.L
-    400130: Forearm Twist.2.R
-    400132: Forearm Twist.3.L
-    400134: Forearm Twist.3.R
-    400136: Forearm Twist.4.L
-    400138: Forearm Twist.4.R
-    400140: Forearm.L
-    400142: Forearm.R
-    400144: FP Arms
-    400146: Index.1.L
-    400148: Index.1.R
-    400150: Index.2.L
-    400152: Index.2.R
-    400154: Index.3.L
-    400156: Index.3.R
-    400158: Middle.1.L
-    400160: Middle.1.R
-    400162: Middle.2.L
-    400164: Middle.2.R
-    400166: Middle.3.L
-    400168: Middle.3.R
-    400170: Pinky.1.L
-    400172: Pinky.1.R
-    400174: Pinky.2.L
-    400176: Pinky.2.R
-    400178: Pinky.3.L
-    400180: Pinky.3.R
-    400182: Ring.1.L
-    400184: Ring.1.R
-    400186: Ring.2.L
-    400188: Ring.2.R
-    400190: Ring.3.L
-    400192: Ring.3.R
-    400194: Thumb.1.L
-    400196: Thumb.1.R
-    400198: Thumb.2.L
-    400200: Thumb.2.R
-    400202: Thumb.3.L
-    400204: Thumb.3.R
-    400206: Wrist.L
-    400208: Wrist.R
-    4300000: Assault_Rifle
-    4300002: FP_Arms
-    4300004: Assault Rifle
-    4300006: FP Arms
-    7400000: Hold_Pose
-    7400002: Fire
-    7400004: Draw
-    7400006: Holster
-    7400008: Idle
-    7400010: Reload
-    7400012: Fire_01
-    7400014: Fire_02
-    7400016: Fire_03
-    9500000: //RootNode
-    13700000: Assault_Rifle
-    13700002: FP_Arms
-    13700004: Assault Rifle
-    13700006: FP Arms
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Arm_L
+  - first:
+      1: 100002
+    second: Arm_R
+  - first:
+      1: 100004
+    second: Armature
+  - first:
+      1: 100006
+    second: Assault_Rifle
+  - first:
+      1: 100008
+    second: Charging_Handle
+  - first:
+      1: 100010
+    second: Forearm_L
+  - first:
+      1: 100012
+    second: Forearm_R
+  - first:
+      1: 100014
+    second: Forearm_Twist_1_L
+  - first:
+      1: 100016
+    second: Forearm_Twist_1_R
+  - first:
+      1: 100018
+    second: Forearm_Twist_2_L
+  - first:
+      1: 100020
+    second: Forearm_Twist_2_R
+  - first:
+      1: 100022
+    second: Forearm_Twist_3_L
+  - first:
+      1: 100024
+    second: Forearm_Twist_3_R
+  - first:
+      1: 100026
+    second: Forearm_Twist_4_L
+  - first:
+      1: 100028
+    second: Forearm_Twist_4_R
+  - first:
+      1: 100030
+    second: //RootNode
+  - first:
+      1: 100032
+    second: FP_Arms
+  - first:
+      1: 100034
+    second: IK_L
+  - first:
+      1: 100036
+    second: IK_R
+  - first:
+      1: 100038
+    second: Index_1_L
+  - first:
+      1: 100040
+    second: Index_1_R
+  - first:
+      1: 100042
+    second: Index_2_L
+  - first:
+      1: 100044
+    second: Index_2_R
+  - first:
+      1: 100046
+    second: Index_3_L
+  - first:
+      1: 100048
+    second: Index_3_R
+  - first:
+      1: 100050
+    second: Magazine
+  - first:
+      1: 100052
+    second: Middle_1_L
+  - first:
+      1: 100054
+    second: Middle_1_R
+  - first:
+      1: 100056
+    second: Middle_2_L
+  - first:
+      1: 100058
+    second: Middle_2_R
+  - first:
+      1: 100060
+    second: Middle_3_L
+  - first:
+      1: 100062
+    second: Middle_3_R
+  - first:
+      1: 100064
+    second: Pinky_1_L
+  - first:
+      1: 100066
+    second: Pinky_1_R
+  - first:
+      1: 100068
+    second: Pinky_2_L
+  - first:
+      1: 100070
+    second: Pinky_2_R
+  - first:
+      1: 100072
+    second: Pinky_3_L
+  - first:
+      1: 100074
+    second: Pinky_3_R
+  - first:
+      1: 100076
+    second: Pole_L
+  - first:
+      1: 100078
+    second: Pole_R
+  - first:
+      1: 100080
+    second: Ring_1_L
+  - first:
+      1: 100082
+    second: Ring_1_R
+  - first:
+      1: 100084
+    second: Ring_2_L
+  - first:
+      1: 100086
+    second: Ring_2_R
+  - first:
+      1: 100088
+    second: Ring_3_L
+  - first:
+      1: 100090
+    second: Ring_3_R
+  - first:
+      1: 100092
+    second: Root
+  - first:
+      1: 100094
+    second: Sphere
+  - first:
+      1: 100096
+    second: Thumb_1_L
+  - first:
+      1: 100098
+    second: Thumb_1_R
+  - first:
+      1: 100100
+    second: Thumb_2_L
+  - first:
+      1: 100102
+    second: Thumb_2_R
+  - first:
+      1: 100104
+    second: Thumb_3_L
+  - first:
+      1: 100106
+    second: Thumb_3_R
+  - first:
+      1: 100108
+    second: Trigger
+  - first:
+      1: 100110
+    second: Weapon
+  - first:
+      1: 100112
+    second: Wrist_L
+  - first:
+      1: 100114
+    second: Wrist_R
+  - first:
+      1: 100116
+    second: Arm.L
+  - first:
+      1: 100118
+    second: Arm.R
+  - first:
+      1: 100120
+    second: Assault Rifle
+  - first:
+      1: 100122
+    second: Charging Handle
+  - first:
+      1: 100124
+    second: Forearm Twist.1.L
+  - first:
+      1: 100126
+    second: Forearm Twist.1.R
+  - first:
+      1: 100128
+    second: Forearm Twist.2.L
+  - first:
+      1: 100130
+    second: Forearm Twist.2.R
+  - first:
+      1: 100132
+    second: Forearm Twist.3.L
+  - first:
+      1: 100134
+    second: Forearm Twist.3.R
+  - first:
+      1: 100136
+    second: Forearm Twist.4.L
+  - first:
+      1: 100138
+    second: Forearm Twist.4.R
+  - first:
+      1: 100140
+    second: Forearm.L
+  - first:
+      1: 100142
+    second: Forearm.R
+  - first:
+      1: 100144
+    second: FP Arms
+  - first:
+      1: 100146
+    second: Index.1.L
+  - first:
+      1: 100148
+    second: Index.1.R
+  - first:
+      1: 100150
+    second: Index.2.L
+  - first:
+      1: 100152
+    second: Index.2.R
+  - first:
+      1: 100154
+    second: Index.3.L
+  - first:
+      1: 100156
+    second: Index.3.R
+  - first:
+      1: 100158
+    second: Middle.1.L
+  - first:
+      1: 100160
+    second: Middle.1.R
+  - first:
+      1: 100162
+    second: Middle.2.L
+  - first:
+      1: 100164
+    second: Middle.2.R
+  - first:
+      1: 100166
+    second: Middle.3.L
+  - first:
+      1: 100168
+    second: Middle.3.R
+  - first:
+      1: 100170
+    second: Pinky.1.L
+  - first:
+      1: 100172
+    second: Pinky.1.R
+  - first:
+      1: 100174
+    second: Pinky.2.L
+  - first:
+      1: 100176
+    second: Pinky.2.R
+  - first:
+      1: 100178
+    second: Pinky.3.L
+  - first:
+      1: 100180
+    second: Pinky.3.R
+  - first:
+      1: 100182
+    second: Ring.1.L
+  - first:
+      1: 100184
+    second: Ring.1.R
+  - first:
+      1: 100186
+    second: Ring.2.L
+  - first:
+      1: 100188
+    second: Ring.2.R
+  - first:
+      1: 100190
+    second: Ring.3.L
+  - first:
+      1: 100192
+    second: Ring.3.R
+  - first:
+      1: 100194
+    second: Thumb.1.L
+  - first:
+      1: 100196
+    second: Thumb.1.R
+  - first:
+      1: 100198
+    second: Thumb.2.L
+  - first:
+      1: 100200
+    second: Thumb.2.R
+  - first:
+      1: 100202
+    second: Thumb.3.L
+  - first:
+      1: 100204
+    second: Thumb.3.R
+  - first:
+      1: 100206
+    second: Wrist.L
+  - first:
+      1: 100208
+    second: Wrist.R
+  - first:
+      4: 400000
+    second: Arm_L
+  - first:
+      4: 400002
+    second: Arm_R
+  - first:
+      4: 400004
+    second: Armature
+  - first:
+      4: 400006
+    second: Assault_Rifle
+  - first:
+      4: 400008
+    second: Charging_Handle
+  - first:
+      4: 400010
+    second: Forearm_L
+  - first:
+      4: 400012
+    second: Forearm_R
+  - first:
+      4: 400014
+    second: Forearm_Twist_1_L
+  - first:
+      4: 400016
+    second: Forearm_Twist_1_R
+  - first:
+      4: 400018
+    second: Forearm_Twist_2_L
+  - first:
+      4: 400020
+    second: Forearm_Twist_2_R
+  - first:
+      4: 400022
+    second: Forearm_Twist_3_L
+  - first:
+      4: 400024
+    second: Forearm_Twist_3_R
+  - first:
+      4: 400026
+    second: Forearm_Twist_4_L
+  - first:
+      4: 400028
+    second: Forearm_Twist_4_R
+  - first:
+      4: 400030
+    second: //RootNode
+  - first:
+      4: 400032
+    second: FP_Arms
+  - first:
+      4: 400034
+    second: IK_L
+  - first:
+      4: 400036
+    second: IK_R
+  - first:
+      4: 400038
+    second: Index_1_L
+  - first:
+      4: 400040
+    second: Index_1_R
+  - first:
+      4: 400042
+    second: Index_2_L
+  - first:
+      4: 400044
+    second: Index_2_R
+  - first:
+      4: 400046
+    second: Index_3_L
+  - first:
+      4: 400048
+    second: Index_3_R
+  - first:
+      4: 400050
+    second: Magazine
+  - first:
+      4: 400052
+    second: Middle_1_L
+  - first:
+      4: 400054
+    second: Middle_1_R
+  - first:
+      4: 400056
+    second: Middle_2_L
+  - first:
+      4: 400058
+    second: Middle_2_R
+  - first:
+      4: 400060
+    second: Middle_3_L
+  - first:
+      4: 400062
+    second: Middle_3_R
+  - first:
+      4: 400064
+    second: Pinky_1_L
+  - first:
+      4: 400066
+    second: Pinky_1_R
+  - first:
+      4: 400068
+    second: Pinky_2_L
+  - first:
+      4: 400070
+    second: Pinky_2_R
+  - first:
+      4: 400072
+    second: Pinky_3_L
+  - first:
+      4: 400074
+    second: Pinky_3_R
+  - first:
+      4: 400076
+    second: Pole_L
+  - first:
+      4: 400078
+    second: Pole_R
+  - first:
+      4: 400080
+    second: Ring_1_L
+  - first:
+      4: 400082
+    second: Ring_1_R
+  - first:
+      4: 400084
+    second: Ring_2_L
+  - first:
+      4: 400086
+    second: Ring_2_R
+  - first:
+      4: 400088
+    second: Ring_3_L
+  - first:
+      4: 400090
+    second: Ring_3_R
+  - first:
+      4: 400092
+    second: Root
+  - first:
+      4: 400094
+    second: Sphere
+  - first:
+      4: 400096
+    second: Thumb_1_L
+  - first:
+      4: 400098
+    second: Thumb_1_R
+  - first:
+      4: 400100
+    second: Thumb_2_L
+  - first:
+      4: 400102
+    second: Thumb_2_R
+  - first:
+      4: 400104
+    second: Thumb_3_L
+  - first:
+      4: 400106
+    second: Thumb_3_R
+  - first:
+      4: 400108
+    second: Trigger
+  - first:
+      4: 400110
+    second: Weapon
+  - first:
+      4: 400112
+    second: Wrist_L
+  - first:
+      4: 400114
+    second: Wrist_R
+  - first:
+      4: 400116
+    second: Arm.L
+  - first:
+      4: 400118
+    second: Arm.R
+  - first:
+      4: 400120
+    second: Assault Rifle
+  - first:
+      4: 400122
+    second: Charging Handle
+  - first:
+      4: 400124
+    second: Forearm Twist.1.L
+  - first:
+      4: 400126
+    second: Forearm Twist.1.R
+  - first:
+      4: 400128
+    second: Forearm Twist.2.L
+  - first:
+      4: 400130
+    second: Forearm Twist.2.R
+  - first:
+      4: 400132
+    second: Forearm Twist.3.L
+  - first:
+      4: 400134
+    second: Forearm Twist.3.R
+  - first:
+      4: 400136
+    second: Forearm Twist.4.L
+  - first:
+      4: 400138
+    second: Forearm Twist.4.R
+  - first:
+      4: 400140
+    second: Forearm.L
+  - first:
+      4: 400142
+    second: Forearm.R
+  - first:
+      4: 400144
+    second: FP Arms
+  - first:
+      4: 400146
+    second: Index.1.L
+  - first:
+      4: 400148
+    second: Index.1.R
+  - first:
+      4: 400150
+    second: Index.2.L
+  - first:
+      4: 400152
+    second: Index.2.R
+  - first:
+      4: 400154
+    second: Index.3.L
+  - first:
+      4: 400156
+    second: Index.3.R
+  - first:
+      4: 400158
+    second: Middle.1.L
+  - first:
+      4: 400160
+    second: Middle.1.R
+  - first:
+      4: 400162
+    second: Middle.2.L
+  - first:
+      4: 400164
+    second: Middle.2.R
+  - first:
+      4: 400166
+    second: Middle.3.L
+  - first:
+      4: 400168
+    second: Middle.3.R
+  - first:
+      4: 400170
+    second: Pinky.1.L
+  - first:
+      4: 400172
+    second: Pinky.1.R
+  - first:
+      4: 400174
+    second: Pinky.2.L
+  - first:
+      4: 400176
+    second: Pinky.2.R
+  - first:
+      4: 400178
+    second: Pinky.3.L
+  - first:
+      4: 400180
+    second: Pinky.3.R
+  - first:
+      4: 400182
+    second: Ring.1.L
+  - first:
+      4: 400184
+    second: Ring.1.R
+  - first:
+      4: 400186
+    second: Ring.2.L
+  - first:
+      4: 400188
+    second: Ring.2.R
+  - first:
+      4: 400190
+    second: Ring.3.L
+  - first:
+      4: 400192
+    second: Ring.3.R
+  - first:
+      4: 400194
+    second: Thumb.1.L
+  - first:
+      4: 400196
+    second: Thumb.1.R
+  - first:
+      4: 400198
+    second: Thumb.2.L
+  - first:
+      4: 400200
+    second: Thumb.2.R
+  - first:
+      4: 400202
+    second: Thumb.3.L
+  - first:
+      4: 400204
+    second: Thumb.3.R
+  - first:
+      4: 400206
+    second: Wrist.L
+  - first:
+      4: 400208
+    second: Wrist.R
+  - first:
+      43: 4300000
+    second: Assault_Rifle
+  - first:
+      43: 4300002
+    second: FP_Arms
+  - first:
+      43: 4300004
+    second: Assault Rifle
+  - first:
+      43: 4300006
+    second: FP Arms
+  - first:
+      74: 7400000
+    second: Hold_Pose
+  - first:
+      74: 7400002
+    second: Fire
+  - first:
+      74: 7400004
+    second: Draw
+  - first:
+      74: 7400006
+    second: Holster
+  - first:
+      74: 7400008
+    second: Idle
+  - first:
+      74: 7400010
+    second: Reload
+  - first:
+      74: 7400012
+    second: Fire_01
+  - first:
+      74: 7400014
+    second: Fire_02
+  - first:
+      74: 7400016
+    second: Fire_03
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Assault_Rifle
+  - first:
+      137: 13700002
+    second: FP_Arms
+  - first:
+      137: 13700004
+    second: Assault Rifle
+  - first:
+      137: 13700006
+    second: FP Arms
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Draw
       takeName: Draw
+      internalID: 0
       firstFrame: 0
       lastFrame: 15
       wrapMode: 0
@@ -401,6 +863,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Hold_Pose
       takeName: Hold_Pose
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -545,6 +1008,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Holster
       takeName: Holster
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -689,6 +1153,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle
       takeName: Idle
+      internalID: 0
       firstFrame: 0
       lastFrame: 102
       wrapMode: 0
@@ -833,6 +1298,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Reload
       takeName: Reload
+      internalID: 0
       firstFrame: 0
       lastFrame: 95
       wrapMode: 0
@@ -991,6 +1457,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Fire_01
       takeName: Fire_01
+      internalID: 0
       firstFrame: 0
       lastFrame: 4
       wrapMode: 0
@@ -1133,6 +1600,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Fire_02
       takeName: Fire_02
+      internalID: 0
       firstFrame: 0
       lastFrame: 4
       wrapMode: 0
@@ -1275,6 +1743,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Fire_03
       takeName: Fire_03
+      internalID: 0
       firstFrame: 0
       lastFrame: 4
       wrapMode: 0
@@ -1418,15 +1887,26 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 100
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -1436,10 +1916,14 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -1449,14 +1933,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 100
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

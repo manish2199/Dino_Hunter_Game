@@ -4389,6 +4389,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4175941567890483729}
     m_Modifications:
+    - target: {fileID: 9012203317203294275, guid: 5ec68e4535df24d4281a3a16c49cb8c4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9012364723044367891, guid: 5ec68e4535df24d4281a3a16c49cb8c4,
         type: 3}
       propertyPath: EmissionModule.enabled
@@ -4403,6 +4408,11 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013936179047796933, guid: 5ec68e4535df24d4281a3a16c49cb8c4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9205958658591374399, guid: 5ec68e4535df24d4281a3a16c49cb8c4,
         type: 3}
