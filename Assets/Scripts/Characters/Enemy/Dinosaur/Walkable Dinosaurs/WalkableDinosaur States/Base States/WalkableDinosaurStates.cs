@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Math_Calculations;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class WalkableDinosaurStates : MonoBehaviour
@@ -33,19 +34,7 @@ public class WalkableDinosaurStates : MonoBehaviour
 
    protected float GetDistance(Vector3 firstPosition , Vector3 secondPosition)
    {
-       // return distance between dinosaur and CURRENT target  WAYpoint 
-       Vector3 heading ;
-       float distance; 
-       float distanceSquared;
-
-      heading.x = secondPosition.x - firstPosition.x;
-      heading.y = secondPosition.y - firstPosition.y;
-      heading.z = secondPosition.z - firstPosition.z;
-        
-        distanceSquared = (heading.x *  heading.x) + ( heading.y *  heading.y ) + ( heading.z * heading.z);
-        distance = Mathf.Sqrt(distanceSquared);
-
-        return distance;
+      return CustomMathFunctions.Distance(firstPosition, secondPosition);
    }
 
 
@@ -62,9 +51,3 @@ public class WalkableDinosaurStates : MonoBehaviour
    }
 }
 
-
-// // Base State 
-// public class RaptorStates : Monobehaviour 
-// {
-//    
-// }

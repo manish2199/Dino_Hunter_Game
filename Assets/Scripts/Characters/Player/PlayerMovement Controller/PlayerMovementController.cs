@@ -112,7 +112,7 @@ public class PlayerMovementController : MonoBehaviour
   {
       if( characterController.isGrounded  && Input.GetKeyDown(playerScriptableObject.playerControls.KeyForJump) ) 
       {
-       VerticalVelocity = playerScriptableObject.jumpForce;
+         VerticalVelocity = playerScriptableObject.jumpForce;
       }
   }
 

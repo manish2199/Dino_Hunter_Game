@@ -66,31 +66,10 @@ public class NonShootableWeaponController : WeaponController
    public NonShootableWeaponController(WeaponModel weaponModel ,WeaponView weaponView) : base ( weaponModel , weaponView)
    {}
 
-   public override void ActivateWeapon(Transform fpsTransform)
-   {
-	   base.ActivateWeapon(fpsTransform);
-   }
-
    public override void UseWeapon()
    {
       WeaponAttack();   
    }
-
-   protected override void WeaponAttack()
-   {
-     base.WeaponAttack();
-   }
-
-   public override void DeactivateWeapon()
-   {
-      base.DeactivateWeapon();
-   }
-
-   public override void PlayAttackClip()
-   {
-      base.PlayAttackClip();
-   }
-
 }
 
 
@@ -153,9 +132,7 @@ public class ShootableWeaponController : WeaponController
 
    protected override void WeaponAttack()
    {   
-     
       // check whether it has single shot round or multiple shot round
-      
       if(Player.Instance.playerMouseLookController.isCursorLocked())
       {
         if(ShootableWeaponModel.FireType == FireType.Multiple)

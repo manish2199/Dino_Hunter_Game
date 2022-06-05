@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-// [System.Serializable]
+
 public class WeaponView : MonoBehaviour
 {
-  [SerializeReference] public WeaponController WeaponController;
+   public WeaponController WeaponController;
 
    public Transform WeaponTransform;
 
@@ -32,20 +34,19 @@ public class WeaponView : MonoBehaviour
    {
        WeaponController.UseWeapon();
    }
-
+  
    public void PlayMuzzleFlash()
    {
       MuzzleFire.Emit(1);
    }
 
-
-   public void FireBullet()
+    private void FireBullet()
    {
       ShootableWeaponController temp =(ShootableWeaponController)WeaponController;
       temp.FireBullet();
     }
 
-    public void PlayAttackClip()
+    private void PlayAttackClip()
     { 
       WeaponAudioSource.Stop();
       WeaponController.PlayAttackClip();
@@ -63,14 +64,14 @@ public class WeaponView : MonoBehaviour
 
     public void PlayReloadClip1()
     {
-      ShootableWeaponController temp =(ShootableWeaponController)WeaponController;
-      temp.PlayReloadClip1();
+      var shootableController =(ShootableWeaponController)WeaponController;
+      shootableController.PlayReloadClip1();
     }
 
     public void PlayReloadClip2()
     {
-      ShootableWeaponController temp =(ShootableWeaponController)WeaponController;
-      temp.PlayReloadClip2();
+      var shootableController =(ShootableWeaponController)WeaponController;
+      shootableController.PlayReloadClip2();
     }
 
 }

@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Math_Calculations;
 
-//  TO patroll need waypoints , aigent , target transform
+
 public class PatrollingState : WalkableDinosaurStates
 {  
   protected bool CanPatrol; 
 
-  protected int currentWayPointIndex = 0; 
+  protected int CurrentWayPointIndex = 0; 
 
   protected Transform[] WayPoints;
    
@@ -15,7 +16,6 @@ public class PatrollingState : WalkableDinosaurStates
 
   [SerializeReference,HideInInspector]protected WalkableDinosaurModel WalkableDinosaurModel;
 
-   protected float FieldOfViewAnle;
 
    protected float ChasingRange;
 
@@ -30,8 +30,7 @@ public class PatrollingState : WalkableDinosaurStates
    {
       if(CanPatrol)
       {
-        //    print(GetDistance(transform.position,CurrentWayPointTarget));
-        if(GetDistance(transform.position,CurrentWayPointTarget) < 0.6f )  
+          if(GetDistance(transform.position,CurrentWayPointTarget) < 0.6f )  
         {   
             CanPatrol = false; 
             animator.SetBool("Walk",false);
@@ -46,20 +45,17 @@ public class PatrollingState : WalkableDinosaurStates
    protected virtual void CheckEnemyDetection()
    {
        // if enemy detected return true
-       if(PlayerTarget != null && Player.Instance.gameObject.activeInHierarchy )
+       if(PlayerTarget && Player.Instance.gameObject.activeInHierarchy )
        {
         Vector3 targetDirection = GetDirection(transform.position , PlayerTarget.position );
-        
-        float targetAngle = Vector3.Angle(transform.forward , targetDirection );
 
-        if(targetAngle < ( FieldOfViewAnle / 2) )
+        if(CustomMathFunctions.IsPresentInFront(transform.forward,targetDirection))
         {
           if( GetDistance(transform.position,PlayerTarget.position) < ChasingRange )
           {
               // DIRECT ATTACK
               EnemyDetected();
           }
-          
         }
        }
   }
@@ -121,7 +117,7 @@ public class PatrollingState : WalkableDinosaurStates
 
    public virtual void SetWayPointDestination()
    {
-      CurrentWayPointTarget = WayPoints[currentWayPointIndex].position;
+      CurrentWayPointTarget = WayPoints[CurrentWayPointIndex].position;
       
 
       if(CanPatrol && aiAgent.isOnNavMesh == true )
@@ -133,11 +129,11 @@ public class PatrollingState : WalkableDinosaurStates
 
    protected virtual void IterateToNextWayPoint()
    {
-       int prevIndex = currentWayPointIndex;
+       int prevIndex = CurrentWayPointIndex;
        do
        {
-          currentWayPointIndex = Random.Range(0,WayPoints.Length-1);
-       }while(prevIndex == currentWayPointIndex);
+          CurrentWayPointIndex = Random.Range(0,WayPoints.Length-1);
+       }while(prevIndex == CurrentWayPointIndex);
       
    }
   
@@ -166,7 +162,6 @@ public class PatrollingState : WalkableDinosaurStates
 
         SetWayPointDestination();
        
-        FieldOfViewAnle = WalkableDinosaurModel.FieldOfViewAnle;
 
         ChasingRange = WalkableDinosaurModel.ChasingRange;
 
@@ -192,13 +187,11 @@ public class PatrollingState : WalkableDinosaurStates
         StopCoroutine(EnemyDetectionCoroutine);
       }
   
-        currentWayPointIndex = 0; 
+        CurrentWayPointIndex = 0; 
    
         CurrentWayPointTarget = Vector3.zero; 
 
         WalkableDinosaurModel = null;
-
-        FieldOfViewAnle = 0;
 
         ChasingRange = 0;
 
@@ -212,68 +205,6 @@ public class PatrollingState : WalkableDinosaurStates
 
 	}
 }
-
-     
-//       async Task MoveToNextWayPoint()
-//    {
-//         IterateToNextWayPoint();
-        
-//         if(aiAgent != null)
-//         {
-//           aiAgent.isStopped = false;
-//         }
-//         await Task.Delay(1600);
-//         canStart = true;
-//         SetWayPointDestination();
-//    }
-
-
-
-
-    //  public async Task PatrolRoutine() 
-    // {
-    //     await StopRaptor();
-
-    //     await Task.Delay(2000);
-
-    //     await PlaySniffAnim();
-
-    //     await Task.Delay(1500);
-
-    //     await PlayRoarAnim();
-
-    //     await Task.Delay(1500); 
-
-    //     await MoveToNextWayPoint();
-    // }
-
-
-//    async Task StopRaptor()
-//    {
-//       if(aiAgent != null)
-//       {
-//       aiAgent.isStopped = true;
-//       aiAgent.velocity = Vector3.zero;
-//       }
-//    }
-
-//    async Task PlaySniffAnim()
-//    {  
-//        if(animator != null)
-//        {
-//          animator.SetTrigger("Sniff");
-//        }
-//    }
-
-   
-//     async Task PlayRoarAnim()
-//    {  
-//        if(animator != null)
-//        {
-//         //  raptorDinosaurView.animator.ResetTrigger("Sniff");
-//          animator.SetTrigger("Roar");
-//        }
-//    }
 
 
 
